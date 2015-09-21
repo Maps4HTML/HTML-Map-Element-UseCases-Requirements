@@ -13,7 +13,7 @@ Proposals for normative changes to the specification should take
 place on the [Maps4HTML mailing list](mailto:public-maps4html@w3.org).
 
 ## Let me see it! 
-It's at [github](http://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/). 
+It's on [github pages, here](http://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/). 
 
 ## Join us!
 [Join the Maps4HTML Community Group](https://www.w3.org/community/maps4html/) and help us make the Web a better place ... for MAPS!! 

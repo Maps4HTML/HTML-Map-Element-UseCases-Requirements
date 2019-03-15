@@ -10,8 +10,8 @@
           // specification status (e.g. WD, LCWD, WG-NOTE, etc.). If in doubt use ED.
           specStatus:           "CG-DRAFT",
           
-          // the specification's short name, as in http://www.w3.org/TR/short-name/
-          shortName:            "xxx-xxx",
+          // the specification's short name, as in https://www.w3.org/TR/short-name/
+          // shortName:            "xxx-xxx",
 
           // if your specification has a subtitle that goes below the main
           // formal title, define it here
@@ -22,16 +22,18 @@
 
           // if the specification's copyright date is a range of years, specify
           // the start date here:
-          // copyrightStart: "2005"
+          copyrightStart: "2015",
           
           github: "https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements",
+
           // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
           // and its maturity status
           // previousPublishDate:  "1977-03-15",
           // previousMaturity:  "WD",
 
           // if there a publicly available Editor's Draft, this is the link
-          // edDraftURI:           "http://berjon.com/",
+          // (calculated automatically for GitHub pages)
+          // edDraftURI:  "https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/",
 
           // if this is a LCWD, uncomment and set the end of its review period
           // lcEnd: "2009-08-05",
@@ -41,7 +43,7 @@
           editors:  [
               {
                   name:       "Peter Rushforth"
-              ,   url:        "http://nrcan.gc.ca/"
+              ,   url:        "https://nrcan.gc.ca/"
               ,   mailto:     "Peter.Rushforth@canada.ca"
               ,   company:    "Natural Resources Canada"
               ,   companyURL: "https://nrcan.gc.ca/"
@@ -55,7 +57,7 @@
           wgURI:        "https://www.w3.org/community/maps4html/",
           
           // name (without the @w3c.org) of the public mailing to which comments are due
-          wgPublicList: "public-maps4html@w3.org",
+          wgPublicList: "public-maps4html",
           
           // URI of the patent status for this WG, for Rec-track documents
           // !!!! IMPORTANT !!!!
@@ -68,7 +70,6 @@
     </script>
   </head>
   <body>
-          <p id="copyright" hidden>Copyright © 2015-2019 the Contributors to the Use Cases and Requirements for Standardizing Web Maps, published by the  <a href='http://www.w3.org/community/grouphome/'>Maps for HTML Community Group</a> under the <a href='http://www.w3.org/community/about/agreements/cla/'>W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href='http://www.w3.org/community/about/agreements/cla-deed/'>summary</a> is available.</p>
     <section id='abstract'>
       <p>This document represents the use cases and requirements for standardizing a solution to enable modern Web maps for map content authors, HTML authors and users.  The use cases and requirements were gathered in
       consultation with the Maps for HTML Community Group and others.</p>
@@ -93,7 +94,7 @@
         <p>The Maps For HTML Community Group arose as a result of face-to-face discussions at the Linking Geospatial Data workshop 2014, co-sponsored by the W3C and the Open Geospatial
       Consortium.  Discussion of this and related documents should take place in the Maps4HTML or the Web Incubator Community Group, since it is in the CG context that clear license terms for 
       contributions of intellectual property are in force.</p>
-        <p>The <a href="http://www.w3.org/TR/html-design-principles/">HTML Design Principles</a> were created by the HTML Working Group, and should also be used to guide the development of these
+        <p>The <a href="https://www.w3.org/TR/html-design-principles/">HTML Design Principles</a> were created by the HTML Working Group, and should also be used to guide the development of these
         use cases, requirements and related specifications.</p>
       </section>
     
@@ -102,15 +103,15 @@
       <p>Web mapping sites have become an essential daily Web destination for millions of Web users.  Web maps, like paper maps before them, 
         have become indispensable to many human activities, across a wide spectrum of categories, including but not limited to: government, journalism, business, science, 
         education, travel and leisure.  The <a href="https://tools.ietf.org/html/rfc1866#section-7.6">first iteration of image maps 
-          in HTML</a> was intended to <a href="http://web.archive.org/web/20110628194820/http://www2.parc.com/istl/projects/www94/mapviewer.html">represent simple cartographic maps</a>. 
+          in HTML</a> was intended to <a href="https://web.archive.org/web/20110628194820/http://www2.parc.com/istl/projects/www94/mapviewer.html">represent simple cartographic maps</a>. 
           Some techniques that were pioneered in those early HTML iterations remain in common Web map usage today. Despite the initial semantic of the &lt;MAP&gt; element, HTML did not 
-          continue to evolve to include what users today consider a <a href="http://www.openstreetmap.org/">standard Web map</a>.
+          continue to evolve to include what users today consider a <a href="https:/www.openstreetmap.org/">standard Web map</a>.
       </p>
       <p>
         Web mapping technology has undergone a <a href="https://en.wikipedia.org/wiki/Web_mapping#History_of_web_mapping">long period of evolution, starting before and giving rise to
         that first HTML &lt;MAP&gt; element</a>.  This has resulted in some very sophisticated client-server applications which serve maps to Web users.  Implementations vary widely, 
-        and some of the underlying techniques, software, semantics and formats have become <a href="http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames">accepted patterns</a>, 
-        <a href="http://resources.arcgis.com/en/help/rest/apiref/">de facto</a>, and even <a href="http://www.opengeospatial.org/pressroom/pressreleases/408">de jure</a> standards.
+        and some of the underlying techniques, software, semantics and formats have become <a href="https:/wiki.openstreetmap.org/wiki/Slippy_map_tilenames">accepted patterns</a>, 
+        <a href="https://developers.arcgis.com/rest/">de facto</a>, and even <a href="https:/www.opengeospatial.org/pressroom/pressreleases/408">de jure</a> standards.
         Some of the techniques HTML authors are required to use in creating maps for the web include: 
       </p>
       <ul>
@@ -119,7 +120,7 @@
         <li>JavaScript APIs and frameworks which support access to centralized map services</li>
       </ul>
       <p>Notwithstanding the above considerations, Web maps today are a mature class of technology, and <a href="https://www.google.com/trends/explore#q=web%20mapping&cmpt=q&tz=Etc%2FGMT%2B4">search interest</a> 
-        in the technology reflects that fact. <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map">Core</a> <a href="http://www.opengeospatial.org/standards/sfa">aspects</a> of Web maps are 
+        in the technology reflects that fact. <a href="https:/wiki.openstreetmap.org/wiki/Slippy_Map">Core</a> <a href="https:/www.opengeospatial.org/standards/sfa">aspects</a> of Web maps are 
         stable and fast enough that it is now reasonable to consider standardizing them in a way 
         suitable for - preferably designed for - implementation by browsers. In other words, Web maps with <a href="https://tools.ietf.org/html/rfc7946">relevant</a> <a href="https://github.com/bjornharrtell/jsts">APIs</a> should be available to Web authors and programmers in a declarative, 
         HTML, CSS and JavaScript-compatible manner.  A key challenge is to do so in a way that is designed with the core values and best interests of the <em>Web</em> at the heart.</p>
@@ -146,7 +147,7 @@
         
         <dt>URL recipes </dt>
         <dd>
-          <p>Instead of depending on the core values of the Web <a href="#fn1" id="r1">[1]</a>, Web maps depend in some cases, on <a href="http://mapserver.org/ogc/wms_server.html#test-with-a-getmap-request">
+          <p>Instead of depending on the core values of the Web <a href="#fn1" id="r1">[1]</a>, Web maps depend in some cases, on <a href="https:/mapserver.org/ogc/wms_server.html#test-with-a-getmap-request">
           standardized techniques</a> which are incompatible with <a href="https://tools.ietf.org/html/rfc7320">modern best practices</a>.  URL Templates somewhat alleviate this reliance, however they also 
           effectively bypass the benefits of hypertext.  Service providers are not free to control the domain of URL values in their own Web domains.  A clever hack, or misguided standard, it 
           is unclear which category URL recipes fall into,  however taken as a whole, its broad application prevents spatial data and maps from scaling to Web scale.
@@ -164,7 +165,7 @@
             recourse to styling of the underlying spatial features as HTML (or SVG) elements.  Notwithstanding the importance of images for Web maps, geographic features are also important on the client side
             of the Web, since they provide the basis for user interaction with map information.  </p>
             
-          <p>The <a href="http://geospatialworld.net/Interview/ViewInterview.aspx?id=31457">prevailing wisdom on today's Web</a> is to compile geographic features on the server to CSS-styled SVG for 
+          <p>The <a href="https://www.geospatialworld.net/Interview/ViewInterview.aspx?id=31457">prevailing wisdom on today's Web</a> <span class="issue">Broken link: what article was this supposed to link to?</span> is to compile geographic features on the server to CSS-styled SVG for 
             consumption by the browser.  </p>
             
           <p>The first problem with this approach is that despite its nature as a hypertext language, SVG has 2D vector graphics semantics and coordinate systems.  Its elements relate to the graphics page, 
@@ -312,7 +313,7 @@
              <p>An HTML author creates a Web map, and either specifies a projection by choosing from a list of defined <code>projection</code> values, or by allowing the value of <code>projection</code>
              to default to an interoperable value, perhaps because the author does not fully understand or particularly care about the concepts behind coordinate reference systems, nor map projections.</p>
              <p>The default value for a Web map <code>projection</code> should reflect the de facto standard, which is a <em>tiled coordinate reference system</em> which combines the <em>Web Mercator</em> projected 
-               coordinate reference system with the <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map">Open Street Map platform tiling framework</a>.  The combined system is identified as <code>OSMTILE</code> in this specification.</p>
+               coordinate reference system with the <a href="https:/wiki.openstreetmap.org/wiki/Slippy_Map">Open Street Map platform tiling framework</a>.  The combined system is identified as <code>OSMTILE</code> in this specification.</p>
              <p>As an HTML author, I want to specify the initial <code>zoom</code> of a Web map, although if I don't do so, a default value of 0 should be provided.</p>
 
              
@@ -376,7 +377,7 @@
     </section>
     <section id="requirements">
       <h2>Requirements</h2>
-      <p>The <a href="http://www.w3.org/TR/html-design-principles">HTML design principles</a> are a useful guide for the specification of requirements.</p>
+      <p>The <a href="https://www.w3.org/TR/html-design-principles/">HTML design principles</a> are a useful guide for the specification of requirements.</p>
       <p>The <a class="internalDFN" href="#use-cases">use cases</a> give rise to the following <dfn id="dfn-requirements">requirements</dfn>:
       <ol>
         <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support a declarative HTML syntax, and must allow the HTML author to provide fallback content for use on user agents that don't support the new feature</p></li>

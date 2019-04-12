@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Use Cases and Requirements for Standardizing Web Maps</title>
+<meta charset='utf-8'>
+<style>
+h5:not(.specificity-hack) {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+a:empty::before {
+  content: attr(href);
+}
+[data-ucr-role="tag-dfn"]::after {
+  content: " (" attr(id) ")";
+  font-weight: normal;
+  font-style: italic;
+  margin-right: 0.3em;
+}
+dfn {
+  font-weight: bold;
+  font-style: inherit;
+}
+.tag-span {
+  display: inline-block;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0.3em 0.5em;
+  border-radius: 0.5em;
+  background-color: #ccc;
+}
+.tag-span.tag-bad {
+  background-color: #f86;
+}
+.tag-span.tag-caution {
+  background-color: #ff8;
+}
+.tag-span.tag-good {
+  background-color: #8fa;
+}
+/* cancel out the fancy link styling on links
+   that will contain solid-colored tags */
+.processed a[href][data-ucr-role='tag'],
+.processed a[href][data-ucr-role='conclusion'] {
+  border-bottom: none;
+  background: none;
+}
+/* add link styling on the tags instead */
+a[href] .tag-span {
+  color: black;
+}
+a[href]:hover .tag-span, a[href]:focus .tag-span {
+  text-decoration: underline;
+}
+</style>
+<script class='remove'>
+var respecConfig = {
+  // specification status (e.g. WD, LCWD, WG-NOTE, etc.). If in doubt use ED.
+  specStatus:  "CG-DRAFT",
+
+  // if your specification has a subtitle that goes below the main
+  // formal title, define it here
+  // subtitle:  "",
+
+  // if you wish the publication date to be other than the last modification, set this
+  // publishDate:  "1999-12-31",
+  copyrightStart: "2019",
+  
+  github: "https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements",
+
+  // if there a publicly available Editor's Draft, this is the link
+  // (calculated automatically for GitHub pages)
+  // edDraftURI:  "https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/",
+
+  // editors, add as many as you like
+  // only "name" is required
+  editors:  [
+      {
+          name:       "Amelia Bellamy-Royds",
+          mailto:     "amelia.bellamy.royds@gmail.com"
+      }
+  ],
+  
+  // name of the WG
+  wg:           "Maps For HTML Community Group",
+  
+  // URI of the public WG page
+  wgURI:        "https://www.w3.org/community/maps4html/",
+  
+  // name (without the @w3c.org) of the public mailing to which comments are due
+  // wgPublicList: "public-maps4html", // don't use default comment request
+
+  localBiblio: {
+    "MapML" : {
+      title: "Map Markup Language",
+      href: "https://maps4html.github.io/MapML/spec/",
+      publisher: "Maps for HTML Community Group"
+    },
+    "HTML-map-element" : {
+      title: "The HTML map Element proposal",
+      href: "https://maps4html.github.io/HTML-Map-Element/spec/",
+      publisher: "Maps for HTML Community Group"
+    },
+    "webcomponents-design-guidelines" : {
+      title: "Guidelines for creating web platform compatible components",
+      href: "https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/",
+      publisher: "W3C TAG"
+    },
+    "WGS84" : {
+      title: "World Geodetic System 1984",
+      href: "http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf",
+      publisher: "US National Imagery and Mapping Agency"
+    }
+  }
+};
+respecConfig.otherLinks = [
+  {
+    key: 'Join the Community Group',
+    data: [{value: respecConfig.wg, href: respecConfig.wgURI}]
+  }
+]
+</script>
+<script src='https://www.w3.org/Tools/respec/respec-w3c-common'
+        defer class='remove'></script>
+</head>
+<body>
+<section id='abstract'>
+<p>
+This report outlines the use cases and requirements
+for standardizing modern Web maps,
+in a way that works
+for map content authors, webpage authors, and website users.
+The use cases and requirements were gathered in
+consultation with the Maps for HTML Community Group and others.
+</p>
+<p>
+Three aspects of web maps are reviewed:
+map viewer widgets,
+client-side mapping APIs,
+and
+map data formats.
+For each, evidence is gathered from widely-used scripted JavaScript web map frameworks.
+The common features and limitations of the current techniques
+are the basis of the requirements for a standardized solution
+that could be built in to HTML and web browsers.
+</section>
+
+<section id='sotd'>
+<p>
+Comments, corrections, and suggested additions should be made as
+<a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/">GitHub issues</a>.
+If that is not possible, send an email comment to
+<a href="mailto:public-maps4html@w3.org">public-maps4html@w3.org</a>.
+</p>
+</section>
+
+<section id="introduction">
+<h2>Introduction</h2>
+
+<section>
+<h3>The current state of web maps</h3>
+<p>
+Web maps today are indispensable to billions of people,
+for exploring and understanding the world around them.
+Like paper maps before them,
+web maps are used for planning, wayfinding, analysis, and more.
+But the power of an interactive, hyperlinked medium
+supports a richer experience than could have been imagined
+by a cartographer from a previous century.
+Online maps can be dynamically redrawn with new data,
+or according to the user's preferences.
+They can connect to other maps —
+for adjacent areas, finer detail, or different geographical features —
+and can link out to complex information about the places they represent.
+</p>
+<p>
+But despite their ubiquity on the web,
+maps have no native, semantic representation in HTML.
+</p>
+<p>
+HTML has had “image maps” —
+hyperlinked graphics, where selecting different parts of the graphic triggers a different URL —
+<a href="https://tools.ietf.org/html/rfc1866#section-7.6">from its early days</a>.
+These were quickly adopted to
+<a href="https://web.archive.org/web/20110628194820/http://www2.parc.com/istl/projects/www94/mapviewer.html">represent simple cartographic maps</a>.
+The <a href="https://html.spec.whatwg.org/multipage/image-maps.html#the-map-element"><code>&lt;MAP&gt;</code></a> element
+sounds like it should be the basis of a web map,
+but its basic functionality
+(to define geometric areas on an image that represent distinct hyperlinks)
+has not evolved to include what users today consider a standard web map
+(such as those provided by Google, Bing, or OpenStreetMap).
+</p>
+<p>
+Web mapping technology has undergone a <a href="https://en.wikipedia.org/wiki/Web_mapping#History_of_web_mapping">long period of evolution.</a>
+Today's web maps are usually sophisticated client-server applications,
+dynamically combining many types of spatial data on demand for web users.
+Implementations vary widely,
+but some of the underlying techniques, software, semantics and formats have become
+accepted patterns
+(for example, <a href="https:/wiki.openstreetmap.org/wiki/Slippy_map_tilenames">the tile naming systems</a>),
+or formal standards
+(for example, the <a href="https://www.opengeospatial.org/standards">standards published by the Open Geospatial Consortium</a>,
+some of which are also ISO standards).
+</p>
+<p>
+Many sources of spatial data are available online,
+from governments, commercial services, and non-profit projects.
+But accessing and using the data is a specialized task;
+most web developers or website content creators
+rely on JavaScript frameworks
+(or sometimes still Flash frameworks)
+that can fetch the correct map image tiles or vector data,
+draw them to the screen,
+and handle the most common user interactions.
+</p>
+<p>
+Many of these web map frameworks are tied to a specific commercial provider of map data,
+making it difficult for website creators to integrate their own data,
+or data from multiple sources.
+Many of the web map frameworks do not work at all without JavaScript,
+and require considerable resource downloads and processing.
+The end user has limited control or customization over the map interface —
+unless the website author happened to choose the web map provider
+that matches the native mapping application on the end-user's device.
+</p>
+<p>
+Web maps today may not be perfect,
+but they have filled a clear need for website authors and users.
+The multiple frameworks used to generate web maps
+implement the same capabilities with different code —
+code that needs to be downloaded and processed for each website with a map in it.
+These core aspects of Web maps represent mature, ubiquitous user interface (UI)
+and application programming interface (API) patterns.
+It is now reasonable to consider standardizing these capabilities
+for implementation by web browsers directly.
+</p>
+<p>
+A key challenge is to do so in a way that is
+compatible with the core values of the open web,
+and integrated with other web platform technologies.
+</p>
+</section>
+
+<section>
+<h3>The Maps for HTML Community Group</h3>
+<p>
+The Maps For HTML Community Group (<a href="https://www.w3.org/community/maps4html/">Maps4HTML</a>)
+arose as a result of face-to-face
+<a href="https://www.w3.org/community/maps4html/wiki/LGD14BarCampNotes">discussions</a>
+at the Linking Geospatial Data workshop 2014,
+co-sponsored by the W3C and the Open Geospatial Consortium.
+</p>
+<p>
+The group operates within the structure of a W3C community group,
+with clear license terms for contributions of intellectual property.
+The community group process
+designed to support the eventual transition of the group's work to become open web standards.
+The group attempts to follow the established best practices for web standard development,
+as outlined in <a href="#principles">the guiding principles</a> for this report.
+</p>
+<p>
+The initial requirements sketched out at LGD2014
+were expanded into <a href="draft-2015.html">an initial use cases and requirements summary</a>.
+That work was the basis of the draft [[[MapML]]] specification
+and [[[HTML-map-element]]] proposal.
+Although MapML has had notable support and development efforts
+from within the geospatial community,
+as of early 2019 it has not received significant support
+from web browser developers or HTML standards teams.
+For that reason, the current document rolls back the focus
+to the discussion of mapping use cases and requirements.
+The structure of this report is intended to more comprehensively explain
+<em>why</em> native HTML web maps would be beneficial,
+and <em>how</em> they should best be defined.
+</p>
+<p class="ednote">
+This report is a work in progress!
+Feedback and contributions are welcome.
+To make substantive contributions
+(that is, anything that is bigger than typo corrections or formatting fixes),
+you will need to first
+<a href="https://www.w3.org/community/maps4html/">become a member of the community group</a>
+and make the corresponding IP commitments.
+</p>
+</section>
+
+<section>
+<h3>Structure of this report</h3>
+<p>
+The purpose of this report is to describe
+(1) why and how the open web would benefit from having
+web map features built in to web browsers,
+and (2) what this native web mapping function should look like,
+to website creators and to end users.
+</p>
+<p>
+This report uses an empirical approach to identify required features of web maps,
+by looking for the common features of web map frameworks used today.
+However, we also recognize that web maps today have limitiations.
+A proposal for a native HTML web map, built in to web browsers,
+needs to be assessed on the same merits as any other proposed web standard.
+</p>
+<p>
+In <a href="#principles"></a>,
+we outline the theoretical factors we use
+for assessing whether a given feature should be included as a requirement.
+In <a href="#js-examples"></a>,
+we introduce the web map frameworks that are used in the empirical review.
+</p>
+<p>
+The review of potential requirements
+is then divided into three parts:
+</p>
+<ul>
+<li>
+<a href="#map-viewers"></a>,
+including the user interface
+and all configuration that could be defined declaratively
+in elements, attributes, and style properties.
+</li>
+<li>
+<a href="#client-apis"></a>,
+which would require additional DOM APIs
+to enhance or complement the declarative elements.
+</li>
+<li>
+<a href="#map-formats"></a>
+that should be supported for representing spatial data
+used by the map viewers.
+</li>
+</ul>
+<p>
+Within each part, we identify potential <dfn data-lt="use case">use cases</dfn>:
+problems that a website author or user wants a web map to solve.
+The use cases are defined in pragmatic terms,
+describing a specific function or action.
+Real-world, domain-specific applications of the use case
+are summarized in an introductory description.
+</p>
+<p>
+For each use case, we then list <dfn data-lt="capability">capabilities</dfn>:
+features, which a web map might include, that could help solve the use case.
+Capabilities are potential requirements for a native HTML web map.
+To assess whether the capability should be a requirement, we examine:
+</p>
+<dl>
+<dt>Existing implementations</dt>
+<dd>
+How common is this capability in the reviewed JS web map frameworks?
+Do they implement it with consistent, well-established patterns?
+Are there any notable limitations of the current implementations,
+when measured against the  <a href="#principles">principles of the inclusive web</a>?
+</dd>
+<dt>Uses beyond mapping</dt>
+<dd>
+Is there a demand for this capability on the web,
+beyond its use in web mapping?
+</dd>
+<dt>Related web specifications</dt>
+<dd>
+How is this capability related to existing web standards
+or proposed specifications?
+Can the web map implementation build on existing features?
+</dd>
+</dl>
+<p>
+For each capability, we conclude by summarizing its costs and potential benefits
+(using tags defined in the next section)
+for integration as a native HTML web map feature.
+We assign it one of three possible conclusions:
+</p>
+<dl>
+<dt><dfn id="requirement" data-ucr-role="conclusion-dfn" data-ucr-tag-type="good">requirement</dfn></dt>
+<dd>
+The capability is essential for a native HTML web map implementation.
+</dd>
+<dt><dfn id="enhancement" data-ucr-role="conclusion-dfn" data-ucr-tag-type="caution">enhancement</dfn></dt>
+<dd>
+The capability would be nice to have in native HTML web maps,
+but isn't necessary for the initial specification.
+</dd>
+<dt><dfn id="impractical" data-ucr-role="conclusion-dfn" data-ucr-tag-type="bad">impractical</dfn></dt>
+<dd>
+The capability isn't currently realistic for inclusion in native HTML web maps.
+</dd>
+</dl>
+<p>
+If there is not yet enough evidence for a conclusion,
+the capability will be marked
+<dfn id="undecided" data-ucr-role="conclusion-dfn">undecided</dfn>.
+</p>
+</section>
+
+</section>
+
+<section id="principles">
+<h2>Guiding Principles</h2>
+<p>
+The structure of this review is inspired by many other projects
+that have outlined best practices for web standards developments.
+This section briefly outlines the principles behind our approach,
+with links to further reading.
+</p>
+
+<section id="extensible-web">
+<h3>The extensible web</h3>
+<p>
+The report uses an evidence-based approach,
+defining requirements not based on hypothetical use cases
+but on web map tools that are already in use.
+We assume that
+the common features of existing, widely-used web map frameworks
+represent core functionality
+that web users and website authors expect from native web maps.
+</p>
+<p>
+This approach is inspired by [[[EXTENSIBLE]]]
+which aims to
+“tighten the feedback loop between the editors of web standards and web developers,”
+establishing “a clear path for good ideas by web developers to become part of the infrastructure of the web”
+[[EXTENSIBLE]].
+</p>
+<p>
+Much of the manifesto focuses on making it easier
+for developers to experiment with new features —
+to expose web platform capabilities at a more granular level,
+so that developers can remix and extend them to try out new ideas.
+HTML custom elements and CSS custom properties
+are just two of many examples of how web standards efforts since 2012
+have focused on creating better building blocks for web developers.
+</p>
+<p>
+But the implicit second step of the extensible web approach
+is that, once a consensus has developed from real-world experience
+with particular features or patterns on the web,
+those features can be standardized with confidence.
+</p>
+<p>
+Web maps are extremely complex user interfaces.
+If that complexity is to be built-in to web browsers,
+the extensible web mindset requires that it be exposed
+to developers as individual capabilities that can be remixed and extended.
+For that reason,
+this review breaks web map functionality
+into very low-level capabilities.
+In addition to describing how each capability is used in mapping,
+we discuss how the same building block could be used for other web content.
+Focusing on these low-level capabilities also ensures
+that we do not overlook important details,
+such as the need to make individual interactions accessible to all users.
+</p>
+</section>
+
+<section id="priorities">
+<h3>Priorities for web standards</h3>
+
+<p>
+To decide whether a capability
+should or shouldn't be considered a requirement for web maps,
+we need to assess its benefits and costs.
+But benefits and costs are subjective:
+to calculate them, we need a set of values or principles
+defining best practices for web standards.
+Only then can we assess whether integrating a feature into web browsers
+can bring the web closer to our ideals.
+</p>
+<p>
+Benefits and costs are also different from different perspectives.
+Integrating web maps into HTML means convincing
+other web standard editors and web browser developers.
+But once a web standard is adopted,
+the number of website authors who use it will (hopefully)
+be much larger than the number of people who worked on the initial standard;
+the number of people who use those websites will be larger still.
+The [[[html-design-principles]]]
+rely on these numbers to establish a “priority of constituencies”:
+</p>
+<blockquote>
+In case of conflict, consider users over authors over implementors over specifiers over theoretical purity.
+…
+Of course, it is preferred to make things better for multiple constituencies at once.
+[[html-design-principles]]
+</blockquote>
+<p>
+This section introduces the categories by which we measure
+costs and benefits to each of these constituencies.
+</p>
+
+<section id="principles-users">
+<h4>Users</h4>
+<p>
+An inclusive web is available to everyone,
+to connect and create in the ways most comfortable to them.
+</p>
+<p>
+In this report,
+the user-friendliness of a potential web map feature is assessed on these points:
+</p>
+<dl>
+<dt>privacy & security</dt>
+<dd>
+<p>
+Can this feature be implemented in a privacy-respecting manner?
+Are there any other security concerns from this feature?
+Would making it a built-in feature, standardized in web browsers,
+improve privacy & security compared to current web practice?
+</p>
+<p>Tags for the costs and benefits of potential requirements:</p>
+<ul>
+<li>
+<dfn id="privacy-potential"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Privacy: potential improvement</dfn>
+indicates that a built-in browser implementation of this feature,
+if done correctly,
+could improve the protection of the end user's privacy,
+compared to current practices on the web.
+</li>
+<li>
+<dfn id="privacy-potential-origin"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Privacy: potential improvement for website origin isolation</dfn>
+indicates that a built-in browser implementation of this capability,
+if done correctly,
+could make it easier for website authors to use web maps
+without exposing confidential (user or corporate) data to third parties.
+</li>
+<li>
+<dfn id="security-potential"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Security: potential improvement</dfn>
+indicates that a built-in browser implementation of this capability,
+if done correctly,
+could improve the protection of the security of the browser environment, compared to current practices.
+</li>
+<li>
+<dfn id="privacy-personal-data"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Privacy: involves personal data</dfn>
+indicates that in order to fully implement this capability,
+the browser would have access to sensitive or personally-identifying data about the user,
+which would need to be protected.
+</li>
+<li>
+<dfn id="privacy-fingerprinting"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="bad">Privacy: possible fingerprinting</dfn>
+indicates that implementing this capability
+would expose to website code user settings or data from device sensors,
+which could make it easier for website trackers to generate a unique “fingerprint”
+for identifying that user across many sites.
+</li>
+<li>
+<dfn id="privacy-sensitive-data-revealed"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="bad">Privacy: reveals sensitive data</dfn>
+indicates that fully implementing this capability
+requires revealing sensitive or personally-identifying data to website code.
+</li>
+<li>
+<dfn id="security-ui"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="bad">Security: user interface override</dfn>
+indicates that this capability allows website code to alter the normal browser UI
+in a way that could be used by a malicious code to mislead users.
+</li>
+<li>
+<dfn id="security-risks"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="bad">Security: other risks</dfn>
+indicates that this capability includes other aspects
+that could make a secure implementation difficult.
+</li>
+</ul>
+<p>Further information:</p>
+<ul>
+<li>
+<a href="https://w3ctag.github.io/security-questionnaire/">W3C TAG's Security and Privacy Self-Review Questionnaire</a>
+[[security-privacy-questionnaire]]
+</li>
+<li>
+[[GEOLOCATION-PRIVACY]] [[[GEOLOCATION-PRIVACY]]]
+</li>
+</ul>
+</dd>
+<dt>accessibility</dt>
+<dd>
+<p>
+Does including this capability in a web map standard
+make it easier to ensure an accessible experience
+(assuming an accessibility-focused browser implementation)?
+</p>
+<p>Related tags:</p>
+<ul>
+<li>
+<dfn id="accessibility-potential"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Accessibility: potential improvement</dfn>
+indicates that a built-in browser implementation of this feature,
+if done correctly,
+could improve the accessibility compared to current practices on the web.
+</li>
+<li>
+<dfn id="accessibility-info-needed"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Accessibility: research needed</dfn>
+indicates that there is not a clear best practice
+for how to implement this capability accessibly.
+</li>
+<li>
+<dfn id="accessibility-author-context"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Accessibility: needs author-provided context</dfn>
+indicates that a good browser implementation is not enough
+to make this capability fully accessible;
+content author would always need to provide extra information
+(e.g., alternative text or captions).
+</li>
+</ul>
+<p>Further information:</p>
+<ul>
+<li>
+<a href="https://www.w3.org/TR/WCAG/">Web Content Accessibility Guidelines</a>
+[[WCAG21]]
+</li>
+<li>
+<a href="https://www.w3.org/WAI/standards-guidelines/atag/">Authoring Tool Accessibility Guidelines</a>
+[[ATAG20]]
+</li>
+<li>
+<a href="https://www.w3.org/WAI/standards-guidelines/uaag/">User Agent Accessibility Guidelines</a>
+[[UAAG20]]
+</li>
+</ul>
+</dd>
+<dt>internationalization & localization</dt>
+<dd>
+<p>
+Can this feature be implemented in a manner that works for all languages and regions?
+Does building it into the browser increase the likelihood that internationalization is done correctly?
+</p>
+<p>Related tags:</p>
+<ul>
+<li>
+<dfn id="i18n-potential-text"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Internationalization: potential improvement (languages)</dfn>
+indicates that a native browser implementation,
+if done correctly,
+could improve the handling of text in many languages,
+compared to current practices in web maps.
+</li>
+<li>
+<dfn id="i18n-potential-geo"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Internationalization: potential improvement (spatial data)</dfn>
+indicates that a native browser implementation,
+if done correctly,
+could improve the ability of web maps (compared to current practices)
+to work in many regions with different ways of describing locations and other spatial data.
+</li>
+<li>
+<dfn id="i18n-localized-UI"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Internationalization: UI localization required</dfn>
+indicates that a correct implementation of this feature
+would need to include translations or other localizations (e.g., different icons or layout).
+</li>
+<li>
+<dfn id="i18n-regional-data"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Internationalization: regional standards</dfn>
+indicates that the standard UI patterns or data formats vary by geographic region.
+</li>
+<li>
+<dfn id="i18n-difficult"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Internationalization: difficult to do well</dfn>
+indicates that the capability involves other aspects
+that are frequent sources of internationalization and localization errors.
+</li>
+<li>
+<dfn id="i18n-unstable"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="bad">Internationalization: unstable data</dfn>
+indicates that a correct implementation depends
+on information that may change over time  ,
+and would need to be updated by the browser.
+</li>
+</ul>
+<p>Further information:</p>
+<ul>
+<li>
+<a href="https://www.w3.org/International/techniques/developing-specs?collapse">W3C Internationalization checklist</a>
+</li>
+<li>
+<a href="https://w3c.github.io/bp-i18n-specdev/">Internationalization Best Practices for Spec Developers</a>
+[[international-specs]]
+</li>
+</ul>
+</dd>
+<dt>performance & cost to users<dt>
+<dd>
+<p>
+Would building in this feature significantly reduce the amount of data downloaded to the user device,
+or the amount of custom code that needs to run?
+Or would it impose heavy computation demands on the user device?
+</p>
+<p>Related tags:</p>
+<ul>
+<li>
+<dfn id="performance-data-savings"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Performance: data savings</dfn>
+indicates that making this a browser feature could reduce data demands on the user's network.
+Of course, nearly any built-in capability will create some data savings
+compared to downloading JavaScript to achieve the same effect;
+this tag is only used when the potential data savings are particularly notable.
+</li>
+<li>
+<dfn id="performance-potential"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Performance: potential optimization</dfn>
+indicates that a native browser implementation
+could be much more efficient in its computation requirements,
+compared to JavaScript tools.
+</li>
+<li>
+<dfn id="performance-high-impact"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Performance: high cost feature</dfn>
+indicates that this feature involves high performance costs,
+regardless of whether it is defined in browser code or in JavaScript.
+</li>
+</ul>
+<p>Further information:</p>
+<ul>
+<li class="issue">
+  Need references regarding performance considerations for spec developers.
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+
+<section id="principles-authors">
+<h4>Authors</h4>
+<p>
+Website authors include developers who write code
+and writers, designers, and other creators of web content.
+When discussing web maps, website authors also include
+geospatial experts who create map data and want to publish it on the web.
+</p>
+<p>
+For an author that cares about their user,
+it of course helps if there are native implementations
+of author-focused features like accessibility.
+But there are other ways a good web standard can make the author's job easier:
+</p>
+<dl>
+<dt>simplicity & flexibility</dt>
+<dd>
+<p>
+For an author, a good web standard
+should make it easy to create common web patterns,
+while still making it possible to create unique and customized experiences.
+</p>
+<p>Related tags:</p>
+<ul>
+<li>
+<dfn id="author-simplicity"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Author experience: simple defaults</dfn>
+indicates that the capability would greatly simplify authoring common use cases.
+</li>
+<li>
+<dfn id="author-extensibility"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Author experience: extensible</dfn>
+indicates that the capability provides an important hook
+for extending the basic web map experience.
+</li>
+<li>
+<dfn id="author-custom-design"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Author experience: customizable design</dfn>
+indicates that the capability is needed
+to allow authors to customize the appearance of web maps
+to better integrate with their site design
+(while still using other web map capabilities).
+</li>
+</ul>
+</dd>
+<dt>maintainability & cost to authors</dt>
+<dd>
+<p>
+Do current implementations of the feature rely on third-party services
+which may change in ways that could break website content?
+Do they involve ongoing costs that could be mitigated by a native version of the feature?
+</p>
+<p>Related tags:</p>
+<ul>
+<li>
+<dfn id="author-independence"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Author maintainability: removes dependencies on third-party services</dfn>
+indicates that current implementations cannot be fully self-hosted by the website,
+creating a third-party dependency that could be removed with a native HTML capability.
+</li>
+<li>
+<dfn id="author-cost-cutting"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Author maintainability: cost savings</dfn>
+indicates that current web map implementations of the feature have ongoing service costs
+which could be mitigated by integrating with native platform versions of the feature.
+</li>
+</ul>
+</dd>
+<dt>consistency & coordination with the existing web platform</dt>
+<dd>
+<p>
+Can this feature be defined in a way that integrates well with the rest of the web?
+Does it reuse API and markup patterns that authors already know?
+Can it be added to websites in a way that degrades gracefully in unsupporting web browsers?
+</p>
+<p>Related tags:</p>
+<ul>
+<li>
+<dfn id="consistency-match"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Consistency: established patterns</dfn>
+indicates that this capability can be modelled
+after an existing concept or pattern in the web platform.
+</li>
+<li>
+<dfn id="consistency-progressive"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Consistency: progressive enhancement</dfn>
+indicates that this capability could be included in websites as an optional enhancement
+of existing functionality.
+</li>
+<li>
+<dfn id="consistency-fallbacks"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Consistency: fallbacks possible</dfn>
+indicates that this capability could be designed to support degradation
+to a fallback state (with corresponding loss of function or extra costs).
+</li>
+<li>
+<dfn id="consistency-with-what"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="caution">Consistency: platform is inconsistent</dfn>
+indicates that it will be difficult to make this feature consistent with the web platform,
+because existing platform features are inconsistent with each other.
+</li>
+<li>
+<dfn id="consistency-broken"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="bad">Consistency: breaks established patterns</dfn>
+indicates that the feature would be clearly inconsistent with other aspects of the web platform.
+</li>
+
+</ul>
+</dd>
+</dl>
+
+<p>Further information for all authoring & API design considerations:</p>
+<ul>
+<li>
+[[[html-design-principles]]] [[html-design-principles]]
+</li>
+<li>
+<a href="https://whatwg.org/faq">WHATWG FAQ</a>,
+<a href="https://github.com/whatwg/html/blob/master/FAQ.md">HTML Standard FAQ</a>,
+and <a href="https://whatwg.org/policies">WHATWG Policies</a>
+</li>
+<li>
+<a href="https://w3ctag.github.io/webcomponents-design-guidelines/">Guidelines for creating web platform compatible components</a>
+[[webcomponents-design-guidelines]]
+</li>
+<li>
+[[[API-DESIGN-PRINCIPLES]]] [[API-DESIGN-PRINCIPLES]]
+</li>
+</ul>
+</section>
+
+<section id="priciples-implementers">
+<h4>Implementers</h4>
+<p>
+Implementers, for a web standard,
+are the people who build and maintain web browsers and other user agent software.
+Because much of the work of a web browser is to work as the user's agent,
+features that are good for the user when it comes to security or performance
+are also good for implementers.
+But some implementer benefits aren't directly exposed to the user:
+</p>
+<dl>
+<dt>ease of implementation</dt>
+<dd>
+<p>
+An implementation that already exists is always easier.
+Could this feature reuse code that is already available to the browser?
+</p>
+<p>Related tags:</p>
+<ul>
+<li>
+<dfn id="implementation-incremental"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Implementation: Extends web platform</dfn>
+indicates that this capability is an incremental extension of existing web platform features,
+and could be designed to reuse a lot of existing code.
+</li>
+<li>
+<dfn id="implementation-native"
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good">Implementation: Exposes native platform</dfn>
+indicates that, while this capability is not currently available in the web platform,
+it exists in native application frameworks supported by the major operating systems.
+A web browser could expose the native feature instead of re-implementing it from scratch.
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+
+</section>
+</section>
+
+<section id="js-examples">
+<h2>Reviewed JavaScript Tools</h2>
+<p>
+Numerous options currently exist for a website author
+who wants to include a map viewer in a web page,
+with a minimum of custom code.
+The examples reviewed in this section are used to identify the common features
+(and limitations)
+of web map viewers.
+</p>
+<p>
+Many major commercial providers of web map data tiles
+provide ready-to-use map viewer widgets for websites to use.
+In addition, multiple open source JavaScript libraries
+have developed to make it easier for website authors to build on other map data services.
+</p>
+<p class="issue">
+Need data on the frequency of use of the different JS tools.
+<a href="https://trends.builtwith.com/mapping/"></a> has numbers, but no methodology.
+</p>
+<p>
+The reviewed implementations come in three forms:
+</p>
+<ul>
+<li>
+Embeds that are included in a web page as an <code>iframe</code>;
+configuration options are set through the URL in <code>src</code> attribute.
+</li>
+<li>
+JavaScript frameworks that dynamically generate the widget within the current HTML document;
+configuration options are passed in as JS function parameters when initializing the map.
+</li>
+<li>
+HTML custom elements,
+with configuration through attributes and child elements.
+<p class="issue">Need to identify reasonably popular web maps tools based on custom elements.</p>
+</li>
+</ul>
+<p>
+With these different structures, comparisons are not always exact.
+Similar functionality may be generated from very different APIs.
+We assess first whether a given capability is present in each implementation,
+and second whether there are common patterns in how that capability is exposed.
+</p>
+<p>
+For each capability (potential web map feature) that we review,
+we assign one of the following implementation levels
+to each of the reference tools:
+</p>
+<dl>
+<dt><dfn>full support</dfn></dt>
+<dd>
+The capability is implemented in a correct and comprehensive manner.
+</dd>
+<dt><dfn>supported, with limitations</dfn></dt>
+<dd>
+The feature is implemented,
+but there are notable limitations when assessing the implementation
+against our <a href="#priorities">priorities</a>.
+</dd>
+<dt><dfn>partial support</dfn></dt>
+<dd>
+Some parts of the feature are implemented.
+</dd>
+<dt><dfn>no support</dfn></dt>
+<dd>
+The capability could theoretically exist in the tool, but isn't included.
+</dd>
+<dt><dfn>not applicable</dfn></dt>
+<dd>
+The capability doesn't make sense for this tool, because of other aspects of its design.
+</dd>
+</dl>
+
+<p class="note">
+Compiling and serving map data is a complex, expensive enterprise.
+Many of the map data and search services
+require registered developer accounts, with usage-based pricing.
+This review focuses on features that are free-to-use for website creators,
+at least for low-traffic websites,
+or that use data which is available from many interchangeable sources.
+However, because of the complexities of pricing models used by some services,
+we don't strictly exclude paid features from our assessment of support.
+</p>
+
+<section>
+<h3>Google Maps embeds and Google Maps Platform API</h3>
+<p>
+By far the most frequently used map widget on the web,<sup>[citation needed]</sup>
+Google Maps established many of the de facto standards in how a web map works.
+</p>
+<p>
+Customized iframe embed URLs can be generated from the maps website
+(search/customize the view and then select "share"),
+or by constructing the URL query string yourself
+(a developer API key and account is required).
+</p>
+<p>
+The Google Maps Platform includes a JavaScript API
+for generating map viewers and adding custom features and data layers.
+It also includes methods to access more complex search functions, local images, and other data.
+Most features require an API key and usage is billed per page view.
+</p>
+</section>
+
+<section>
+<h3>OpenStreetMap embeds</h3>
+<p>
+
+</p>
+</section>
+
+<section>
+<h3>Bing Maps embeds</h3>
+<p>
+
+</p>
+</section>
+
+<section>
+<h3>MapKit JS (Apple Maps) API</h3>
+<p>
+
+</p>
+</section>
+
+<section>
+<h3>Leaflet.js API</h3>
+<p>
+Leaflet is a popular JavaScript framework for building customized map views.
+It doesn't currently have a declarative API,
+but widgets similar to map embeds can be generated with a few calls to the library methods.
+</p>
+<p>
+Leaflet isn't associated with any particular map data source.
+It can use image tiles from most web map (tile) services.
+</p>
+<p>
+This review is based on the <a href="https://leafletjs.com/reference-1.4.0.html">version 1.4.0 API docs</a>.
+</p>
+</section>
+
+<section>
+<h3>OpenLayers API</h3>
+<p>
+
+</p>
+</section>
+</section>
+
+<section id="map-viewers">
+<h2>Map Viewer Widgets</h2>
+<p>
+The map viewer widget is the interactive component that displays a map to end users.
+The map might be the primary purpose of a website,
+or a small embedded element in a larger HTML page.
+</p>
+<p>
+For this section of the review,
+we focus only on aspects of the map viewer
+that are generated by the map widget framework
+based on initial configuration and data by the website developers.
+In other words,
+these are the features that could be represented by elements and attributes
+in a native HTML solution.
+The next section, <a href="#client-apis">on client-side APIs</a>,
+covers custom JavaScript manipulation and event handling for the map view.
+</p>
+
+<section id="use-case-map-widget" data-ucr-role="use-case">
+<h3>Use case: Display an interactive map</h3>
+<p>
+This is an abstract use case:
+it covers all the generic features that are common to map widgets,
+ignoring the details about how the map location or specific geographic features specified.
+</p>
+<p>
+For this section,
+we simply assume the browser can convert the map data into images on screen.
+The potential requirements in this section describe ways in which map viewers
+enhance the normal experience of viewing a static image (e.g., <code>img</code> element)
+in a web page.
+</p>
+<p>
+See <a href="examples/map-viewers/globe.html" target="examples">examples of default map viewers</a>
+as implemented by the reference JavaScript tools.
+</p>
+
+<section id="capability-default-map" data-ucr-role="capability">
+<h4>Capability: Display a default map for a given area</h4>
+<p>
+Often, the website author does not want to specify the map data source or other details about the map;
+they just want a generic wayfinding map of the area.
+</p>
+
+<h5>Existing implementations</h5>
+<p>
+The embeds and commerical APIs all provide default street maps
+without the author needing to specify the map source.
+In contast, the more flexible APIs
+must be combined with an separate map provider (e.g., OpenStreetMap).
+</p>
+<dl data-ucr-role="implementation-notes">
+<dt>google-maps-embed</dt>
+<dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
+<dt>…</dt>
+<dd><a>full support</a>:
+this is the basic function for these widgets: give it a location, it will draw the map.
+</dd>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
+<dd><a>no support</a>:
+must be combined with a separate map provider.
+</dd>
+</dl>
+
+<h5>Uses beyond mapping</h5>
+<p>
+No non-map uses for generating a default street map.
+But, there may be interest in displaying default maps as static images
+in addition to using them within map widgets.
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+…
+</p>
+
+<h5>Conclusion</h5>
+<p>
+This functionality is a highly valuable <a data-ucr-role="conclusion">enhancement</a>
+for native web maps,
+especially if it could be built on native platform features
+that allow the users to download maps in advance for later use.
+However, if user agents cannot integrate with a native operating system feature,
+they would need to rely on a third-party service for the map data.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href="#"></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
+<section id="capability-pan" data-ucr-role="capability">
+<h4>Capability: Pan the map display</h4>
+<p>
+A key part of the interactivity of a web map widget is that the user can change the region displayed.
+To pan the map is to shifting the view horizontally or vertically,
+so a different location is centered in the map display.
+</p>
+<p>
+For mapping, panning is tightly linked with zooming and with dynamic loading of new content.
+For this discussion, we've divided them into separate features
+so that the costs, benefits, and non-mapping use cases can be assessed separately.
+</p>
+
+<h5>Existing implementations</h5>
+<p>The following UI is standard among the reviewed map viewers:</p>
+<ul>
+<li>Drag the map view by clicking and holding a mouse.</li>
+<li>Swipe the map view with touch gestures.</li>
+</ul>
+<p>The following UI is available in some viewers, but not all:</p>
+<ul>
+<li>Pan the map view with arrow keys.</li>
+</ul>
+<p>
+None (?) of the map viewers show a visible indication of keyboard focus for panning,
+or any other affordances to indicate how keyboard panning should work.
+</p>
+<dl data-ucr-role="implementation-notes">
+
+<dt>openstreetmap-embed</dt>
+<dd><a>supported, with limitations</a>:
+Mouse, touch (?), and keyboard panning; no keyboard focus indication
+</dd>
+
+<dt>google-maps-embed</dt>
+<dt>google-maps-api</dt>
+<dd><a>partial support</a>:
+Mouse and touch panning only.
+</dd>
+</dl>
+
+<h5>Uses beyond mapping</h5>
+<p>
+The standard panning interactions are also common on the web
+for other JS-enhanced zoom and pan graphics
+(e.g., a close up of a product photograph, a data chart).
+Similar interactions may be used in some games,
+or in navigation of large spreadsheets.
+Creating a native way to trigger panning within a web layout
+could help ensure consistent, accessible user experiences for panning.
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+From a rendering perspective,
+panning a map is very similar to scrolling a section of a CSS layout.
+Important differences:
+</p>
+<ul>
+<li>Although 2D scrolling is supported,
+the interaction usually emphasizes a primary reading axis.
+Panning is usually 2D, and may be conceptually diagonal as often as horizontal or vertical.
+</li>
+<li>The initial scroller view is usually at the start of the content (and “start” has meaning);
+an initially panning view is often in the middle, with panning in all directions possible.
+</li>
+<li>Scrollable content is often visually indicated by scrollbars
+(although it is now common to hide scrollbars until use).
+</li>
+<li>The user interactions are different for some input methods:
+mouse panning uses click and drag instead of mouse wheel for (primary-direction) scroll,
+keyboard panning only uses the arrows, not the space bar and page up/down keys (which trigger scroll in the primary axis).
+</li>
+</ul>
+<p>
+Panning interactions also overlap with the proposed
+<a href="https://github.com/WICG/spatial-navigation">CSS spatial navigation</a> spec.
+</p>
+<p>
+In web maps and many other applications,
+panning effects are combined with <a href="#capability-zoom">zoom effects</a>;
+for that reason, panning is often implemented using
+CSS transforms or SVG <code>viewBox</code>,
+which can also handle zoom.
+[[css-transforms-1]][[SVG2]]
+</p>
+
+<h5>Conclusion</h5>
+<p>
+Panning the map is universally supported in JS web maps,
+and is therefore a <a data-ucr-role="conclusion">requirement</a> for native web maps.
+The relevant specification should be coordinated with CSS,
+considering other use cases for panning on the web.
+Thought is needed on how to make panning accessible to all users.
+</p>
+<ul>
+<li><a data-ucr-role="tag">accessibility-info-needed</a>
+  There are no established patterns for indicating that panning is possible.
+</li>
+<li><a data-ucr-role="tag">accessibility-potential</a>
+  Keyboard accessibility is implemented poorly on the web;
+  accessible browser implementations would be an improvement.
+</li>
+<li><a data-ucr-role="tag">implementation-incremental</a>
+  Panning builds upon established, highly optimized scrolling mechanisms.
+</li>
+</ul>
+</section>
+
+<section id="capability-zoom" data-ucr-role="capability">
+<h4>Capability: Zoom the map independently from the rest of the page</h4>
+<p>
+In addition to panning the view,
+it is standard to allow the user to adjust the map scale:
+zooming in to increase magnifaction (show finer detail),
+zooming out to decrease magnification (show a wider area).
+</p>
+
+<h5>Existing implementations</h5>
+<p>The following UI is standard across the reviewed map widgets:
+</p>
+<ul>
+<li>Accessible buttons labelled with plus (+) and minus (-) signs zoom by steps.
+</li>
+<li>Mouse wheel movements (usually used to scroll the page) are captured
+and converted into continuous zoom adjustments
+(mouse scroll down becomes zoom in, mouse scroll up becomes zoom out).
+</li>
+<li>Touch gestures for pinch zoom are used to zoom the map instead of the page.
+</li>
+</ul>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>google-maps-embed</dt>
+<dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
+<dd><a>full support</a>:
+(as described above)
+</dd>
+</dl>
+
+<h5>Uses beyond mapping</h5>
+<p>
+Localized zooming is used on the web for
+charts and diagrams,
+photographs (e.g., to examine details in a product photo, or for photo editing apps),
+embedded documents (e.g., a PDF viewer),
+and sometimes data tables.
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+Zooms are often implemented using <a data-cite="css-transforms-1#">transforms</a>,
+which defines the scale as a multiplicative factor compared to the normal size
+(<code>scale(2)</code> for doubling the size, zooming in; <code>scale(0.5)</code> to zoom out by the same amount).
+Scale transforms are paired with translations to create zoom and pan effects.
+[[css-transforms-1]]
+</p>
+<p>
+An alternative approach for describing zoom and pan
+is used in <a data-cite="SVG2#">SVG</a> <code>viewBox</code> attribute
+and in <a data-cite="media-frags#naming-space">spatial media fragments</a>.
+In this system, the container element defines its own width and height (e.g., with CSS)
+plus a target rectangle in the zoomable graphic's coordinate system
+(x and y offset, plus width and height);
+the user agent then zooms and pans the graphic
+to display the target rectangle in the available space.
+[[SVG2]][[media-frags]]
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps,
+with other uses in the web platform.
+A zoom specification will need to carefully consider all uses so it can be implemented consistently,
+and should be coordinated with panning.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href="#"></a>
+  <!-- short summary of how the tag applies --><i>To Do</i>
+</li>
+</ul>
+</section>
+
+<section id="capability-lazyload" data-ucr-role="capability">
+<h4>Capability: Load additional map tiles when they pan into view</h4>
+<p>
+
+</p>
+</section>
+
+<section id="capability-wrap-pan" data-ucr-role="capability">
+<h4>Capability: Wrap/duplicate data tiles when panning around the globe</h4>
+<p>
+
+</p>
+</section>
+
+<section id="capability-scale-adjust" data-ucr-role="capability">
+<h4>Capability: Maintain reasonable scale of labels and lines when zooming</h4>
+<p>
+Zooming a map widget is different from
+magnifying a regular image, or adjusting the overall browser zoom level;
+the layout is magnified, but annotations such as text size and stroke width do not.
+</p>
+</section>
+
+<section id="capability-zoom-swap" data-ucr-role="capability">
+<h4>Capability: Dynamically load different resolution map tile on zoom</h4>
+<p>
+
+</p>
+</section>
+
+<section id="capability-zoom-swap-vectors" data-ucr-role="capability">
+<h4>Capability: Hide or show (and maybe dynamically load) vector features and labels on zoom</h4>
+<p>
+
+</p>
+</section>
+
+<section id="capability-attribution" data-ucr-role="capability">
+<h4>Capability: Display map data attribution and links</h4>
+<p>
+Map data is subject to copyright,
+and use of the maps on the web usually requires at least attribution,
+and maybe links to terms of use.
+Many map services also include links for end users to report errors.
+</p>
+<p>
+Standard practice in the reviewed web map tools
+is to display this attribution in the lower right of the map widget.
+For map viewers that provide their own map data,
+the links and copyright is automatically generated.
+For map frameworks that allow the developer to specify the map data source,
+these "attribution control" values can be set in configuration.
+</p>
+</section>
+</section>
+
+<section id="use-case-single-location" data-ucr-role="use-case">
+<h3>Use Case: Display a specific location on a map</h3>
+<p>
+For a website creator, this is the simplest web map use case:
+display a map from a description of a location.
+</p>
+<p>
+This type of web map is used
+by websites for stores, restaurants, and countless other organizations with physical locations.
+It is also used by newsmedia to display the location described in an article.
+In social media and blogs,
+a single-location map can be used to show where a post was uploaded from,
+or where a photograph or video was taken.
+</p>
+<p>
+See <a href="examples/map-viewers/single-location.html" target="examples">examples of single-location map viewers</a>
+as implemented by the reference JavaScript tools.
+</p>
+
+<section id="capability-location-latlong" data-ucr-role="capability">
+<h4>Capability: Select map view from latitude and longitude point</h4>
+<p>
+Latitude and longitude defines a point on the Earth's surface,
+without requiring any further information.
+For website content, latitude and longitude data
+might come from photo or video metadata (from GPS-enabled cameras),
+or it might be calculated by the author using map search services.
+In a dynamic web app, latitude and longitude might be generated
+from geolocation on the user's device.
+</p>
+
+<h5>Existing implementations</h5>
+<p>
+All the reference tools allow the website author
+to display a specific location, defined by latitude and longitude,
+from a map tile set.
+</p>
+<dl data-ucr-role="implementation-notes">
+<dt>google-maps-embed</dt>
+<dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
+<dt>leaflet-api</dt>
+<dt>…</dt>
+<dd><a>full support</a>:
+setting a location by latitude and longitude is straightforward.
+</dd>
+<dt>open-layers-api</dt>
+<dd><a>supported, with limitations</a>:
+A location defined with longitude and latitude
+<a href="https://openlayers.org/en/latest/doc/faq.html#why-is-my-map-centered-on-the-gulf-of-guinea-or-africa-the-ocean-null-island-">must be converted to the map tile coordinate system</a>,
+but the API provides the conversion function.
+</dd>
+</dl>
+
+<h5>Uses beyond mapping</h5>
+<p>
+…
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+The <a data-cite="geolocation-API">Geolocation API</a>
+and <a data-cite="geolocation-sensor">Geolocation Sensor API</a>
+expose the user's location using latitude and longitude data.
+It should be possible to set the view on a web map using data returned from these APIs.
+Both of these APIs use the [[[WGS84]]] as the technical definition
+of longitude and latitude (consistent with most modern geospatial standards),
+and a web map standard should use the same definition.
+[[geolocation-API]][[geolocation-sensor]][[WGS84]]
+</p>
+
+<h5>Conclusion</h5>
+<p>
+This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href="#"></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
+<section id="capability-location-address" data-ucr-role="capability">
+<h4>Capability: Generate map automatically from street address or place name</h4>
+<p>
+For many mapping use cases,
+a website author won't have exact latitude and longitude values pre-calculated.
+They'll have street addresses or place names
+in a human-readable, localized format.
+To convert these addresses or names into a point on a web map,
+the web mapping service needs access to a Gazeteer search and corresponding databases.
+</p>
+</section>
+
+<section id="capability-export-location" data-ucr-role="capability">
+<h4>Capability: Save the location or export to other application</h4>
+<p>
+For the user, it is often useful to bookmark or save a location from a map,
+separate from the website which included it.
+The user may want to export the location to a GPS or native mapping application
+so they can calculate directions to it.
+</p>
+</section>
+</section>
+
+<section id="use-case-features" data-ucr-role="use-case">
+<h3>Use Case: Display multiple features (locations, routes, or regions)</h3>
+<p>
+
+</p>
+</section>
+
+<section id="use-case-html-annotations" data-ucr-role="use-case">
+<h3>Use Case: Display custom HTML annotations for map features</h3>
+<p>
+
+</p>
+</section>
+
+<section id="use-case-custom-map-source" data-ucr-role="use-case">
+<h3>Use Case: Display a map using data from a specified web map service</h3>
+<p>
+
+</p>
+</section>
+
+<section id="use-case-search-features" data-ucr-role="use-case">
+<h3>Use Case: Search or sort within a set of geographic features</h3>
+<p>
+
+</p>
+</section>
+
+</section>
+
+<section id="client-apis">
+<h2>Client-side Mapping APIs</h2>
+<p>
+Client-side Mapping APIs (application programming interfaces)
+allow website developers to create customized map viewers,
+or other geographic applications.
+Existing APIs are JavaScript libraries that offer
+ready-to-use functions for fetching or rendering parts of a map,
+or for manipulating a map-viewer widget.
+A built-in web map solution would need to expose similar DOM APIs to JavaScript code.
+</p>
+
+<section id="use-case-api" data-ucr-role="use-case">
+<h3>Use Case: </h3>
+<p>
+<i>To Do</i>
+</p>
+</section>
+</section>
+
+<section id="map-formats">
+<h2>Map Data Formats for Map Viewers</h2>
+<p>
+Many different types of spatial data can be integrated in a web map:
+satellite imagery,
+cartographic representations of roads and terrain,
+3D building profiles,
+pinpoint locations with annotated descriptions,
+route directions or other polyline paths,
+and more.
+Many standard and proprietary formats exist to describe this data.
+</p>
+<p>
+A built-in web map viewer will need to work with spatial data
+that is already available from web servers,
+or that can be provided with minor server upgrades.
+</p>
+
+<section id="use-case-data" data-ucr-role="use-case">
+<h3>Use Case: </h3>
+<p>
+<i>To Do</i>
+</p>
+</section>
+</section>
+
+<section id="requirements">
+<h2>Summary of Requirements</h2>
+<p>
+<i>To Do: finish the script to generate a summary table from the annotated markup.</i>
+</p>
+</section>
+
+<section class="appendix" id="issue-summary">
+<h2>Open Issues</h2>
+<p>
+We are tracking issues on <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues">Github</a>.
+</p>
+</section>
+
+<section class='appendix'>
+<h2>Acknowledgments</h2>
+</section>
+
+
+<script id="preprocess" class="remove">
+;(()=>{/* closure */
+
+const slugify = (s) => s.toLowerCase().replace(/[\W_]+/g, "-");
+const uniqueValues = (array) => Array.from(new Set(array));
+function dictFromArray(array, idProp="id") {
+  return array.reduce((dict, item)=>(dict[item[idProp]]=item, dict), {});
+}
+
+const htmlFragmentFromString = (s, contextNode=document.body) => {
+  let r = document.createRange();
+  r.selectNode(contextNode);
+  return r.createContextualFragment(s);
+}
+
+function processTagDfn(node) {
+  let tagType = (node.getAttribute("data-ucr-tag-type")||"unknown").trim();
+  node.innerHTML = `<span class="tag-span tag-${tagType}">${node.innerHTML}</span>`;
+  let tagNode = node.firstChild;
+  return { dfnNode: node, tagNode, tagType, id: node.id };
+}
+let tagDfns = [...document.querySelectorAll("[data-ucr-role='tag-dfn']")]
+  .map( processTagDfn );
+let tagDfnDict = dictFromArray(tagDfns);
+let conclusionDfns = [...document.querySelectorAll("[data-ucr-role='conclusion-dfn']")]
+  .map( processTagDfn );
+let conclusionDict = dictFromArray(conclusionDfns);
+
+function processUseCase(node) {
+  let name = node.querySelector("h3").textContent.replace("Use Case:", "").trim();
+  let id = node.id || (node.id = "use-case-" + slugify(name));
+  return { node, name, id };
+}
+function processCapabilityFor(useCase) {
+  return function processCapability(node) {
+  let name = node.querySelector("h4").textContent.replace("Capability:", "").trim();
+
+  let id = node.id || (node.id = "capability-" + slugify(name));
+
+  let conclusionNode = node.querySelector("[data-ucr-role='conclusion']");
+  let conclusion = conclusionNode?
+    (conclusionNode.getAttribute("data-lt") || conclusionNode.textContent)
+    : "undecided";
+  if (conclusionNode) processTag(conclusionNode, conclusionDict);
+
+  return { useCase, node, name, id, conclusion,
+           tags: [], implementations: {} };
+}}
+function processTag(node, dict) {
+  let tagDfnId = node.hash? node.hash.replace(/^#/, "")
+                       : node.textContent.trim();
+  let tagDfn = dict[tagDfnId];
+  if (!tagDfn) return null;
+  if (!node.hash) node.href = "#" + tagDfnId;
+  node.textContent = "";
+  node.appendChild( tagDfn.tagNode.cloneNode(true) );
+  return tagDfn;
+}
+
+let useCases = [...document.querySelectorAll("[data-ucr-role='use-case']")]
+  .map( processUseCase );
+
+let capabilities = useCases.map( (useCase)=>(
+  [...useCase.node.querySelectorAll("[data-ucr-role='capability']")]
+    .map( processCapabilityFor(useCase) )
+) ).reduce( (all, a)=>(all.concat(a)), []);
+
+capabilities.forEach((capability)=>{
+  let tags = [...capability.node.querySelectorAll("[data-ucr-role='tag']")]
+    .map( (node)=>processTag(node, tagDfnDict) );
+  capability.tags = uniqueValues(tags).filter(Boolean);
+});
+
+/* TODO, build a summary table from all the capability data */
+
+document.documentElement.classList.add("processed");
+})();/* closure */
+</script>
+
+<template style="display: none" class="remove">
+<!-- Markup template for adding a new tag to the guiding principles section.
+     The `id` is essential & is what will be used to link to the tag.-->
+<li>
+<dfn id=""
+     data-ucr-role="tag-dfn"
+     data-ucr-tag-type="good|caution|bad">Category: description</dfn>
+indicates <!-- longer description -->
+</li>
+</template>
+
+<template style="display: none" class="remove">
+<!-- Markup template for each use case.
+     Attributes starting with `data-ucr-` are used in the script.
+  -->
+<section data-ucr-role="use-case">
+<h3>Use case: <!-- Goal that user/author is trying to achieve --></h3>
+<p>
+<!-- Short (1-3 paragraph) description, with details on who/why this goal is important -->
+</p>
+<p>
+See <a href="examples/#(add a new file for each use case)" target="examples">examples of <!-- description --></a>
+as implemented by the reference JavaScript tools.
+</p>
+
+<!-- template for each capability, include as many as required for each use case -->
+<section data-ucr-role="capability" data-ucr-role="capability">
+<h4>Capability: <!-- Action that is/should be possible --></h4>
+<p>
+<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href="#(tag-id)"></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+</template>
+
+</body>
+</html>

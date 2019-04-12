@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Use Cases and Requirements for Standardizing Web Maps</title>
+    <meta charset='utf-8'>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common'
+            async class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+          // specification status (e.g. WD, LCWD, WG-NOTE, etc.). If in doubt use ED.
+          specStatus:           "CG-DRAFT",
+          
+          // the specification's short name, as in https://www.w3.org/TR/short-name/
+          // shortName:            "xxx-xxx",
+
+          // if your specification has a subtitle that goes below the main
+          // formal title, define it here
+          // subtitle   :  "an excellent document",
+
+          // if you wish the publication date to be other than the last modification, set this
+          publishDate:  "2015-12-01", // last substantive commits
+
+          // if the specification's copyright date is a range of years, specify
+          // the start date here:
+          copyrightStart: "2015",
+          
+          github: "https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements",
+
+          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+          // and its maturity status
+          // previousPublishDate:  "1977-03-15",
+          // previousMaturity:  "WD",
+
+          // if there a publicly available Editor's Draft, this is the link
+          // (calculated automatically for GitHub pages)
+          // edDraftURI:  "https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/",
+
+          // if this is a LCWD, uncomment and set the end of its review period
+          // lcEnd: "2009-08-05",
+
+          // editors, add as many as you like
+          // only "name" is required
+          editors:  [
+              {
+                  name:       "Peter Rushforth"
+              ,   url:        "https://nrcan.gc.ca/"
+              ,   mailto:     "Peter.Rushforth@canada.ca"
+              ,   company:    "Natural Resources Canada"
+              ,   companyURL: "https://nrcan.gc.ca/"
+              }
+          ],
+          
+          // name of the WG
+          wg:           "Maps For HTML Community Group",
+          
+          // URI of the public WG page
+          wgURI:        "https://www.w3.org/community/maps4html/",
+          
+          // name (without the @w3c.org) of the public mailing to which comments are due
+          wgPublicList: "public-maps4html",
+          
+          // URI of the patent status for this WG, for Rec-track documents
+          // !!!! IMPORTANT !!!!
+          // This is important for Rec-track documents, do not copy a patent URI from a random
+          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+          // Team Contact.
+          //          wgPatentURI:  ""
+          // !!!! IMPORTANT !!!! MAKE THE ABOVE BLINK IN YOUR HEAD
+      };
+    </script>
+  </head>
+  <body>
+    <details class="annoying-warning" open="">
+      <summary>This is out of date!</summary>
+      <p>
+        This document is preserved as a historical record;
+        it is not being updated.
+        
+        Please see
+        <a href="https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/">https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/</a> for the latest
+        Editor's Draft.
+      </p>
+    </details>
+    <section id='abstract'>
+      <p>This document represents the use cases and requirements for standardizing a solution to enable modern Web maps for map content authors, HTML authors and users.  The use cases and requirements were gathered in
+      consultation with the Maps for HTML Community Group and others.</p>
+    </section>
+    
+    <section id='sotd'>
+        <h3>W3C Community Groups</h3>
+        <p>Some standards are crafted in isolation, and presented to the world as a fait accompli. Others arise through collaboration over mailing lists, like those favored by the IETF.  
+          There are many standards defining organizations, with different models of standards development.  On the Web, the notion of community is almost ubiquitous: communities of interested parties and 
+          committed individuals have created and contributed incredible works for the benefit of the Web at large.</p>
+        
+        <p>The path chosen for collaboration over Web maps is guided in part by the advice and experience of the W3C, who have created facilities for Web communities to collaborate in the open. The
+        community groups listed below have also provided resources which have helped inform the current effort. </p>
+        
+        <p>The Extensible Web Manifesto by the Extensible Web Community Group will be used as a guideline for how development should proceed for Web maps.
+        In particular, one or more working prototypes will be developed using Custom Elements / Polymer, to demonstrate feasibility and  examine ideas in a real context.</p>
+        <p>The Web Incubator Community Group has established a recommended path based on past experience to successfully influence the browser development community.  For example, the experience of the 
+          Responsive Images Community Group to create the &lt;picture&gt; element is an established best practice. The work of the Maps For HTML Community Group will try to emulate that
+          experience to the greatest extent possible.</p>
+        <p>The MicroXML Community Group has openly developed a simple declarative syntax whereby HTML-like document vocabularies can be developed.  The syntax eliminates much of the legacy complexities
+        of the XML syntax and data model, notably namespaces.  Such a syntax lends itself to DOM-compatible parsing and CSS selectors in the browser.</p>
+        <p>The Maps For HTML Community Group arose as a result of face-to-face discussions at the Linking Geospatial Data workshop 2014, co-sponsored by the W3C and the Open Geospatial
+      Consortium.  Discussion of this and related documents should take place in the Maps4HTML or the Web Incubator Community Group, since it is in the CG context that clear license terms for 
+      contributions of intellectual property are in force.</p>
+        <p>The <a href="https://www.w3.org/TR/html-design-principles/">HTML Design Principles</a> were created by the HTML Working Group, and should also be used to guide the development of these
+        use cases, requirements and related specifications.</p>
+      </section>
+    
+    <section>
+      <h2>Introduction</h2>
+      <p>Web mapping sites have become an essential daily Web destination for millions of Web users.  Web maps, like paper maps before them, 
+        have become indispensable to many human activities, across a wide spectrum of categories, including but not limited to: government, journalism, business, science, 
+        education, travel and leisure.  The <a href="https://tools.ietf.org/html/rfc1866#section-7.6">first iteration of image maps 
+          in HTML</a> was intended to <a href="https://web.archive.org/web/20110628194820/http://www2.parc.com/istl/projects/www94/mapviewer.html">represent simple cartographic maps</a>. 
+          Some techniques that were pioneered in those early HTML iterations remain in common Web map usage today. Despite the initial semantic of the &lt;MAP&gt; element, HTML did not 
+          continue to evolve to include what users today consider a <a href="https:/www.openstreetmap.org/">standard Web map</a>.
+      </p>
+      <p>
+        Web mapping technology has undergone a <a href="https://en.wikipedia.org/wiki/Web_mapping#History_of_web_mapping">long period of evolution, starting before and giving rise to
+        that first HTML &lt;MAP&gt; element</a>.  This has resulted in some very sophisticated client-server applications which serve maps to Web users.  Implementations vary widely, 
+        and some of the underlying techniques, software, semantics and formats have become <a href="https:/wiki.openstreetmap.org/wiki/Slippy_map_tilenames">accepted patterns</a>, 
+        <a href="https://developers.arcgis.com/rest/">de facto</a>, and even <a href="https:/www.opengeospatial.org/pressroom/pressreleases/408">de jure</a> standards.
+        Some of the techniques HTML authors are required to use in creating maps for the web include: 
+      </p>
+      <ul>
+        <li>SOAP-like standards which require clients to support defined operations or related URL recipes</li>
+        <li>JavaScript frameworks which support Web map URL recipes in the form of URL templates</li>
+        <li>JavaScript APIs and frameworks which support access to centralized map services</li>
+      </ul>
+      <p>Notwithstanding the above considerations, Web maps today are a mature class of technology, and <a href="https://www.google.com/trends/explore#q=web%20mapping&cmpt=q&tz=Etc%2FGMT%2B4">search interest</a> 
+        in the technology reflects that fact. <a href="https:/wiki.openstreetmap.org/wiki/Slippy_Map">Core</a> <a href="https:/www.opengeospatial.org/standards/sfa">aspects</a> of Web maps are 
+        stable and fast enough that it is now reasonable to consider standardizing them in a way 
+        suitable for - preferably designed for - implementation by browsers. In other words, Web maps with <a href="https://tools.ietf.org/html/rfc7946">relevant</a> <a href="https://github.com/bjornharrtell/jsts">APIs</a> should be available to Web authors and programmers in a declarative, 
+        HTML, CSS and JavaScript-compatible manner.  A key challenge is to do so in a way that is designed with the core values and best interests of the <em>Web</em> at the heart.</p>
+          <section>
+      <h2>Limitations of current techniques</h2>
+      <dl>
+        <dt>Reliance on script</dt>
+        <dd>
+          <p>All of the above Web map techniques depend on JavaScript, and so Web maps, considered as a feature of the Web, require a scripted environment to even exist.  
+          JavaScript on the Web embodies the 'code-on-demand' optional constraint of the Web.  Thus a feature such as Web maps depends on an optional feature of the Web itself.  
+          When the option is not available or fails, the Web itself fails, or does not possess this feature.  The fact that a sophisticated, not to say important, feature such as Web maps can be enabled 
+          by virtue of an <em>optional</em> feature of the Web is however, a testament to the magical qualities of the Web. Nevertheless, dependence on this facet of the Web has lead to a situation 
+          where there are no inherent map semantics in HTML, or on the Web.</p>
+        </dd>
+        <dt>Semantically neutral elements</dt>
+        <dd>
+          <p>Semantics are an important quality of the Web, yet the elements which are used to create Web maps (typically &lt;div&gt;) are semantically neutral, and 
+          have no spatial meaning or explicit location.   Web maps cannot therefore be <a href="https://en.wikipedia.org/wiki/Progressive_enhancement">
+          progressively enhanced</a> in the normal sense of the term.  The spatial location of (elements in) a  Web page could permit spatial 
+          indexing of Web content, yet modern Web maps fail to provide such content, making the Web pages they exist in spatially non-discoverable.</p>
+          <p>It is noteworthy that the existing semantics of the client side image map <em>could be</em> used as the base state of a progressively
+          enhanced map that might provide basic map semantics and functions even in cases where the user is off line.</p>
+        </dd>
+        
+        <dt>URL recipes </dt>
+        <dd>
+          <p>Instead of depending on the core values of the Web <a href="#fn1" id="r1">[1]</a>, Web maps depend in some cases, on <a href="https:/mapserver.org/ogc/wms_server.html#test-with-a-getmap-request">
+          standardized techniques</a> which are incompatible with <a href="https://tools.ietf.org/html/rfc7320">modern best practices</a>.  URL Templates somewhat alleviate this reliance, however they also 
+          effectively bypass the benefits of hypertext.  Service providers are not free to control the domain of URL values in their own Web domains.  A clever hack, or misguided standard, it 
+          is unclear which category URL recipes fall into,  however taken as a whole, its broad application prevents spatial data and maps from scaling to Web scale.
+          </p>
+        </dd>
+        <dt>Many formats, no hypertext</dt>
+        <dd><p>Spatial data is a domain with an abundance of formats which cover a broad range of content.  Yet few of those formats offer much in the way of support for URL-based links, and fewer still
+          support the concepts of building the semantics of client-server interaction into the format specification.  Those that do offer such interaction possibilities have service type-specific
+          assumptions built in to them, and /or have other characteristics which limit their application in this problem space.  While Web architecture standardizes certain client server mechanisms, 
+          the style of the Web depends on non-service specific application of those mechanisms, especially that of hypertext.</p></dd>
+        <dt>Custom symbolization techniques</dt>
+        <dd>
+          <p>Off the Web, cartography is a demanding, science-oriented graphical design discipline.  Many generations of sophisticated hardware and software and technologies have been invented to 
+            meet its challenging requirements.  The results of the application of such technologies is often reflected in the form of images created explicitly for Web maps, without the need for
+            recourse to styling of the underlying spatial features as HTML (or SVG) elements.  Notwithstanding the importance of images for Web maps, geographic features are also important on the client side
+            of the Web, since they provide the basis for user interaction with map information.  </p>
+            
+          <p>The <a href="https://www.geospatialworld.net/Interview/ViewInterview.aspx?id=31457">prevailing wisdom on today's Web</a> <span class="issue">Broken link: what article was this supposed to link to?</span> is to compile geographic features on the server to CSS-styled SVG for 
+            consumption by the browser.  </p>
+            
+          <p>The first problem with this approach is that despite its nature as a hypertext language, SVG has 2D vector graphics semantics and coordinate systems.  Its elements relate to the graphics page, 
+            not to the Earth.  Furthermore, by using CSS+SVG as a server side compilation target, Web map content authors are insulated from the standard techniques of the Web, a situation not 
+            unlike using a word processor to generate CSS+HTML.  Finally, few server GIS technologies are built to leverage Web technologies such as CSS and SVG.  This is likely due to the fact that XML as a base technology for GIS vectors on the 
+            server is unpopular and <a href="https://spatiallyadjusted.com/2015/09/09/post-format-standard-43/">widely dismissed</a>.  In consequence, Web map content 
+            authors are unlikely to learn the techniques of CSS, SVG, and HTML.</p>
+            
+          <p>In <em>some</em> situations, especially those where geographic features' shapes are used as link representations, it <em>is</em> desirable to style and interact with inherently 
+            <em>geographic</em> features as distinct from SVG vectors.  It would be ideal if in those situations, Web map content authors could apply the techniques of CSS, SVG and HTML 
+            while reaping the benefits of maintaining geographic feature semantics and without sacrificing
+            server performance due to inefficient server side formatting.
+          </p>
+          <p>The lack of a <a href="https://extensiblewebmanifesto.org/">virtuous cycle</a> of feedback from cartography technologies to Web styling standards is an impediment to development of higher quality, more broadly applicable Web standards, and assures 
+            the continued development of custom symbolization techniques at the expense of shared standards.</p>
+        </dd>
+        
+      </dl>
+        
+        
+        <p>The net effect of ceding Web maps to the aforementioned techniques is a Web which is ever more fragmented, yet ironically centralized, in regard to maps 
+          i.e. a Web which provides progressively fewer options for HTML authors and map content.  
+        
+        Such a situation works against the goals of the Web itself, which is or was to provide a medium in which individuals might develop a shared understanding [<a href="https://www.w3.org/People/Berners-Lee/1996/ppf.html">TimBL</a>]
+        through hypertext Web pages, that are not necessarily official, nor top-down.  The same goal should be shared by the Web of maps: to achieve a shared understanding of 
+        global spatial issues and phenomena, without undue deference to a central authority.   To achieve this goal, it will be necessary to diminish and remove barriers to 
+        HTML Web map authors and content producers alike.  
+      </p>
+    </section>
+
+    </section>
+    <div>
+      <hr>
+      <details id="fn1">
+        <summary>
+          [<a href="#r1">1</a>] Representational State Transfer [REST], in brief: URL affordances in hypertext representations, exchanged in self-describing messages over standard HTTP methods, 
+          progressively enhanced through code-on-demand.
+        </summary>
+        <p><img src="images/REST_DERIVATION.jpg" width="640" height="480" alt="Representational State Transfer [REST]"></p>
+      </details>
+    </div>
+    <section id="use-cases">
+      <h2>Use Cases</h2>
+      <section id='user-experience'>
+        <h3>User Experience</h3>
+        <dl>
+          <dt id="dfn-uc-ux-viewing-or-interacting-with-maps">Viewing and Interacting with Web maps</dt>
+          <dd><p>Modern Web maps deliver a user experience which provides animated, seamless zooming, panning and orientation of the map as though it was a globe i.e. with
+              apparent physical momentum.</p>
+          </dd>
+          <dt id="dfn-uc-ux-accessibility">Accessible</dt>
+          <dd><p>Often, interaction with Web maps is afforded by means of a pointing device, but importantly also with keyboard controls and other accessibility devices.  
+              Maps should be usable by persons with disabilities, such that a range of assistive technology may be used at a minimum for navigation, but potentially also to access and interact with the 
+              underlying data, if applicable.</p></dd>
+          <dt id="dfn-uc-ux-search">Search and Search Suggestion Services</dt>
+          <dd><p><a href="https://en.wikipedia.org/wiki/Gazetteer">Gazetteer-type</a> search is a commonly standard function of Web maps, allowing the user to search for a place of interest, 
+              select the place from a suggestion and/or result list, and automatically zoom and pan the map to be centered over the place of interest upon selection.</p></dd>
+          <dt id="dfn-uc-ux-map-links">User-oriented links</dt>
+          <dd><p>Web maps should enable both within and inter-map linking, either to locations or features, using standard (opaque, not-necessarily-semantic) URLs.  Links are an 
+              essential quality of the Web platform, and existing standard linking and navigation techniques should be embraced by Web maps.  
+              Related to <a href="#dfn-uc-ux-search">Search and Search Suggestion Services</a> use case, where the result of a textual
+              search is presented as a link in a list of matching results.  Also related to the <a href='#dfn-uc-ux-identify-select'>Identify, Select, Edit, Post</a> use case, and others.</p></dd>
+          <dt id="dfn-uc-ux-identify-select">Identify, Select, Edit, Post</dt>
+          <dd>            <p>Web users expect to interact with (select/touch/query/modify) appropriately styled vector features in the map i.e. driven by user and system events, without the feeling that there is something heavy about processing that information
+            when compared with other visual information in the Web context.  In other words, without necessarily realizing they are interacting with "vectors", that are in some way different than the 
+            fabric of the map they are interacting with, except perhaps by their style.</p>
+          </dd>
+        </dl>
+      </section>
+      <section id='html-authoring'>
+        <h3>HTML Authoring</h3>
+        <dl>
+           <dt>Accessibility - Keyboard-driven and Default Map Controls</dt>
+           <dd><p>HTML authors should be able to use standard markup idioms to create accessible Web maps</p></dd>
+           <dt id='dfn-uc-authoring-manual-map-creation'>Manual and/or Automated Map Creation</dt>
+           <dd><p>As an HTML author, it should be possible to add a map in an HTML page, by creating appropriate simple markup, excluding script. The geographical location,
+             size and scale of the map should be declared by authors, using the commonly used (if not understood!) units of decimal degrees of WGS84 latitude and longitude, pixels, and 
+             integer zoom level, respectively.  Also, the projection, or mapping of the spatial information to the device display should be declared by authors.</p>
+             
+             <p>It can be difficult in the absence of other tools or techniques, to measure the latitude and longitude of a specific location for this usage. The declarative markup for a map 
+               should allow the HTML author <em>who at a minimum, knows or has copy-and-paste access to the URL of an appropriate map service</em>, to easily and simply mark up the URL, and allow the client and 
+               server together to negotiate a default initial location of the map.  The location and scale of the map should be dynamically reflected to the markup so that the specific values
+             of those attributes can be readily copy and pasted into other HTML or otherwise formatted documents.</p>
+           </dd>
+           <dt> Create Icons, Pushpins and Links on Map</dt>
+           <dd><p>HTML authors should be able to add links on the maps they include in their page, in the form of icons, pushpins or visible or non-visible shapes, in a similar manner to
+               that enabled by the HTML 5 &lt;MAP&gt; client side image map over top of static images.</p></dd>
+           
+           <dt>Layers - Add Using Standard URLs</dt>
+           <dd><p>Web maps authors should be able to easily create <em>mashups</em> of different maps, by marking them up as distinct layers in a map.  
+               Layers should have their own URL.</p></dd>
+           <dt>Layers - Z-ordering and Opacity</dt>
+           <dd><p>The painters model should apply to layers in a map.  Layer opacity should be subject to control by HTML author styles.</p></dd>
+           <dt>Layers - Controls, Author vs User Control</dt>
+           <dd><p>There should be a standard set of map controls, or 'furniture', that can be created and manipulated via the DOM or by the user, similar to the &lt;video&gt; element controls</p></dd>
+          <dt>Specify Location, Scale, Projection, Size of a Map using Common or Standard Idioms and Semantics</dt>
+           <dd><p>Key map semantics include not only the location, but also the projection and scale of the portrayed information.  Even those few factors make maps more
+             complex than is easily describable.  Thus in addition to supporting common syntactic HTML-centric idioms for these characteristics, HTML authors should also be able
+             to rely on sensible default values for them <em>where possible</em>.</p></dd>
+           <dt><code>projection</code> and <code>zoom</code></dt>
+           <dd>
+             <h4>Background</h4>
+             <p>Web servers commonly serve statically or dynamically generated map image tiles which are composed dynamically on the client to represent two dimensional map extents at different 
+               predefined scales, called <em><code>zoom</code></em> levels. Zoom levels and tile coordinates are defined according to a tiling framework.</p>
+             
+             <p> A tiling framework for generating map image tiles is conceptually based on a recursively defined set of square grid cells at successive zoom levels.  A tiling framework is like a pad of 
+               virtual square graph paper upon which map features can be drawn to create map image tiles. The top sheet in this analogy has one large square and the squares on the successive sheets are 
+               defined to exactly fit, nested in groups of four, inside the squares on the sheet above it.  The positive integer-numbered zoom levels correspond to the sheets of paper, with 
+               the top sheet being zoom level 0.  At this lowest zoom level, there is only one grid cell, whose upper left corner is at the 0,0 origin. The positive x axis proceeds horizontally 
+               to the right; the positive y axis proceeds vertically down the page.  The origin of the tiling framework is the same location at successive zoom levels, exactly corresponding to 
+               the upper left corner of the top &quot;page's&quot; grid cell.  Each grid cell in a given zoom level is assigned an integer x,y coordinate value, corresponding to the coordinates 
+               of its upper left corner. 
+             </p>
+               
+               
+             <p>To generate map tile images, a <em>tiled coordinate reference system</em> must be defined. The parameters of the definition include: </p>
+             <ul>
+               <li>the underlying map features' projected coordinate reference system</li>
+               <li>the coordinates of the tiling framework grid origin in the underlying map projection coordinate reference system</li>
+               <li>the orientation of the tiling framework grid axes relative to the underlying map projection coordinate reference system</li>
+               <li>the resolution, or pixel size of the tile framework, in units of the the underlying map projection coordinate reference system</li>
+               <li>the dimensions of the individual tile grid cells, in pixels i.e. their width and height</li>
+             </ul>
+             <p>
+               The tiled coordinate reference system completely defines the mapping of spatial data to the virtual paper on which the map is drawn.  A shared standard definition of this concept
+               is essential for Web client-server interoperability, as well as for dynamic mashups of different sources of map information.  The term <code>projection</code> is 
+               slightly less descriptive than <em>Tiled Coordinate Reference System</em>, but it has the merit of simplicity.  In so far as client and server share the standard definitions
+               for the values of <code>projection</code>, technical interoperability at Web scale can be established.
+             </p>
+             <h5>Vector data</h5>
+             <p>Sometimes geographic data is made available in vector form.  The coordinates used in vector data MUST be encoded as <a href="https://en.wikipedia.org/wiki/World_Geodetic_System">WGS84</a>, which can be efficiently converted to other 
+               projected and / or tiled coordinate reference systems for display.</p>
+             
+             <h6><code>zoom</code> applies to vectors</h6>
+             
+             <p>Vector data is also subject to scale considerations, although it can be somewhat more flexible than image data, due to how it is drawn and how it can be processed.  
+               For example, at global scale (zoom level 0, or even zoom level 1), the city of Paris could reasonably be represented as a small labeled dot or star symbol on a map.  
+               The vector feature type used to represent this might be a point geometry. At higher zoom / larger scale, the feature(s) used to represent Paris would ideally reveal more detail. 
+               What detail was revealed would be determined by the map service provider, but the map service provider should be aware of the zoom / scale that is desired by the client, 
+               in order to send an appropriate representation for that scale.</p>
+             <p>Thus <code>zoom</code> is also a concept whose definition must be shared between client and server in order to establish technical interoperability, regardless of the data type in question, 
+               either image or vector.</p>
+             
+             <h4>Use case</h4>
+             <p>An HTML author creates a Web map, and either specifies a projection by choosing from a list of defined <code>projection</code> values, or by allowing the value of <code>projection</code>
+             to default to an interoperable value, perhaps because the author does not fully understand or particularly care about the concepts behind coordinate reference systems, nor map projections.</p>
+             <p>The default value for a Web map <code>projection</code> should reflect the de facto standard, which is a <em>tiled coordinate reference system</em> which combines the <em>Web Mercator</em> projected 
+               coordinate reference system with the <a href="https:/wiki.openstreetmap.org/wiki/Slippy_Map">Open Street Map platform tiling framework</a>.  The combined system is identified as <code>OSMTILE</code> in this specification.</p>
+             <p>As an HTML author, I want to specify the initial <code>zoom</code> of a Web map, although if I don't do so, a default value of 0 should be provided.</p>
+
+             
+             <p>Typical global map services provide zoom levels up to 18 or 19, however at large scales, local services could provide higher zoom levels e.g. a map of a shopping center. </p>
+             
+           </dd>
+           <dt>Interoperability - Mashups</dt>
+           <dd>
+             <p>The browser should be able to 
+               display different layers on the same map if they share the same declared values of projection, zoom and of course location.  If the HTML author makes a mistake in specifying 
+               projection or zoom, or if two or more layers included in a map don't share those characteristics for a particular location requested by the author or user 
+               (through zooming or panning at page view time), the browser should indicate this in some way, while doing its best to display the map in the requested projection 
+               i.e. possibly by visually or otherwise disabling one or more layers and/or other cues.
+          </p></dd>
+           <dt>Scriptable DOM API - Map Controls' Properties</dt>
+           <dd><p>Map controls should provide a standard DOM interface, such that the HTML author can enhance their behavior based on runtime events.</p></dd>
+           <dt>Scriptable DOM API - Layers' Features Spatial Relationships</dt>
+           <dd><p>The features of the map should be available via DOM script interface.  If vector data is available in a map, it should be programmable via the DOM, in such a way that
+               layers can be queried spatially, with user generated or selected geometries.</p></dd>
+           <dt>Progressive Enhancement - Use a &lt;map&gt; Element and Provide Fallback Behavior.</dt>
+           <dd><p>The &lt;map&gt; element should provide progressive enhancement opportunities.  Not only should Web maps be declaratively available in future modern browsers, but baseline Web map
+             behavior which is currently possible (via the &lt;map&gt; element) in today's (or yesterday's) browsers should be available.  Furthermore, even in future modern browsers, if
+             script is disabled, Web map functionality that is described by this document and resulting specifications should be available.  The availability of script should allow
+             progressive enhancement of Web map functionality, according to the parameters of the APIs described by this and other related documents.</p></dd>
+           <dt>Crawling and Indexing Web Map-enabled HTML Pages</dt>
+           <dd><p>Web maps should provide declarative information which allows crawlers to recognize and index content by location in Web resources.  To do this, standard public 
+               location semantics should be defined which allow HTML authors to describe locations in Web pages.</p></dd>
+         </dl>
+      </section>
+      <section id='map-content-authoring'>
+        <h3>Map Content Authoring</h3>
+        <dl>
+          <dt>Cartography - Styling With CSS, Symbols with SVG</dt>
+          <dd><p>The Web standards for styles and symbols are Cascading Style Sheets and Scalable Vector Graphics, respectively.  CSS styles and SVG symbols should be available as tools in support
+            of Web maps.  That is, Web map content authors should be able to link to CSS stylesheets for styles and SVG documents for symbols, which can be applied to vector map features.</p>
+            <p>Web map content authors should have strict control over the styles and symbols applied to their content, which should not be subject to third-party control, such as by HTML Web 
+              map authors.</p>
+          </dd>
+          <dt> Map Representations</dt>
+          <dd><p>The resource(s) behind a map service should be expressible as a single representation format which encompasses the semantics described by this document.  
+              The format should support the change of client state through links or other affordances expressed in markup.  Clients should be able to negotiate other formats which
+            also represent the resource for the requested area, but which might not be as meaningful for the purposes of Web mapping.  Such negotiation should be accomplished through
+            standard protocol slots designed for the purpose.</p></dd>
+          <dt> Content license terms</dt>
+          <dd><p>Often, reuse of map content is subject to strict license terms.  The Web map content author should be able to include a (short) link to a full description of those terms,
+            in a standard location on the map, where users (already) expect to see such links.  It should not be possible for the HTML author to disable the display of such links.</p></dd>
+          <dt> Crawling and Indexing Maps</dt>
+          <dd><p>It should be possible to create a specialized crawler which could index the Web of map information, notwithstanding its use in HTML pages.  In other words, the definition of 
+              the spatial web should not involve specific APIs such as <a href="https://en.wikipedia.org/wiki/Web_Map_Service">Web Map Service</a> or other similar 
+              Web services/API specifications.  A crawler which is programmed to follow links in the Web of standardized spatial content should be able to provide a 
+              search / discovery service for map information similar to that provided for HTML by Google, Bing, Yahoo, DuckDuckGo, Yandex, Baidu etc.</p></dd>
+          <dt>Use opaque URLs to Map Representations as Standard Media Type</dt>
+          <dd><p>The format of URLs to resources for map content should not be subject to specification by this or any other standard document, in alignment with established Web community
+              <a href="https://tools.ietf.org/html/rfc7320"></a>best practice.</p></dd>
+          <dt>Linking Within and Between Map Representations</dt>
+          <dd><p>Map content should itself be a Web.  To that end, Web map content should support links within a single service (potentially useful for zooming to or between zoom levels),
+            or even between services, such that services could be informally federated in much the same manner as HTML federates to form a Web by virtue of the ability of HTML authors to link
+            to others' content without permission.  A similar ability should be available to Web map content authors.</p></dd>
+        </dl>
+      </section>
+    </section>
+    <section id="requirements">
+      <h2>Requirements</h2>
+      <p>The <a href="https://www.w3.org/TR/html-design-principles/">HTML design principles</a> are a useful guide for the specification of requirements.</p>
+      <p>The <a class="internalDFN" href="#use-cases">use cases</a> give rise to the following <dfn id="dfn-requirements">requirements</dfn>:
+      <ol>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support a declarative HTML syntax, and must allow the HTML author to provide fallback content for use on user agents that don't support the new feature</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support use of existing (Open Street Map-compatible) tile caches to provide a slippy map user experience</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support progressive enhancement via a scriptable DOM API</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST enable Web map content authors to create content that is accessible to assistive technologies</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support declarative Web map content through CSS for styles and SVG for symbols</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support declarative vector content that follows standard data models for geometries and attributes (features)</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST enable HTML authors to create content that is accessible to assistive technologies</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support links created by HTML authors, to create in-map pushpins, balloons, and standard links (behavior like &lt;a&gt;)</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST enable mashups by HTML authors by leveraging opaque URLs to Web map content sources</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support links and link relations created by Web map content authors to support such functions as "identify", "select" and others, as well as links within and between maps on different origins</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support a default and a limited set of standard projections, accessed by declarative HTML syntax</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST allow Web map content authors to advertise search links in Web map content</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support manual or automated HTML authoring, enabling sensible defaults for projection, zoom, and location</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support a special type of link for attribution / license term links</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST NOT require service-specific nor service type-specific URLs</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> MUST support HTML authors to create / control Web map controls, except for license terms control which should be the domain of Web content authors</p></li>
+        <li><p>The Web maps controls <a href="#proposed-solutions">solution(s)</a> MUST support progressive enhancement via a scriptable DOM API</p></li>
+        <li><p>The Web maps <a href="#proposed-solutions">solution(s)</a> SHOULD be available in one or more Custom Elements-based implementations, so as to allow the best features to be selected for implementation by native browsers</p></li>
+      </ol>
+    </section>
+    <section id="proposed-solutions">
+      <h3>Proposed Solutions</h3>
+      
+      <p>To date, a set of projects put forth together embody a first iteration-type solution to the objective of adding Web maps to the HTML Web.  The authors of these projects welcome other
+      projects to address the use cases and requirements, or to contribute to these existing projects.  The objective is to arrive at a set of technologies which are mature enough to incorporate
+      in the HTML Web itself.</p>
+      <dl>
+        <dt><cite><a href="https://maps4html.github.io/MapML/spec/" target="_blank">Map Markup Language</a></cite></dt>
+        <dd><p>MapML is a MicroXML-based hypertext format for Web map content, including tiles, vectors, images, links and metadata.</p></dd>
+        <dt><cite><a href="https://github.com/Maps4HTML/MapMLServer" target="_blank">MapML Server</a></cite></dt>
+        <dd><p>A Java servlet for MapML.  Once the feature set stabilizes and matures, it would be desirable to port the functionality to an Apache module and other Web servers.</p></dd>
+        <dt><cite><a href="https://github.com/Maps4HTML/MapML-Leaflet-Client" target="_blank">MapML Leaflet Client</a></cite></dt>
+        <dd><p>A JavaScript Leaflet plugin which supports MapML.  Leaflet was chosen for simplicity and good basic feature support.  Other mapping library implementations are encouraged and welcomed.</p></dd>
+        <dt><cite><a href="https://github.com/Maps4HTML/HTML-Map-Element" target="_blank">HTML &lt;map&gt; Element specification</a></cite></dt>
+        <dd><p>The proposed specification for extending the semantics of the HTML &lt;map&gt; element based on this document.  
+            The specification reflects what is currently implemented by the <a href="https://github.com/Maps4HTML/Web-Map-Custom-Element"  target="_blank">HTML &lt;map&gt; Custom Element implementation</a>.</p></dd>
+        <dt><cite><a href="https://github.com/Maps4HTML/Web-Map-Custom-Element" target="_blank">HTML &lt;map&gt; Custom Element implementation</a></cite></dt>
+        <dd><p>A Polymer-based implementation of the HTML &lt;web-map&gt; Custom Element.  The intention of the project is to demonstrate the features that are specified in the 
+            <a target="_blank" href="https://github.com/Maps4HTML/HTML-Map-Element">HTML &lt;map&gt; (Custom) Element specification</a>,
+          and to not allow the specification to get "too far out there" with respect to reality / the implementation.  The project uses the <a href="https://github.com/Maps4HTML/MapML-Leaflet-Client" target="_blank">MapML Leaflet Client</a> internally.  More than one such element implementation is possible and would be welcomed, although it
+         would be optimal to collaborate on a single project.</p></dd>
+      </dl>
+
+    </section>
+    <section id="open-issues">
+      <h2>Open Issues</h2>
+      <p>We are tracking issues on <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues">Github</a>.</p>
+    </section>
+    <section class='appendix'>
+      <h2>Acknowledgments</h2>
+      <p>The <a href="#r1">figure on Representational State Transfer</a> is derived from Roy Fielding's thesis: <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm#fig_5_9"><cite>Fielding, Roy Thomas. Architectural Styles and the Design of Network-based Software Architectures. Doctoral dissertation, University of California, Irvine, 2000.</cite></a></p>
+      <p>
+        Many thanks to: Benoît Chagnon and Yannick Blain for their review of this document.
+      </p>
+    </section>
+
+  </body>
+</html>

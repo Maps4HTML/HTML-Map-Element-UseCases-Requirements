@@ -339,8 +339,8 @@ Real-world, domain-specific applications of the use case
 are summarized in an introductory description.
 </p>
 <p>
-For each use case, we then list <dfn data-lt="capability">capabilities</dfn>:
-features, which a web map might include, that could help solve the use case.
+We then list technological <dfn data-lt="capability">capabilities</dfn>:
+features, which a web map might include, that could help solve the use cases.
 Capabilities are potential requirements for a native HTML web map.
 To assess whether the capability should be a requirement, we examine:
 </p>
@@ -352,6 +352,10 @@ Do they implement it with consistent, well-established patterns?
 Are there any notable limitations of the current implementations,
 when measured against the  <a href="#principles">principles of the inclusive web</a>?
 </dd>
+<dt>Supported use cases</dt>
+<dt>
+Which use cases are enabled by this capability?
+</dt>
 <dt>Uses beyond mapping</dt>
 <dd>
 Is there a demand for this capability on the web,
@@ -1095,28 +1099,143 @@ in a native HTML solution.
 The next section, <a href="#client-apis">on client-side APIs</a>,
 covers custom JavaScript manipulation and event handling for the map view.
 </p>
-
-<section id="use-case-map-widget" data-ucr-role="use-case">
-<h3>Use case: Display an interactive map</h3>
 <p>
-This is an abstract use case:
-it covers all the generic features that are common to map widgets,
-ignoring the details about how the map location or specific geographic features specified.
-</p>
-<p>
-For this section,
-we simply assume the browser can convert the map data into images on screen.
+We also skip over the technical details of how the map data is encoded,
+and assume the browser can convert the map data into images on screen.
 The potential requirements in this section describe ways in which map viewers
 enhance the normal experience of viewing a static image (e.g., <code>img</code> element)
 in a web page.
+<a href="#map-formats"></a> explores data structures and file formats.
 </p>
 <p>
 See <a href="examples/map-viewers/globe.html" target="examples">examples of default map viewers</a>
 as implemented by the reference JavaScript tools.
+Other example pages are linked from individual use cases.
 </p>
 
+<section id="map-viewers-author-use-cases">
+<h3>Authoring use cases</h3>
+<p>
+For declarative widgets, website authors are presenting information.
+The authoring use cases cover the types of map data they may wish to display.
+End users may wish to use that information
+in ways that go beyond what the website author intended;
+those use cases are grouped separately.
+</p>
+
+<section id="use-case-single-location" data-ucr-role="use-case">
+<h4>Display a specific location on a map</h4>
+<p>
+For a website creator, this is the simplest web map use case:
+display a map from a description of a location.
+</p>
+<p>
+This type of web map is used
+by websites for stores, restaurants, and countless other organizations with physical locations.
+It is also used by newsmedia to display the location described in an article.
+In social media and blogs,
+a single-location map can be used to show where a post was uploaded from,
+or where a photograph or video was taken.
+</p>
+<p>
+See <a href="examples/map-viewers/single-location.html" target="examples">examples of single-location map viewers</a>
+as implemented by the reference JavaScript tools.
+</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-default-map"></a>
+  or <a href="#capability-custom-map-tiles"></a></li>
+<li><a href="#capability-location-latlong"></a>
+  or <a href="#capability-location-address"></a></li>
+</ul>
+</section>
+
+<section id="use-case-multiple-locations" data-ucr-role="use-case">
+<h4>Display multiple locations</h4>
+<p>
+
+</p>
+</section>
+
+<section id="use-case-poly-features" data-ucr-role="use-case">
+<h4>Display routes/paths or regions</h4>
+<p>
+
+</p>
+</section>
+
+<section id="use-case-html-annotations" data-ucr-role="use-case">
+<h4>Display custom HTML annotations for map features</h4>
+<p>
+
+</p>
+</section>
+
+<section id="use-case-custom-map" data-ucr-role="use-case">
+<h4>Display map coverages or other custom tile data</h4>
+<p>
+Unlike map features, which can be defined in geometric terms,
+map coverages define continuous variations, and are usually represented as image data.
+Many maps of natural features involve coverage data,
+such as maps showing vegetation cover, rainfall, or elevation.
+</p>
+<p>
+Map images are also used for aerial and satellite photographs,
+and for pre-rendered map tiles generated on the server or in advance.
+Custom map tiles — in contrast to map tiles from the major web map services —
+are necessary if displaying confidential business data,
+maps of proposed developments or historical geography,
+or any other type of map not included in the major way-finding street maps.
+</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-custom-map-tiles"></a></li>
+<li>For more complex maps, <a href="#capability-lazyload"></a> and <a href="#capability-zoom-swap"></a></li>
+</ul>
+</section>
+</section>
+
+<section id="map-viewers-user-use-cases">
+<h3>End-user use cases</h3>
+
+<section id="use-case-interactive" data-ucr-role="use-case">
+<h4>Explore a map to find more context for the displayed locations</h4>
+<p>
+Users often want more information than is initially visible in a map viewer.
+The user may zoom out or pan, to help place the displayed location in a larger context.
+Or they may zoom in, to see details more clearly.
+</p>
+</section>
+
+<section id="use-case-bookmark" data-ucr-role="use-case">
+<h4>Bookmark a location</h4>
+<p>
+
+</p>
+</section>
+
+<section id="use-case-search-features" data-ucr-role="use-case">
+<h4>Search or sort within a set of geographic features</h4>
+<p>
+
+</p>
+</section>
+
+<section id="use-case-color-scheme" data-ucr-role="use-case">
+<h4>Customize the color scheme (light/dark or high contrast)</h4>
+<p>
+
+</p>
+</section>
+</section>
+
+<section id="map-viewers-capabilities">
+<h3>Map Viewer Capabilities</h3>
+
 <section id="capability-default-map" data-ucr-role="capability">
-<h4>Capability: Display a default map for a given area</h4>
+<h4>Generate a default map for a given area</h4>
 <p>
 Often, the website author does not want to specify the map data source or other details about the map;
 they just want a generic wayfinding map of the area.
@@ -1144,6 +1263,9 @@ must be combined with a separate map provider.
 </dd>
 </dl>
 
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
 <h5>Uses beyond mapping</h5>
 <p>
 No non-map uses for generating a default street map.
@@ -1168,15 +1290,145 @@ they would need to rely on a third-party service for the map data.
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href="#"></a>
+<li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
 </ul>
 
 </section>
 
+<section id="capability-custom-map-tiles" data-ucr-role="capability" data-ucr-role="capability">
+<h4>Display a map using tile data from an author-specified web map service</h4>
+<p>
+<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+</p>
+
+<h5>Existing implementations</h5>
+<p>
+</p>
+<dl data-ucr-role="implementation-notes">
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<p>
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
+<section id="capability-zoom" data-ucr-role="capability">
+<h4>Zoom the map independently from the rest of the page</h4>
+<p>
+In addition to panning the view,
+it is standard to allow the user to adjust the map scale:
+zooming in to increase magnifaction (show finer detail),
+zooming out to decrease magnification (show a wider area).
+</p>
+
+<h5>Existing implementations</h5>
+<p>The following UI is standard across the reviewed map widgets:
+</p>
+<ul>
+<li>Accessible buttons labelled with plus (+) and minus (-) signs zoom by steps.
+</li>
+<li>Mouse wheel movements (usually used to scroll the page) are captured
+and converted into continuous zoom adjustments
+(mouse scroll down becomes zoom in, mouse scroll up becomes zoom out).
+</li>
+<li>Touch gestures for pinch zoom are used to zoom the map instead of the page.
+</li>
+</ul>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>google-maps-embed</dt>
+<dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
+<dd><a>full support</a>:
+(as described above)
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+Localized zooming is used on the web for
+charts and diagrams,
+photographs (e.g., to examine details in a product photo, or for photo editing apps),
+embedded documents (e.g., a PDF viewer),
+and sometimes data tables.
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+Zooms are often implemented using <a data-cite="css-transforms-1#">transforms</a>,
+which defines the scale as a multiplicative factor compared to the normal size
+(<code>scale(2)</code> for doubling the size, zooming in; <code>scale(0.5)</code> to zoom out by the same amount).
+Scale transforms are paired with translations to create zoom and pan effects.
+[[css-transforms-1]]
+</p>
+<p>
+An alternative approach for describing zoom and pan
+is used in <a data-cite="SVG2#">SVG</a> <code>viewBox</code> attribute
+and in <a data-cite="media-frags#naming-space">spatial media fragments</a>.
+In this system, the container element defines its own width and height (e.g., with CSS)
+plus a target rectangle in the zoomable graphic's coordinate system
+(x and y offset, plus width and height);
+the user agent then zooms and pans the graphic
+to display the target rectangle in the available space.
+[[SVG2]][[media-frags]]
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps,
+with other uses in the web platform.
+A zoom specification will need to carefully consider all uses so it can be implemented consistently,
+and should be coordinated with panning.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies --><i>To Do</i>
+</li>
+</ul>
+</section>
+
 <section id="capability-pan" data-ucr-role="capability">
-<h4>Capability: Pan the map display</h4>
+<h4>Pan the map display</h4>
 <p>
 A key part of the interactivity of a web map widget is that the user can change the region displayed.
 To pan the map is to shifting the view horizontally or vertically,
@@ -1215,6 +1467,9 @@ Mouse, touch (?), and keyboard panning; no keyboard focus indication
 Mouse and touch panning only.
 </dd>
 </dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
 
 <h5>Uses beyond mapping</h5>
 <p>
@@ -1284,109 +1539,22 @@ Thought is needed on how to make panning accessible to all users.
 </ul>
 </section>
 
-<section id="capability-zoom" data-ucr-role="capability">
-<h4>Capability: Zoom the map independently from the rest of the page</h4>
-<p>
-In addition to panning the view,
-it is standard to allow the user to adjust the map scale:
-zooming in to increase magnifaction (show finer detail),
-zooming out to decrease magnification (show a wider area).
-</p>
-
-<h5>Existing implementations</h5>
-<p>The following UI is standard across the reviewed map widgets:
-</p>
-<ul>
-<li>Accessible buttons labelled with plus (+) and minus (-) signs zoom by steps.
-</li>
-<li>Mouse wheel movements (usually used to scroll the page) are captured
-and converted into continuous zoom adjustments
-(mouse scroll down becomes zoom in, mouse scroll up becomes zoom out).
-</li>
-<li>Touch gestures for pinch zoom are used to zoom the map instead of the page.
-</li>
-</ul>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-     Give details about what is/isn't supported in the dd element,
-     starting with a link to one of the implementation levels.
-     List full implementations first.
-     Group implementations (multiple dt for the same dd) when they have the same support.
-  -->
-<dt>google-maps-embed</dt>
-<dt>google-maps-api</dt>
-<dt>openstreetmap-embed</dt>
-<dd><a>full support</a>:
-(as described above)
-</dd>
-</dl>
-
-<h5>Uses beyond mapping</h5>
-<p>
-Localized zooming is used on the web for
-charts and diagrams,
-photographs (e.g., to examine details in a product photo, or for photo editing apps),
-embedded documents (e.g., a PDF viewer),
-and sometimes data tables.
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-Zooms are often implemented using <a data-cite="css-transforms-1#">transforms</a>,
-which defines the scale as a multiplicative factor compared to the normal size
-(<code>scale(2)</code> for doubling the size, zooming in; <code>scale(0.5)</code> to zoom out by the same amount).
-Scale transforms are paired with translations to create zoom and pan effects.
-[[css-transforms-1]]
-</p>
-<p>
-An alternative approach for describing zoom and pan
-is used in <a data-cite="SVG2#">SVG</a> <code>viewBox</code> attribute
-and in <a data-cite="media-frags#naming-space">spatial media fragments</a>.
-In this system, the container element defines its own width and height (e.g., with CSS)
-plus a target rectangle in the zoomable graphic's coordinate system
-(x and y offset, plus width and height);
-the user agent then zooms and pans the graphic
-to display the target rectangle in the available space.
-[[SVG2]][[media-frags]]
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
-  -->
-<p>
-This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps,
-with other uses in the web platform.
-A zoom specification will need to carefully consider all uses so it can be implemented consistently,
-and should be coordinated with panning.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href="#"></a>
-  <!-- short summary of how the tag applies --><i>To Do</i>
-</li>
-</ul>
-</section>
-
 <section id="capability-lazyload" data-ucr-role="capability">
-<h4>Capability: Load additional map tiles when they pan into view</h4>
+<h4>Load additional map tiles when they pan into view</h4>
 <p>
 
 </p>
 </section>
 
 <section id="capability-wrap-pan" data-ucr-role="capability">
-<h4>Capability: Wrap/duplicate data tiles when panning around the globe</h4>
+<h4>Wrap/duplicate data tiles when panning around the globe</h4>
 <p>
 
 </p>
 </section>
 
 <section id="capability-scale-adjust" data-ucr-role="capability">
-<h4>Capability: Maintain reasonable scale of labels and lines when zooming</h4>
+<h4>Maintain reasonable scale of labels and lines when zooming</h4>
 <p>
 Zooming a map widget is different from
 magnifying a regular image, or adjusting the overall browser zoom level;
@@ -1395,21 +1563,21 @@ the layout is magnified, but annotations such as text size and stroke width do n
 </section>
 
 <section id="capability-zoom-swap" data-ucr-role="capability">
-<h4>Capability: Dynamically load different resolution map tile on zoom</h4>
+<h4>Dynamically load different resolution map tile on zoom</h4>
 <p>
 
 </p>
 </section>
 
 <section id="capability-zoom-swap-vectors" data-ucr-role="capability">
-<h4>Capability: Hide or show (and maybe dynamically load) vector features and labels on zoom</h4>
+<h4>Hide or show (and maybe dynamically load) vector features and labels on zoom</h4>
 <p>
 
 </p>
 </section>
 
 <section id="capability-attribution" data-ucr-role="capability">
-<h4>Capability: Display map data attribution and links</h4>
+<h4>Display map data attribution and links</h4>
 <p>
 Map data is subject to copyright,
 and use of the maps on the web usually requires at least attribution,
@@ -1425,29 +1593,9 @@ For map frameworks that allow the developer to specify the map data source,
 these "attribution control" values can be set in configuration.
 </p>
 </section>
-</section>
-
-<section id="use-case-single-location" data-ucr-role="use-case">
-<h3>Use Case: Display a specific location on a map</h3>
-<p>
-For a website creator, this is the simplest web map use case:
-display a map from a description of a location.
-</p>
-<p>
-This type of web map is used
-by websites for stores, restaurants, and countless other organizations with physical locations.
-It is also used by newsmedia to display the location described in an article.
-In social media and blogs,
-a single-location map can be used to show where a post was uploaded from,
-or where a photograph or video was taken.
-</p>
-<p>
-See <a href="examples/map-viewers/single-location.html" target="examples">examples of single-location map viewers</a>
-as implemented by the reference JavaScript tools.
-</p>
 
 <section id="capability-location-latlong" data-ucr-role="capability">
-<h4>Capability: Select map view from latitude and longitude point</h4>
+<h4>Select map view from latitude and longitude point</h4>
 <p>
 Latitude and longitude defines a point on the Earth's surface,
 without requiring any further information.
@@ -1481,6 +1629,9 @@ but the API provides the conversion function.
 </dd>
 </dl>
 
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
 <h5>Uses beyond mapping</h5>
 <p>
 …
@@ -1505,7 +1656,7 @@ This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href="#"></a>
+<li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
 </ul>
@@ -1513,7 +1664,7 @@ This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern
 </section>
 
 <section id="capability-location-address" data-ucr-role="capability">
-<h4>Capability: Generate map automatically from street address or place name</h4>
+<h4>Select map view from street address or place name</h4>
 <p>
 For many mapping use cases,
 a website author won't have exact latitude and longitude values pre-calculated.
@@ -1525,7 +1676,7 @@ the web mapping service needs access to a Gazeteer search and corresponding data
 </section>
 
 <section id="capability-export-location" data-ucr-role="capability">
-<h4>Capability: Save the location or export to other application</h4>
+<h4>Save the location or export to other application</h4>
 <p>
 For the user, it is often useful to bookmark or save a location from a map,
 separate from the website which included it.
@@ -1533,34 +1684,6 @@ The user may want to export the location to a GPS or native mapping application
 so they can calculate directions to it.
 </p>
 </section>
-</section>
-
-<section id="use-case-features" data-ucr-role="use-case">
-<h3>Use Case: Display multiple features (locations, routes, or regions)</h3>
-<p>
-
-</p>
-</section>
-
-<section id="use-case-html-annotations" data-ucr-role="use-case">
-<h3>Use Case: Display custom HTML annotations for map features</h3>
-<p>
-
-</p>
-</section>
-
-<section id="use-case-custom-map-source" data-ucr-role="use-case">
-<h3>Use Case: Display a map using data from a specified web map service</h3>
-<p>
-
-</p>
-</section>
-
-<section id="use-case-search-features" data-ucr-role="use-case">
-<h3>Use Case: Search or sort within a set of geographic features</h3>
-<p>
-
-</p>
 </section>
 
 </section>
@@ -1577,11 +1700,20 @@ or for manipulating a map-viewer widget.
 A built-in web map solution would need to expose similar DOM APIs to JavaScript code.
 </p>
 
+<section id="client-apis-use-cases">
+<h3>Use cases</h3>
+
 <section id="use-case-api" data-ucr-role="use-case">
-<h3>Use Case: </h3>
+<h4></h4>
 <p>
 <i>To Do</i>
 </p>
+</section>
+</section>
+
+<section id="client-apis-capabilities">
+<h3>Client-side API Capabilities</h3>
+
 </section>
 </section>
 
@@ -1603,11 +1735,20 @@ that is already available from web servers,
 or that can be provided with minor server upgrades.
 </p>
 
+<section id="map-formats-use-cases">
+<h3>Use cases</h3>
+
 <section id="use-case-data" data-ucr-role="use-case">
-<h3>Use Case: </h3>
+<h4></h4>
 <p>
 <i>To Do</i>
 </p>
+</section>
+</section>
+
+<section id="map-formats-capabilities">
+<h3>Map Format Capabilities</h3>
+
 </section>
 </section>
 
@@ -1659,13 +1800,12 @@ let conclusionDfns = [...document.querySelectorAll("[data-ucr-role='conclusion-d
 let conclusionDict = dictFromArray(conclusionDfns);
 
 function processUseCase(node) {
-  let name = node.querySelector("h3").textContent.replace("Use Case:", "").trim();
+  let name = node.querySelector("h4").textContent.trim();
   let id = node.id || (node.id = "use-case-" + slugify(name));
   return { node, name, id };
 }
-function processCapabilityFor(useCase) {
-  return function processCapability(node) {
-  let name = node.querySelector("h4").textContent.replace("Capability:", "").trim();
+function processCapability(node) {
+  let name = node.querySelector("h4").textContent.trim();
 
   let id = node.id || (node.id = "capability-" + slugify(name));
 
@@ -1675,9 +1815,11 @@ function processCapabilityFor(useCase) {
     : "undecided";
   if (conclusionNode) processTag(conclusionNode, conclusionDict);
 
-  return { useCase, node, name, id, conclusion,
+  // TODO: extract the “supported use cases” & generate cross references
+
+  return { node, name, id, conclusion,
            tags: [], implementations: {} };
-}}
+}
 function processTag(node, dict) {
   let tagDfnId = node.hash? node.hash.replace(/^#/, "")
                        : node.textContent.trim();
@@ -1692,10 +1834,8 @@ function processTag(node, dict) {
 let useCases = [...document.querySelectorAll("[data-ucr-role='use-case']")]
   .map( processUseCase );
 
-let capabilities = useCases.map( (useCase)=>(
-  [...useCase.node.querySelectorAll("[data-ucr-role='capability']")]
-    .map( processCapabilityFor(useCase) )
-) ).reduce( (all, a)=>(all.concat(a)), []);
+let capabilities = [...document.querySelectorAll("[data-ucr-role='capability']")]
+  .map( processCapability );
 
 capabilities.forEach((capability)=>{
   let tags = [...capability.node.querySelectorAll("[data-ucr-role='tag']")]
@@ -1725,7 +1865,7 @@ indicates <!-- longer description -->
      Attributes starting with `data-ucr-` are used in the script.
   -->
 <section data-ucr-role="use-case">
-<h3>Use case: <!-- Goal that user/author is trying to achieve --></h3>
+<h4><!-- Goal that user/author is trying to achieve --></h4>
 <p>
 <!-- Short (1-3 paragraph) description, with details on who/why this goal is important -->
 </p>
@@ -1734,9 +1874,17 @@ See <a href="examples/#(add a new file for each use case)" target="examples">exa
 as implemented by the reference JavaScript tools.
 </p>
 
-<!-- template for each capability, include as many as required for each use case -->
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href=""></a></li>
+</ul>
+</section>
+</template>
+
+<template style="display: none" class="remove">
+<!-- Markup template for each capability, include as many as required for each use case -->
 <section data-ucr-role="capability" data-ucr-role="capability">
-<h4>Capability: <!-- Action that is/should be possible --></h4>
+<h4><!-- Action that is/should be possible --></h4>
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
 </p>
@@ -1761,6 +1909,9 @@ as implemented by the reference JavaScript tools.
 <!-- details about what is/isn't supported -->
 </dd>
 </dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
 
 <h5>Uses beyond mapping</h5>
 <p>

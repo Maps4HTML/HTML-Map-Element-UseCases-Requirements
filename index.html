@@ -53,14 +53,8 @@ a[href] .tag-span {
 a[href]:hover .tag-span, a[href]:focus .tag-span {
   text-decoration: underline;
 }
-/* hack because respec is pulling in too much content */
-.issue > :not(.issue-title) {
-    display: none;
-}
-/* doesn't currently work (repsec drops the second class when processing the issue) */
-.issue.discussion {
-  border-color: hsl(180, 90%, 45%);
-  background: hsl(180, 80%, 90%);
+.issue .discussion {
+  font-style: italic
 }
 </style>
 <script class='remove'>
@@ -965,7 +959,7 @@ provide ready-to-use map viewer widgets for websites to use.
 In addition, multiple open source JavaScript libraries
 have developed to make it easier for website authors to build on other map data services.
 </p>
-<p class="issue" data-number="25"></p>
+<p class="issue" data-number="25">Need data to back up the reference implementations.</p>
 <p>
 The reviewed implementations come in three forms:
 </p>
@@ -981,7 +975,7 @@ configuration options are passed in as JS function parameters when initializing 
 <li>
 HTML custom elements,
 with configuration through attributes and child elements.
-<p class="issue" data-number="23"></p>
+<p class="issue" data-number="23">Need to decide on web component examples to use as reference.</p>
 </li>
 </ul>
 <p>
@@ -1049,7 +1043,7 @@ for generating map viewers and adding custom features and data layers.
 It also includes methods to access more complex search functions, local images, and other data.
 Most features require an API key and is billed by usage (page views or API requests).
 </p>
-<p class="issue discussion" data-number="9"></p>
+<p class="issue discussion" data-number="9">Discuss this section on GitHub.</p>
 </section>
 
 <section id="openstreetmap">
@@ -1068,7 +1062,7 @@ The image tiles created by the project can also be accessed directly by URL reci
 and these are used in other map viewer widgets and APIs.
 The raw data is also re-processed and used by other map data services.
 </p>
-<p class="issue discussion" data-number="26"></p>
+<p class="issue discussion" data-number="26">Discuss this section on GitHub.</p>
 </section>
 
 <section id="bing-maps">
@@ -1081,7 +1075,7 @@ but also provides client-side APIs for manipulating the map,
 as well as an interface to Bing's search services.
 API tokens are required; free and paid plans are available, with usage caps.
 </p>
-<p class="issue discussion" data-number="27"></p>
+<p class="issue discussion" data-number="27">Discuss this section on GitHub.</p>
 </section>
 
 <section id="mapkit-js">
@@ -1096,7 +1090,7 @@ and integrations with Apple search services.
 A developer account is required,
 along with a method of generating encrypted API tokens on demand on the webserver.
 </p>
-<p class="issue discussion" data-number="28"></p>
+<p class="issue discussion" data-number="28">Discuss this section on GitHub.</p>
 </section>
 
 <section id="mapbox">
@@ -1113,7 +1107,7 @@ and so can be used as an iframe source.
 <p>
 An API key is required, with cost based on usage.
 </p>
-<p class="issue discussion" data-number="12"></p>
+<p class="issue discussion" data-number="12">Discuss this section on GitHub.</p>
 </section>
 
 <section id="leaflet-js">
@@ -1128,7 +1122,7 @@ but widgets similar to map embeds can be generated with a few calls to the libra
 Leaflet isn't associated with any particular map data source.
 It can use image tiles from most web map (tile) services.
 </p>
-<p class="issue discussion" data-number="29"></p>
+<p class="issue discussion" data-number="29">Discuss this section on GitHub.</p>
 </section>
 
 <section id="openlayers">
@@ -1139,7 +1133,7 @@ for creating dynamic web maps from map data in standard formats.
 As with Leaflet, it isn't associated with any particular map service.
 A basic slippy map can be created with a few lines of custom JavaScript.
 </p>
-<p class="issue discussion" data-number="30"></p>
+<p class="issue discussion" data-number="30">Discuss this section on GitHub.</p>
 </section>
 
 <section id="d3-geo">
@@ -1152,7 +1146,7 @@ Unlike the other JS tools being reviewed here,
 D3 does not include code for a ready-made map viewer widget,
 but it is used for custom client-side mapping applications.
 </p>
-<p class="issue discussion" data-number="13"></p>
+<p class="issue discussion" data-number="13">Discuss this section on GitHub.</p>
 </section>
 </section>
 
@@ -1948,7 +1942,7 @@ indicates <!-- longer description -->
 See <a href="examples/#(add a new file for each use case)" target="examples">examples of <!-- description --></a>
 as implemented by the reference JavaScript tools.
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)"></p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
@@ -1964,7 +1958,7 @@ as implemented by the reference JavaScript tools.
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)"></p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>

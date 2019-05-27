@@ -56,6 +56,10 @@ a[href]:hover .tag-span, a[href]:focus .tag-span {
 .issue .discussion {
   font-style: italic
 }
+.issue.discussion[data-number]::after {
+  content: " (#" attr(data-number) ")";
+  /* applies if ReSpec JS doesn't run */
+}
 </style>
 <script class='remove'>
 var respecConfig = {
@@ -1193,7 +1197,7 @@ those use cases are grouped separately.
 </p>
 
 <section id="use-case-single-location" data-ucr-role="use-case">
-<h4>Display a specific location on a map</h4>
+<h4>Display a specific location on an interactive map</h4>
 <p>
 For a website creator, this is the simplest web map use case:
 display a map from a description of a location.
@@ -1210,6 +1214,7 @@ or where a photograph or video was taken.
 See <a href="examples/map-viewers/single-location.html" target="examples">examples of single-location map viewers</a>
 as implemented by the reference JavaScript tools.
 </p>
+<p class="issue discussion" data-number="33">Discuss this section on GitHub.</p>
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
@@ -1220,11 +1225,35 @@ as implemented by the reference JavaScript tools.
 </ul>
 </section>
 
+<section id="use-case-static-map" data-ucr-role="use-case">
+<h4>Display a region of map data as a static image</h4>
+<p>
+Although this review mainly focuses on interactive map viewers,
+authors sometimes want a map displayed as a static image, without pan/zoom capabilities.
+This is common in cases where the accompanying text
+refers to specific features in the map,
+or when a series of maps will be contrasted.
+</p>
+<p class="issue discussion" data-number="17">Discuss this section on GitHub.</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li></li>
+</ul>
+</section>
+
 <section id="use-case-multiple-locations" data-ucr-role="use-case">
-<h4>Display multiple locations</h4>
+<h4>Display multiple point locations on a single map</h4>
 <p>
 
 </p>
+<p class="issue discussion" data-number="34">Discuss this section on GitHub.</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li>Everything listed in <a href="#use-case-single-location"></a></li>
+<li>…</li>
+</ul>
 </section>
 
 <section id="use-case-poly-features" data-ucr-role="use-case">
@@ -1232,13 +1261,15 @@ as implemented by the reference JavaScript tools.
 <p>
 
 </p>
+<p class="issue discussion" data-number="36">Discuss this section on GitHub.</p>
 </section>
 
 <section id="use-case-html-annotations" data-ucr-role="use-case">
-<h4>Display custom HTML annotations for map features</h4>
+<h4>Display custom web content describing map features</h4>
 <p>
 
 </p>
+<p class="issue discussion" data-number="37">Discuss this section on GitHub.</p>
 </section>
 
 <section id="use-case-custom-map" data-ucr-role="use-case">
@@ -1257,11 +1288,50 @@ are necessary if displaying confidential business data,
 maps of proposed developments or historical geography,
 or any other type of map not included in the major way-finding street maps.
 </p>
+<p class="issue discussion" data-number="38">Discuss this section on GitHub.</p>
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-custom-map-tiles"></a></li>
 <li>For more complex maps, <a href="#capability-lazyload"></a> and <a href="#capability-zoom-swap"></a></li>
+</ul>
+</section>
+
+<section id="use-case-layers" data-ucr-role="use-case">
+<h4>Combine multiple layers of map tile data or features</h4>
+<p>
+
+</p>
+<p class="issue discussion" data-number="11">Discuss this section on GitHub.</p>
+</section>
+
+<section id="use-case-technical-drawings" data-ucr-role="use-case">
+<h4>Display drawings or schematics without geographic coordinates</h4>
+<p>
+Many of the capabilities of a map viewer widget —
+panning and zooming, possibly with synchronized layers
+or dynamically loaded content for different positions or zoom layers —
+are useful for non-map content,
+or for maps that don't have geographic coordinates.
+Examples include technical schematics, blueprints,
+data charts,
+“mind maps” and other flow charts,
+or maps of fictional places.
+An author who is familiar with map widgets
+would want to reuse the same technology
+for displaying these types of map-like content.
+</p>
+<p>
+<!--
+See <a href="examples/#(add a new file for each use case)" target="examples">examples of non-geographic content in map viewers</a>
+as implemented by the reference JavaScript tools.
+-->
+</p>
+<p class="issue discussion" data-number="1">Discuss this section on GitHub.</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href=""></a></li>
 </ul>
 </section>
 </section>
@@ -1270,12 +1340,55 @@ or any other type of map not included in the major way-finding street maps.
 <h3>End-user use cases</h3>
 
 <section id="use-case-interactive" data-ucr-role="use-case">
-<h4>Explore a map to find more context for the displayed locations</h4>
+<h4>Reposition or scale a map to find more context for the displayed locations</h4>
 <p>
 Users often want more information than is initially visible in a map viewer.
 The user may zoom out or pan, to help place the displayed location in a larger context.
 Or they may zoom in, to see details more clearly.
 </p>
+<p>
+This use case exists regardless of how the user interacts with their device.
+For it to be fully supported, the map viewer must be explorable
+with all of the following input methods:
+</p>
+<ul>
+<li>mouse/trackpad pointer (with or without a scroll wheel)</li>
+<li>touchscreen gestures</li>
+<li>standard/intuitive keyboard shortcuts</li>
+<li>accessibility API events (e.g., as triggered by a screen reader or voice control software)</li>
+</ul>
+<p class="issue discussion" data-number="39">Discuss this section on GitHub.</p>
+</section>
+
+<section id="use-case-identify" data-ucr-role="use-case">
+<h4>Access additional information about a point on the map</h4>
+<p>
+A map view can't show everything all at once.
+Users often want to find more information about the representations on the map.
+This information could be presented as details displayed on demand
+in a pop-up box or sidebar.
+</p>
+<p>
+The details that are available might include the coordinates of the point,
+labels for any features at that point,
+metadata or links to further information about the features,
+or
+local data values for continuous coverage data layers.
+</p>
+<p>
+Some of this information might require querying the server with the selected coordinates.
+But to the extent that the information is already available in the map viewer,
+it should be accessible by users without the author adding extra features.
+</p>
+<p class="issue discussion" data-number="21">Discuss this section on GitHub.</p>
+</section>
+
+<section id="use-case-hide-layers" data-ucr-role="use-case">
+<h4>Show/hide layers of map tile data or features</h4>
+<p>
+
+</p>
+<p class="issue discussion" data-number="40">Discuss this section on GitHub.</p>
 </section>
 
 <section id="use-case-bookmark" data-ucr-role="use-case">
@@ -1283,6 +1396,7 @@ Or they may zoom in, to see details more clearly.
 <p>
 
 </p>
+<p class="issue discussion" data-number="41">Discuss this section on GitHub.</p>
 </section>
 
 <section id="use-case-search-features" data-ucr-role="use-case">
@@ -1290,6 +1404,7 @@ Or they may zoom in, to see details more clearly.
 <p>
 
 </p>
+<p class="issue discussion" data-number="42">Discuss this section on GitHub.</p>
 </section>
 
 <section id="use-case-color-scheme" data-ucr-role="use-case">
@@ -1297,6 +1412,7 @@ Or they may zoom in, to see details more clearly.
 <p>
 
 </p>
+<p class="issue discussion" data-number="43">Discuss this section on GitHub.</p>
 </section>
 </section>
 
@@ -1366,7 +1482,7 @@ they would need to rely on a third-party service for the map data.
 
 </section>
 
-<section id="capability-custom-map-tiles" data-ucr-role="capability" data-ucr-role="capability">
+<section id="capability-custom-map-tiles" data-ucr-role="capability">
 <h4>Display a map using tile data from an author-specified web map service</h4>
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
@@ -1404,6 +1520,381 @@ they would need to rely on a third-party service for the map data.
 </li>
 </ul>
 
+</section>
+
+<section id="capability-tile-coordinate-systems" data-ucr-role="capability">
+<h4>Display map tiles defined in various common coordinate systems</h4>
+<p>
+Most tiled image maps on the web use the Web Mercator
+system of dividing map data into image tiles.
+As the name suggests, this is based on the Mercator map projection,
+with the addition of standard for dividing the map into tiles at different zoom levels.
+</p>
+<p>
+Web Mercator is not appropriate for maps of polar regions,
+where the Mercator projection distorts geography.
+Other tileset coordinate systems have been defined specifically for polar maps.
+In addition, many regions have well-established local map grid coordinate systems,
+and being able to use the local grid means access to established map data sources.
+</p>
+<p>
+The technological complexity of supporting different projections
+depends on how many other capabilities are supported.
+Tiling images doesn't require knowing how those images map to geographic coordinates.
+But the tile boundaries and coordinate projection are needed
+in order to draw marker points or vector features over the map.
+And information about the tileset zoom levels is required
+in order to dynamically load content on pan and zoom.
+</p>
+<p>
+Combining map layers with different projections,
+or otherwise converting one map projection to another view,
+is a separate capability, discussed in <a href="#capability-reproject-maps"></a>.
+</p>
+<p class="issue discussion" data-number="14">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
+<section id="capability-marker-points" data-ucr-role="capability">
+<h4>Show pinpoint locations or custom markers on the map</h4>
+<p>
+<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+</p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+</section>
+
+<section id="capability-vector-features" data-ucr-role="capability">
+<h4>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</h4>
+<p>
+Polylines are used in maps to draw roads, rivers, directions between places,
+or the observed path of a moving object.
+Polygons are used for political regions (country and municipal boundaries),
+building footprint outlines,
+and for contour lines which mark the extent of a certain value within continuous data
+(e.g., elevation).
+Polygons are also used for roads, rivers and so on at higher zoom levels,
+where the true shape of the feature can no longer be approximated as a single line.
+They are two of the most common types of map data features.
+</p>
+<p>
+It is common on the web for vector map data to be pre-rendered
+into raster image layers on the server.
+However, if the vector feature is important for the web view,
+drawing it as separate graphic object means it can be dynamically styled,
+associated with labels or descriptions,
+and the target of user events.
+</p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+</section>
+
+<section id="capability-hyperlinks" data-ucr-role="capability">
+<h4>Support hyperlinks from markers or vector features</h4>
+<p>
+For a map to be truly a part of the web,
+it needs to be able to link to other web resources.
+</p>
+
+</p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+</section>
+
+<section id="capability-no-js" data-ucr-role="capability">
+<h4>Display a basic map without JavaScript</h4>
+<p>
+Users may disable JavaScript for security reasons,
+or as part of a strategy to reduce data consumption.
+In addition, JavaScript can fail because of network errors
+or because of a parsing or runtime error in the code.
+</p>
+<p>
+It is reasonable that web maps have reduced functionality without JavaScript.
+But ideally, a basic map with text annotations and links should still work without it.
+</p>
+<p>
+A natively-supported, declarative web map viewer would by definition have this capability.
+</p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+Our reference implementations are primarily JavaScript tools.
+Many do not — by default — provide any features when JS is disabled or fails,
+although a website author could build in fallbacks
+by including links, images, or iframes in the markup
+that are replaced when the script runs.
+</p>
+<p>
+For built-in graceful degradation, the best implementations currently
+are the iframe embeds.
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  --
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+To the extent that any capabilites of a map viewer are shared with other content,
+having that capability work without JavaScript is a shared benefit.
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
 </section>
 
 <section id="capability-zoom" data-ucr-role="capability">
@@ -1663,6 +2154,208 @@ these "attribution control" values can be set in configuration.
 </p>
 </section>
 
+<section id="capability-styled-features" data-ucr-role="capability">
+<h4>Apply custom styling to map markers and vector features</h4>
+<p>
+<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+</p>
+<p class="issue discussion" data-number="15">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
+<section id="capability-styled-controls" data-ucr-role="capability">
+<h4>Apply custom styling to map controls</h4>
+<p>
+<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+</p>
+<p>
+This capability — custom styling —
+is separate from the ability of the author to create complete custom controls
+which then control the map viewer using a client-side API.
+</p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
+<section id="capability-custom-controls" data-ucr-role="capability">
+<h4>Toggle whether default controls are displayed</h4>
+<p>
+Custom styling isn't always enough;
+sometimes an author wants to completely replace the default control buttons.
+Replacing the full functionality of the controls requires a
+<a href="#client-apis">client-side API</a>, discussed separately.
+This capability focuses solely on the ability to declaratively control
+whether or not the web browser includes on-screen controls by default.
+</p>
+<p class="issue discussion" data-number="16">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
 <section id="capability-location-latlong" data-ucr-role="capability">
 <h4>Select map view from latitude and longitude point</h4>
 <p>
@@ -1744,6 +2437,78 @@ the web mapping service needs access to a Gazeteer search and corresponding data
 </p>
 </section>
 
+<section id="capability-reproject-maps" data-ucr-role="capability">
+<h4>Reproject map tile data into a new projection or globe view</h4>
+<p>
+Map image tiles are usually defined in Web Mercator
+or other grid-based tile systems.
+For large scale maps (of the globe or continents),
+these reveal distortions created by the underlying projections.
+Many different map projections exist to more fairly display the relative size and shapes of continents on a flat map.
+In addition, within an interactive web environment,
+it is possible to use projections which more directly represent the 3D globe
+without trying to display it all at once,
+letting user interaction rotate it to show parts of interest.
+</p>
+<p class="issue discussion" data-number="3">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+     Give details about what is/isn't supported in the dd element,
+     starting with a link to one of the implementation levels.
+     List full implementations first.
+     Group implementations (multiple dt for the same dd) when they have the same support.
+  -->
+<dt>short-name-embed</dt>
+<dt>short-name-api</dt>
+<dd><a>full support|supported, with limitations|partial support|no support|not applicable</a>:
+<!-- details about what is/isn't supported -->
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact. 
+     Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+     See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
 <section id="capability-export-location" data-ucr-role="capability">
 <h4>Save the location or export to other application</h4>
 <p>
@@ -1770,18 +2535,30 @@ A built-in web map solution would need to expose similar DOM APIs to JavaScript 
 </p>
 
 <section id="client-apis-use-cases">
-<h3>Use cases</h3>
+<h3>Authoring use cases</h3>
 
-<section id="use-case-api" data-ucr-role="use-case">
-<h4></h4>
+<section id="use-case-***" data-ucr-role="use-case">
+<h4><!-- Goal that user/author is trying to achieve --></h4>
 <p>
-<i>To Do</i>
+<!-- Short (1-3 paragraph) description, with details on who/why this goal is important -->
 </p>
+<p>
+See <a href="examples/#(add a new file for each use case)" target="examples">examples of <!-- description --></a>
+as implemented by the reference JavaScript tools.
+</p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href=""></a></li>
+</ul>
 </section>
 </section>
 
 <section id="client-apis-capabilities">
 <h3>Client-side API Capabilities</h3>
+
+
 
 </section>
 </section>
@@ -1918,7 +2695,7 @@ document.documentElement.classList.add("processed");
 })();/* closure */
 </script>
 
-<template style="display: none" class="remove">
+<template id="tag-dfn-template" style="display: none" class="remove">
 <!-- Markup template for adding a new tag to the guiding principles section.
      The `id` is essential & is what will be used to link to the tag.-->
 <li>
@@ -1929,11 +2706,11 @@ indicates <!-- longer description -->
 </li>
 </template>
 
-<template style="display: none" class="remove">
+<template id="use-case-template" style="display: none" class="remove">
 <!-- Markup template for each use case.
      Attributes starting with `data-ucr-` are used in the script.
   -->
-<section data-ucr-role="use-case">
+<section id="use-case-***" data-ucr-role="use-case">
 <h4><!-- Goal that user/author is trying to achieve --></h4>
 <p>
 <!-- Short (1-3 paragraph) description, with details on who/why this goal is important -->
@@ -1951,9 +2728,9 @@ as implemented by the reference JavaScript tools.
 </section>
 </template>
 
-<template style="display: none" class="remove">
+<template id="capability-template" style="display: none" class="remove">
 <!-- Markup template for each capability, include as many as required for each use case -->
-<section data-ucr-role="capability" data-ucr-role="capability">
+<section id="capability-***" data-ucr-role="capability">
 <h4><!-- Action that is/should be possible --></h4>
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
@@ -2010,7 +2787,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href="#(tag-id)"></a>
+<li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
 </ul>

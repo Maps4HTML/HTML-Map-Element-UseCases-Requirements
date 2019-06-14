@@ -2534,46 +2534,143 @@ ready-to-use functions for fetching or rendering parts of a map,
 or for manipulating a map-viewer widget.
 A built-in web map solution would need to expose similar DOM APIs to JavaScript code.
 </p>
-
 <section id="client-apis-use-cases">
 <h3>Authoring use cases</h3>
-
-<section id="use-case-create-map-centred-and-zoomed" data-ucr-role="use-case">
-<h4>Create and display a map centered on a point at a specific zoom level</h4>
+<section id="use-case-create-initialise-display-map" data-ucr-role="use-case">
+<h4>Create, initialise, and display a map</h4>
 <p>
-A website developer may be required to create and display a map centered on a given point
-and zoomed to a level suitable for displaying a desired extent of the
-area around that point or a desired level of detail.
+An embedded map cannot usually be enhanced beyond the options available via URL configuration, and it is not may not be possible to extract additional information from the map or to subscribe to map events. For all use cases requiring the use of a client API, the first thing the web developer needs to do is to initialise and display a map.
 </p>
 <p>
-See <a href="examples/client-apis/create-map-centred-and-zoomed.html" target="examples">
-examples of  a map centered on a point at a specific zoom level</a>
+See <a href="examples/client-apis/use-case-create-initialise-display-map.html" target="examples">examples of creating, initialising, and displaying a map</a>
 as implemented by the reference JavaScript tools.
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
-
+<p class="issue discussion" data-number="77">Discuss this section on GitHub.</p>
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href=""></a></li>
+<li><a href="#capability-create-initialise-and-display-map">Create, initialise, and display a map</a></li>
 </ul>
 </section>
-<section id="use-case-specify-map-controls" data-ucr-role="use-case">
-<h4>Specify the controls available on creating a map</h4>
+<section id="use-case-display-multiple-point-locations-single-map" data-ucr-role="use-case">
+<h4>Display multiple point locations on a single map</h4>
 <p>
-A website developer my be required to create and display a map with a
-specified set of map controls, so as to allow or prevent easy access
-via those affordances to various kinds of user interaction with the map.
+A web developer needs the ability to display a map with markers or other affordances denoting multiple specified locations.
+
+Example uses of such a map include search results (e.g. restaurants), traffic information (e.g. locations of roadworks), or the locations where photographs in a gallery were taken.
 </p>
 <p>
-See <a href="examples/client-apis/specify-map-controls.html" target="examples">examples of
-specifying the controls on a map</a>
+See <a href="examples/client-apis/use-case-display-multiple-point-locations-single-map.html" target="examples">examples of displaying multiple point locations on a single map</a>
 as implemented by the reference JavaScript tools.
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
-
+<p class="issue discussion" data-number="78">Discuss this section on GitHub.</p>
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href=""></a></li>
+<li><a href="#capability-add-marker-or-multiple-markers-map">Add a marker or multiple markers to a map</a></li>
+</ul>
+</section>
+<section id="use-case-add-custom-control-map" data-ucr-role="use-case">
+<h4>Add a custom control to a map</h4>
+<p>
+Description to follow.
+</p>
+<p>
+See <a href="examples/client-apis/use-case-add-custom-control-map.html" target="examples">examples of adding a custom control to a map</a>
+as implemented by the reference JavaScript tools.
+</p>
+<p class="issue discussion" data-number="79">Discuss this section on GitHub.</p>
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-implement-custom-control">Implement a custom control</a></li><li><a href="#capability-add-control-map">Add a control to a map</a></li>
+</ul>
+</section>
+<section id="use-case-provide-feedback-user-they-manipulate-map" data-ucr-role="use-case">
+<h4>Provide feedback to a user as they manipulate the map</h4>
+<p>
+Brief examples to be expanded: highlighting items in a list that are within the current bounds of the map; displaying the position of the map centre; indicating that a selected point of interest is outside the current map view in a particular direction.
+</p>
+<p>
+See <a href="examples/client-apis/use-case-provide-feedback-user-they-manipulate-map.html" target="examples">examples of providing feedback to a user as they manipulate the map</a>
+as implemented by the reference JavaScript tools.
+</p>
+<p class="issue discussion" data-number="80">Discuss this section on GitHub.</p>
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-get-bounds-map">Get the bounds of a map</a></li><li><a href="#capability-subscribe-map-move-events">Subscribe to map move events</a></li><li><a href="#capability-subscribe-map-zoom-events">Subscribe to map zoom events</a></li><li><a href="#capability-subscribe-marker-selection-events">Subscribe to marker selection events</a></li>
+</ul>
+</section>
+<section id="use-case-allow-user-select-different-style-map" data-ucr-role="use-case">
+<h4>Allow the user to select a different style for a map</h4>
+<p>
+Description to follow.
+</p>
+<p>
+See <a href="examples/client-apis/use-case-allow-user-select-different-style-map.html" target="examples">examples of allowing the user to select a different style for a map</a>
+as implemented by the reference JavaScript tools.
+</p>
+<p class="issue discussion" data-number="81">Discuss this section on GitHub.</p>
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-specify-style-map">Specify the style of a map</a></li><li><a href="#capability-determine-current-style-map">Determine the current style of a map</a></li>
+</ul>
+</section>
+<section id="use-case-allow-user-control-layer-displayed-map" data-ucr-role="use-case">
+<h4>Allow the user to control the layer displayed by a map</h4>
+<p>
+Example to be expanded later: NLS old Ordnance Survey maps.
+</p>
+<p>
+See <a href="examples/client-apis/use-case-allow-user-control-layer-displayed-map.html" target="examples">examples of allowing the user to control the layer displayed by a map</a>
+as implemented by the reference JavaScript tools.
+</p>
+<p class="issue discussion" data-number="82">Discuss this section on GitHub.</p>
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-add-layer-map">Add a layer to a map</a></li><li><a href="#capability-remove-layer-map">Remove a layer from a map</a></li><li><a href="#capability-display-layer-map">Display a layer on a map</a></li><li><a href="#capability-hide-layer-map">Hide a layer on a map</a></li>
+</ul>
+</section>
+<section id="use-case-allow-user-reset-map-their-starting-point" data-ucr-role="use-case">
+<h4>Allow a user to reset the map to their starting point</h4>
+<p>
+Description to follow.
+</p>
+<p>
+See <a href="examples/client-apis/use-case-allow-user-reset-map-their-starting-point.html" target="examples">examples of allowing a user to reset the map to their starting point</a>
+as implemented by the reference JavaScript tools.
+</p>
+<p class="issue discussion" data-number="83">Discuss this section on GitHub.</p>
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-pan-map-or-re-centre-map">Pan a map or re-centre a map</a></li><li><a href="#capability-zoom-map-or-out">Zoom a map in or out</a></li>
+</ul>
+</section>
+<section id="use-case-change-bearing-map" data-ucr-role="use-case">
+<h4>Change the bearing of a map</h4>
+<p>
+Examples to be expanded: responding to the orientation of a device; traversing a route.
+</p>
+<p>
+See <a href="examples/client-apis/use-case-change-bearing-map.html" target="examples">examples of changing the bearing of a map</a>
+as implemented by the reference JavaScript tools.
+</p>
+<p class="issue discussion" data-number="84">Discuss this section on GitHub.</p>
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-change-bearing-map">Change the bearing of a map</a></li><li><a href="#capability-reset-bearing-map">Reset the bearing of a map</a></li>
+</ul>
+</section>
+<section id="use-case-specify-data-source-map" data-ucr-role="use-case">
+<h4>Specify a data source for a map</h4>
+<p>
+Examples to be expanded: showing a map of Mars or the Moon.
+</p>
+<p>
+See <a href="examples/client-apis/use-case-specify-data-source-map.html" target="examples">examples of specifying a data source for a map</a>
+as implemented by the reference JavaScript tools.
+</p>
+<p class="issue discussion" data-number="85">Discuss this section on GitHub.</p>
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-define-data-source-map">Define a data source for a map</a></li>
 </ul>
 </section>
 

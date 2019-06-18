@@ -1499,6 +1499,7 @@ they would need to rely on a third-party service for the map data.
   <a>full support</a>
 </dd>
 <dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
 <dd>
   <a>no support</a>
 </dd>
@@ -1575,6 +1576,7 @@ is a separate capability, discussed in <a href="#capability-reproject-maps"></a>
   <a>supported, with limitations</a>: you are able to create custom projections that are rectilinear by passing in a bi-directional mapping between coordinate systems
 </dd>
 <dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
 <dd>
   <a>no support</a>
 </dd>
@@ -1634,8 +1636,9 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
 </dd>
+<dt>openstreetmap-embed</dt>
+<dd><a>supported, with limitations</a>: only allows you to show a single marker on embedded maps
 </dl>
 
 <h5>Supported use cases</h5>
@@ -1709,6 +1712,7 @@ and the target of user events.
   <!-- details about what is/isn't supported -->
 </dd>
 <dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 
@@ -1770,6 +1774,7 @@ it needs to be able to link to other web resources.
   <!-- details about what is/isn't supported -->
 </dd>
 <dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 
@@ -1843,6 +1848,7 @@ are the iframe embeds.
   The Maps Static API can be used to serve a static image without JavaScript. However, this is not the default fallback behavior for the other map APIs when JavaScript is turned off, and it must be implemented as a custom feature.
 </dd>
 <dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 
@@ -2093,6 +2099,7 @@ Thought is needed on how to make panning accessible to all users.
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2107,6 +2114,7 @@ Thought is needed on how to make panning accessible to all users.
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2130,6 +2138,7 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2168,7 +2177,8 @@ these "attribution control" values can be set in configuration.
 <h5>Existing implementations</h5>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
-<dd><a>full support</a>:
+<dt>openstreetmap-embed</dt>
+<dd><a>full support</a>: automatically generated and attributed to their respective providers
 </dd>
 </dl>
 </section>
@@ -2193,6 +2203,7 @@ these "attribution control" values can be set in configuration.
   <a>full support</a>:
 </dd>
 <dt>google-maps-embed</dt>
+<dt>openstreetmaps-embed</dt>
 <dd><a>no support</a>:
 <!-- details about what is/isn't supported -->
 </dd>
@@ -2256,6 +2267,7 @@ which then control the map viewer using a client-side API.
 
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
+<dt>openstreetmaps-embed</dt>
 <dd>
   <a>no support</a>:
   <!-- details about what is/isn't supported -->
@@ -2323,6 +2335,7 @@ whether or not the web browser includes on-screen controls by default.
   <a>full support</a>:
 </dd>
 <dt>google-maps-embed</dt>
+<dt>openstreetmaps-embed</dt>
 <dd><a>no support</a>:
   <!-- details about what is/isn't supported -->
 </dd>
@@ -2449,6 +2462,7 @@ the web mapping service needs access to a Gazeteer search and corresponding data
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2478,6 +2492,7 @@ letting user interaction rotate it to show parts of interest.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
 <dd><a>no support</a>:
 </dd>
 </dl>
@@ -2529,6 +2544,9 @@ so they can calculate directions to it.
 <h5>Existing implementations</h5>
 <p></p>
 <dl data-ucr-role="implementation-notes">
+<dt>openstreetmap-embed</dt>
+<dd><a>full support</a>:
+</dd>
 <dt>google-maps-embed</dt>
 <dd><a>supported, with limitations</a>:
   You are able to generate a link to the map that can be shared via a variety of methods, but there is no way way to easily this information to another application.

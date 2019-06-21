@@ -34,7 +34,7 @@
             padding: 0.1rem 0.5rem;
         }
 
-        .lat-lng {
+        .custom-control {
             border: 1px solid #000;
             background-color: #fefefe;
             color: #222;
@@ -43,7 +43,7 @@
             box-shadow: 1px 1px 2px rgba(0,0,0,0.65);
         }
 
-        .openlayers.lat-lng {
+        .openlayers.custom-control {
             position: absolute;
             bottom: 1em;
             left: 1em;
@@ -81,6 +81,7 @@ L.Control.LatLonControl = L.Control.extend({
     onAdd: (map) => {
         const latLonContainer = document.createElement('div');
         latLonContainer.classList.add('lat-lng');
+        latLonContainer.classList.add('custom-control');
         latLonContainer.textContent = 'Centre: ';
         const lat = latLonContainer.appendChild(document.createElement('span'));
         latLonContainer.appendChild(document.createTextNode(','));
@@ -120,22 +121,23 @@ const openLayersMap = new ol.Map({
     target: 'ol-osm-use-case-add-custom-control-map'
 });
 const openLayersLatLngControl = new ol.control.Control({ element: (() => {
-        const latLonContainer = document.createElement('div');
-        latLonContainer.classList.add('lat-lng');
-        latLonContainer.classList.add('openlayers');
-        latLonContainer.textContent = 'Centre: ';
-        const lat = latLonContainer.appendChild(document.createElement('span'));
-        latLonContainer.appendChild(document.createTextNode(','));
-        const lng = latLonContainer.appendChild(document.createElement('span'));
-        const updateLatLon = (ev) => {
-            let currentCenter = ol.proj.toLonLat(openLayersMap.get('view').getCenter());
-            lat.textContent = currentCenter[1].toFixed(4);
-            lng.textContent = currentCenter[0].toFixed(4);
-        };
-        openLayersMap.on('moveend', updateLatLon);
-        updateLatLon();
-        return latLonContainer;
-    })()});
+    const latLonContainer = document.createElement('div');
+    latLonContainer.classList.add('lat-lng');
+    latLonContainer.classList.add('openlayers');
+    latLonContainer.classList.add('custom-control');
+    latLonContainer.textContent = 'Centre: ';
+    const lat = latLonContainer.appendChild(document.createElement('span'));
+    latLonContainer.appendChild(document.createTextNode(','));
+    const lng = latLonContainer.appendChild(document.createElement('span'));
+    const updateLatLon = (ev) => {
+        let currentCenter = ol.proj.toLonLat(openLayersMap.get('view').getCenter());
+        lat.textContent = currentCenter[1].toFixed(4);
+        lng.textContent = currentCenter[0].toFixed(4);
+    };
+    openLayersMap.on('moveend', updateLatLon);
+    updateLatLon();
+    return latLonContainer;
+})()});
 openLayersMap.addControl(openLayersLatLngControl);
     </script>
 </section>

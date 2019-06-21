@@ -33,6 +33,10 @@
             border: 1px solid #ccc;
             padding: 0.1rem 0.5rem;
         }
+
+        .unsupported {
+            background-color: #ffff88;
+        }
     </style>
 </head>
 <body>
@@ -43,12 +47,13 @@
 </h1>
 <section>
     <h2>Leaflet.js with OpenStreetMap tiles</h2>
+    <p class="unsupported">Leaflet.js does not support any bearing other than North.</p>
     <div id="leaflet-osm-use-case-change-bearing-map" style="width: 600px; height: 450px;"></div>
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
             integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
             crossorigin=""></script>
     <script class="example">
-let leafletMap = L.map('leaflet-osm-use-case-change-bearing-map').setView([46.233226, 6.055737], 15);
+const leafletMap = L.map('leaflet-osm-use-case-change-bearing-map').setView([46.233226, 6.055737], 3);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     minZoom: 0,
     maxZoom: 20,
@@ -64,7 +69,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 let openLayersMap = new ol.Map({
     view: new ol.View({
         center: ol.proj.fromLonLat([6.055737, 46.233226]),
-        zoom: 15
+        zoom: 3
     }),
     layers: [
         new ol.layer.Tile({
@@ -73,6 +78,7 @@ let openLayersMap = new ol.Map({
     ],
     target: 'ol-osm-use-case-change-bearing-map'
 });
+openLayersMap.getView().setRotation(-45 * (Math.PI / 180));
     </script>
 </section>
 <section>
@@ -81,12 +87,13 @@ let openLayersMap = new ol.Map({
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
     <script class="example">
         mapboxgl.accessToken = 'pk.eyJ1Ijoibmlja2ZpdHoiLCJhIjoiY2p3d2g2cnZkMGk5eTQ4cnoxNzk3NmdkdCJ9.KiZI4VGB2rzLdqkCoGa7pw';
-        let map = new mapboxgl.Map({
+        let mapboxglMap = new mapboxgl.Map({
             container: 'mapboxgl-use-case-change-bearing-map',
             style: 'mapbox://styles/mapbox/streets-v9',
             center: [6.055737, 46.233226],
-            zoom: 15
+            zoom: 3
         });
+        mapboxglMap.setBearing(45);
     </script>
 </section>
 </body>

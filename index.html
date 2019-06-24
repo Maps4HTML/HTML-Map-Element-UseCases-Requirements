@@ -1108,7 +1108,7 @@ The GL JS framework generates map viewer widgets from client-side JavaScript cal
 using WebGL for the actual rendering.
 Alternatively, the Mapbox <a href="https://docs.mapbox.com/api/maps/#maps">Maps API</a>
 returns complete HTML slippy maps based on URL configuration,
-and so can be used as an iframe source.
+and so can be used as an iframe source. These maps can be configured through <a href="https://www.mapbox.com/mapbox-studio/">Mapbox Studio</a>, a graphical interface for building and styling maps. Each custom map is then assigned an ID, which can be passed into to the slippy map URL in order to fetch the map.
 </p>
 <p>
 An API key is required, with cost based on usage.
@@ -1440,7 +1440,7 @@ must be combined with an separate map provider (e.g., OpenStreetMap).
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
-<dt>…</dt>
+<dt>mapbox-embed</dt>
 <dd><a>full support</a>:
 this is the basic function for these widgets: give it a location, it will draw the map.
 </dd>
@@ -1496,6 +1496,7 @@ they would need to rely on a third-party service for the map data.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
+<dt>mapbox-embed</dt>
 <dd>
   <a>full support</a>
 </dd>
@@ -1580,8 +1581,9 @@ is a separate capability, discussed in <a href="#capability-reproject-maps"></a>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
 <dd>
-  <a>no support</a>
+  <a>no support</a>: these embeds only support the Web Mercator projection.
 </dd>
 </dl>
 
@@ -1638,7 +1640,8 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
-<dd><a>full support</a>:
+<dt>mapbox-embed</dt>
+<dd><a>full support</a>: allows multiple user-specified pinpoint locations to be placed
 </dd>
 <dt>openstreetmap-embed</dt>
 <dd><a>supported, with limitations</a>: only allows you to show a single marker on embedded maps
@@ -1713,6 +1716,7 @@ and the target of user events.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
+<dt>mapbox-embed</dt>
 <dd><a>full support</a>:
   <!-- details about what is/isn't supported -->
 </dd>
@@ -1782,6 +1786,7 @@ it needs to be able to link to other web resources.
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 
@@ -1851,11 +1856,12 @@ are the iframe embeds.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
+<dt>google-maps-embed</dt>
 <dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
 <dd><a>supported, with limitations</a>:
   these tools offer options to serve a static image without JavaScript. However, this is not the default fallback behavior for the embeds when JavaScript is turned off, adding a fallback image must be implemented as a custom feature.
 </dd>
-<dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
 <dd><a>no support</a>:</dd>
 </dl>
@@ -1930,7 +1936,8 @@ and converted into continuous zoom adjustments
 <dt>openstreetmap-embed</dt>
 <dd><a>full support</a>:
 (as described above)
-</dd>
+<dt>mapbox-embed</dt>
+<dd><a>supported, with limitations</a>: all of the above is supported, but the buttons do not have any focus styles</dd>
 </dl>
 
 <h5>Supported use cases</h5>
@@ -2014,8 +2021,9 @@ Many of the maps lack a visible indication of keyboard focus for panning, and do
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>openstreetmap-embed</dt>
+<dt>mapbox-embed<dt>
 <dd><a>supported, with limitations</a>:
-Mouse, touch (?), and keyboard panning; no keyboard focus indication
+Mouse, touch, and keyboard panning are supported; no keyboard focus indication
 </dd>
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -2122,6 +2130,7 @@ Thought is needed on how to make panning accessible to all users.
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2134,6 +2143,16 @@ Zooming a map widget is different from
 magnifying a regular image, or adjusting the overall browser zoom level;
 the layout is magnified, but annotations such as text size and stroke width do not.
 </p>
+<h5>Existing implementations</h5>
+<dl data-ucr-role="implementation-notes">
+<dt>google-maps-embed</dt>
+<dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
+<dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
+<dd><a>full support</a>: all of these tools scale their labels to match the zoom level, but labels of smaller map features can be very small and may not reflect a users text size preference
+</dd>
+</dl>
 </section>
 
 <section id="capability-zoom-swap" data-ucr-role="capability">
@@ -2162,6 +2181,7 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2190,6 +2210,8 @@ these "attribution control" values can be set in configuration.
 <dt>bing-maps-embed</dt>
 <dd><a>full support</a>: automatically generated and attributed to their respective providers
 </dd>
+<dt>mapbox-embeds</dt>
+<dd><a>supported, with limitations</a>: attribution is automatically generated, but it is hidden under a non-accessible tooltip</dd>
 </dl>
 </section>
 
@@ -2209,6 +2231,7 @@ these "attribution control" values can be set in configuration.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
+<dt>mapbox-embed</dt>
 <dd>
   <a>full support</a>:
 </dd>
@@ -2280,6 +2303,7 @@ which then control the map viewer using a client-side API.
 <dt>google-maps-embed</dt>
 <dt>openstreetmaps-embed</dt>
 <dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
 <dd>
   <a>no support</a>:
   <!-- details about what is/isn't supported -->
@@ -2345,6 +2369,10 @@ whether or not the web browser includes on-screen controls by default.
 <dt>google-maps-api</dt>
 <dd>
   <a>full support</a>:
+</dd>
+<dt>mapbox-embed</dt>
+<dd>
+  <a>partial support</a>: you can toggle controls for the HTML slippy map, but not maps created in the more robust Mapbox Studio editor.
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmaps-embed</dt>
@@ -2413,7 +2441,7 @@ from a map tile set.
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
-<dt>…</dt>
+<dt>mapbox-embed</dt>
 <dd><a>full support</a>:
 setting a location by latitude and longitude is straightforward.
 </dd>
@@ -2478,6 +2506,7 @@ the web mapping service needs access to a Gazeteer search and corresponding data
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
+<dt>mapbox-embed</dt>
 <dd><a>full support</a>:
 </dd>
 <dt>bing-maps-embed</dt>
@@ -2511,6 +2540,7 @@ letting user interaction rotate it to show parts of interest.
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
 <dd><a>no support</a>:
 </dd>
 </dl>
@@ -2570,6 +2600,7 @@ so they can calculate directions to it.
   You are able to generate a link to the map that can be shared via a variety of methods, but there is no way way to easily this information to another application.
 </dd>
 <dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 </section>

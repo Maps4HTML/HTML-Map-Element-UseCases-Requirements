@@ -4,21 +4,15 @@ node_js:
 branches:
   only:
     - master
-env:
-  global:
-    - NPM_Prefix=$(npm config get prefix)
 cache:
   # cache global npm modules
   directories:
-    - $NPM_Prefix
-install:
-  # update respec, if required
-  - npm update -g respec
+    - $HOME/.npm-cache
 script:
   # run the respec2html utility
   # if successful, replace the source index.html with the generated one & clean up
   - echo "Building the ReSpec page"
-  - $NPM_Prefix/respec2html -s index.html -o build-index.html && echo "Build OK. Cleaning up" && rm index.html && mv build-index.html index.html
+  - npx -p respec respec2html -s index.html -o build-index.html && echo "Build OK. Cleaning up" && rm index.html && mv build-index.html index.html
   # Note: We may need to add a GitHub token to the ReSpec config to avoid rate limiting
 deploy:
   # publish as a commit to the gh-pages branch

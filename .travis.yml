@@ -15,7 +15,7 @@ script:
   # run the respec2html utility
   # if successful, replace the source index.html with the generated one & clean up
   - echo "Building the ReSpec page"
-  - respec2html -s index.html -o build-index.html && echo "Build OK. Cleaning up" && rm index.html && mv build-index.html index.html
+  - npx respec2html -s index.html -o build-index.html && echo "Build OK. Cleaning up" && rm index.html && mv build-index.html index.html
   # Note: We may need to add a GitHub token to the ReSpec config to avoid rate limiting
 deploy:
   # publish as a commit to the gh-pages branch

@@ -6,7 +6,7 @@ branches:
     - master
 env:
   global:
-    - NPM_Prefix = $(npm config get prefix)
+    - NPM_Prefix=$(npm config get prefix)
 cache:
   # cache global npm modules
   directories:

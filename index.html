@@ -2679,8 +2679,25 @@ as implemented by the reference JavaScript tools.
 <section id="use-case-add-custom-control-map" data-ucr-role="use-case">
 <h4>Add a custom control to a map</h4>
 <p>
-Description to follow.
+"Controls" are user interface components that appear
+overlaid on a map, usually in such a way that no other
+content within the map will overlie them.
+They may provide user feedback about the current state of
+the map, provide one or more affordances for manipulating
+the state of the map, or some combination of the two.
 </p>
+<p>
+A web developer may wish to add one or more custom controls
+to a map so as to provide capabilities that are not
+available within the standard set of controls provided by
+the mapping API, or to make up for perceived deficiencies of
+the provided controls.
+For example, a default zoom control may be inaccessible to
+keyboard users, in which case it could be replaced with an
+accessible version that utilised a public API to effect
+zooming in response to the keyboard.
+</p>
+
 <p>
 See <a href="examples/client-apis/use-case-add-custom-control-map.html" target="examples">examples of adding a custom control to a map</a>
 as implemented by the reference JavaScript tools.
@@ -2694,9 +2711,25 @@ as implemented by the reference JavaScript tools.
 <section id="use-case-provide-feedback-user-they-manipulate-map" data-ucr-role="use-case">
 <h4>Provide feedback to a user as they manipulate the map</h4>
 <p>
-Brief examples to be expanded: highlighting items in a list that are within the current bounds of the map;
-displaying the position of the map centre;
-indicating that a selected point of interest is outside the current map view in a particular direction.
+A web developer may wish to respond to changes such as
+position and zoom level of a map as it is manipulated by the
+user, in order to update user interface components
+containing information related to the map.
+</p>
+<p>
+For example, an application displaying a list of places of
+interest in a city might update the list to highlight those
+places that are within the current extent of the map as the
+user pans and zooms, or filter the list to only show those
+items.
+On a device where the user's current location is known, the
+distance to the currently-displayed centre of the map, along
+with an indication of the user's bearing relative to that
+point, could be shown.
+If an application is showing a list of items whose
+associated locations are represented on the map by markers,
+selecting a marker could highlight the corresponding list
+item.
 </p>
 <p>
 See <a href="examples/client-apis/use-case-provide-feedback-user-they-manipulate-map.html" target="examples">
@@ -2776,6 +2809,8 @@ as implemented by the reference JavaScript tools.
 <p>
 A developer may want the capability of changing the bearing of a map - that is,
 displaying the map with a direction other than North at the "top".
+</p>
+<p>
 Examples include responding to the orientation of a device, traversing a route,
 and allowing the user to orient themselves with respect to the map by
 manipulating it with respect to local landmarks.

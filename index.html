@@ -1432,20 +1432,17 @@ it should be accessible by users without the author adding extra features.
 </section>
 </section>
 
-<section id="map-viewers-capabilities">
-<h3>Map Viewer Capabilities</h3>
-
-<section id="capabilities-image-map-rendering">
-<h4>Image map rendering</h4>
+<section id="map-viewers-capabilities-rendering">
+<h3>Capabilities for rendering base layers</h3>
 
 <section id="capability-default-map" data-ucr-role="capability">
-<h5>Generate a default map for a given area</h5>
+<h4>Generate a default map for a given area</h4>
 <p>
 Often, the website author does not want to specify the map data source or other details about the map;
 they just want a generic wayfinding map of the area.
 </p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 The embeds and commerical APIs all provide default street maps
 without the author needing to specify the map source.
@@ -1468,22 +1465,22 @@ must be combined with a separate map provider.
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 No non-map uses for generating a default street map.
 But, there may be interest in displaying default maps as static images
 in addition to using them within map widgets.
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 …
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <p>
 This functionality is a highly valuable <a data-ucr-role="conclusion">enhancement</a>
 for native web maps,
@@ -1503,12 +1500,12 @@ they would need to rely on a third-party service for the map data.
 </section>
 
 <section id="capability-single-custom-image" data-ucr-role="capability">
-<h6>Display a map using a single custom image as a map layer</h6>
+<h4>Display a map using a single custom image as a map layer</h4>
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
 </p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 </p>
 <dl data-ucr-role="implementation-notes">
@@ -1527,21 +1524,21 @@ they would need to rely on a third-party service for the map data.
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <p>
 </p>
 <ul data-ucr-role="conclusion-notes">
@@ -1554,12 +1551,12 @@ they would need to rely on a third-party service for the map data.
 </section>
 
 <section id="capability-custom-map-tiles" data-ucr-role="capability">
-<h5>Display a map using tile data from an author-specified web map service</h5>
+<h4>Display a map using tile data from an author-specified web map service</h4>
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
 </p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 </p>
 <dl data-ucr-role="implementation-notes">
@@ -1576,21 +1573,21 @@ they would need to rely on a third-party service for the map data.
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <p>
 </p>
 <ul data-ucr-role="conclusion-notes">
@@ -1604,7 +1601,7 @@ they would need to rely on a third-party service for the map data.
 </section>
 
 <section id="capability-no-js" data-ucr-role="capability">
-<h5>Display a basic map without JavaScript</h5>
+<h4>Display a basic map without JavaScript</h4>
 <p>
 Users may disable JavaScript for security reasons,
 or as part of a strategy to reduce data consumption.
@@ -1620,7 +1617,7 @@ A natively-supported, declarative web map viewer would by definition have this c
 </p>
 <p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 Our reference implementations are primarily JavaScript tools.
 Many do not — by default — provide any features when JS is disabled or fails,
@@ -1644,22 +1641,22 @@ are the iframe embeds.
 <dd><a>no support</a>:</dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 To the extent that any capabilites of a map viewer are shared with other content,
 having that capability work without JavaScript is a shared benefit.
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -1682,17 +1679,17 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 
 </section>
 
-<section id="capabilities-vector-map-features">
-<h4>Vector map features</h4>
+<section id="map-viewers-capabilities-vectors">
+<h3>Capabilities for vector features and overlays</h3>
 
 <section id="capability-marker-points" data-ucr-role="capability">
-<h5>Show pinpoint locations or custom markers on the map</h5>
+<h4>Show pinpoint locations or custom markers on the map</h4>
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
 </p>
 <p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 <!-- Summarize how this capability is implemented in the reference tools,
     including common patterns, notable differences, and any limitations.
@@ -1711,21 +1708,21 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <dd><a>no support</a>: allows for display of a general area but no map markers</dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -1747,7 +1744,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-vector-features" data-ucr-role="capability">
-<h5>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</h5>
+<h4>Draw polygons or polylines as stylable, interactive vector graphics (separate fro4 the image tiles)</h5>
 <p>
 Polylines are used in maps to draw roads, rivers, directions between places,
 or the observed path of a moving object.
@@ -1769,7 +1766,7 @@ and the target of user events.
 </p>
 <p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 <!-- Summarize how this capability is implemented in the reference tools,
     including common patterns, notable differences, and any limitations.
@@ -1788,21 +1785,21 @@ and the target of user events.
 <dd><a>no support</a>:</dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
      Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -1824,7 +1821,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-hyperlinks" data-ucr-role="capability">
-<h5>Support hyperlinks from markers or vector features</h5>
+<h4>Support hyperlinks from markers or vector features</h4>
 <p>
 For a map to be truly a part of the web,
 it needs to be able to link to other web resources.
@@ -1833,7 +1830,7 @@ it needs to be able to link to other web resources.
 </p>
 <p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 <!-- Summarize how this capability is implemented in the reference tools,
     including common patterns, notable differences, and any limitations.
@@ -1852,21 +1849,21 @@ it needs to be able to link to other web resources.
 <dd><a>no support</a>:</dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -1888,7 +1885,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-attribution" data-ucr-role="capability">
-<h5>Display map data attribution and links</h5>
+<h4>Display map data attribution and links</h4>
 <p>
 Map data is subject to copyright,
 and use of the maps on the web usually requires at least attribution,
@@ -1903,7 +1900,7 @@ the links and copyright is automatically generated.
 For map frameworks that allow the developer to specify the map data source,
 these "attribution control" values can be set in configuration.
 </p>
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -1917,11 +1914,11 @@ these "attribution control" values can be set in configuration.
 
 </section>
 
-<section id="capabilities-interpreting-locations">
-<h4>Interpreting locations & map positions</h4>
+<section id="map-viewers-capabilities-locations">
+<h3>Capabilities for interpreting locations & map positions</h3>
 
 <section id="capability-location-latlong" data-ucr-role="capability">
-<h5>Select map view from latitude and longitude point</h5>
+<h4>Select map view from latitude and longitude point</h4>
 <p>
 Latitude and longitude defines a point on the Earth's surface,
 without requiring any further information.
@@ -1932,7 +1929,7 @@ In a dynamic web app, latitude and longitude might be generated
 from geolocation on the user's device.
 </p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 All the reference tools allow the website author
 to display a specific location, defined by latitude and longitude,
@@ -1957,15 +1954,15 @@ but the API provides the conversion function.
 <dd><a>partial support</a>: does not support markers for a single location, but it is possible to display a map centered around a particular latitude and longitude point with no marker</dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 …
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 The <a data-cite="geolocation-API" data-no-xref="">Geolocation API</a>
 and <a data-cite="geolocation-sensor" data-no-xref="">Geolocation Sensor API</a>
@@ -1977,7 +1974,7 @@ and a web map standard should use the same definition.
 [[geolocation-API]][[geolocation-sensor]][[WGS84]]
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <p>
 This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
 </p>
@@ -1992,7 +1989,7 @@ This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern
 </section>
 
 <section id="capability-location-address" data-ucr-role="capability">
-<h5>Select map view from street address or place name</h5>
+<h4>Select map view from street address or place name</h4>
 <p>
 For many mapping use cases,
 a website author won't have exact latitude and longitude values pre-calculated.
@@ -2001,7 +1998,7 @@ in a human-readable, localized format.
 To convert these addresses or names into a point on a web map,
 the web mapping service needs access to a Gazeteer search and corresponding databases.
 </p>
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 </p>
 <dl data-ucr-role="implementation-notes">
@@ -2017,7 +2014,7 @@ the web mapping service needs access to a Gazeteer search and corresponding data
 </section>
 
 <section id="capability-tile-coordinate-systems" data-ucr-role="capability">
-<h5>Display map tiles defined in various common coordinate systems</h5>
+<h4>Display map tiles defined in various common coordinate systems</h4>
 <p>
 Most tiled image maps on the web use the Web Mercator
 system of dividing map data into image tiles.
@@ -2047,7 +2044,7 @@ is a separate capability, discussed in <a href="#capability-reproject-maps"></a>
 </p>
 <p class="issue discussion" data-number="14">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 <!-- Summarize how this capability is implemented in the reference tools,
     including common patterns, notable differences, and any limitations.
@@ -2068,21 +2065,21 @@ is a separate capability, discussed in <a href="#capability-reproject-maps"></a>
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -2105,7 +2102,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-reproject-maps" data-ucr-role="capability">
-<h5>Reproject map tile data into a new projection or globe view</h5>
+<h4>Reproject map tile data into a new projection or globe view</h4>
 <p>
 Map image tiles are usually defined in Web Mercator
 or other grid-based tile systems.
@@ -2119,7 +2116,7 @@ letting user interaction rotate it to show parts of interest.
 </p>
 <p class="issue discussion" data-number="3">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 <!-- Summarize how this capability is implemented in the reference tools,
     including common patterns, notable differences, and any limitations.
@@ -2135,21 +2132,21 @@ letting user interaction rotate it to show parts of interest.
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -2172,14 +2169,14 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-export-location" data-ucr-role="capability">
-<h5>Save the location or export to other application</h5>
+<h4>Save the location or export to other application</h4>
 <p>
 For the user, it is often useful to bookmark or save a location from a map,
 separate from the website which included it.
 The user may want to export the location to a GPS or native mapping application
 so they can calculate directions to it.
 </p>
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p></p>
 <dl data-ucr-role="implementation-notes">
 <dt>openstreetmap-embed</dt>
@@ -2197,11 +2194,11 @@ so they can calculate directions to it.
 
 </section>
 
-<section id="capabilities-user-navigation">
-<h4>User navigation (pan & zoom)</h4>
+<section id="map-viewers-capabilities-user-navigation">
+<h3>Capabilities for user navigation (pan & zoom)</h3>
 
 <section id="capability-zoom" data-ucr-role="capability">
-<h5>Zoom the map independently from the rest of the page</h5>
+<h4>Zoom the map independently from the rest of the page</h4>
 <p>
 In addition to panning the view,
 it is standard to allow the user to adjust the map scale:
@@ -2209,7 +2206,7 @@ zooming in to increase magnifaction (show finer detail),
 zooming out to decrease magnification (show a wider area).
 </p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>The following UI is standard across the reviewed map widgets:
 </p>
 <ul>
@@ -2238,10 +2235,10 @@ and converted into continuous zoom adjustments
 <dd><a>supported, with limitations</a>: all of the above is supported, but the buttons do not have any focus styles</dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 Localized zooming is used on the web for
 charts and diagrams,
@@ -2250,7 +2247,7 @@ embedded documents (e.g., a PDF viewer),
 and sometimes data tables.
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 Zooms are often implemented using <a data-cite="css-transforms-1#">transforms</a>,
 which defines the scale as a multiplicative factor compared to the normal size
@@ -2270,7 +2267,7 @@ to display the target rectangle in the available space.
 [[SVG2]][[media-frags]]
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -2292,7 +2289,7 @@ and should be coordinated with panning.
 </section>
 
 <section id="capability-pan" data-ucr-role="capability">
-<h5>Pan the map display</h5>
+<h4>Pan the map display</h4>
 <p>
 A key part of the interactivity of a web map widget is that the user can change the region displayed.
 To pan the map is to shifting the view horizontally or vertically,
@@ -2304,7 +2301,7 @@ For this discussion, we've divided them into separate features
 so that the costs, benefits, and non-mapping use cases can be assessed separately.
 </p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>The following UI is standard among the reviewed map viewers:</p>
 <ul>
 <li>Drag the map view by clicking and holding a mouse.</li>
@@ -2333,10 +2330,10 @@ to indicate how keyboard panning should work.
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 The standard panning interactions are also common on the web
 for other JS-enhanced zoom and pan graphics
@@ -2347,7 +2344,7 @@ Creating a native way to trigger panning within a web layout
 could help ensure consistent, accessible user experiences for panning.
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 From a rendering perspective,
 panning a map is very similar to scrolling a section of a CSS layout.
@@ -2383,7 +2380,7 @@ which can also handle zoom.
 [[css-transforms-1]][[SVG2]]
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <p>
 Panning the map is universally supported in JS web maps,
 and is therefore a <a data-ucr-role="conclusion">requirement</a> for native web maps.
@@ -2406,11 +2403,11 @@ Thought is needed on how to make panning accessible to all users.
 </section>
 
 <section id="capability-lazyload" data-ucr-role="capability">
-<h5>Load additional map tiles when they pan into view</h5>
+<h4>Load additional map tiles when they pan into view</h4>
 <p>
 
 </p>
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -2422,11 +2419,11 @@ Thought is needed on how to make panning accessible to all users.
 </section>
 
 <section id="capability-wrap-pan" data-ucr-role="capability">
-<h5>Wrap/duplicate data tiles when panning around the globe</h5>
+<h4>Wrap/duplicate data tiles when panning around the globe</h4>
 <p>
 
 </p>
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -2439,13 +2436,13 @@ Thought is needed on how to make panning accessible to all users.
 </section>
 
 <section id="capability-scale-adjust" data-ucr-role="capability">
-<h5>Maintain reasonable scale of labels and lines when zooming</h5>
+<h4>Maintain reasonable scale of labels and lines when zooming</h4>
 <p>
 Zooming a map widget is different from
 magnifying a regular image, or adjusting the overall browser zoom level;
 the layout is magnified, but annotations such as text size and stroke width do not.
 </p>
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -2458,11 +2455,11 @@ the layout is magnified, but annotations such as text size and stroke width do n
 </section>
 
 <section id="capability-zoom-swap" data-ucr-role="capability">
-<h5>Dynamically load different resolution map tile on zoom</h5>
+<h4>Dynamically load different resolution map tile on zoom</h4>
 <p>
 
 </p>
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -2474,11 +2471,11 @@ the layout is magnified, but annotations such as text size and stroke width do n
 </section>
 
 <section id="capability-zoom-swap-vectors" data-ucr-role="capability">
-<h5>Hide or show (and maybe dynamically load) vector features and labels on zoom</h5>
+<h4>Hide or show (and maybe dynamically load) vector features and labels on zoom</h4>
 <p>
 
 </p>
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -2491,17 +2488,17 @@ the layout is magnified, but annotations such as text size and stroke width do n
 
 </section>
 
-<section id="capabilities-custom-styling">
-<h4>Custom Styling</h4>
+<section id="map-viewers-capabilities-custom-styling">
+<h3>Capabilities for custom styling</h3>
 
 <section id="capability-styled-features" data-ucr-role="capability">
-<h5>Apply custom styling to map markers and vector features</h5>
+<h4>Apply custom styling to map markers and vector features</h4>
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
 </p>
 <p class="issue discussion" data-number="15">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 <!-- Summarize how this capability is implemented in the reference tools,
     including common patterns, notable differences, and any limitations.
@@ -2522,21 +2519,21 @@ the layout is magnified, but annotations such as text size and stroke width do n
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -2559,7 +2556,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-styled-controls" data-ucr-role="capability">
-<h5>Apply custom styling to map controls</h5>
+<h4>Apply custom styling to map controls</h4>
 <p>
 <!-- Description of how it should work & why it is useful to users/authors of maps. -->
 </p>
@@ -2570,7 +2567,7 @@ which then control the map viewer using a client-side API.
 </p>
 <p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 <!-- Summarize how this capability is implemented in the reference tools,
     including common patterns, notable differences, and any limitations.
@@ -2589,21 +2586,21 @@ which then control the map viewer using a client-side API.
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -2626,7 +2623,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-custom-controls" data-ucr-role="capability">
-<h5>Toggle whether default controls are displayed</h5>
+<h4>Toggle whether default controls are displayed</h4>
 <p>
 Custom styling isn't always enough;
 sometimes an author wants to completely replace the default control buttons.
@@ -2637,7 +2634,7 @@ whether or not the web browser includes on-screen controls by default.
 </p>
 <p class="issue discussion" data-number="16">Discuss this section on GitHub.</p>
 
-<h6>Existing implementations</h6>
+<h5>Existing implementations</h5>
 <p>
 <!-- Summarize how this capability is implemented in the reference tools,
     including common patterns, notable differences, and any limitations.
@@ -2661,21 +2658,21 @@ whether or not the web browser includes on-screen controls by default.
 </dd>
 </dl>
 
-<h6>Supported use cases</h6>
+<h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h6>Uses beyond mapping</h6>
+<h5>Uses beyond mapping</h5>
 <p>
 <!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
-<h6>Related web specifications</h6>
+<h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
       Include links with proper ReSpec references. -->
 </p>
 
-<h6>Conclusion</h6>
+<h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
       Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
       whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
@@ -2694,8 +2691,6 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
   <!-- short summary of how the tag applies -->
 </li>
 </ul>
-
-</section>
 
 </section>
 

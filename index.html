@@ -1432,8 +1432,8 @@ it should be accessible by users without the author adding extra features.
 </section>
 </section>
 
-<section id="map-viewers-capabilities">
-<h3>Map Viewer Capabilities</h3>
+<section id="map-viewers-capabilities-rendering">
+<h3>Capabilities for rendering base layers</h3>
 
 <section id="capability-default-map" data-ucr-role="capability">
 <h4>Generate a default map for a given area</h4>
@@ -1491,12 +1491,63 @@ they would need to rely on a third-party service for the map data.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
 </ul>
 
+</section>
+
+<section id="capability-single-custom-image" data-ucr-role="capability">
+<h4>Display a map using a single custom image as a map layer</h4>
+<p>
+<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+</p>
+
+<h5>Existing implementations</h5>
+<p>
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Nic: I'm unsure if these belong here as I haven't looked specifically for this capability yet. Will update soon.
+<dt>google-maps-api</dt>
+<dt>mapbox-embed</dt>
+<dd>
+  <a>full support</a>
+</dd>
+-->
+<dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
+<dt>bing-maps-embed</dt>
+<dd>
+  <a>no support</a>
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact.
+      Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<p>
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
 </section>
 
 <section id="capability-custom-map-tiles" data-ucr-role="capability">
@@ -1533,7 +1584,7 @@ they would need to rely on a third-party service for the map data.
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+      Include links with proper ReSpec references. -->
 </p>
 
 <h5>Conclusion</h5>
@@ -1541,7 +1592,7 @@ they would need to rely on a third-party service for the map data.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
@@ -1549,56 +1600,45 @@ they would need to rely on a third-party service for the map data.
 
 </section>
 
-<section id="capability-tile-coordinate-systems" data-ucr-role="capability">
-<h4>Display map tiles defined in various common coordinate systems</h4>
+<section id="capability-no-js" data-ucr-role="capability">
+<h4>Display a basic map without JavaScript</h4>
 <p>
-Most tiled image maps on the web use the Web Mercator
-system of dividing map data into image tiles.
-As the name suggests, this is based on the Mercator map projection,
-with the addition of standard for dividing the map into tiles at different zoom levels.
+Users may disable JavaScript for security reasons,
+or as part of a strategy to reduce data consumption.
+In addition, JavaScript can fail because of network errors
+or because of a parsing or runtime error in the code.
 </p>
 <p>
-Web Mercator is not appropriate for maps of polar regions,
-where the Mercator projection distorts geography.
-Other tileset coordinate systems have been defined specifically for polar maps.
-In addition, many regions have well-established local map grid coordinate systems,
-and being able to use the local grid means access to established map data sources.
+It is reasonable that web maps have reduced functionality without JavaScript.
+But ideally, a basic map with text annotations and links should still work without it.
 </p>
 <p>
-The technological complexity of supporting different projections
-depends on how many other capabilities are supported.
-Tiling images doesn't require knowing how those images map to geographic coordinates.
-But the tile boundaries and coordinate projection are needed
-in order to draw marker points or vector features over the map.
-And information about the tileset zoom levels is required
-in order to dynamically load content on pan and zoom.
+A natively-supported, declarative web map viewer would by definition have this capability.
 </p>
-<p>
-Combining map layers with different projections,
-or otherwise converting one map projection to another view,
-is a separate capability, discussed in <a href="#capability-reproject-maps"></a>.
-</p>
-<p class="issue discussion" data-number="14">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+Our reference implementations are primarily JavaScript tools.
+Many do not — by default — provide any features when JS is disabled or fails,
+although a website author could build in fallbacks
+by including links, images, or iframes in the markup
+that are replaced when the script runs.
+</p>
+<p>
+For built-in graceful degradation, the best implementations currently
+are the iframe embeds.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
-<dd>
-  <a>supported, with limitations</a>: you are able to create custom projections that are rectilinear by passing in a bi-directional mapping between coordinate systems
-</dd>
 <dt>google-maps-embed</dt>
-<dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
-<dd>
-  <a>no support</a>: these embeds only support the Web Mercator projection.
+<dd><a>supported, with limitations</a>:
+  these tools offer options to serve a static image without JavaScript. However, this is not the default fallback behavior for the embeds when JavaScript is turned off, adding a fallback image must be implemented as a custom feature.
 </dd>
+<dt>openstreetmap-embed</dt>
+<dd><a>no support</a>:</dd>
 </dl>
 
 <h5>Supported use cases</h5>
@@ -1606,20 +1646,21 @@ is a separate capability, discussed in <a href="#capability-reproject-maps"></a>
 
 <h5>Uses beyond mapping</h5>
 <p>
-<!-- What other web content could use this specific capability? Be brief but specific. -->
+To the extent that any capabilites of a map viewer are shared with other content,
+having that capability work without JavaScript is a shared benefit.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+      Include links with proper ReSpec references. -->
 </p>
 
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
   -->
 <p>
 <!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
@@ -1629,13 +1670,17 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
 </ul>
+</section>
 
 </section>
+
+<section id="map-viewers-capabilities-vectors">
+<h3>Capabilities for vector features and overlays</h3>
 
 <section id="capability-marker-points" data-ucr-role="capability">
 <h4>Show pinpoint locations or custom markers on the map</h4>
@@ -1674,14 +1719,14 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+      Include links with proper ReSpec references. -->
 </p>
 
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
   -->
 <p>
 <!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
@@ -1691,7 +1736,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
@@ -1699,7 +1744,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-vector-features" data-ucr-role="capability">
-<h4>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</h4>
+<h4>Draw polygons or polylines as stylable, interactive vector graphics (separate fro4 the image tiles)</h5>
 <p>
 Polylines are used in maps to draw roads, rivers, directions between places,
 or the observed path of a moving object.
@@ -1815,14 +1860,14 @@ it needs to be able to link to other web resources.
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+      Include links with proper ReSpec references. -->
 </p>
 
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
   -->
 <p>
 <!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
@@ -1832,52 +1877,81 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
 </ul>
 </section>
 
-<section id="capability-no-js" data-ucr-role="capability">
-<h4>Display a basic map without JavaScript</h4>
+<section id="capability-attribution" data-ucr-role="capability">
+<h4>Display map data attribution and links</h4>
 <p>
-Users may disable JavaScript for security reasons,
-or as part of a strategy to reduce data consumption.
-In addition, JavaScript can fail because of network errors
-or because of a parsing or runtime error in the code.
+Map data is subject to copyright,
+and use of the maps on the web usually requires at least attribution,
+and maybe links to terms of use.
+Many map services also include links for end users to report errors.
 </p>
 <p>
-It is reasonable that web maps have reduced functionality without JavaScript.
-But ideally, a basic map with text annotations and links should still work without it.
+Standard practice in the reviewed web map tools
+is to display this attribution in the lower right of the map widget.
+For map viewers that provide their own map data,
+the links and copyright is automatically generated.
+For map frameworks that allow the developer to specify the map data source,
+these "attribution control" values can be set in configuration.
 </p>
+<h5>Existing implementations</h5>
+<dl data-ucr-role="implementation-notes">
+<dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
+<dt>bing-maps-embed</dt>
+<dd><a>full support</a>: automatically generated and attributed to their respective providers
+</dd>
+<dt>mapbox-embeds</dt>
+<dd><a>supported, with limitations</a>: attribution is automatically generated, but it is hidden under a non-accessible tooltip</dd>
+</dl>
+</section>
+
+</section>
+
+<section id="map-viewers-capabilities-locations">
+<h3>Capabilities for interpreting locations & map positions</h3>
+
+<section id="capability-location-latlong" data-ucr-role="capability">
+<h4>Select map view from latitude and longitude point</h4>
 <p>
-A natively-supported, declarative web map viewer would by definition have this capability.
+Latitude and longitude defines a point on the Earth's surface,
+without requiring any further information.
+For website content, latitude and longitude data
+might come from photo or video metadata (from GPS-enabled cameras),
+or it might be calculated by the author using map search services.
+In a dynamic web app, latitude and longitude might be generated
+from geolocation on the user's device.
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
-Our reference implementations are primarily JavaScript tools.
-Many do not — by default — provide any features when JS is disabled or fails,
-although a website author could build in fallbacks
-by including links, images, or iframes in the markup
-that are replaced when the script runs.
-</p>
-<p>
-For built-in graceful degradation, the best implementations currently
-are the iframe embeds.
+All the reference tools allow the website author
+to display a specific location, defined by latitude and longitude,
+from a map tile set.
 </p>
 <dl data-ucr-role="implementation-notes">
-<dt>google-maps-api</dt>
 <dt>google-maps-embed</dt>
-<dt>bing-maps-embed</dt>
-<dt>mapbox-embed</dt>
-<dd><a>supported, with limitations</a>:
-  these tools offer options to serve a static image without JavaScript. However, this is not the default fallback behavior for the embeds when JavaScript is turned off, adding a fallback image must be implemented as a custom feature.
-</dd>
+<dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
-<dd><a>no support</a>:</dd>
+<dt>leaflet-api</dt>
+<dt>mapbox-embed</dt>
+<dd><a>full support</a>:
+setting a location by latitude and longitude is straightforward.
+</dd>
+<dt>open-layers-api</dt>
+<dd><a>supported, with limitations</a>:
+A location defined with longitude and latitude
+<a href="https://openlayers.org/en/latest/doc/faq.html#why-is-my-map-centered-on-the-gulf-of-guinea-or-africa-the-ocean-null-island-">must be converted to the map tile coordinate system</a>,
+but the API provides the conversion function.
+</dd>
+<dt>bing-maps-embed</dt>
+<dd><a>partial support</a>: does not support markers for a single location, but it is possible to display a map centered around a particular latitude and longitude point with no marker</dd>
 </dl>
 
 <h5>Supported use cases</h5>
@@ -1885,21 +1959,131 @@ are the iframe embeds.
 
 <h5>Uses beyond mapping</h5>
 <p>
-To the extent that any capabilites of a map viewer are shared with other content,
-having that capability work without JavaScript is a shared benefit.
+…
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+The <a data-cite="geolocation-API" data-no-xref="">Geolocation API</a>
+and <a data-cite="geolocation-sensor" data-no-xref="">Geolocation Sensor API</a>
+expose the user's location using latitude and longitude data.
+It should be possible to set the view on a web map using data returned from these APIs.
+Both of these APIs use the [[[WGS84]]] as the technical definition
+of longitude and latitude (consistent with most modern geospatial standards),
+and a web map standard should use the same definition.
+[[geolocation-API]][[geolocation-sensor]][[WGS84]]
+</p>
+
+<h5>Conclusion</h5>
+<p>
+This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
+<section id="capability-location-address" data-ucr-role="capability">
+<h4>Select map view from street address or place name</h4>
+<p>
+For many mapping use cases,
+a website author won't have exact latitude and longitude values pre-calculated.
+They'll have street addresses or place names
+in a human-readable, localized format.
+To convert these addresses or names into a point on a web map,
+the web mapping service needs access to a Gazeteer search and corresponding databases.
+</p>
+<h5>Existing implementations</h5>
+<p>
+</p>
+<dl data-ucr-role="implementation-notes">
+<dt>google-maps-embed</dt>
+<dt>google-maps-api</dt>
+<dt>openstreetmap-embed</dt>
+<dt>mapbox-embed</dt>
+<dd><a>full support</a>:
+</dd>
+<dt>bing-maps-embed</dt>
+<dd><a>partial support</a>: does not support markers for a single location, but it is possible to display a map centered around a particular street address with no marker</dd>
+</dl>
+</section>
+
+<section id="capability-tile-coordinate-systems" data-ucr-role="capability">
+<h4>Display map tiles defined in various common coordinate systems</h4>
+<p>
+Most tiled image maps on the web use the Web Mercator
+system of dividing map data into image tiles.
+As the name suggests, this is based on the Mercator map projection,
+with the addition of standard for dividing the map into tiles at different zoom levels.
+</p>
+<p>
+Web Mercator is not appropriate for maps of polar regions,
+where the Mercator projection distorts geography.
+Other tileset coordinate systems have been defined specifically for polar maps.
+In addition, many regions have well-established local map grid coordinate systems,
+and being able to use the local grid means access to established map data sources.
+</p>
+<p>
+The technological complexity of supporting different projections
+depends on how many other capabilities are supported.
+Tiling images doesn't require knowing how those images map to geographic coordinates.
+But the tile boundaries and coordinate projection are needed
+in order to draw marker points or vector features over the map.
+And information about the tileset zoom levels is required
+in order to dynamically load content on pan and zoom.
+</p>
+<p>
+Combining map layers with different projections,
+or otherwise converting one map projection to another view,
+is a separate capability, discussed in <a href="#capability-reproject-maps"></a>.
+</p>
+<p class="issue discussion" data-number="14">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<dt>google-maps-api</dt>
+<dd>
+  <a>supported, with limitations</a>: you are able to create custom projections that are rectilinear by passing in a bi-directional mapping between coordinate systems
+</dd>
+<dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
+<dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
+<dd>
+  <a>no support</a>: these embeds only support the Web Mercator projection.
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
 </p>
 
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+      Include links with proper ReSpec references. -->
 </p>
 
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
   -->
 <p>
 <!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
@@ -1909,12 +2093,109 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
 </ul>
+
 </section>
+
+<section id="capability-reproject-maps" data-ucr-role="capability">
+<h4>Reproject map tile data into a new projection or globe view</h4>
+<p>
+Map image tiles are usually defined in Web Mercator
+or other grid-based tile systems.
+For large scale maps (of the globe or continents),
+these reveal distortions created by the underlying projections.
+Many different map projections exist to more fairly display the relative size and shapes of continents on a flat map.
+In addition, within an interactive web environment,
+it is possible to use projections which more directly represent the 3D globe
+without trying to display it all at once,
+letting user interaction rotate it to show parts of interest.
+</p>
+<p class="issue discussion" data-number="3">Discuss this section on GitHub.</p>
+
+<h5>Existing implementations</h5>
+<p>
+<!-- Summarize how this capability is implemented in the reference tools,
+    including common patterns, notable differences, and any limitations.
+    Specific details for each should be given in the list that follows.
+    Wherever possible, include the implementation in the example file for the use case -->
+</p>
+<dl data-ucr-role="implementation-notes">
+<dt>google-maps-embed</dt>
+<dt>openstreetmap-embed</dt>
+<dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
+<dd><a>no support</a>:
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+<!-- What other web content could use this specific capability? Be brief but specific. -->
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact.
+      Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
+  -->
+<p>
+<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
+<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
+<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+  <!-- short summary of how the tag applies -->
+</li>
+</ul>
+
+</section>
+
+<section id="capability-export-location" data-ucr-role="capability">
+<h4>Save the location or export to other application</h4>
+<p>
+For the user, it is often useful to bookmark or save a location from a map,
+separate from the website which included it.
+The user may want to export the location to a GPS or native mapping application
+so they can calculate directions to it.
+</p>
+<h5>Existing implementations</h5>
+<p></p>
+<dl data-ucr-role="implementation-notes">
+<dt>openstreetmap-embed</dt>
+<dd><a>full support</a>:
+</dd>
+<dt>google-maps-embed</dt>
+<dd><a>supported, with limitations</a>:
+  You are able to generate a link to the map that can be shared via a variety of methods, but there is no way way to easily this information to another application.
+</dd>
+<dt>bing-maps-embed</dt>
+<dt>mapbox-embed</dt>
+<dd><a>no support</a>:</dd>
+</dl>
+</section>
+
+</section>
+
+<section id="map-viewers-capabilities-user-navigation">
+<h3>Capabilities for user navigation (pan & zoom)</h3>
 
 <section id="capability-zoom" data-ucr-role="capability">
 <h4>Zoom the map independently from the rest of the page</h4>
@@ -1940,10 +2221,10 @@ and converted into continuous zoom adjustments
 </ul>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-     Give details about what is/isn't supported in the dd element,
-     starting with a link to one of the implementation levels.
-     List full implementations first.
-     Group implementations (multiple dt for the same dd) when they have the same support.
+      Give details about what is/isn't supported in the dd element,
+      starting with a link to one of the implementation levels.
+      List full implementations first.
+      Group implementations (multiple dt for the same dd) when they have the same support.
   -->
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -1988,9 +2269,9 @@ to display the target rectangle in the available space.
 
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
   -->
 <p>
 This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps,
@@ -2000,7 +2281,7 @@ and should be coordinated with panning.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies --><i>To Do</i>
 </li>
@@ -2031,18 +2312,21 @@ so that the costs, benefits, and non-mapping use cases can be assessed separatel
 <li>Pan the map view with arrow keys.</li>
 </ul>
 <p>
-Many of the maps lack a visible indication of keyboard focus for panning, and do not provide any other affordances to indicate how keyboard panning should work.
+Many of the maps lack a visible indication of keyboard focus for panning, and do not provide any other affordances
+to indicate how keyboard panning should work.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>openstreetmap-embed</dt>
-<dt>mapbox-embed<dt>
+<dt>mapbox-embed
+<dt>
 <dd><a>supported, with limitations</a>:
-Mouse, touch, and keyboard panning are supported; no keyboard focus indication
+  Mouse, touch, and keyboard panning are supported; no keyboard focus indication
 </dd>
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dd><a>partial support</a>:
-Mouse and touch panning only. Keyboard panning is possible on the google maps web application. Keyboard panning is activated when a specific region of the map is focused.
+  Mouse and touch panning only. Keyboard panning is possible on the google maps web application. Keyboard panning is
+  activated when a specific region of the map is focused.
 </dd>
 </dl>
 
@@ -2068,18 +2352,19 @@ Important differences:
 </p>
 <ul>
 <li>Although 2D scrolling is supported,
-the interaction usually emphasizes a primary reading axis.
-Panning is usually 2D, and may be conceptually diagonal as often as horizontal or vertical.
+  the interaction usually emphasizes a primary reading axis.
+  Panning is usually 2D, and may be conceptually diagonal as often as horizontal or vertical.
 </li>
 <li>The initial scroller view is usually at the start of the content (and “start” has meaning);
-an initially panning view is often in the middle, with panning in all directions possible.
+  an initially panning view is often in the middle, with panning in all directions possible.
 </li>
 <li>Scrollable content is often visually indicated by scrollbars
-(although it is now common to hide scrollbars until use).
+  (although it is now common to hide scrollbars until use).
 </li>
 <li>The user interactions are different for some input methods:
-mouse panning uses click and drag instead of mouse wheel for (primary-direction) scroll,
-keyboard panning only uses the arrows, not the space bar and page up/down keys (which trigger scroll in the primary axis).
+  mouse panning uses click and drag instead of mouse wheel for (primary-direction) scroll,
+  keyboard panning only uses the arrows, not the space bar and page up/down keys (which trigger scroll in the
+  primary axis).
 </li>
 </ul>
 <p>
@@ -2201,33 +2486,10 @@ the layout is magnified, but annotations such as text size and stroke width do n
 </dl>
 </section>
 
-<section id="capability-attribution" data-ucr-role="capability">
-<h4>Display map data attribution and links</h4>
-<p>
-Map data is subject to copyright,
-and use of the maps on the web usually requires at least attribution,
-and maybe links to terms of use.
-Many map services also include links for end users to report errors.
-</p>
-<p>
-Standard practice in the reviewed web map tools
-is to display this attribution in the lower right of the map widget.
-For map viewers that provide their own map data,
-the links and copyright is automatically generated.
-For map frameworks that allow the developer to specify the map data source,
-these "attribution control" values can be set in configuration.
-</p>
-<h5>Existing implementations</h5>
-<dl data-ucr-role="implementation-notes">
-<dt>google-maps-embed</dt>
-<dt>openstreetmap-embed</dt>
-<dt>bing-maps-embed</dt>
-<dd><a>full support</a>: automatically generated and attributed to their respective providers
-</dd>
-<dt>mapbox-embeds</dt>
-<dd><a>supported, with limitations</a>: attribution is automatically generated, but it is hidden under a non-accessible tooltip</dd>
-</dl>
 </section>
+
+<section id="map-viewers-capabilities-custom-styling">
+<h3>Capabilities for custom styling</h3>
 
 <section id="capability-styled-features" data-ucr-role="capability">
 <h4>Apply custom styling to map markers and vector features</h4>
@@ -2268,14 +2530,14 @@ these "attribution control" values can be set in configuration.
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+      Include links with proper ReSpec references. -->
 </p>
 
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
   -->
 <p>
 <!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
@@ -2285,7 +2547,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
@@ -2335,14 +2597,14 @@ which then control the map viewer using a client-side API.
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+      Include links with proper ReSpec references. -->
 </p>
 
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
   -->
 <p>
 <!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
@@ -2352,7 +2614,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
@@ -2407,14 +2669,14 @@ whether or not the web browser includes on-screen controls by default.
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+      Include links with proper ReSpec references. -->
 </p>
 
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
+      Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+      whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+      See examples.
   -->
 <p>
 <!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
@@ -2424,7 +2686,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
 <li><a data-ucr-role="tag" href=""></a>
   <!-- short summary of how the tag applies -->
 </li>
@@ -2432,192 +2694,6 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 
 </section>
 
-<section id="capability-location-latlong" data-ucr-role="capability">
-<h4>Select map view from latitude and longitude point</h4>
-<p>
-Latitude and longitude defines a point on the Earth's surface,
-without requiring any further information.
-For website content, latitude and longitude data
-might come from photo or video metadata (from GPS-enabled cameras),
-or it might be calculated by the author using map search services.
-In a dynamic web app, latitude and longitude might be generated
-from geolocation on the user's device.
-</p>
-
-<h5>Existing implementations</h5>
-<p>
-All the reference tools allow the website author
-to display a specific location, defined by latitude and longitude,
-from a map tile set.
-</p>
-<dl data-ucr-role="implementation-notes">
-<dt>google-maps-embed</dt>
-<dt>google-maps-api</dt>
-<dt>openstreetmap-embed</dt>
-<dt>leaflet-api</dt>
-<dt>mapbox-embed</dt>
-<dd><a>full support</a>:
-setting a location by latitude and longitude is straightforward.
-</dd>
-<dt>open-layers-api</dt>
-<dd><a>supported, with limitations</a>:
-A location defined with longitude and latitude
-<a href="https://openlayers.org/en/latest/doc/faq.html#why-is-my-map-centered-on-the-gulf-of-guinea-or-africa-the-ocean-null-island-">must be converted to the map tile coordinate system</a>,
-but the API provides the conversion function.
-</dd>
-<dt>bing-maps-embed</dt>
-<dd><a>partial support</a>: does not support markers for a single location, but it is possible to display a map centered around a particular latitude and longitude point with no marker</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-…
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-The <a data-cite="geolocation-API" data-no-xref="">Geolocation API</a>
-and <a data-cite="geolocation-sensor" data-no-xref="">Geolocation Sensor API</a>
-expose the user's location using latitude and longitude data.
-It should be possible to set the view on a web map using data returned from these APIs.
-Both of these APIs use the [[[WGS84]]] as the technical definition
-of longitude and latitude (consistent with most modern geospatial standards),
-and a web map standard should use the same definition.
-[[geolocation-API]][[geolocation-sensor]][[WGS84]]
-</p>
-
-<h5>Conclusion</h5>
-<p>
-This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-  <!-- short summary of how the tag applies -->
-</li>
-</ul>
-
-</section>
-
-<section id="capability-location-address" data-ucr-role="capability">
-<h4>Select map view from street address or place name</h4>
-<p>
-For many mapping use cases,
-a website author won't have exact latitude and longitude values pre-calculated.
-They'll have street addresses or place names
-in a human-readable, localized format.
-To convert these addresses or names into a point on a web map,
-the web mapping service needs access to a Gazeteer search and corresponding databases.
-</p>
-<h5>Existing implementations</h5>
-<p>
-</p>
-<dl data-ucr-role="implementation-notes">
-<dt>google-maps-embed</dt>
-<dt>google-maps-api</dt>
-<dt>openstreetmap-embed</dt>
-<dt>mapbox-embed</dt>
-<dd><a>full support</a>:
-</dd>
-<dt>bing-maps-embed</dt>
-<dd><a>partial support</a>: does not support markers for a single location, but it is possible to display a map centered around a particular street address with no marker</dd>
-</dl>
-</section>
-
-<section id="capability-reproject-maps" data-ucr-role="capability">
-<h4>Reproject map tile data into a new projection or globe view</h4>
-<p>
-Map image tiles are usually defined in Web Mercator
-or other grid-based tile systems.
-For large scale maps (of the globe or continents),
-these reveal distortions created by the underlying projections.
-Many different map projections exist to more fairly display the relative size and shapes of continents on a flat map.
-In addition, within an interactive web environment,
-it is possible to use projections which more directly represent the 3D globe
-without trying to display it all at once,
-letting user interaction rotate it to show parts of interest.
-</p>
-<p class="issue discussion" data-number="3">Discuss this section on GitHub.</p>
-
-<h5>Existing implementations</h5>
-<p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
-</p>
-<dl data-ucr-role="implementation-notes">
-<dt>google-maps-embed</dt>
-<dt>openstreetmap-embed</dt>
-<dt>bing-maps-embed</dt>
-<dt>mapbox-embed</dt>
-<dd><a>no support</a>:
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-<!-- What other web content could use this specific capability? Be brief but specific. -->
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-     Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-     whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-     See examples.
-  -->
-<p>
-<!-- This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps. -->
-<!-- This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future. -->
-<!-- This capability is <a data-ucr-role="conclusion">impractical</a> for a built-in browser implementation. -->
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-     Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-  <!-- short summary of how the tag applies -->
-</li>
-</ul>
-
-</section>
-
-<section id="capability-export-location" data-ucr-role="capability">
-<h4>Save the location or export to other application</h4>
-<p>
-For the user, it is often useful to bookmark or save a location from a map,
-separate from the website which included it.
-The user may want to export the location to a GPS or native mapping application
-so they can calculate directions to it.
-</p>
-<h5>Existing implementations</h5>
-<p></p>
-<dl data-ucr-role="implementation-notes">
-<dt>openstreetmap-embed</dt>
-<dd><a>full support</a>:
-</dd>
-<dt>google-maps-embed</dt>
-<dd><a>supported, with limitations</a>:
-  You are able to generate a link to the map that can be shared via a variety of methods, but there is no way way to easily this information to another application.
-</dd>
-<dt>bing-maps-embed</dt>
-<dt>mapbox-embed</dt>
-<dd><a>no support</a>:</dd>
-</dl>
-</section>
 </section>
 
 </section>

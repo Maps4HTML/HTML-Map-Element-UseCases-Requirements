@@ -179,7 +179,7 @@ If that is not possible, send an email comment to
 <section id="introduction">
 <h2>Introduction</h2>
 
-<section>
+<section id="intro-web-maps">
 <h3>The current state of web maps</h3>
 <p>
 Web maps today are indispensable to billions of people,
@@ -264,7 +264,7 @@ and integrated with other web platform technologies.
 </p>
 </section>
 
-<section>
+<section id="intro-maps4html-cg">
 <h3>The Maps for HTML Community Group</h3>
 <p>
 The Maps For HTML Community Group (<a href="https://www.w3.org/community/maps4html/">Maps4HTML</a>)
@@ -316,7 +316,7 @@ and make the corresponding IP commitments.
 </div>
 </section>
 
-<section>
+<section id="intro-report-structure">
 <h3>Structure of this report</h3>
 <p>
 The purpose of this report is to describe
@@ -425,6 +425,253 @@ If there is not yet enough evidence for a conclusion,
 the capability will be marked
 <dfn id="undecided" data-ucr-role="conclusion-dfn">undecided</dfn>.
 </p>
+</section>
+
+<section id="intro-glossary">
+<h3>Glossary of key terms</h3>
+<p>
+Web mapping and geospatial data have a rich vocabulary
+that is not always clear to outsiders.
+This report uses the following terms in the ways defined here,
+unless another meaning is clearly specified:
+</p>
+<dl>
+
+<dt><dfn>map</dfn></dt>
+<dd>
+A graphical representation of the features of and spatial relationships between places.
+Unless otherwise specified,
+maps referred to in this report are assumed to be <a>geographic maps</a>
+with a two-dimensional representation.
+</dd>
+
+<dt><dfn>geographic map</dfn></dt>
+<dd>
+A map of part (or all) of the surface of Earth (or another planet),
+with a defined mathematical relationship between
+positions on the map and geographical positions on the planet.
+</dd>
+
+<dt><dfn>non-geographic map</dfn></dt>
+<dd>
+A map in which positions on the graphic are not defined
+relative to positions on the Earth's surface.
+</dd>
+
+<dt><dfn>interactive map</dfn></dt>
+<dt><dfn>slippy map</dfn></dt>
+<dd>
+A map rendered as part of an interactive computer application,
+such that the user of the app can manipulate aspects of the map display.
+In particular, a slippy map is one in which
+the user can pan the dispayed map to view a different region.
+</dd>
+
+<dt><dfn>web map</dfn></dt>
+<dd>
+An interactive map integrated into a web page.
+</dd>
+
+<dt><dfn data-lt="GIS|geographic information system">geographic information system (GIS)</dfn></dt>
+<dd>
+A database system for managing geographic data (or other spatial data),
+often including software for displaying the data as interactive maps.
+</dd>
+
+<dt><dfn>map server</dfn></dt>
+<dd>
+An internet-connected GIS,
+that provides processed geographic data or map images
+on request from client software (such as web browsers).
+Map servers used by web maps are normally built on HTTP,
+but many formats are used for search requests and data responses.
+Some of these are described by formal standards,
+others are defined only by the documentation of a particular map server.
+</dd>
+
+<dt><dfn data-lt="OWS|OGC Web Services|Open Geospatial Consortium Web Services">OGC Web Services (OWS)</dfn></dt>
+<dd>
+A set of <a href="https://www.opengeospatial.org/standards/">standards developed by the Open Geospatial Consortium (OGC)</a>
+that define communication protocols between map servers and client software.
+OWS standard define a format for exposing the available capabilities of the map server,
+and for structuring requests for map data for a certain region,
+possibly restricted by other search parameters.
+The format of the returned map data is defined separately.
+OWS standards include:
+<ul>
+  <li>Web Map Service (WMS), for accessing a custom processed map image
+    that directly represents the requrested region and query parameters</li>
+  <li>Web Map Tile Service (WMTS), for accessing pre-processed map <a>tiles</a>,
+    which may only represent a <a>layer</a> of the final map</li>
+  <li>Web Feature Service (WFS), for accessing <a>vector feature</a> data</li>
+  <li>Web Coverage Service (WCS), for accessing raw <a>coverage</a> data</li>
+  <li>OWS Context, for returning metadata with references to other map services</li>
+</ul>
+</dd>
+
+<dt><dfn>(map) projection</dfn></dt>
+<dd>
+A method of converting positions on the surface of a sphere (the Earth)
+into positions in a 2D rendering (display screen or paper map).
+All map projections involve some distortion of the data,
+but different projections are preferred for different use cases.
+<em>TODO: Figure comparing common map projections</em>
+</dd>
+
+<dt><dfn>coordinates</dfn></dt>
+<dt><dfn>coordinate pair</dfn> or <dfn>coordinate triple</dfn></dt>
+<dd>
+A mathematical description of a particular location,
+on a map (<dfn>map coordinates</dfn>)
+or in reality (<dfn>geographic coordinates</dfn>).
+Coordinates are generally defined as a pair or triple of measurements,
+depending on whether the location they defining is in two dimensions
+(e.g., a location on the surface of the Earth or position on a map)
+or three dimensions.
+</dd>
+
+<dt><dfn data-lt="CRS|coordinate reference system">coordinate reference system (CRS)</dfn></dt>
+<dd>
+A standard way of defining map or geographic coordinates,
+so that locations can be precisely compared or aligned
+between different maps, map layers, or spatial data sets.
+Some CRS are based on geographic coordinates,
+while others are based on map coordinates
+and therefore incorporate a map projection into their calculation.
+</dd>
+
+<dt><dfn>latitude</dfn> and <dfn>longitude</dfn></dt>
+<dd>
+Coordinate system for describing positions on the surface of the Earth.
+Latitude values represent North-South distance from the equator.
+Longitude values represent East-West distance from a reference line
+(the prime meridian) that connects the poles.
+Both values are angles, usually degrees.
+Latitude and longitude are used in multiple <a>coordinate reference systems</a>;
+the exact CRS needs to be specified to define a location precisely.
+<em>TODO: Figure of latitude/longitude</em>
+</dd>
+
+<dt><dfn>altitude</dfn></dt>
+<dd>
+A coordinate that represents the height of a point above or below a reference surface.
+A <a>coordinate reference system</a> that uses altitude along with latitude and longitude can define geographic points in 3D space.
+Altitude is measured in length units, such as meters or feet.
+</dd>
+
+<dt><dfn>feature</dfn></dt>
+<dd>
+Something of interest on the map.
+Conceptually, the map feature includes the location or geographic shape
+of this spatial thing, as well as additional information
+describing what it is or why it is interesting.
+This information may be conveyed on the map with text labels
+or with icons, colors, or other cartographic symbols.
+</dd>
+
+<dt><dfn data-lt="vector|vector feature">vector feature</dfn></dt>
+<dd>
+A map feature that has a mathematically defined spatial geometry
+based on coordinate data.
+Different spatial data structures support different types of vector geometry,
+but the basic 2D vector feature types are 
+<a>point</a>, <a>polyline</a>, and <a>polygon</a>.
+<em>TODO: Figure of different types of feature geometries (point, multipoint, polyline, etc.)</em>
+</dd>
+
+<dt><dfn>coordinate point</dfn></dt>
+<dt><dfn data-lt="point|point feature">point feature</dfn></dt>
+<dd>
+A spatial location defined by a single set (pair or triple) of coordinates.
+A point has no shape or extent,
+although in some data formats it may include a level of imprecision or uncertainty.
+</dd>
+
+<dt><dfn>polyline</dfn></dt>
+<dd>
+A vector feature defined as an ordered list of coordinate points,
+and the straight lines connecting them.
+(Where "straight" is relative to the geometry being described,
+and might be across the surface of a sphere.)
+</dd>
+
+<dt><dfn>polygon</dfn></dt>
+<dd>
+A vector feature defined as a two-dimensional shape enclosed by a polyline,
+where the last point on the polyline connects back to the first one.
+In some data formats, a polygon includes a shape with holes (exclusions) in it,
+where the hole is defined by a separate enclosed polyline.
+</dd>
+
+<dt><dfn>coverage</dfn></dt>
+<dd>
+Spatial data that conceptually represents a measurable value that varies across space.
+In practice, coverage data is usually encoded as a grid of points
+at a specified resolution, with the data value at each point.
+This grid of values can often be represented as pixel colors in a <a>raster map layer</a>.
+</dd>
+
+<dt><dfn data-lt="layer|map layer">(map) layer</dfn></dt>
+<dd>
+A subset of the map's graphics which could be rendered independently
+from other graphics for the same region.
+Multiple map layers can be aligned based on their shared <a>coordinates</a>,
+then composited together (drawn one on top of another) to create the final map view.
+</dd>
+
+<dt><dfn>base layer</dfn></dt>
+<dd>
+The map layer that provides the background/bottom layer in the compositing stack.
+It is usually fully opaque.
+</dd>
+
+<dt><dfn>overlay</dfn></dt>
+<dd>
+A partially-transparent <a>map layer</a>,
+designed to be positioned on top of a <a>base layer</a>.
+</dd>
+
+<dt><dfn data-lt="vector map|vector map layer">vector map layer</dfn></dt>
+<dd>
+A map layer defined using data structures that describe individual <a>vector features</a>
+and their coordinates,
+which is then used as input instructions to drawing code in the map rendering tool.
+Vector formats can preserve the meaning of the different graphical marks on their page,
+and allow them to by dynamically styled or altered by the map rendering software.
+But, that flexibility requires more processing power in the rendering software,
+and may require more data to represent very detailed graphics.
+</dd>
+
+<dt><dfn data-lt="raster|raster map|raster map layer">raster map layer</dfn></dt>
+<dd>
+A map layer defined using raster image formats,
+which specify the final colors at each position (pixel) in the rendered result.
+Raster maps can be generated from vector data,
+or they may be created from photographs or drawings.
+</dd>
+
+<dt><dfn data-lt="tile|tiled">tile</dfn></dt>
+<dd>
+A subset of a map layer that represents a particular region of the map,
+usually a rectangle in a particular map projection.
+Larger regions of the map can be drawn by rendering multiple tiles
+side-by-side in a grid.
+In a <a>slippy map</a>, tiles can be fetched from a server and rendered as needed
+when the user moves the view to different parts of the map.
+Tiles can be <a>raster</a> or <a>vector</a>,
+although raster tiles are currently more common for web maps.
+</dd>
+
+<dt><dfn>tileset</dfn></dt>
+<dd>
+A set of map tiles which can be used as a map layer.
+In simplest tilesets, the map tiles combine as a grid (<dfn>tile matrix</dfn>) to form a single map layer.
+More complex tilesets include multiple tile matrices covering the same regions at different scales (zoom levels).
+<em>TODO: Create/find figure explaining tileset pyramids.</em>
+</dd>
+
+</dl>
+
 </section>
 
 </section>

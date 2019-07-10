@@ -58,5 +58,23 @@ although it may be personalized to the viewer's location.
   }).addTo(leafletMap);
 </script>
 
+<h2>OpenLayers with OpenStreetMap tiles</h2>
+<div id="ol-globe" style="width: 600px; height: 450px;"></div>
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script class="example">
+var baseMapLayer = new ol.layer.Tile({
+  source: new ol.source.OSM()
+});
+var openLayersMap = new ol.Map({
+  target: 'ol-globe',
+  layers: [ baseMapLayer],
+  view: new ol.View({
+    center: ol.proj.fromLonLat([6.054893732070923, 46.2334537001]),
+    zoom: 1
+  })
+});
+openLayersMap.addLayer(markerVectorLayer);
+</script>
+
 </body>
 </html>

@@ -2828,19 +2828,34 @@ as implemented by the reference JavaScript tools.
 <li><a href="#capability-reset-bearing-map">Reset the bearing of a map</a></li>
 </ul>
 </section>
-<section id="use-case-specify-data-source-map" data-ucr-role="use-case">
-<h4>Specify a data source for a map</h4>
+<section id="use-case-specify-data-source-map-tile-layer" data-ucr-role="use-case">
+<h4>Specify a data source for a map tile layer</h4>
 <p>
-Examples to be expanded: showing a map of Mars or the Moon.
+For a web developer, the API capability of specifying the
+data source used by a tile layer on a map allows alternative
+tile data sources to be used or, if a map can be configured
+with multiple tile layers, displayed in some combination.
 </p>
 <p>
-See <a href="examples/client-apis/use-case-specify-data-source-map.html" target="examples">examples of specifying a data source for a map</a>
+Common examples include switching between standard map
+displays and satellite or aerial photograph views.
+More advanced examples include overlaying historic maps on
+modern maps with the ability to vary the transparency of the
+top layer for purposes of comparison; and viewing maps of
+non-Earth bodies such as Mars and the Moon.
+</p>
+<p>
+The user interface for such a capability might be external
+to the map, or embedded within the map as a control.
+</p>
+<p>
+See <a href="examples/client-apis/use-case-specify-data-source-map-tile-layer.html" target="examples">examples of specifying a data source for a map tile layer</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="85">Discuss this section on GitHub.</p>
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-define-data-source-map">Define a data source for a map</a></li>
+<li><a href="#capability-define-data-source-tile-layer">Define a data source for a tile layer</a></li>
 </ul>
 </section>
 

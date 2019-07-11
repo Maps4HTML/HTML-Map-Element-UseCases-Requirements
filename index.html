@@ -2999,15 +2999,34 @@ as implemented by the reference JavaScript tools.
 <li><a href="#capability-add-marker-or-multiple-markers-map">Add a marker or multiple markers to a map</a></li>
 </ul>
 </section>
-<section id="use-case-add-custom-control-map" data-ucr-role="use-case">
+<section id="use-case-add-a-custom-control-to-a-map" data-ucr-role="use-case">
 <h4>Add a custom control to a map</h4>
 <p>
-"Controls" are user interface components that appear
-overlaid on a map, usually in such a way that no other
-content within the map will overlie them.
-They may provide user feedback about the current state of
-the map, provide one or more affordances for manipulating
-the state of the map, or some combination of the two.
+A control is a user interface component that is integrated
+with a map. It may provide user feedback about the current
+state of the map, provide one or more affordances for
+manipulating the state of the map, or some combination of
+the two.
+Typically, controls are integrated into the map display in
+such a way that no other map content can overlie or obscure
+them.
+</p>
+<p>
+Many client APIs allow developers to implement custom
+controls and add them to a map.
+The advantage of using a custom control is that it becomes a
+peer of the native controls provided by the map, and thus
+acquires any inherent capabilities and behaviours of those
+controls.
+For example, if a map provided a way for the user to hide
+all controls, the custom control would be hidden along with
+the native controls.
+This close integration cannot be achieved by a component
+which is external to the map, and only made to appear as if
+visually integrated through positioning, without additional
+work; furthermore, the integration may not be reliable in
+the long term if it must be achieved by relying on
+undocumented or underspecified behaviour of the map API.
 </p>
 <p>
 A web developer may wish to add one or more custom controls
@@ -3015,20 +3034,23 @@ to a map so as to provide capabilities that are not
 available within the standard set of controls provided by
 the mapping API, or to make up for perceived deficiencies of
 the provided controls.
+</p>
+<p>
 For example, a default zoom control may be inaccessible to
 keyboard users, in which case it could be replaced with an
 accessible version that utilised a public API to effect
 zooming in response to the keyboard.
 </p>
-
 <p>
-See <a href="examples/client-apis/use-case-add-custom-control-map.html" target="examples">examples of adding a custom control to a map</a>
+See <a href="examples/client-apis/use-case-add-a-custom-control-to-a-map.html" target="examples">examples of adding a custom control to a map</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="79">Discuss this section on GitHub.</p>
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-implement-custom-control">Implement a custom control</a></li><li><a href="#capability-add-control-map">Add a control to a map</a></li>
+<li><a href="#capability-implement-custom-control">Implement a custom control</a></li>
+<li><a href="#capability-add-control-map">Add a control to a map</a></li>
+<li><a href="#capability-remove-control-map">Remove a control from a map</a></li>
 </ul>
 </section>
 <section id="use-case-provide-feedback-user-they-manipulate-map" data-ucr-role="use-case">

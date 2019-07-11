@@ -3352,16 +3352,38 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </ul>
 </section>
 
-<section id="capability-implement-custom-control" data-ucr-role="capability">
+<section id="capability-implement-a-custom-control" data-ucr-role="capability">
 <h4>Implement a custom control</h4>
 <p>
-The API should support the implementation of custom controls
-capable of being added to a map.
+A custom control is a user interface element that is
+integrated closely with the map's own user interface, and is
+under the control of the map once it has ben added.
 </p>
 <p class="issue discussion" data-number="57">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
-Existing implementation support:
+A custom control is a JavaScript object or a DOM element
+that satisfies the API's requirements for it to be
+integrated with the map.
+Those requirements vary across APIs.
+Generally, it is expected that a single DOM element
+containing whatever other elements constitute the control UI
+will be provided by the control.
+In some cases the DOM element is passed to the API directly;
+in others, a JavaScript object is passed to the API, which
+is required to implement a method that returns the control's
+containing DOM element.
+Styling of the elements within the control is the
+responsibility of the implementor.
+</p>
+<p>
+Assuming the API requirements are satisfied, the behaviour
+and rendering of the control are then the responsibility of
+the implementation.
+Typically, a custom control will listen to events from the
+DOM, or the map, or both.
+In response to those events, it will then update the state
+of the map, update its own representation, or both.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -3371,13 +3393,22 @@ List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
 <dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
 <dd><a>full support</a>:
+These APIs all define requirements for a JavaScript object or DOM element
+to be able to be used as a custom control.
+</dd>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
+<dd><a>supported, with limitations</a>:
+Items having the form and behaviour of custom controls can
+be implemented in the form of overlays, but there is no facility for
+distinguishing such controls from other overlays.
+</dd>
+</dd><dt>d3-geographies-api</dt>
+<dd><a>not applicable</a>:
 <!-- details about what is/isn't supported -->
 </dd>
 </dl>
@@ -3406,11 +3437,13 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+
 <li><a data-ucr-role="tag" href=""></a>
 <!-- short summary of how the tag applies -->
 </li>
 </ul>
 </section>
+
 
 <section id="capability-add-control-map" data-ucr-role="capability">
 <h4>Add a control to a map</h4>

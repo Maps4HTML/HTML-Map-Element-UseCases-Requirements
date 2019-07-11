@@ -1756,18 +1756,18 @@ they would need to rely on a third-party service for the map data.
 <p>
 </p>
 <dl data-ucr-role="implementation-notes">
-<!-- Nic: I'm unsure if these belong here as I haven't looked specifically for this capability yet. Will update soon.
 <dt>google-maps-api</dt>
-<dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd>
   <a>full support</a>
 </dd>
--->
+<dt>mapbox-embed</dt>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dd>
-  <a>no support</a>
+  <a>no support</a>: most embeds do not support this as using a single custom image requires setting up the map boundaries and coordinate system, conflicting with the low-configuration nature of these tools.
 </dd>
 </dl>
 
@@ -1809,6 +1809,8 @@ they would need to rely on a third-party service for the map data.
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
 <dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd>
   <a>full support</a>
 </dd>
@@ -1885,6 +1887,8 @@ are the iframe embeds.
   these tools offer options to serve a static image without JavaScript. However, this is not the default fallback behavior for the embeds when JavaScript is turned off, adding a fallback image must be implemented as a custom feature.
 </dd>
 <dt>openstreetmap-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 
@@ -1947,6 +1951,8 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>full support</a>: allows multiple user-specified pinpoint locations to be placed
 </dd>
 <dt>openstreetmap-embed</dt>
@@ -1991,7 +1997,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 </section>
 
 <section id="capability-vector-features" data-ucr-role="capability">
-<h4>Draw polygons or polylines as stylable, interactive vector graphics (separate fro4 the image tiles)</h5>
+<h4>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</h4>
 <p>
 Polylines are used in maps to draw roads, rivers, directions between places,
 or the observed path of a moving object.
@@ -2023,8 +2029,9 @@ and the target of user events.
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
 <dt>mapbox-embed</dt>
-<dd><a>full support</a>:
-  <!-- details about what is/isn't supported -->
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
+<dd><a>full support</a>: polygons and polylines can be added and have styling applied to them.
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -2086,7 +2093,9 @@ it needs to be able to link to other web resources.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
-<dd><a>full support</a>:
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
+<dd><a>full support</a>: custom HTML can be applied to map markers and vector features, allowing the map author to display hyperlinks withink them.
   <!-- details about what is/isn't supported -->
 </dd>
 <dt>google-maps-embed</dt>
@@ -2152,7 +2161,10 @@ these "attribution control" values can be set in configuration.
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
-<dd><a>full support</a>: automatically generated and attributed to their respective providers
+<dt>google-maps-api</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
+<dd><a>full support</a>: (as described above)
 </dd>
 <dt>mapbox-embeds</dt>
 <dd><a>supported, with limitations</a>: attribution is automatically generated, but it is hidden under a non-accessible tooltip</dd>
@@ -2255,6 +2267,9 @@ the web mapping service needs access to a Gazeteer search and corresponding data
 <dt>mapbox-embed</dt>
 <dd><a>full support</a>:
 </dd>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
+<dd><a>supported, with limitations</a>: the default libraries do not support this but there are a wide variety of geocoding plugins that support this capability.</dd>
 <dt>bing-maps-embed</dt>
 <dd><a>partial support</a>: does not support markers for a single location, but it is possible to display a map centered around a particular street address with no marker</dd>
 </dl>
@@ -2293,15 +2308,15 @@ is a separate capability, discussed in <a href="#capability-reproject-maps"></a>
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+With the Google Maps API, you are able to create custom projections that are rectilinear by passing in a bi-directional mapping between coordinate systems. Leaflet.js supports the Equirectangular, Elliptical Mercator and Web Mercator projections by default, and you can use the external plugin <a href="http://kartena.github.io/Proj4Leaflet/">Proj4Leaflet</a> to
+support other projections.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd>
-  <a>supported, with limitations</a>: you are able to create custom projections that are rectilinear by passing in a bi-directional mapping between coordinate systems
+  <a>supported, with limitations</a>: (as described above)
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -2375,6 +2390,8 @@ letting user interaction rotate it to show parts of interest.
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>no support</a>:
 </dd>
 </dl>
@@ -2435,6 +2452,8 @@ so they can calculate directions to it.
 </dd>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 </section>
@@ -2476,6 +2495,8 @@ and converted into continuous zoom adjustments
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>full support</a>:
 (as described above)
 <dt>mapbox-embed</dt>
@@ -2563,9 +2584,11 @@ Many of the maps lack a visible indication of keyboard focus for panning, and do
 to indicate how keyboard panning should work.
 </p>
 <dl data-ucr-role="implementation-notes">
+<dt>open-layers-api</dt>
+<dd><a>full support</a>: a tabindex value must be added to the map container, but keyboard panning events are included natively</dd>
 <dt>openstreetmap-embed</dt>
-<dt>mapbox-embed
-<dt>
+<dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
 <dd><a>supported, with limitations</a>:
   Mouse, touch, and keyboard panning are supported; no keyboard focus indication
 </dd>
@@ -2660,6 +2683,8 @@ Thought is needed on how to make panning accessible to all users.
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2677,6 +2702,8 @@ Thought is needed on how to make panning accessible to all users.
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2696,7 +2723,9 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
-<dd><a>full support</a>: all of these tools scale their labels to match the zoom level, but labels of smaller map features can be very small and may not reflect a users text size preference
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
+<dd><a>full support</a>: all of these tools scale their labels to match the zoom level, but labels of smaller map features can be very small and may not reflect the users text size preference.
 </dd>
 </dl>
 </section>
@@ -2712,6 +2741,8 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2728,6 +2759,8 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dt>google-maps-api</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -2755,6 +2788,8 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
 <dt>mapbox-embed</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd>
   <a>full support</a>:
 </dd>
@@ -2823,6 +2858,11 @@ which then control the map viewer using a client-side API.
 </p>
 
 <dl data-ucr-role="implementation-notes">
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
+<dd><a>full support</a>:</dd>
+<dt>google-maps-api</dt>
+<dd><a></a>supported, with limitations</a>: there are some configuration options which allow basic control over things like display type and positioning, but for advanced custom styling, the developer needs to implement a custom control</dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmaps-embed</dt>
 <dt>bing-maps-embed</dt>
@@ -2890,6 +2930,8 @@ whether or not the web browser includes on-screen controls by default.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dd>
   <a>full support</a>:
 </dd>

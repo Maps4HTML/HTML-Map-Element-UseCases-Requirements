@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Single Location Map Views — Reference implementations</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
 </head>
 <body>
 <h1>Examples for <a href="../../index.html#use-case-single-location">Use Case: Display a location on a map</a></h1>
@@ -53,6 +58,49 @@ although it may require a developer's API key.
   </iframe>
 </div>
 
+<h2>Leaflet.js with OpenStreetMap tiles</h2>
+<div id="leaflet-single-location" style="width: 600px; height: 450px;"></div>
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+  crossorigin=""></script>
+<script class="example">
+  let leafletMap = L.map('leaflet-single-location').setView([46.233226, 6.055737], 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    minZoom: 0,
+    maxZoom: 20,
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+  }).addTo(leafletMap);
+  L.marker([46.2334537001, 6.054893732070923]).addTo(leafletMap);
+</script>
+
+<h2>OpenLayers with OpenStreetMap tiles</h2>
+<div id="ol-single-location" style="width: 600px; height: 450px;"></div>
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script class="example">
+var baseMapLayer = new ol.layer.Tile({
+  source: new ol.source.OSM()
+});
+var openLayersMap = new ol.Map({
+  target: 'ol-single-location',
+  layers: [ baseMapLayer],
+  view: new ol.View({
+    center: ol.proj.fromLonLat([6.054893732070923, 46.2334537001]),
+    zoom: 15
+  })
+});
+var marker = new ol.Feature({
+  geometry: new ol.geom.Point(
+    ol.proj.fromLonLat([6.054893732070923, 46.2334537001])
+  ),
+});
+var vectorSource = new ol.source.Vector({
+  features: [marker]
+});
+var markerVectorLayer = new ol.layer.Vector({
+  source: vectorSource,
+});
+openLayersMap.addLayer(markerVectorLayer);
+</script>
 
 </body>
 </html>

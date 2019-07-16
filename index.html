@@ -574,7 +574,7 @@ or with icons, colors, or other cartographic symbols.
 A map feature that has a mathematically defined spatial geometry
 based on coordinate data.
 Different spatial data structures support different types of vector geometry,
-but the basic 2D vector feature types are 
+but the basic 2D vector feature types are
 <a>point</a>, <a>polyline</a>, and <a>polygon</a>.
 <em>TODO: Figure of different types of feature geometries (point, multipoint, polyline, etc.)</em>
 </dd>
@@ -1555,7 +1555,7 @@ or any other type of map not included in the major way-finding street maps.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-custom-map-tiles"></a></li>
+<li><a href="#capability-single-custom-image"></a> or <a href="#capability-custom-map-tiles"></a></li>
 <li>For more complex maps, <a href="#capability-lazyload"></a> and <a href="#capability-zoom-swap"></a></li>
 </ul>
 </section>
@@ -1566,6 +1566,11 @@ or any other type of map not included in the major way-finding street maps.
 
 </p>
 <p class="issue discussion" data-number="11">Discuss this section on GitHub.</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-single-custom-image"></a></li>
+</ul>
 </section>
 
 <section id="use-case-technical-drawings" data-ucr-role="use-case">
@@ -1594,7 +1599,7 @@ as implemented by the reference JavaScript tools.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href=""></a></li>
+<li><a href="#capability-single-custom-image"></a></li>
 </ul>
 </section>
 </section>
@@ -1713,7 +1718,9 @@ must be combined with a separate map provider.
 </dl>
 
 <h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses">
+  <li><a href="#use-case-single-location"></a></li>
+</ul>
 
 <h5>Uses beyond mapping</h5>
 <p>
@@ -1749,11 +1756,12 @@ they would need to rely on a third-party service for the map data.
 <section id="capability-single-custom-image" data-ucr-role="capability">
 <h4>Display a map using a single custom image as a map layer</h4>
 <p>
-<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+  While most web maps often are often composed of tilesets, they may also consist of one of more layers that are just single images rendered on the fly (such as from a WMS), large images that a user pans across or vector images. These kinds of maps can be useful in cases where a broader spatial context is not as important or when the author is trying to make a specific point about a set of data. Custom image layers can also be used for representing complex data for a specific area that may not be available as a complete tileset, such terrain maps or foliage coverage images produced by a specific researcher.
 </p>
 
 <h5>Existing implementations</h5>
 <p>
+The majority of the embed maps do not support this feature. The API tools that do support this feature typically accept a layer source, attribution and the coordinate system to be used by the image layers, which can be mapped to pixel units for more simple use cases.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -1767,16 +1775,20 @@ they would need to rely on a third-party service for the map data.
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dd>
-  <a>no support</a>: most embeds do not support this as using a single custom image requires setting up the map boundaries and coordinate system, conflicting with the low-configuration nature of these tools.
+  <a>no support</a>: most embeds do not support this, as using a single custom image requires setting up the map boundaries and coordinate system, conflicting with the low-configuration nature of these tools.
 </dd>
 </dl>
 
 <h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses">
+<li><a href="#use-case-custom-map"></a></li>
+<li><a href="#use-case-layers"></a></li>
+<li><a href="#use-case-technical-drawings"></a></li>
+</ul>
 
 <h5>Uses beyond mapping</h5>
 <p>
-<!-- What other web content could use this specific capability? Be brief but specific. -->
+This capability is essential in order to provide support for non-map materials. The ability to display non-georeferenced media like technical drawings, schematics or archival material within a standardized viewer  has a wide variety of practical use cases.
 </p>
 
 <h5>Related web specifications</h5>
@@ -1800,11 +1812,12 @@ they would need to rely on a third-party service for the map data.
 <section id="capability-custom-map-tiles" data-ucr-role="capability">
 <h4>Display a map using tile data from an author-specified web map service</h4>
 <p>
-<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+Custom tilesets are a neccessary feature for more advanced mapping use cases. The majority webmaps are used for wayfinding and the default embed map tilesets all tend to be fairly similar, showing limited natural features in addition to streets and buildings. However, beyond this basic usage, there are many use cases which require custom tilesets, including maps that involve coverage data, satellite images, historical geography and future/proposed developments.
 </p>
 
 <h5>Existing implementations</h5>
 <p>
+All API tools suport some form of this feature, whether it be in the more popular OpenStreetMap standard (often called XYZ), or the TMS standard. For most services, tiles can be accessed through a URL with the X, Y and Z parameters defined, where X and Y represent the tile coordinates (not to be confused with latitude and longitude), and Z represents the zoom level. One thing to note is that while Google Maps and the OpenStreetMap standard both count tiles from the upper left corner of the map, the TMS standard has the Y axis inverted, counting tiles from the bottom left, and some transformation may be needed when using certain tools with certain tilesets.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -1823,7 +1836,9 @@ they would need to rely on a third-party service for the map data.
 </dl>
 
 <h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses">
+  <li><a href="#use-case-custom-map"></a><</li>
+</ul>
 
 <h5>Uses beyond mapping</h5>
 <p>
@@ -1875,8 +1890,7 @@ by including links, images, or iframes in the markup
 that are replaced when the script runs.
 </p>
 <p>
-For built-in graceful degradation, the best implementations currently
-are the iframe embeds.
+For built-in graceful degradation, iframe embeds potentially offer the best experience, but all of the reference tools do not support this by default, the developer must add this feature themselves.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>

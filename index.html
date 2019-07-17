@@ -328,7 +328,7 @@ to website creators and to end users.
 <p>
 This report uses an empirical approach to identify required features of web maps,
 by looking for the common features of web map frameworks used today.
-However, we also recognize that web maps today have limitiations.
+However, we also recognize that web maps today have limitations.
 A proposal for a native HTML web map, built in to web browsers,
 needs to be assessed on the same merits as any other proposed web standard.
 </p>
@@ -464,7 +464,7 @@ relative to positions on the Earth's surface.
 A map rendered as part of an interactive computer application,
 such that the user of the app can manipulate aspects of the map display.
 In particular, a slippy map is one in which
-the user can pan the dispayed map to view a different region.
+the user can pan the displayed map to view a different region.
 </dd>
 
 <dt><dfn>web map</dfn></dt>
@@ -500,7 +500,7 @@ The format of the returned map data is defined separately.
 OWS standards include:
 <ul>
   <li>Web Map Service (WMS), for accessing a custom processed map image
-    that directly represents the requrested region and query parameters</li>
+    that directly represents the requested region and query parameters</li>
   <li>Web Map Tile Service (WMTS), for accessing pre-processed map <a>tiles</a>,
     which may only represent a <a>layer</a> of the final map</li>
   <li>Web Feature Service (WFS), for accessing <a>vector feature</a> data</li>
@@ -1698,7 +1698,7 @@ they just want a generic wayfinding map of the area.
 <p>
 The embeds and commerical APIs all provide default street maps
 without the author needing to specify the map source.
-In contast, the more flexible APIs
+In contrast, the more flexible APIs
 must be combined with an separate map provider (e.g., OpenStreetMap).
 </p>
 <dl data-ucr-role="implementation-notes">
@@ -1812,12 +1812,12 @@ This capability is essential in order to provide support for non-map materials. 
 <section id="capability-custom-map-tiles" data-ucr-role="capability">
 <h4>Display a map using tile data from an author-specified web map service</h4>
 <p>
-Custom tilesets are a neccessary feature for more advanced mapping use cases. The majority webmaps are used for wayfinding and the default embed map tilesets all tend to be fairly similar, showing limited natural features in addition to streets and buildings. However, beyond this basic usage, there are many use cases which require custom tilesets, including maps that involve coverage data, satellite images, historical geography and future/proposed developments.
+Custom tilesets are a necessary feature for more advanced mapping use cases. The majority webmaps are used for wayfinding and the default embed map tilesets all tend to be fairly similar, showing limited natural features in addition to streets and buildings. However, beyond this basic usage, there are many use cases which require custom tilesets, including maps that involve coverage data, satellite images, historical geography and future/proposed developments.
 </p>
 
 <h5>Existing implementations</h5>
 <p>
-All API tools suport some form of this feature, whether it be in the more popular OpenStreetMap standard (often called XYZ), or the TMS standard. For most services, tiles can be accessed through a URL with the X, Y and Z parameters defined, where X and Y represent the tile coordinates (not to be confused with latitude and longitude), and Z represents the zoom level. One thing to note is that while Google Maps and the OpenStreetMap standard both count tiles from the upper left corner of the map, the TMS standard has the Y axis inverted, counting tiles from the bottom left, and some transformation may be needed when using certain tools with certain tilesets.
+All API tools support some form of this feature, whether it be in the more popular OpenStreetMap standard (often called XYZ), or the TMS standard. For most services, tiles can be accessed through a URL with the X, Y and Z parameters defined, where X and Y represent the tile coordinates (not to be confused with latitude and longitude), and Z represents the zoom level. One thing to note is that while Google Maps and the OpenStreetMap standard both count tiles from the upper left corner of the map, the TMS standard has the Y axis inverted, counting tiles from the bottom left, and some transformation may be needed when using certain tools with certain tilesets.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -1911,7 +1911,7 @@ For built-in graceful degradation, iframe embeds potentially offer the best expe
 
 <h5>Uses beyond mapping</h5>
 <p>
-To the extent that any capabilites of a map viewer are shared with other content,
+To the extent that any capabilities of a map viewer are shared with other content,
 having that capability work without JavaScript is a shared benefit.
 </p>
 
@@ -2462,7 +2462,7 @@ so they can calculate directions to it.
 </dd>
 <dt>google-maps-embed</dt>
 <dd><a>supported, with limitations</a>:
-  You are able to generate a link to the map that can be shared via a variety of methods, but there is no way way to easily this information to another application.
+  You are able to generate a link to the map that can be shared via a variety of methods, but there is no way to easily send this information to another application.
 </dd>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
@@ -2482,7 +2482,7 @@ so they can calculate directions to it.
 <p>
 In addition to panning the view,
 it is standard to allow the user to adjust the map scale:
-zooming in to increase magnifaction (show finer detail),
+zooming in to increase magnification (show finer detail),
 zooming out to decrease magnification (show a wider area).
 </p>
 

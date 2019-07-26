@@ -2443,15 +2443,28 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <section id="capability-marker-points" data-ucr-role="capability">
 <h4>Show pinpoint locations or custom markers on the map</h4>
 <p>
-For the purposes of wayfinding, custom markers are an essential part of web maps. The most common use case for a web map is to show one or more locations of a business or organization. Maps that display pinpoint locations can also be used for data visualization, demonstrating spatial patterns of particlar events or occurrences.
+For the purposes of wayfinding, custom markers are an essential part of web maps.
+The most common use case for a web map is to show one or more locations
+of a business or organization. Maps that display pinpoint locations can
+also be used for data visualization, demonstrating spatial patterns
+of particular events or occurrences.
 </p>
 <p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
-Almost all of the reference tools support map markers in some way. While most embed tools include some kind of geocoder in order to support address lookup, the tools typically utilize latitude and longitude coordinates under the hood, and map authors can pass in the coordinates to the URL or configuration object upon initialization.
+Almost all of the reference tools support map markers in some way.
+While most embed tools include some kind of geocoder in order to
+support address lookup, the tools typically utilize latitude and
+longitude coordinates under the hood, and map authors can pass in
+the coordinates to the URL or configuration object upon initialization.
 
-The notable standout here is the Google Maps Embed. Searching for a location by address  will return information for a 'Place', each with its own ID and information such as business hours, reviews, and etc. The ID is passed into the iframe URL in order to bring up the additional location information for that particular place.
+The notable standout here is the Google Maps Embed.
+Searching for a location by address  will return information
+for a 'Place', each with its own ID and information such as
+business hours, reviews, and etc. The ID, rather than latitude and longitude,
+is passed into the iframe URL in order to bring up the additional
+location information for that particular place.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
@@ -2471,7 +2484,9 @@ The notable standout here is the Google Maps Embed. Searching for a location by 
 <ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
 
 <h5>Uses beyond mapping</h5>
-<p>If the map element were to support non-georeferenced images, custom markers could be used as an annotation tool for technical drawings and other similar media.
+<p>If the map element were to support non-georeferenced images,
+custom markers could be used as an annotation tool for
+technical drawings and other similar media.
 </p>
 
 <h5>Related web specifications</h5>
@@ -2526,7 +2541,11 @@ and the target of user events.
 
 <h5>Existing implementations</h5>
 <p>
-The tools that support this capability primarily fall under the API category. All of the API tools support the drawing of lines and polygons by passing in coordinates into a JavaScript function. Mapbox differs from the other implementations as it only accepts files in the GeoJSON format. The embed tools lack support for this capability.
+The tools that support this capability primarily fall under the
+API category. All of the API tools support the drawing of lines
+and polygons by passing in coordinates into a JavaScript function.
+Mapbox differs from the other implementations as it only accepts
+files in the GeoJSON format. The embed tools lack support for this capability.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -2898,7 +2917,11 @@ letting user interaction rotate it to show parts of interest.
 
 <h5>Existing implementations</h5>
 <p>
-None of the reference tools support this feature. <a href="#capability-tile-coordinate-systems">For the tools that support alternative projections</a>, it is possible to to work around this by reinitializing the map in a different projection.
+None of the reference tools support this feature.
+<a href="#capability-tile-coordinate-systems">For the
+tools that support alternative projections</a>, it is
+possible to to work around this by reinitializing the map
+in a different projection.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>

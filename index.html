@@ -1368,7 +1368,7 @@ such as maps showing vegetation cover, rainfall, or elevation.
 For <a href="#use-case-static-map">static map views</a>,
 this type of map content can often be represented as a single image layer.
 But to support web maps with pan and zoom capabilities,
-the images usually need to be divided into
+the images usually need to be divided into tilesets.
 </p>
 <p>
 Map tiles are also used for aerial and satellite photographs,
@@ -2233,22 +2233,24 @@ they would need to rely on a third-party service for the map data.
 <section id="capability-single-custom-image" data-ucr-role="capability">
 <h4>Display a map using a single custom image as a map layer</h4>
 <p>
-While most web maps are composed of tilesets, they may also
-consist of one of more layers that are just single images rendered on the
-fly (such as from a WMS), large images that a user pans across or vector images.
-These kinds of maps can be useful in cases where a broader spatial context is not
-as important or when the author is trying to make a specific point about a set of
-data. Custom image layers can also be used for representing complex data for a
-specific area that may not be available as a complete tileset, such as terrain
-maps or foliage coverage images produced by a specific researcher.
+While most web maps are composed of tilesets,
+they may also consist of one of more layers
+that are just single images rendered on the fly (such as from a WMS),
+large images that a user pans across, or vector images.
+These kinds of maps can be useful in cases
+where a broader spatial context is not as important
+or when the author is trying to make a specific point about a set of data.
+Custom image layers can also be used for representing complex data 
+for a specific area that may not be available as a complete tileset,
+such as terrain maps or foliage coverage images produced by a specific researcher.
 </p>
 
 <h5>Existing implementations</h5>
 <p>
-The majority of the embed maps do not support this feature. The API tools that
-do support this feature typically accept a layer source, attribution and the
-coordinate system to be used by the image layers, which can be mapped to pixel
-units for more simple use cases.
+The majority of the embed maps do not support this feature.
+The API tools that do support this feature typically accept a layer source, attribution,
+and the coordinate system to be used by the image layers,
+which can be mapped to pixel units for more simple use cases.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -2262,9 +2264,8 @@ units for more simple use cases.
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dd>
-  <a>no support</a>: most embeds do not support this, as using a single custom
-  image requires setting up the map boundaries and coordinate system, conflicting
-  with the low-configuration nature of these tools.
+  <a>no support</a>: most embeds do not support this.
+  Adding a custom image layer requires more configuration than supported by these tools.
 </dd>
 </dl>
 
@@ -2273,7 +2274,10 @@ units for more simple use cases.
 
 <h5>Uses beyond mapping</h5>
 <p>
-This capability is essential in order to provide support for non-map materials. The ability to display non-georeferenced media like technical drawings, schematics or archival material within a standardized viewer  has a wide variety of practical use cases.
+This capability is essential in order to provide support for non-map materials.
+The ability to display non-georeferenced media like technical drawings,
+schematics or archival material within a standardized viewer
+has a wide variety of practical use cases.
 </p>
 
 <h5>Related web specifications</h5>
@@ -2300,9 +2304,10 @@ This capability is essential in order to provide support for non-map materials. 
 Custom tilesets are a necessary feature for more advanced mapping use cases.
 The majority of web maps are used for wayfinding and the default embed map
 tilesets all tend to be fairly similar, showing limited natural features in
-addition to streets and buildings. However, beyond this basic usage, there are
-many use cases which require custom tilesets, including maps that involve coverage
- data, satellite images, historical geography and future/proposed developments.
+addition to streets and buildings.
+However, beyond this basic usage, 
+there are many use cases which require custom tilesets,
+including maps that involve coverage data, satellite images, historical geography and future/proposed developments.
 </p>
 
 <h5>Existing implementations</h5>
@@ -2378,9 +2383,10 @@ by including links, images, or iframes in the markup
 that are replaced when the script runs.
 </p>
 <p>
-For built-in graceful degradation, iframe embeds potentially offer the
-best experience, but all of the reference tools do not support this by
-default, the map author must add this feature themselves.
+For built-in graceful degradation,
+iframe embeds potentially offer the best experience,
+but all of the reference tools do not support this by default,
+the map author must add this feature themselves.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -2390,8 +2396,8 @@ default, the map author must add this feature themselves.
 <dd><a>supported, with limitations</a>:
   these tools offer options to serve a static image without JavaScript.
   However, this is not the default fallback behavior for the embeds
-  when JavaScript is turned off, adding a fallback image must be
-  implemented as a custom feature.
+  when JavaScript is turned off;
+  adding a fallback image must be implemented as a custom feature.
 </dd>
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
@@ -2840,9 +2846,9 @@ is a separate capability, discussed in <a href="#capability-reproject-maps"></a>
 
 <h5>Existing implementations</h5>
 <p>
-With the Google Maps API, you are able to create custom
-projections that are rectilinear by passing in a bi-directional
-mapping between coordinate systems. Leaflet.js supports the Equirectangular,
+With the Google Maps API, you are able to create custom rectilinear projections,
+by passing in a bi-directional mapping between coordinate systems.
+Leaflet.js supports the Equirectangular,
 Elliptical Mercator and Web Mercator projections by default,
 and you can use the external plugin
 <a href="http://kartena.github.io/Proj4Leaflet/">Proj4Leaflet</a> to
@@ -2985,15 +2991,14 @@ only OpenStreetMap offers the option to export a map location in a standard form
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>openstreetmap-embed</dt>
-<dd><a>full support</a>: in addition to being able to generate
-  and share a link or a map embed, it is possible to export
-  the point locations as a geo URI.
+<dd><a>full support</a>:
+  in addition to being able to generate and share a link or a map embed,
+  it is possible to export the point locations as a geo URI.
 </dd>
 <dt>google-maps-embed</dt>
 <dd><a>supported, with limitations</a>:
-  a user is able to generate a link to the map that can be shared
-  via a variety of methods, but there is no way to easily
-  send this information to another application.
+  a user is able to generate a link to the map that can be shared via a variety of methods,
+  but there is no way to easily send this information to another application.
 </dd>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>

@@ -1274,7 +1274,7 @@ with a pinpoint marker showing the specific location.
 <p>
 This type of web map is used
 by websites for stores, restaurants, and countless other organizations with physical locations.
-It is also used by newsmedia to display the location described in an article.
+It is also used by news media to display the location described in an article.
 In social media and blogs,
 a single-location map can be used to show where a post was uploaded from,
 or where a photograph or video was taken.
@@ -1368,7 +1368,7 @@ such as maps showing vegetation cover, rainfall, or elevation.
 For <a href="#use-case-static-map">static map views</a>,
 this type of map content can often be represented as a single image layer.
 But to support web maps with pan and zoom capabilities,
-the images usually need to be divided into 
+the images usually need to be divided into tilesets.
 </p>
 <p>
 Map tiles are also used for aerial and satellite photographs,
@@ -2174,12 +2174,13 @@ they just want a generic wayfinding map of the area.
 
 <h5>Existing implementations</h5>
 <p>
-The embeds and commerical APIs all provide default street maps
+The embeds and commercial APIs all provide default street maps
 without the author needing to specify the map source.
 In contrast, the more flexible APIs
 must be combined with an separate map provider (e.g., OpenStreetMap).
 </p>
 <dl data-ucr-role="implementation-notes">
+
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
@@ -2232,12 +2233,24 @@ they would need to rely on a third-party service for the map data.
 <section id="capability-single-custom-image" data-ucr-role="capability">
 <h4>Display a map using a single custom image as a map layer</h4>
 <p>
-  While most web maps often are often composed of tilesets, they may also consist of one of more layers that are just single images rendered on the fly (such as from a WMS), large images that a user pans across or vector images. These kinds of maps can be useful in cases where a broader spatial context is not as important or when the author is trying to make a specific point about a set of data. Custom image layers can also be used for representing complex data for a specific area that may not be available as a complete tileset, such terrain maps or foliage coverage images produced by a specific researcher.
+While most web maps are composed of tilesets,
+they may also consist of one of more layers
+that are just single images rendered on the fly (such as from a WMS),
+large images that a user pans across, or vector images.
+These kinds of maps can be useful in cases
+where a broader spatial context is not as important
+or when the author is trying to make a specific point about a set of data.
+Custom image layers can also be used for representing complex data 
+for a specific area that may not be available as a complete tileset,
+such as terrain maps or foliage coverage images produced by a specific researcher.
 </p>
 
 <h5>Existing implementations</h5>
 <p>
-The majority of the embed maps do not support this feature. The API tools that do support this feature typically accept a layer source, attribution and the coordinate system to be used by the image layers, which can be mapped to pixel units for more simple use cases.
+The majority of the embed maps do not support this feature.
+The API tools that do support this feature typically accept a layer source, attribution,
+and the coordinate system to be used by the image layers,
+which can be mapped to pixel units for more simple use cases.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -2251,7 +2264,8 @@ The majority of the embed maps do not support this feature. The API tools that d
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dd>
-  <a>no support</a>: most embeds do not support this, as using a single custom image requires setting up the map boundaries and coordinate system, conflicting with the low-configuration nature of these tools.
+  <a>no support</a>: most embeds do not support this.
+  Adding a custom image layer requires more configuration than supported by these tools.
 </dd>
 </dl>
 
@@ -2260,7 +2274,10 @@ The majority of the embed maps do not support this feature. The API tools that d
 
 <h5>Uses beyond mapping</h5>
 <p>
-This capability is essential in order to provide support for non-map materials. The ability to display non-georeferenced media like technical drawings, schematics or archival material within a standardized viewer  has a wide variety of practical use cases.
+This capability is essential in order to provide support for non-map materials.
+The ability to display non-georeferenced media like technical drawings,
+schematics or archival material within a standardized viewer
+has a wide variety of practical use cases.
 </p>
 
 <h5>Related web specifications</h5>
@@ -2284,7 +2301,13 @@ This capability is essential in order to provide support for non-map materials. 
 <section id="capability-custom-map-tiles" data-ucr-role="capability">
 <h4>Display a map using tile data from an author-specified web map service</h4>
 <p>
-Custom tilesets are a necessary feature for more advanced mapping use cases. The majority webmaps are used for wayfinding and the default embed map tilesets all tend to be fairly similar, showing limited natural features in addition to streets and buildings. However, beyond this basic usage, there are many use cases which require custom tilesets, including maps that involve coverage data, satellite images, historical geography and future/proposed developments.
+Custom tilesets are a necessary feature for more advanced mapping use cases.
+The majority of web maps are used for wayfinding and the default embed map
+tilesets all tend to be fairly similar, showing limited natural features in
+addition to streets and buildings.
+However, beyond this basic usage, 
+there are many use cases which require custom tilesets,
+including maps that involve coverage data, satellite images, historical geography and future/proposed developments.
 </p>
 
 <h5>Existing implementations</h5>
@@ -2360,7 +2383,10 @@ by including links, images, or iframes in the markup
 that are replaced when the script runs.
 </p>
 <p>
-For built-in graceful degradation, iframe embeds potentially offer the best experience, but all of the reference tools do not support this by default, the developer must add this feature themselves.
+For built-in graceful degradation,
+iframe embeds potentially offer the best experience,
+but all of the reference tools do not support this by default,
+the map author must add this feature themselves.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -2368,7 +2394,10 @@ For built-in graceful degradation, iframe embeds potentially offer the best expe
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
 <dd><a>supported, with limitations</a>:
-  these tools offer options to serve a static image without JavaScript. However, this is not the default fallback behavior for the embeds when JavaScript is turned off, adding a fallback image must be implemented as a custom feature.
+  these tools offer options to serve a static image without JavaScript.
+  However, this is not the default fallback behavior for the embeds
+  when JavaScript is turned off;
+  adding a fallback image must be implemented as a custom feature.
 </dd>
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
@@ -2420,16 +2449,28 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <section id="capability-marker-points" data-ucr-role="capability">
 <h4>Show pinpoint locations or custom markers on the map</h4>
 <p>
-<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+For the purposes of wayfinding, custom markers are an essential part of web maps.
+The most common use case for a web map is to show one or more locations
+of a business or organization. Maps that display pinpoint locations can
+also be used for data visualization, demonstrating spatial patterns
+of particular events or occurrences.
 </p>
 <p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+Almost all of the reference tools support map markers in some way.
+While most embed tools include some kind of geocoder in order to
+support address lookup, the tools typically utilize latitude and
+longitude coordinates under the hood, and map authors can pass in
+the coordinates to the URL or configuration object upon initialization.
+
+The notable standout here is the Google Maps Embed.
+Searching for a location by address  will return information
+for a 'Place', each with its own ID and information such as
+business hours, reviews, and etc. The ID, rather than latitude and longitude,
+is passed into the iframe URL in order to bring up the additional
+location information for that particular place.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
@@ -2449,8 +2490,9 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
 
 <h5>Uses beyond mapping</h5>
-<p>
-<!-- What other web content could use this specific capability? Be brief but specific. -->
+<p>If the map element were to support non-georeferenced images,
+custom markers could be used as an annotation tool for
+technical drawings and other similar media.
 </p>
 
 <h5>Related web specifications</h5>
@@ -2505,10 +2547,11 @@ and the target of user events.
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+The tools that support this capability primarily fall under the
+API category. All of the API tools support the drawing of lines
+and polygons by passing in coordinates into a JavaScript function.
+Mapbox differs from the other implementations as it only accepts
+files in the GeoJSON format. The embed tools lack support for this capability.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -2570,17 +2613,19 @@ it needs to be able to link to other web resources.
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+The API tools all provide ways to bind event handlers to map features,
+allow map authors to display additional information when a map feature
+is clicked. While it is technically possible to to turn map features
+into an external link by using JavaScript, this is not a very common
+pattern as it may interfere with other user interactions such as panning
+and it can produce markup that is not consistent with the functionality of the map.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dd><a>full support</a>: custom HTML can be applied to map markers and vector features, allowing the map author to display hyperlinks withink them.
-  <!-- details about what is/isn't supported -->
+<dd><a>full support</a>: map markers and vector features can have popups
+  that contain custom HTML, allowing the map author to display hyperlinks within the popups.
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -2632,6 +2677,8 @@ and use of the maps on the web usually requires at least attribution,
 and maybe links to terms of use.
 Many map services also include links for end users to report errors.
 </p>
+
+<h5>Existing implementations</h5>
 <p>
 Standard practice in the reviewed web map tools
 is to display this attribution in the lower right of the map widget.
@@ -2640,7 +2687,6 @@ the links and copyright is automatically generated.
 For map frameworks that allow the developer to specify the map data source,
 these "attribution control" values can be set in configuration.
 </p>
-<h5>Existing implementations</h5>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -2651,7 +2697,8 @@ these "attribution control" values can be set in configuration.
 <dd><a>full support</a>: (as described above)
 </dd>
 <dt>mapbox-embeds</dt>
-<dd><a>supported, with limitations</a>: attribution is automatically generated, but it is hidden under a non-accessible tooltip</dd>
+<dd><a>supported, with limitations</a>: attribution is automatically generated,
+  but it is hidden under a non-keyboard-accessible tooltip</dd>
 </dl>
 </section>
 
@@ -2743,13 +2790,20 @@ the web mapping service needs access to a Gazeteer search and corresponding data
 </p>
 <h5>Existing implementations</h5>
 <p>
+The majority of reference tools support this functionality, either
+through first party support or through popular plugins. This frequently
+takes the form of a search form that returns a possible list of
+options that the map author can select from. The Google Maps geocoder
+is the gold standard amongst these implementations, as it
+is more forgiving in terms of search format and provides better
+support for different localizations than other alternatives.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>mapbox-embed</dt>
-<dd><a>full support</a>:
+<dd><a>full support</a>: by default, these tools provide address search when setting up the map
 </dd>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
@@ -2792,7 +2846,12 @@ is a separate capability, discussed in <a href="#capability-reproject-maps"></a>
 
 <h5>Existing implementations</h5>
 <p>
-With the Google Maps API, you are able to create custom projections that are rectilinear by passing in a bi-directional mapping between coordinate systems. Leaflet.js supports the Equirectangular, Elliptical Mercator and Web Mercator projections by default, and you can use the external plugin <a href="http://kartena.github.io/Proj4Leaflet/">Proj4Leaflet</a> to
+With the Google Maps API, you are able to create custom rectilinear projections,
+by passing in a bi-directional mapping between coordinate systems.
+Leaflet.js supports the Equirectangular,
+Elliptical Mercator and Web Mercator projections by default,
+and you can use the external plugin
+<a href="http://kartena.github.io/Proj4Leaflet/">Proj4Leaflet</a> to
 support other projections.
 </p>
 <dl data-ucr-role="implementation-notes">
@@ -2864,10 +2923,11 @@ letting user interaction rotate it to show parts of interest.
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+None of the reference tools support this feature.
+<a href="#capability-tile-coordinate-systems">For the
+tools that support alternative projections</a>, it is
+possible to to work around this by reinitializing the map
+in a different projection.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
@@ -2925,14 +2985,20 @@ The user may want to export the location to a GPS or native mapping application
 so they can calculate directions to it.
 </p>
 <h5>Existing implementations</h5>
-<p></p>
+<p>
+Most of the reference tools do not support this capability. Of the tested tools,
+only OpenStreetMap offers the option to export a map location in a standard format.
+</p>
 <dl data-ucr-role="implementation-notes">
 <dt>openstreetmap-embed</dt>
 <dd><a>full support</a>:
+  in addition to being able to generate and share a link or a map embed,
+  it is possible to export the point locations as a geo URI.
 </dd>
 <dt>google-maps-embed</dt>
 <dd><a>supported, with limitations</a>:
-  You are able to generate a link to the map that can be shared via a variety of methods, but there is no way to easily send this information to another application.
+  a user is able to generate a link to the map that can be shared via a variety of methods,
+  but there is no way to easily send this information to another application.
 </dd>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>

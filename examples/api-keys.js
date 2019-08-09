@@ -1,5 +1,9 @@
+/* Tokens are configured to work from the following domains:
+   http://localhost:8000/
+   https://maps4html.github.io/
+*/
 var m4h = m4h || {};
 m4h.keys = {
-    google: 'AIzaSyCP1y_kwKFUy_jBDb-4EvUjt7b5jCYftfc',
-    mapboxGL: 'pk.eyJ1Ijoibmlja2ZpdHoiLCJhIjoiY2p3d2g2cnZkMGk5eTQ4cnoxNzk3NmdkdCJ9.KiZI4VGB2rzLdqkCoGa7pw',
+  google: 'AIzaSyCP1y_kwKFUy_jBDb-4EvUjt7b5jCYftfc',
+  mapboxGL: 'pk.eyJ1IjoibWFwczRodG1sLWFtZWxpYWJyIiwiYSI6ImNqeXhrampmMTB3d2EzZ3BlenFvMHVicmIifQ.zE60jyQ0QH_NlKFyo9EmvA',
 };

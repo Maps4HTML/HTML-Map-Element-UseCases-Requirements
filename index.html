@@ -507,13 +507,18 @@ possibly restricted by other search parameters.
 The format of the returned map data is defined separately.
 OWS standards include:
 <ul>
-  <li>Web Map Service (WMS), for accessing a custom processed map image
+  <li><dfn data-lt="Web Map Service|WMS">Web Map Service (WMS)</dfn>,
+    for accessing a custom processed map image
     that directly represents the requested region and query parameters</li>
-  <li>Web Map Tile Service (WMTS), for accessing pre-processed map <a>tiles</a>,
+  <li><dfn data-lt="Web Map Tile Service|WMTS">Web Map Tile Service (WMTS)</dfn>,
+    for accessing pre-processed map <a>tiles</a>,
     which may only represent a <a>layer</a> of the final map</li>
-  <li>Web Feature Service (WFS), for accessing <a>vector feature</a> data</li>
-  <li>Web Coverage Service (WCS), for accessing raw <a>coverage</a> data</li>
-  <li>OWS Context, for returning metadata with references to other map services</li>
+  <li><dfn data-lt="Web Feature Service|WFS">Web Feature Service (WFS)</dfn>,
+    for accessing <a>vector feature</a> data</li>
+  <li><dfn data-lt="Web Coverage Service|WCS">Web Coverage Service (WCS)</dfn>,
+    for accessing raw <a>coverage</a> data</li>
+  <li><dfn>OWS Context</dfn>,
+    for returning metadata with references to other map services</li>
 </ul>
 </dd>
 
@@ -1250,8 +1255,7 @@ Of course, most use cases require additional capabilities
 — this is just the foundation!
 </p>
 <p>
-See <a href="examples/globe.html" target="examples">examples of declarative map viewers</a>
-and <a href="examples/use-case-create-initialise-display-map.html" target="examples">JS-based maps</a>
+See <a href="examples/create-map.html" target="examples">examples of creating a basic map</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="77">Discuss this section on GitHub.</p>
@@ -1266,7 +1270,7 @@ as implemented by the reference JavaScript tools.
 <section id="use-case-single-location" data-ucr-role="use-case">
 <h4>Display a map centered on a point location</h4>
 <p>
-For a website creator, the simplest web map use case:
+For a website creator, this is the simplest web map use case:
 display a map from a location description.
 Usually, the map layer is at a zoom level that shows streets and points of interest,
 with a pinpoint marker showing the specific location.
@@ -1306,6 +1310,10 @@ This is common in cases where the accompanying text
 refers to specific features in the map,
 or when a series of maps will be contrasted.
 </p>
+<p>
+See <a href="examples/static-map.html" target="examples">examples of static map displays</a>
+as implemented by the reference JavaScript tools.
+</p>
 <p class="issue discussion" data-number="17">Discuss this section on GitHub.</p>
 
 <h5>Required capabilities</h5>
@@ -1314,21 +1322,25 @@ or when a series of maps will be contrasted.
 </ul>
 </section>
 
-<section id="use-case-multiple-locations" data-ucr-role="use-case">
-<h4>Display multiple point locations on a single map</h4>
+<section id="use-case-multiple-location-markers" data-ucr-role="use-case">
+<h4>Display multiple point locations as map markers</h4>
 <p>
-A web developer needs the ability to display a map with
-markers or other affordances denoting multiple specified
-locations.
+The most common use case for a web map is to show
+one or more locations of a business or organization.
+Maps that display pinpoint locations can also be used for data visualization,
+demonstrating spatial patterns of particular events or occurrences.
+Other examples of point markers on a map include
+search results (e.g., restaurants),
+traffic information (e.g., locations of construction roadworks),
+or the locations where photographs in a gallery were taken.
 </p>
 <p>
-Example uses of such a map include search results (e.g.
-restaurants), traffic information (e.g.
-locations of roadworks), or the locations where photographs
-in a gallery were taken.
+For many use cases,
+the website author will want to choose the icon used to mark the location,
+with different markers for different types of point features.
 </p>
 <p>
-See <a href="examples/use-case-display-multiple-point-locations-single-map.html" target="examples">examples of displaying multiple point locations on a single map</a>
+See <a href="examples/multiple-location-markers.html" target="examples">examples of displaying multiple point locations as map markers</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="78">Discuss this section on GitHub.</p>
@@ -1343,9 +1355,27 @@ as implemented by the reference JavaScript tools.
 <section id="use-case-poly-features" data-ucr-role="use-case">
 <h4>Display routes/paths or regions</h4>
 <p>
-
+Lines and curves (<a>polyline</a> features) drawn on a map represent
+roads, rivers, directions between places,
+or the observed path of a moving object.
+Shapes (<a>polygon</a> features) are used for political regions (country and municipal boundaries),
+building footprint outlines,
+and for contour lines which mark the extent of a certain value within continuous data
+(e.g., elevation).
+Polygons are also used for roads, rivers and so on at higher zoom levels,
+where the true shape of the feature can no longer be approximated as a single line.
+</p>
+<p>
+See <a href="examples/poly-features.html" target="examples">examples of displaying routes and regions</a>
+as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="36">Discuss this section on GitHub.</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li>Everything listed in <a href="#use-case-single-location"></a></li>
+<li>…</li>
+</ul>
 </section>
 
 <section id="use-case-html-annotations" data-ucr-role="use-case">
@@ -1353,34 +1383,55 @@ as implemented by the reference JavaScript tools.
 <p>
 
 </p>
+<p>
+See <a href="examples/html-annotations.html" target="examples">examples of displaying custom HTML annotations</a>
+as implemented by the reference JavaScript tools.
+</p>
 <p class="issue discussion" data-number="37">Discuss this section on GitHub.</p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li>Everything listed in <a href="#use-case-single-location"></a></li>
+<li>…</li>
+</ul>
 </section>
 
 <section id="use-case-custom-map" data-ucr-role="use-case">
 <h4>Display custom imagery as a map layer</h4>
 <p>
+Many mapping applications require custom imagery
+that goes beyond annotations of an existing map.
+</p>
+<p>
 Unlike map <a>features</a>, which can be defined in geometric terms,
-map <a>coverages</a> define continuous variations, and are usually represented as image data.
+map <a>coverages</a> define continuous variations,
+and are usually represented as <a>raster</a> image data.
 Many maps of natural features involve coverage data,
-such as maps showing vegetation cover, rainfall, or elevation.
-</p>
-<p>
-For <a href="#use-case-static-map">static map views</a>,
-this type of map content can often be represented as a single image layer.
-But to support web maps with pan and zoom capabilities,
-the images usually need to be divided into tilesets.
-</p>
-<p>
-Map tiles are also used for aerial and satellite photographs,
+such as maps showing terrain, vegetation cover, rainfall, or elevation.
+Raster image layers are also used for aerial and satellite photographs,
 and for pre-rendering vector feature data, on the server or in a specialized application.
-Custom map tiles — in contrast to map tiles from the major web map services —
+Custom map layers — in contrast to maps from major web map services —
 are necessary if displaying confidential business data,
+new research data,
 maps of proposed developments or historical geography,
 maps of non-Earth bodies such as Mars and the Moon,
 or any other type of map not included in the major wayfinding street maps.
 </p>
 <p>
-See <a href="examples/use-case-specify-data-source-map-tile-layer.html" target="examples">examples of specifying a data source for a map tile layer</a>
+When the custom map layer is of a limited scope,
+it can often be represented as a single image file.
+Single images are practical for <a href="#use-case-static-map">static map views</a>,
+and other cases where a broader spatial context is not as important,
+or when the author is trying to make a specific point about a set of data.
+Single image layers may also be rendered on the fly from a <a>WMS</a>.
+</p>
+<p>
+To support slippy web maps with extensive pan and zoom capabilities, however,
+the custom images need to be divided into tilesets
+and the map viewer needs to be able to dynamically fetch the correct images.
+</p>
+<p>
+See <a href="examples/custom-map.html" target="examples">examples of specifying a data source for a map tile layer</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="38">Discuss this section on GitHub.</p>
@@ -1398,15 +1449,20 @@ as implemented by the reference JavaScript tools.
 <p>
 
 </p>
+<p>
+See <a href="examples/layers.html" target="examples">examples of multi-layer maps</a>
+as implemented by the reference JavaScript tools.
+</p>
 <p class="issue discussion" data-number="11">Discuss this section on GitHub.</p>
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-single-custom-image"></a></li>
+<li><a href="#capability-single-custom-image"></a> or …</li>
+<li>…</li>
 </ul>
 </section>
 
-<section id="use-case-selectable-alternative-layers" data-ucr-role="use-case">
+<section id="use-case-alternative-layers" data-ucr-role="use-case">
 <h4>Provide alternative map layers which the user can select</h4>
 <p>
 Different users may be interested in different aspects of a map (e.g., roads vs terrain),
@@ -1421,7 +1477,7 @@ Note: the ability to re-style the default map interface is also listed
 But alternative map layers are part of the content, as well.
 </p>
 <p>
-See <a href="examples/use-case-allow-user-select-different-style-map.html" target="examples">examples of allowing the user to select a different style for a map</a>
+See <a href="examples/alternative-layers.html" target="examples">examples of allowing the user to select a different style for a map</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="81">Discuss this section on GitHub.</p>
@@ -1449,10 +1505,8 @@ would want to reuse the same technology
 for displaying these types of map-like content.
 </p>
 <p>
-<!--
-See <a href="examples/#(add a new file for each use case)" target="examples">examples of non-geographic content in map viewers</a>
+See <a href="examples/#technical-drawings" target="examples">examples of non-geographic content in map viewers</a>
 as implemented by the reference JavaScript tools.
--->
 </p>
 <p class="issue discussion" data-number="1">Discuss this section on GitHub.</p>
 
@@ -1498,7 +1552,7 @@ for the reference JavaScript tools.
 Description to follow.
 </p>
 <p>
-See <a href="examples/use-case-allow-user-reset-map-their-starting-point.html" target="examples">examples of allowing a user to reset the map to their starting point</a>
+See <a href="examples/allow-user-reset-map-their-starting-point.html" target="examples">examples of allowing a user to reset the map to their starting point</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="83">Discuss this section on GitHub.</p>
@@ -1578,7 +1632,7 @@ by toggling between two states within the same display.
 Example to be expanded later: NLS old Ordnance Survey maps.
 </p>
 <p>
-See <a href="examples/use-case-allow-user-control-layer-displayed-map.html" target="examples">examples of allowing the user to control the layer displayed by a map</a>
+See <a href="examples/allow-user-control-layer-displayed-map.html" target="examples">examples of allowing the user to control the layer displayed by a map</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="82">Discuss this section on GitHub.</p>
@@ -1684,7 +1738,7 @@ accessible version that utilised a public API to effect
 zooming in response to the keyboard.
 </p>
 <p>
-See <a href="examples/use-case-add-a-custom-control-to-a-map.html" target="examples">examples of adding a custom control to a map</a>
+See <a href="examples/add-a-custom-control-to-a-map.html" target="examples">examples of adding a custom control to a map</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="79">Discuss this section on GitHub.</p>
@@ -1720,7 +1774,7 @@ selecting a marker could highlight the corresponding list
 item.
 </p>
 <p>
-See <a href="examples/use-case-provide-feedback-user-they-manipulate-map.html" target="examples">examples of providing feedback to a user as they manipulate the map</a>
+See <a href="examples/provide-feedback-user-they-manipulate-map.html" target="examples">examples of providing feedback to a user as they manipulate the map</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="80">Discuss this section on GitHub.</p>
@@ -1751,7 +1805,7 @@ need not only to move but also to adjust its zoom level to
 one which best fits the area.
 </p>
 <p>
-See <a href="examples/use-case-change-map-new-position-andor-zoom-level.html" target="examples">examples of moving a map to a new position and zoom level</a>
+See <a href="examples/change-map-new-position-andor-zoom-level.html" target="examples">examples of moving a map to a new position and zoom level</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
@@ -1777,7 +1831,7 @@ a set of directions, or through a set of locations that form
 part of a temporal sequence.
 </p>
 <p>
-See <a href="examples/use-case-animate-map-through-sequence-points.html" target="examples">examples of animating a map through a sequence of points</a>
+See <a href="examples/animate-map-through-sequence-points.html" target="examples">examples of animating a map through a sequence of points</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
@@ -1803,7 +1857,7 @@ and allowing the user to orient themselves with respect to the map
 by manipulating it with respect to local landmarks.
 </p>
 <p>
-See <a href="examples/use-case-change-bearing-map.html" target="examples">examples of changing the bearing of a map</a>
+See <a href="examples/change-bearing-map.html" target="examples">examples of changing the bearing of a map</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="84">Discuss this section on GitHub.</p>
@@ -1825,7 +1879,7 @@ requires an API allowing it to be added as an overlay to the
 map view.
 </p>
 <p>
-See <a href="examples/use-case-show-vector-data-overlay-map.html" target="examples">examples of showing a vector data overlay</a>
+See <a href="examples/show-vector-data-overlay-map.html" target="examples">examples of showing a vector data overlay</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
@@ -1845,7 +1899,7 @@ A web developer wishing to display such data requires an API
 allowing such data to be added to a map as an overlay.
 </p>
 <p>
-See <a href="examples/use-case-show-heatmap-overlaid-map.html" target="examples">examples of showing a heatmap overlaid</a>
+See <a href="examples/show-heatmap-overlaid-map.html" target="examples">examples of showing a heatmap overlaid</a>
 as implemented by the reference JavaScript tools.
 </p>
 <p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
@@ -2012,7 +2066,7 @@ along with a method of generating encrypted API tokens on demand on the webserve
 </section>
 
 <section id="mapbox">
-<h3>Mapbox GL JS API</h3>
+<h3>Mapbox GL JS API and Mapbox Studio embeds</h3>
 <p>
 <a href="https://docs.mapbox.com/">Mapbox</a> provides
 map data as a service, as well as frameworks for multiple platforms.
@@ -2231,23 +2285,21 @@ they would need to rely on a third-party service for the map data.
 </section>
 
 <section id="capability-single-custom-image" data-ucr-role="capability">
-<h4>Display a map using a single custom image as a map layer</h4>
+<h4>Display an image file as a map layer</h4>
 <p>
-While most web maps are composed of tilesets,
-they may also consist of one of more layers
-that are just single images rendered on the fly (such as from a WMS),
-large images that a user pans across, or vector images.
-These kinds of maps can be useful in cases
-where a broader spatial context is not as important
-or when the author is trying to make a specific point about a set of data.
-Custom image layers can also be used for representing complex data 
-for a specific area that may not be available as a complete tileset,
-such as terrain maps or foliage coverage images produced by a specific researcher.
+If a web author already has (or can generate on the server) a map
+in a standard image format the browser can render — JPEG, PNG, SVG, etc. —
+can the map viewer display it as a map layer?
+Or will it need to be converted into a geospatial data format?
+</p>
+<p>
+For most use cases, at least some additional metadata will be required,
+to align the image pixels to the geographic coordinates of the map.
 </p>
 
 <h5>Existing implementations</h5>
 <p>
-The majority of the embed maps do not support this feature.
+The majority of the embed maps do not support custom image layers.
 The API tools that do support this feature typically accept a layer source, attribution,
 and the coordinate system to be used by the image layers,
 which can be mapped to pixel units for more simple use cases.
@@ -2301,13 +2353,12 @@ has a wide variety of practical use cases.
 <section id="capability-custom-map-tiles" data-ucr-role="capability">
 <h4>Display a map using tile data from an author-specified web map service</h4>
 <p>
-Custom tilesets are a necessary feature for more advanced mapping use cases.
-The majority of web maps are used for wayfinding and the default embed map
-tilesets all tend to be fairly similar, showing limited natural features in
-addition to streets and buildings.
-However, beyond this basic usage, 
-there are many use cases which require custom tilesets,
-including maps that involve coverage data, satellite images, historical geography and future/proposed developments.
+A single image for an entire map layer is impractical on the web
+for large, pan-able maps at good resolution.
+For this reason, most web map services provide map data as <a>tilesets</a>.
+Beyond any <a href="#capability-default-map">default map layer</a> that the viewer provides,
+can it process tilesets as a custom map layer?
+If so, in what form?
 </p>
 
 <h5>Existing implementations</h5>
@@ -2449,11 +2500,11 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <section id="capability-marker-points" data-ucr-role="capability">
 <h4>Show pinpoint locations or custom markers on the map</h4>
 <p>
-For the purposes of wayfinding, custom markers are an essential part of web maps.
-The most common use case for a web map is to show one or more locations
-of a business or organization. Maps that display pinpoint locations can
-also be used for data visualization, demonstrating spatial patterns
-of particular events or occurrences.
+A map marker is a small icon that marks a <a>point feature</a>.
+Wayfinding maps often have extensive sets of icon markers
+that identify different types of features.
+In web maps, the pinpoint marker (a circle narrowing into a point at the bottom)
+has become standard for identifying any location of interest.
 </p>
 <p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
 
@@ -2525,15 +2576,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <section id="capability-vector-features" data-ucr-role="capability">
 <h4>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</h4>
 <p>
-Polylines are used in maps to draw roads, rivers, directions between places,
-or the observed path of a moving object.
-Polygons are used for political regions (country and municipal boundaries),
-building footprint outlines,
-and for contour lines which mark the extent of a certain value within continuous data
-(e.g., elevation).
-Polygons are also used for roads, rivers and so on at higher zoom levels,
-where the true shape of the feature can no longer be approximated as a single line.
-They are two of the most common types of map data features.
+Polygons and polylines are two of the most common types of map data features.
 </p>
 <p>
 It is common on the web for vector map data to be pre-rendered

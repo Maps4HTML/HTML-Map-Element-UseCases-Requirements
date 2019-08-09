@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Display an interactive map</title>
+  <link rel="stylesheet" href="./examples.css"/>
+    <script src="api-keys.js"></script>
+</head>
+<body>
+<h1>Examples for
+  <a href="../#use-case-create-map">
+    Use Case: Display an interactive map
+  </a>
+</h1>
+
+<p>
+The embedded map viewers here show their default view,
+which is generally a map of the whole globe
+although it may be personalized to the viewer's location.
+</p>
+<p>
+The JS API maps are the simplest viewers supported by each framework.
+Some require an explicit position and zoom level to display anything;
+the examples use a full-globe map (zoom 0) centered on 0° latitude and longitude.
+Some frameworks also require explicit map tile source;
+the examples in those cases use OpenStreetMap tiles.
+</p>
+
+<details>
+  <summary>Jump to section…</summary>
+<ul class="toc">
+  <li>Iframe embeds: <ul>
+    <li><a href="#google-maps-embed">Google Maps embed</a></li>
+    <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+    <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
+    <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
+  </ul></li>
+  <li>Client-side frameworks: <ul>
+    <li><a href="#leaflet-js">Leaflet.js API</a></li>
+    <li><a href="#openlayers">OpenLayers API</a></li>
+    <li><a href="#google-maps-api">Google Maps Platform API</a></li>
+    <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
+    <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
+    <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+    <li><a href="#d3-geo">D3 Geographies APIs</a></li>
+  </ul></li>
+</ul>
+</details>
+
+<section id="google-maps-embed">
+<h2>Google Maps</h2>
+
+<iframe src="https://www.google.com/maps/embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+</section>
+
+<section id="openstreetmap">
+<h2>OpenStreetMap</h2>
+
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/">View Larger Map</a></small>
+</section>
+
+<section id="bing-maps-embed">
+<h2>Bing Maps</h2>
+<div>
+    <iframe width="500" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=27.683528083787735~5.306411922086829&lvl=1&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no">
+    </iframe>
+    <div style="white-space: nowrap; text-align: center; width: 500px; padding: 6px 0;">
+       <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
+       <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;rtp=~pos.27.683528083787735_5.306411922086829____&amp;FORM=MBEDLD">Get Directions</a>
+   </div>
+</div>
+</section>
+
+<section id="mapbox-embed">
+<h2>MapBox Studio embed</h2>
+<div>
+  <iframe width="500" height="400" frameborder="0"
+    src="https://api.mapbox.com/styles/v1/nchan0154/cjx9sxbqt08611cp94xvmkwu1.html?fresh=true&access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#0/0/0">
+  </iframe>
+</div>
+</section>
+
+<section id="leaflet-js">
+  <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
+  <div id="leaflet-osm" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+          integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+          crossorigin=""></script>
+    <script class="example">
+let leafletMap = L.map('leaflet-osm').setView([0,0], 0);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    minZoom: 0,
+    maxZoom: 20,
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+}).addTo(leafletMap);
+    </script>
+</section>
+
+<section id="openlayers">
+    <h2>OpenLayers (with OpenStreetMap tiles)</h2>
+    <div id="ol-osm" style="width: 600px; height: 450px;"></div>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script class="example">
+let openLayersMap = new ol.Map({
+    view: new ol.View({
+        center: ol.proj.fromLonLat([0,0]),
+        zoom: 0
+    }),
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.OSM()
+        })
+    ],
+    target: 'ol-osm'
+});
+    </script>
+</section>
+
+<section id="google-maps-api">
+  <h2>Google Maps API</h2>
+
+***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="bing-maps-api">
+  <h2>Bing Maps Control API</h2>
+
+***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="mapkit-js">
+  <h2>MapKit JS (Apple Maps) API</h2>
+
+***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section>
+  <h2>MapBox GL</h2>
+  <div id="mapboxgl" style="width: 600px; height: 450px;"></div>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+<script class="example">
+mapboxgl.accessToken = m4h.keys.mapboxGL;
+    // token must be configured for your website
+let map = new mapboxgl.Map({
+    container: 'mapboxgl',
+    style: 'mapbox://styles/mapbox/streets-v9'
+});
+</script>
+</section>
+</body>
+</html>

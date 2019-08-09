@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Use Case - Client APIs - Animate a map through a sequence of points</title>
+    <title>Use Case - Client APIs - Change a map to a new position and/or zoom level</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin=""/>
@@ -37,18 +37,18 @@
 </head>
 <body>
 <h1>Examples for
-    <a href="../index.html#use-case-animate-map-through-sequence-points">
-        Use Case: Animate a map through a sequence of points
+    <a href="../index.html#use-case-change-map-new-position-andor-zoom-level">
+        Use Case: Change a map to a new position and/or zoom level
     </a>
 </h1>
 <section>
     <h2>Leaflet.js with OpenStreetMap tiles</h2>
-    <div id="leaflet-osm-use-case-animate-map-through-sequence-points" style="width: 600px; height: 450px;"></div>
+    <div id="leaflet-osm-use-case-change-map-new-position-andor-zoom-level" style="width: 600px; height: 450px;"></div>
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
             integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
             crossorigin=""></script>
     <script class="example">
-let leafletMap = L.map('leaflet-osm-use-case-animate-map-through-sequence-points').setView([46.233226, 6.055737], 15);
+let leafletMap = L.map('leaflet-osm-use-case-change-map-new-position-andor-zoom-level').setView([46.233226, 6.055737], 15);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     minZoom: 0,
     maxZoom: 20,
@@ -58,7 +58,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 </section>
 <section>
     <h2>OpenLayers with OpenStreetMap tiles</h2>
-    <div id="ol-osm-use-case-animate-map-through-sequence-points" style="width: 600px; height: 450px;"></div>
+    <div id="ol-osm-use-case-change-map-new-position-andor-zoom-level" style="width: 600px; height: 450px;"></div>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script class="example">
 let openLayersMap = new ol.Map({
@@ -71,18 +71,18 @@ let openLayersMap = new ol.Map({
             source: new ol.source.OSM()
         })
     ],
-    target: 'ol-osm-use-case-animate-map-through-sequence-points'
+    target: 'ol-osm-use-case-change-map-new-position-andor-zoom-level'
 });
     </script>
 </section>
 <section>
     <h2>MapBox GL</h2>
-    <div id="mapboxgl-use-case-animate-map-through-sequence-points" style="width: 600px; height: 450px;"></div>
+    <div id="mapboxgl-use-case-change-map-new-position-andor-zoom-level" style="width: 600px; height: 450px;"></div>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
     <script class="example">
-        mapboxgl.accessToken = 'pk.eyJ1Ijoibmlja2ZpdHoiLCJhIjoiY2p3d2g2cnZkMGk5eTQ4cnoxNzk3NmdkdCJ9.KiZI4VGB2rzLdqkCoGa7pw';
+        mapboxgl.accessToken = m4h.keys.mapboxGL;
         let map = new mapboxgl.Map({
-            container: 'mapboxgl-use-case-animate-map-through-sequence-points',
+            container: 'mapboxgl-use-case-change-map-new-position-andor-zoom-level',
             style: 'mapbox://styles/mapbox/streets-v9',
             center: [6.055737, 46.233226],
             zoom: 15

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="processed"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.30.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- ISSUES/NOTES --- */
+<!DOCTYPE html><html lang="en" class="processed"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.30.3"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- ISSUES/NOTES --- */
 .issue-label {
     text-transform: initial;
 }
@@ -537,8 +537,8 @@ var[data-type]:hover::before {
       ]
     }
   ],
-  "publishISODate": "2019-08-06T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 06 August 2019"
+  "publishISODate": "2019-08-09T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 09 August 2019"
 }</script><meta name="description" content="This report outlines the use cases and requirements
 for standardizing modern Web maps,
 in a way that works
@@ -551,7 +551,7 @@ consultation with the Maps for HTML Community Group and others."><link rel="styl
       
       <h2>
         Draft Community Group Report
-        <time class="dt-published" datetime="2019-08-06">06 August 2019</time>
+        <time class="dt-published" datetime="2019-08-09">09 August 2019</time>
       </h2>
       <dl>
         
@@ -634,7 +634,7 @@ Comments, corrections, and suggested additions should be made as
 If that is not possible, send an email comment to
 <a href="mailto:public-maps4html@w3.org">public-maps4html@w3.org</a>.
 </p>
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#intro-web-maps"><bdi class="secno">1.1 </bdi>The current state of web maps</a></li><li class="tocline"><a class="tocxref" href="#intro-maps4html-cg"><bdi class="secno">1.2 </bdi>The Maps for HTML Community Group</a></li><li class="tocline"><a class="tocxref" href="#intro-report-structure"><bdi class="secno">1.3 </bdi>Structure of this report</a></li><li class="tocline"><a class="tocxref" href="#intro-glossary"><bdi class="secno">1.4 </bdi>Glossary of key terms</a></li></ol></li><li class="tocline"><a class="tocxref" href="#principles"><bdi class="secno">2. </bdi>Guiding Principles</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#extensible-web"><bdi class="secno">2.1 </bdi>The extensible web</a></li><li class="tocline"><a class="tocxref" href="#priorities"><bdi class="secno">2.2 </bdi>Priorities for web standards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#principles-users"><bdi class="secno">2.2.1 </bdi>Users</a></li><li class="tocline"><a class="tocxref" href="#principles-authors"><bdi class="secno">2.2.2 </bdi>Authors</a></li><li class="tocline"><a class="tocxref" href="#priciples-implementers"><bdi class="secno">2.2.3 </bdi>Implementers</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">3. </bdi>Use Cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#content-author-use-cases"><bdi class="secno">3.1 </bdi>Content author use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-create-map"><bdi class="secno">3.1.1 </bdi>Display an interactive map within a web page</a></li><li class="tocline"><a class="tocxref" href="#use-case-single-location"><bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li><li class="tocline"><a class="tocxref" href="#use-case-static-map"><bdi class="secno">3.1.3 </bdi>Display a region of map data as a static image</a></li><li class="tocline"><a class="tocxref" href="#use-case-multiple-locations"><bdi class="secno">3.1.4 </bdi>Display multiple point locations on a single map</a></li><li class="tocline"><a class="tocxref" href="#use-case-poly-features"><bdi class="secno">3.1.5 </bdi>Display routes/paths or regions</a></li><li class="tocline"><a class="tocxref" href="#use-case-html-annotations"><bdi class="secno">3.1.6 </bdi>Display custom web content describing map features</a></li><li class="tocline"><a class="tocxref" href="#use-case-custom-map"><bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer</a></li><li class="tocline"><a class="tocxref" href="#use-case-layers"><bdi class="secno">3.1.8 </bdi>Combine multiple layers of map tile data or features</a></li><li class="tocline"><a class="tocxref" href="#use-case-selectable-alternative-layers"><bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select</a></li><li class="tocline"><a class="tocxref" href="#use-case-technical-drawings"><bdi class="secno">3.1.10 </bdi>Display drawings or schematics without geographic coordinates</a></li></ol></li><li class="tocline"><a class="tocxref" href="#visitor-use-cases"><bdi class="secno">3.2 </bdi>Website visitor use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-interactive"><bdi class="secno">3.2.1 </bdi>Reposition or scale a map to find more context for the displayed locations</a></li><li class="tocline"><a class="tocxref" href="#use-case-allow-user-reset-map-their-starting-point"><bdi class="secno">3.2.2 </bdi>Reset the map to the initial view</a></li><li class="tocline"><a class="tocxref" href="#use-case-rotate-map"><bdi class="secno">3.2.3 </bdi>Rotate a map, or reset the bearing</a></li><li class="tocline"><a class="tocxref" href="#use-case-identify"><bdi class="secno">3.2.4 </bdi>Access additional information about a point on the map</a></li><li class="tocline"><a class="tocxref" href="#use-case-hide-layers"><bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li><li class="tocline"><a class="tocxref" href="#use-case-bookmark"><bdi class="secno">3.2.6 </bdi>Bookmark a location</a></li><li class="tocline"><a class="tocxref" href="#use-case-search-features"><bdi class="secno">3.2.7 </bdi>Search or sort within a set of geographic features</a></li><li class="tocline"><a class="tocxref" href="#use-case-color-scheme"><bdi class="secno">3.2.8 </bdi>Customize the color scheme (light/dark or high contrast)</a></li></ol></li><li class="tocline"><a class="tocxref" href="#application-use-cases"><bdi class="secno">3.3 </bdi>Application developer use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-add-a-custom-control-to-a-map"><bdi class="secno">3.3.1 </bdi>Add a custom control to a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-provide-feedback-user-they-manipulate-map"><bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li><li class="tocline"><a class="tocxref" href="#use-case-move-a-map-to-a-new-position-andor-zoom-level"><bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li><li class="tocline"><a class="tocxref" href="#use-case-animate-a-map-through-a-sequence-of-points"><bdi class="secno">3.3.4 </bdi>Animate a map through a sequence of points</a></li><li class="tocline"><a class="tocxref" href="#use-case-change-bearing-map"><bdi class="secno">3.3.5 </bdi>Change the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-show-a-vector-data-overlay-on-a-map"><bdi class="secno">3.3.6 </bdi>Show a vector data overlay on a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-show-a-heatmap-overlay-on-a-map"><bdi class="secno">3.3.7 </bdi>Show a heatmap overlay on a map</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#js-examples"><bdi class="secno">4. </bdi>Reviewed JavaScript Tools</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#google-maps"><bdi class="secno">4.1 </bdi>Google Maps embeds and Google Maps Platform API</a></li><li class="tocline"><a class="tocxref" href="#openstreetmap"><bdi class="secno">4.2 </bdi>OpenStreetMap embeds</a></li><li class="tocline"><a class="tocxref" href="#bing-maps"><bdi class="secno">4.3 </bdi>Bing Maps embeds and Bing Maps Control API</a></li><li class="tocline"><a class="tocxref" href="#mapkit-js"><bdi class="secno">4.4 </bdi>MapKit JS (Apple Maps) API</a></li><li class="tocline"><a class="tocxref" href="#mapbox"><bdi class="secno">4.5 </bdi>Mapbox GL JS API</a></li><li class="tocline"><a class="tocxref" href="#leaflet-js"><bdi class="secno">4.6 </bdi>Leaflet.js API</a></li><li class="tocline"><a class="tocxref" href="#openlayers"><bdi class="secno">4.7 </bdi>OpenLayers API</a></li><li class="tocline"><a class="tocxref" href="#d3-geo"><bdi class="secno">4.8 </bdi>D3 Geographies APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers"><bdi class="secno">5. </bdi>Map Viewer Widget Capabilities</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-rendering"><bdi class="secno">5.1 </bdi>Rendering base layers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-declarative-map"><bdi class="secno">5.1.1 </bdi>Embed an interactive map viewer, using HTML markup</a></li><li class="tocline"><a class="tocxref" href="#capability-default-map"><bdi class="secno">5.1.2 </bdi>Generate a default map for a given area</a></li><li class="tocline"><a class="tocxref" href="#capability-single-custom-image"><bdi class="secno">5.1.3 </bdi>Display a map using a single custom image as a map layer</a></li><li class="tocline"><a class="tocxref" href="#capability-custom-map-tiles"><bdi class="secno">5.1.4 </bdi>Display a map using tile data from an author-specified web map service</a></li><li class="tocline"><a class="tocxref" href="#capability-no-js"><bdi class="secno">5.1.5 </bdi>Display a basic map without JavaScript</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-vectors"><bdi class="secno">5.2 </bdi>Vector features and overlays</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-marker-points"><bdi class="secno">5.2.1 </bdi>Show pinpoint locations or custom markers on the map</a></li><li class="tocline"><a class="tocxref" href="#capability-vector-features"><bdi class="secno">5.2.2 </bdi>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</a></li><li class="tocline"><a class="tocxref" href="#capability-hyperlinks"><bdi class="secno">5.2.3 </bdi>Support hyperlinks from markers or vector features</a></li><li class="tocline"><a class="tocxref" href="#capability-attribution"><bdi class="secno">5.2.4 </bdi>Display map data attribution and links</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-locations"><bdi class="secno">5.3 </bdi>Interpreting locations &amp; map positions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-location-latlong"><bdi class="secno">5.3.1 </bdi>Select map view from latitude and longitude point</a></li><li class="tocline"><a class="tocxref" href="#capability-location-address"><bdi class="secno">5.3.2 </bdi>Select map view from street address or place name</a></li><li class="tocline"><a class="tocxref" href="#capability-tile-coordinate-systems"><bdi class="secno">5.3.3 </bdi>Display map tiles defined in various common coordinate systems</a></li><li class="tocline"><a class="tocxref" href="#capability-reproject-maps"><bdi class="secno">5.3.4 </bdi>Reproject map tile data into a new projection or globe view</a></li><li class="tocline"><a class="tocxref" href="#capability-export-location"><bdi class="secno">5.3.5 </bdi>Save the location or export to other application</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-user-navigation"><bdi class="secno">5.4 </bdi>User navigation (pan &amp; zoom)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-zoom"><bdi class="secno">5.4.1 </bdi>Zoom the map independently from the rest of the page</a></li><li class="tocline"><a class="tocxref" href="#capability-pan"><bdi class="secno">5.4.2 </bdi>Pan the map display</a></li><li class="tocline"><a class="tocxref" href="#capability-lazyload"><bdi class="secno">5.4.3 </bdi>Load additional map tiles when they pan into view</a></li><li class="tocline"><a class="tocxref" href="#capability-wrap-pan"><bdi class="secno">5.4.4 </bdi>Wrap/duplicate data tiles when panning around the globe</a></li><li class="tocline"><a class="tocxref" href="#capability-scale-adjust"><bdi class="secno">5.4.5 </bdi>Maintain reasonable scale of labels and lines when zooming</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-swap"><bdi class="secno">5.4.6 </bdi>Dynamically load different resolution map tile on zoom</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-swap-vectors"><bdi class="secno">5.4.7 </bdi>Hide or show (and maybe dynamically load) vector features and labels on zoom</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-custom-styling"><bdi class="secno">5.5 </bdi>Custom styling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-styled-features"><bdi class="secno">5.5.1 </bdi>Apply custom styling to map markers and vector features</a></li><li class="tocline"><a class="tocxref" href="#capability-styled-controls"><bdi class="secno">5.5.2 </bdi>Apply custom styling to map controls</a></li><li class="tocline"><a class="tocxref" href="#capability-custom-controls"><bdi class="secno">5.5.3 </bdi>Toggle whether default controls are displayed</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#client-apis"><bdi class="secno">6. </bdi>Client-side Mapping API Capabilities</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#client-apis-creation"><bdi class="secno">6.1 </bdi>Creating maps and map components</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-create-initialise-and-display-a-map"><bdi class="secno">6.1.1 </bdi>Create, initialise, and display a map</a></li><li class="tocline"><a class="tocxref" href="#capability-add-marker-or-multiple-markers-map"><bdi class="secno">6.1.2 </bdi>Add a marker or multiple markers to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-implement-a-custom-control"><bdi class="secno">6.1.3 </bdi>Implement a custom control</a></li><li class="tocline"><a class="tocxref" href="#capability-add-control-map"><bdi class="secno">6.1.4 </bdi>Add a control to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-remove-control-map"><bdi class="secno">6.1.5 </bdi>Remove a control from a map</a></li><li class="tocline"><a class="tocxref" href="#capability-add-layer-map"><bdi class="secno">6.1.6 </bdi>Add a layer to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-define-data-source-tile-layer"><bdi class="secno">6.1.7 </bdi>Define a data source for a tile layer</a></li><li class="tocline"><a class="tocxref" href="#capability-create-an-overlay-defined-by-vector-data"><bdi class="secno">6.1.8 </bdi>Create an overlay defined by vector data</a></li><li class="tocline"><a class="tocxref" href="#capability-create-an-overlay-defined-by-heatmap-data"><bdi class="secno">6.1.9 </bdi>Create an overlay defined by heatmap data</a></li><li class="tocline"><a class="tocxref" href="#capability-remove-layer-map"><bdi class="secno">6.1.10 </bdi>Remove a layer from a map</a></li><li class="tocline"><a class="tocxref" href="#capability-display-layer-map"><bdi class="secno">6.1.11 </bdi>Display a layer on a map</a></li><li class="tocline"><a class="tocxref" href="#capability-hide-layer-map"><bdi class="secno">6.1.12 </bdi>Hide a layer on a map</a></li><li class="tocline"><a class="tocxref" href="#capability-specify-style-map"><bdi class="secno">6.1.13 </bdi>Specify the style of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-determine-current-style-map"><bdi class="secno">6.1.14 </bdi>Determine the current style of a map</a></li></ol></li><li class="tocline"><a class="tocxref" href="#client-apis-map-viewport"><bdi class="secno">6.2 </bdi>Controlling the displayed map view and responding to user actions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-get-bounds-map"><bdi class="secno">6.2.1 </bdi>Get the bounds of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-pan-map-or-re-centre-map"><bdi class="secno">6.2.2 </bdi>Pan a map or re-centre a map</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-map-or-out"><bdi class="secno">6.2.3 </bdi>Zoom a map in or out</a></li><li class="tocline"><a class="tocxref" href="#capability-subscribe-map-move-events"><bdi class="secno">6.2.4 </bdi>Subscribe to map move events</a></li><li class="tocline"><a class="tocxref" href="#capability-subscribe-map-zoom-events"><bdi class="secno">6.2.5 </bdi>Subscribe to map zoom events</a></li><li class="tocline"><a class="tocxref" href="#capability-subscribe-marker-selection-events"><bdi class="secno">6.2.6 </bdi>Subscribe to marker selection events</a></li><li class="tocline"><a class="tocxref" href="#capability-change-bearing-map"><bdi class="secno">6.2.7 </bdi>Change the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-reset-bearing-map"><bdi class="secno">6.2.8 </bdi>Reset the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-move-the-map-to-display-a-given-location"><bdi class="secno">6.2.9 </bdi>Move the map to display a given location</a></li><li class="tocline"><a class="tocxref" href="#capability-pan-and-zoom-to-bounding-box"><bdi class="secno">6.2.10 </bdi>Pan and zoom a map so as to completely show the area covered by a given bounding box</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-re-centering-of-the-map-view"><bdi class="secno">6.2.11 </bdi>Animate the re-centering of the map view</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-zooming-of-the-map"><bdi class="secno">6.2.12 </bdi>Animate the zooming of the map</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-re-centering-of-the-map"><bdi class="secno">6.2.13 </bdi>Animate the re-centering of the map</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#map-formats"><bdi class="secno">7. </bdi>Map Data Formats for Map Viewers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#map-formats-vector"><bdi class="secno">7.1 </bdi>Vector feature data formats</a></li><li class="tocline"><a class="tocxref" href="#map-formats-projections-crs"><bdi class="secno">7.2 </bdi>Map projections and coordinate reference systems</a></li><li class="tocline"><a class="tocxref" href="#map-formats-server-apis"><bdi class="secno">7.3 </bdi>Server APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#requirements"><bdi class="secno">8. </bdi>Summary of Requirements</a></li><li class="tocline"><a class="tocxref" href="#issue-summary"><bdi class="secno">A. </bdi>Open Issues</a></li><li class="tocline"><a class="tocxref" href="#acknowledgments"><bdi class="secno">B. </bdi>Acknowledgments</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">C. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.1 </bdi>Informative references</a></li></ol></li></ol></nav>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#intro-web-maps"><bdi class="secno">1.1 </bdi>The current state of web maps</a></li><li class="tocline"><a class="tocxref" href="#intro-maps4html-cg"><bdi class="secno">1.2 </bdi>The Maps for HTML Community Group</a></li><li class="tocline"><a class="tocxref" href="#intro-report-structure"><bdi class="secno">1.3 </bdi>Structure of this report</a></li><li class="tocline"><a class="tocxref" href="#intro-glossary"><bdi class="secno">1.4 </bdi>Glossary of key terms</a></li></ol></li><li class="tocline"><a class="tocxref" href="#principles"><bdi class="secno">2. </bdi>Guiding Principles</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#extensible-web"><bdi class="secno">2.1 </bdi>The extensible web</a></li><li class="tocline"><a class="tocxref" href="#priorities"><bdi class="secno">2.2 </bdi>Priorities for web standards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#principles-users"><bdi class="secno">2.2.1 </bdi>Users</a></li><li class="tocline"><a class="tocxref" href="#principles-authors"><bdi class="secno">2.2.2 </bdi>Authors</a></li><li class="tocline"><a class="tocxref" href="#priciples-implementers"><bdi class="secno">2.2.3 </bdi>Implementers</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">3. </bdi>Use Cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#content-author-use-cases"><bdi class="secno">3.1 </bdi>Content author use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-create-map"><bdi class="secno">3.1.1 </bdi>Display an interactive map within a web page</a></li><li class="tocline"><a class="tocxref" href="#use-case-single-location"><bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li><li class="tocline"><a class="tocxref" href="#use-case-static-map"><bdi class="secno">3.1.3 </bdi>Display a region of map data as a static image</a></li><li class="tocline"><a class="tocxref" href="#use-case-multiple-location-markers"><bdi class="secno">3.1.4 </bdi>Display multiple point locations as map markers</a></li><li class="tocline"><a class="tocxref" href="#use-case-poly-features"><bdi class="secno">3.1.5 </bdi>Display routes/paths or regions</a></li><li class="tocline"><a class="tocxref" href="#use-case-html-annotations"><bdi class="secno">3.1.6 </bdi>Display custom web content describing map features</a></li><li class="tocline"><a class="tocxref" href="#use-case-custom-map"><bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer</a></li><li class="tocline"><a class="tocxref" href="#use-case-layers"><bdi class="secno">3.1.8 </bdi>Combine multiple layers of map tile data or features</a></li><li class="tocline"><a class="tocxref" href="#use-case-alternative-layers"><bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select</a></li><li class="tocline"><a class="tocxref" href="#use-case-technical-drawings"><bdi class="secno">3.1.10 </bdi>Display drawings or schematics without geographic coordinates</a></li></ol></li><li class="tocline"><a class="tocxref" href="#visitor-use-cases"><bdi class="secno">3.2 </bdi>Website visitor use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-interactive"><bdi class="secno">3.2.1 </bdi>Reposition or scale a map to find more context for the displayed locations</a></li><li class="tocline"><a class="tocxref" href="#use-case-allow-user-reset-map-their-starting-point"><bdi class="secno">3.2.2 </bdi>Reset the map to the initial view</a></li><li class="tocline"><a class="tocxref" href="#use-case-rotate-map"><bdi class="secno">3.2.3 </bdi>Rotate a map, or reset the bearing</a></li><li class="tocline"><a class="tocxref" href="#use-case-identify"><bdi class="secno">3.2.4 </bdi>Access additional information about a point on the map</a></li><li class="tocline"><a class="tocxref" href="#use-case-hide-layers"><bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li><li class="tocline"><a class="tocxref" href="#use-case-bookmark"><bdi class="secno">3.2.6 </bdi>Bookmark a location</a></li><li class="tocline"><a class="tocxref" href="#use-case-search-features"><bdi class="secno">3.2.7 </bdi>Search or sort within a set of geographic features</a></li><li class="tocline"><a class="tocxref" href="#use-case-color-scheme"><bdi class="secno">3.2.8 </bdi>Customize the color scheme (light/dark or high contrast)</a></li></ol></li><li class="tocline"><a class="tocxref" href="#application-use-cases"><bdi class="secno">3.3 </bdi>Application developer use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-add-a-custom-control-to-a-map"><bdi class="secno">3.3.1 </bdi>Add a custom control to a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-provide-feedback-user-they-manipulate-map"><bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li><li class="tocline"><a class="tocxref" href="#use-case-move-a-map-to-a-new-position-andor-zoom-level"><bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li><li class="tocline"><a class="tocxref" href="#use-case-animate-a-map-through-a-sequence-of-points"><bdi class="secno">3.3.4 </bdi>Animate a map through a sequence of points</a></li><li class="tocline"><a class="tocxref" href="#use-case-change-bearing-map"><bdi class="secno">3.3.5 </bdi>Change the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-show-a-vector-data-overlay-on-a-map"><bdi class="secno">3.3.6 </bdi>Show a vector data overlay on a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-show-a-heatmap-overlay-on-a-map"><bdi class="secno">3.3.7 </bdi>Show a heatmap overlay on a map</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#js-examples"><bdi class="secno">4. </bdi>Reviewed JavaScript Tools</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#google-maps"><bdi class="secno">4.1 </bdi>Google Maps embeds and Google Maps Platform API</a></li><li class="tocline"><a class="tocxref" href="#openstreetmap"><bdi class="secno">4.2 </bdi>OpenStreetMap embeds</a></li><li class="tocline"><a class="tocxref" href="#bing-maps"><bdi class="secno">4.3 </bdi>Bing Maps embeds and Bing Maps Control API</a></li><li class="tocline"><a class="tocxref" href="#mapkit-js"><bdi class="secno">4.4 </bdi>MapKit JS (Apple Maps) API</a></li><li class="tocline"><a class="tocxref" href="#mapbox"><bdi class="secno">4.5 </bdi>Mapbox GL JS API and Mapbox Studio embeds</a></li><li class="tocline"><a class="tocxref" href="#leaflet-js"><bdi class="secno">4.6 </bdi>Leaflet.js API</a></li><li class="tocline"><a class="tocxref" href="#openlayers"><bdi class="secno">4.7 </bdi>OpenLayers API</a></li><li class="tocline"><a class="tocxref" href="#d3-geo"><bdi class="secno">4.8 </bdi>D3 Geographies APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers"><bdi class="secno">5. </bdi>Map Viewer Widget Capabilities</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-rendering"><bdi class="secno">5.1 </bdi>Rendering base layers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-declarative-map"><bdi class="secno">5.1.1 </bdi>Embed an interactive map viewer, using HTML markup</a></li><li class="tocline"><a class="tocxref" href="#capability-default-map"><bdi class="secno">5.1.2 </bdi>Generate a default map for a given area</a></li><li class="tocline"><a class="tocxref" href="#capability-single-custom-image"><bdi class="secno">5.1.3 </bdi>Display an image file as a map layer</a></li><li class="tocline"><a class="tocxref" href="#capability-custom-map-tiles"><bdi class="secno">5.1.4 </bdi>Display a map using tile data from an author-specified web map service</a></li><li class="tocline"><a class="tocxref" href="#capability-no-js"><bdi class="secno">5.1.5 </bdi>Display a basic map without JavaScript</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-vectors"><bdi class="secno">5.2 </bdi>Vector features and overlays</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-marker-points"><bdi class="secno">5.2.1 </bdi>Show pinpoint locations or custom markers on the map</a></li><li class="tocline"><a class="tocxref" href="#capability-vector-features"><bdi class="secno">5.2.2 </bdi>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</a></li><li class="tocline"><a class="tocxref" href="#capability-hyperlinks"><bdi class="secno">5.2.3 </bdi>Support hyperlinks from markers or vector features</a></li><li class="tocline"><a class="tocxref" href="#capability-attribution"><bdi class="secno">5.2.4 </bdi>Display map data attribution and links</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-locations"><bdi class="secno">5.3 </bdi>Interpreting locations &amp; map positions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-location-latlong"><bdi class="secno">5.3.1 </bdi>Select map view from latitude and longitude point</a></li><li class="tocline"><a class="tocxref" href="#capability-location-address"><bdi class="secno">5.3.2 </bdi>Select map view from street address or place name</a></li><li class="tocline"><a class="tocxref" href="#capability-tile-coordinate-systems"><bdi class="secno">5.3.3 </bdi>Display map tiles defined in various common coordinate systems</a></li><li class="tocline"><a class="tocxref" href="#capability-reproject-maps"><bdi class="secno">5.3.4 </bdi>Reproject map tile data into a new projection or globe view</a></li><li class="tocline"><a class="tocxref" href="#capability-export-location"><bdi class="secno">5.3.5 </bdi>Save the location or export to other application</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-user-navigation"><bdi class="secno">5.4 </bdi>User navigation (pan &amp; zoom)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-zoom"><bdi class="secno">5.4.1 </bdi>Zoom the map independently from the rest of the page</a></li><li class="tocline"><a class="tocxref" href="#capability-pan"><bdi class="secno">5.4.2 </bdi>Pan the map display</a></li><li class="tocline"><a class="tocxref" href="#capability-lazyload"><bdi class="secno">5.4.3 </bdi>Load additional map tiles when they pan into view</a></li><li class="tocline"><a class="tocxref" href="#capability-wrap-pan"><bdi class="secno">5.4.4 </bdi>Wrap/duplicate data tiles when panning around the globe</a></li><li class="tocline"><a class="tocxref" href="#capability-scale-adjust"><bdi class="secno">5.4.5 </bdi>Maintain reasonable scale of labels and lines when zooming</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-swap"><bdi class="secno">5.4.6 </bdi>Dynamically load different resolution map tile on zoom</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-swap-vectors"><bdi class="secno">5.4.7 </bdi>Hide or show (and maybe dynamically load) vector features and labels on zoom</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-custom-styling"><bdi class="secno">5.5 </bdi>Custom styling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-styled-features"><bdi class="secno">5.5.1 </bdi>Apply custom styling to map markers and vector features</a></li><li class="tocline"><a class="tocxref" href="#capability-styled-controls"><bdi class="secno">5.5.2 </bdi>Apply custom styling to map controls</a></li><li class="tocline"><a class="tocxref" href="#capability-custom-controls"><bdi class="secno">5.5.3 </bdi>Toggle whether default controls are displayed</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#client-apis"><bdi class="secno">6. </bdi>Client-side Mapping API Capabilities</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#client-apis-creation"><bdi class="secno">6.1 </bdi>Creating maps and map components</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-create-initialise-and-display-a-map"><bdi class="secno">6.1.1 </bdi>Create, initialise, and display a map</a></li><li class="tocline"><a class="tocxref" href="#capability-add-marker-or-multiple-markers-map"><bdi class="secno">6.1.2 </bdi>Add a marker or multiple markers to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-implement-a-custom-control"><bdi class="secno">6.1.3 </bdi>Implement a custom control</a></li><li class="tocline"><a class="tocxref" href="#capability-add-control-map"><bdi class="secno">6.1.4 </bdi>Add a control to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-remove-control-map"><bdi class="secno">6.1.5 </bdi>Remove a control from a map</a></li><li class="tocline"><a class="tocxref" href="#capability-add-layer-map"><bdi class="secno">6.1.6 </bdi>Add a layer to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-define-data-source-tile-layer"><bdi class="secno">6.1.7 </bdi>Define a data source for a tile layer</a></li><li class="tocline"><a class="tocxref" href="#capability-create-an-overlay-defined-by-vector-data"><bdi class="secno">6.1.8 </bdi>Create an overlay defined by vector data</a></li><li class="tocline"><a class="tocxref" href="#capability-create-an-overlay-defined-by-heatmap-data"><bdi class="secno">6.1.9 </bdi>Create an overlay defined by heatmap data</a></li><li class="tocline"><a class="tocxref" href="#capability-remove-layer-map"><bdi class="secno">6.1.10 </bdi>Remove a layer from a map</a></li><li class="tocline"><a class="tocxref" href="#capability-display-layer-map"><bdi class="secno">6.1.11 </bdi>Display a layer on a map</a></li><li class="tocline"><a class="tocxref" href="#capability-hide-layer-map"><bdi class="secno">6.1.12 </bdi>Hide a layer on a map</a></li><li class="tocline"><a class="tocxref" href="#capability-specify-style-map"><bdi class="secno">6.1.13 </bdi>Specify the style of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-determine-current-style-map"><bdi class="secno">6.1.14 </bdi>Determine the current style of a map</a></li></ol></li><li class="tocline"><a class="tocxref" href="#client-apis-map-viewport"><bdi class="secno">6.2 </bdi>Controlling the displayed map view and responding to user actions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-get-bounds-map"><bdi class="secno">6.2.1 </bdi>Get the bounds of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-pan-map-or-re-centre-map"><bdi class="secno">6.2.2 </bdi>Pan a map or re-centre a map</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-map-or-out"><bdi class="secno">6.2.3 </bdi>Zoom a map in or out</a></li><li class="tocline"><a class="tocxref" href="#capability-subscribe-map-move-events"><bdi class="secno">6.2.4 </bdi>Subscribe to map move events</a></li><li class="tocline"><a class="tocxref" href="#capability-subscribe-map-zoom-events"><bdi class="secno">6.2.5 </bdi>Subscribe to map zoom events</a></li><li class="tocline"><a class="tocxref" href="#capability-subscribe-marker-selection-events"><bdi class="secno">6.2.6 </bdi>Subscribe to marker selection events</a></li><li class="tocline"><a class="tocxref" href="#capability-change-bearing-map"><bdi class="secno">6.2.7 </bdi>Change the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-reset-bearing-map"><bdi class="secno">6.2.8 </bdi>Reset the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-move-the-map-to-display-a-given-location"><bdi class="secno">6.2.9 </bdi>Move the map to display a given location</a></li><li class="tocline"><a class="tocxref" href="#capability-pan-and-zoom-to-bounding-box"><bdi class="secno">6.2.10 </bdi>Pan and zoom a map so as to completely show the area covered by a given bounding box</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-re-centering-of-the-map-view"><bdi class="secno">6.2.11 </bdi>Animate the re-centering of the map view</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-zooming-of-the-map"><bdi class="secno">6.2.12 </bdi>Animate the zooming of the map</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-re-centering-of-the-map"><bdi class="secno">6.2.13 </bdi>Animate the re-centering of the map</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#map-formats"><bdi class="secno">7. </bdi>Map Data Formats for Map Viewers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#map-formats-vector"><bdi class="secno">7.1 </bdi>Vector feature data formats</a></li><li class="tocline"><a class="tocxref" href="#map-formats-projections-crs"><bdi class="secno">7.2 </bdi>Map projections and coordinate reference systems</a></li><li class="tocline"><a class="tocxref" href="#map-formats-server-apis"><bdi class="secno">7.3 </bdi>Server APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#requirements"><bdi class="secno">8. </bdi>Summary of Requirements</a></li><li class="tocline"><a class="tocxref" href="#issue-summary"><bdi class="secno">A. </bdi>Open Issues</a></li><li class="tocline"><a class="tocxref" href="#acknowledgments"><bdi class="secno">B. </bdi>Acknowledgments</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">C. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.1 </bdi>Informative references</a></li></ol></li></ol></nav>
 
 <section id="introduction">
 <h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction<a class="self-link" aria-label="§" href="#introduction"></a></h2>
@@ -967,13 +967,18 @@ possibly restricted by other search parameters.
 The format of the returned map data is defined separately.
 OWS standards include:
 <ul>
-  <li>Web Map Service (WMS), for accessing a custom processed map image
+  <li><dfn data-lt="web map service|wms|web map service (wms)" data-dfn-type="dfn" id="dfn-web-map-service">Web Map Service (WMS)</dfn>,
+    for accessing a custom processed map image
     that directly represents the requested region and query parameters</li>
-  <li>Web Map Tile Service (WMTS), for accessing pre-processed map <a href="#dfn-tile" class="internalDFN" data-link-type="dfn">tiles</a>,
+  <li><dfn data-lt="web map tile service|wmts|web map tile service (wmts)" data-dfn-type="dfn" id="dfn-web-map-tile-service">Web Map Tile Service (WMTS)</dfn>,
+    for accessing pre-processed map <a href="#dfn-tile" class="internalDFN" data-link-type="dfn">tiles</a>,
     which may only represent a <a href="#dfn-layer" class="internalDFN" data-link-type="dfn">layer</a> of the final map</li>
-  <li>Web Feature Service (WFS), for accessing <a href="#dfn-vector" class="internalDFN" data-link-type="dfn">vector feature</a> data</li>
-  <li>Web Coverage Service (WCS), for accessing raw <a href="#dfn-coverage" class="internalDFN" data-link-type="dfn">coverage</a> data</li>
-  <li>OWS Context, for returning metadata with references to other map services</li>
+  <li><dfn data-lt="web feature service|wfs|web feature service (wfs)" data-dfn-type="dfn" id="dfn-web-feature-service">Web Feature Service (WFS)</dfn>,
+    for accessing <a href="#dfn-vector" class="internalDFN" data-link-type="dfn">vector feature</a> data</li>
+  <li><dfn data-lt="web coverage service|wcs|web coverage service (wcs)" data-dfn-type="dfn" id="dfn-web-coverage-service">Web Coverage Service (WCS)</dfn>,
+    for accessing raw <a href="#dfn-coverage" class="internalDFN" data-link-type="dfn">coverage</a> data</li>
+  <li><dfn data-dfn-type="dfn" id="dfn-ows-context">OWS Context</dfn>,
+    for returning metadata with references to other map services</li>
 </ul>
 </dd>
 
@@ -1130,7 +1135,7 @@ Tiles can be <a href="#dfn-raster" class="internalDFN" data-link-type="dfn">rast
 although raster tiles are currently more common for web maps.
 </dd>
 
-<dt><dfn data-dfn-type="dfn" id="dfn-tileset">tileset</dfn></dt>
+<dt><dfn data-dfn-type="dfn" data-plurals="tilesets" id="dfn-tileset">tileset</dfn></dt>
 <dd>
 A set of map tiles which can be used as a map layer.
 In simplest tilesets, the map tiles combine as a grid (<dfn data-dfn-type="dfn" id="dfn-tile-matrix">tile matrix</dfn>) to form a single map layer.
@@ -1646,11 +1651,10 @@ Of course, most use cases require additional capabilities
 — this is just the foundation!
 </p>
 <p>
-See <a href="examples/globe.html" target="examples">examples of declarative map viewers</a>
-and <a href="examples/use-case-create-initialise-display-map.html" target="examples">JS-based maps</a>
+See <a href="examples/create-map.html" target="examples">examples of creating a basic map</a>
 as implemented by the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-77"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/77"><span class="issue-number">Issue 77</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use Case: Display an interactive map within a web page <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-77"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/77"><span class="issue-number">Issue 77</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
 <h5 id="required-capabilities">Required capabilities<a class="self-link" aria-label="§" href="#use-case-create-map"></a></h5>
 <ul data-ucr-role="required-capabilities">
@@ -1662,7 +1666,7 @@ as implemented by the reference JavaScript tools.
 <section id="use-case-single-location" data-ucr-role="use-case">
 <h4 id="x3-1-2-display-a-map-centered-on-a-point-location"><bdi class="secno">3.1.2 </bdi>Display a map centered on a point location<a class="self-link" aria-label="§" href="#use-case-single-location"></a></h4>
 <p>
-For a website creator, the simplest web map use case:
+For a website creator, this is the simplest web map use case:
 display a map from a location description.
 Usually, the map layer is at a zoom level that shows streets and points of interest,
 with a pinpoint marker showing the specific location.
@@ -1679,7 +1683,7 @@ or where a photograph or video was taken.
 See <a href="examples/single-location.html" target="examples">examples of single-location map viewers</a>
 as implemented by the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-33"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/33"><span class="issue-number">Issue 33</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use case: Display a location on a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-33"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/33"><span class="issue-number">Issue 33</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
 <h5 id="required-capabilities-0">Required capabilities<a class="self-link" aria-label="§" href="#use-case-single-location"></a></h5>
 <ul data-ucr-role="required-capabilities">
@@ -1702,6 +1706,10 @@ This is common in cases where the accompanying text
 refers to specific features in the map,
 or when a series of maps will be contrasted.
 </p>
+<p>
+See <a href="examples/static-map.html" target="examples">examples of static map displays</a>
+as implemented by the reference JavaScript tools.
+</p>
 <div class="issue" id="issue-container-number-17"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/17"><span class="issue-number">Issue 17</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use Case: Static maps <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
 <h5 id="required-capabilities-1">Required capabilities<a class="self-link" aria-label="§" href="#use-case-static-map"></a></h5>
@@ -1710,26 +1718,30 @@ or when a series of maps will be contrasted.
 </ul>
 </section>
 
-<section id="use-case-multiple-locations" data-ucr-role="use-case">
-<h4 id="x3-1-4-display-multiple-point-locations-on-a-single-map"><bdi class="secno">3.1.4 </bdi>Display multiple point locations on a single map<a class="self-link" aria-label="§" href="#use-case-multiple-locations"></a></h4>
+<section id="use-case-multiple-location-markers" data-ucr-role="use-case">
+<h4 id="x3-1-4-display-multiple-point-locations-as-map-markers"><bdi class="secno">3.1.4 </bdi>Display multiple point locations as map markers<a class="self-link" aria-label="§" href="#use-case-multiple-location-markers"></a></h4>
 <p>
-A web developer needs the ability to display a map with
-markers or other affordances denoting multiple specified
-locations.
+The most common use case for a web map is to show
+one or more locations of a business or organization.
+Maps that display pinpoint locations can also be used for data visualization,
+demonstrating spatial patterns of particular events or occurrences.
+Other examples of point markers on a map include
+search results (e.g., restaurants),
+traffic information (e.g., locations of construction roadworks),
+or the locations where photographs in a gallery were taken.
 </p>
 <p>
-Example uses of such a map include search results (e.g.
-restaurants), traffic information (e.g.
-locations of roadworks), or the locations where photographs
-in a gallery were taken.
+For many use cases,
+the website author will want to choose the icon used to mark the location,
+with different markers for different types of point features.
 </p>
 <p>
-See <a href="examples/use-case-display-multiple-point-locations-single-map.html" target="examples">examples of displaying multiple point locations on a single map</a>
+See <a href="examples/multiple-location-markers.html" target="examples">examples of displaying multiple point locations as map markers</a>
 as implemented by the reference JavaScript tools.
 </p>
 <div class="issue" id="issue-container-number-78"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/78"><span class="issue-number">Issue 78</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use Case: Display multiple point locations on a single map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
-<h5 id="required-capabilities-2">Required capabilities<a class="self-link" aria-label="§" href="#use-case-multiple-locations"></a></h5>
+<h5 id="required-capabilities-2">Required capabilities<a class="self-link" aria-label="§" href="#use-case-multiple-location-markers"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li>Everything listed in <a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li>
 <li>…</li>
@@ -1739,9 +1751,27 @@ as implemented by the reference JavaScript tools.
 <section id="use-case-poly-features" data-ucr-role="use-case">
 <h4 id="x3-1-5-display-routes-paths-or-regions"><bdi class="secno">3.1.5 </bdi>Display routes/paths or regions<a class="self-link" aria-label="§" href="#use-case-poly-features"></a></h4>
 <p>
-
+Lines and curves (<a href="#dfn-polyline" class="internalDFN" data-link-type="dfn">polyline</a> features) drawn on a map represent
+roads, rivers, directions between places,
+or the observed path of a moving object.
+Shapes (<a href="#dfn-polygon" class="internalDFN" data-link-type="dfn">polygon</a> features) are used for political regions (country and municipal boundaries),
+building footprint outlines,
+and for contour lines which mark the extent of a certain value within continuous data
+(e.g., elevation).
+Polygons are also used for roads, rivers and so on at higher zoom levels,
+where the true shape of the feature can no longer be approximated as a single line.
 </p>
-<div class="issue" id="issue-container-number-36"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/36"><span class="issue-number">Issue 36</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use case: Display regions &amp; routes <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<p>
+See <a href="examples/poly-features.html" target="examples">examples of displaying routes and regions</a>
+as implemented by the reference JavaScript tools.
+</p>
+<div class="issue" id="issue-container-number-36"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/36"><span class="issue-number">Issue 36</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+
+<h5 id="required-capabilities-3">Required capabilities<a class="self-link" aria-label="§" href="#use-case-poly-features"></a></h5>
+<ul data-ucr-role="required-capabilities">
+<li>Everything listed in <a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li>
+<li>…</li>
+</ul>
 </section>
 
 <section id="use-case-html-annotations" data-ucr-role="use-case">
@@ -1749,41 +1779,62 @@ as implemented by the reference JavaScript tools.
 <p>
 
 </p>
+<p>
+See <a href="examples/html-annotations.html" target="examples">examples of displaying custom HTML annotations</a>
+as implemented by the reference JavaScript tools.
+</p>
 <div class="issue" id="issue-container-number-37"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/37"><span class="issue-number">Issue 37</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use case: Custom HTML annotations <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+
+<h5 id="required-capabilities-4">Required capabilities<a class="self-link" aria-label="§" href="#use-case-html-annotations"></a></h5>
+<ul data-ucr-role="required-capabilities">
+<li>Everything listed in <a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li>
+<li>…</li>
+</ul>
 </section>
 
 <section id="use-case-custom-map" data-ucr-role="use-case">
 <h4 id="x3-1-7-display-custom-imagery-as-a-map-layer"><bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer<a class="self-link" aria-label="§" href="#use-case-custom-map"></a></h4>
 <p>
+Many mapping applications require custom imagery
+that goes beyond annotations of an existing map.
+</p>
+<p>
 Unlike map <a href="#dfn-feature" class="internalDFN" data-link-type="dfn">features</a>, which can be defined in geometric terms,
-map <a href="#dfn-coverage" class="internalDFN" data-link-type="dfn">coverages</a> define continuous variations, and are usually represented as image data.
+map <a href="#dfn-coverage" class="internalDFN" data-link-type="dfn">coverages</a> define continuous variations,
+and are usually represented as <a href="#dfn-raster" class="internalDFN" data-link-type="dfn">raster</a> image data.
 Many maps of natural features involve coverage data,
-such as maps showing vegetation cover, rainfall, or elevation.
-</p>
-<p>
-For <a href="#use-case-static-map">static map views</a>,
-this type of map content can often be represented as a single image layer.
-But to support web maps with pan and zoom capabilities,
-the images usually need to be divided into tilesets.
-</p>
-<p>
-Map tiles are also used for aerial and satellite photographs,
+such as maps showing terrain, vegetation cover, rainfall, or elevation.
+Raster image layers are also used for aerial and satellite photographs,
 and for pre-rendering vector feature data, on the server or in a specialized application.
-Custom map tiles — in contrast to map tiles from the major web map services —
+Custom map layers — in contrast to maps from major web map services —
 are necessary if displaying confidential business data,
+new research data,
 maps of proposed developments or historical geography,
 maps of non-Earth bodies such as Mars and the Moon,
 or any other type of map not included in the major wayfinding street maps.
 </p>
 <p>
-See <a href="examples/use-case-specify-data-source-map-tile-layer.html" target="examples">examples of specifying a data source for a map tile layer</a>
+When the custom map layer is of a limited scope,
+it can often be represented as a single image file.
+Single images are practical for <a href="#use-case-static-map">static map views</a>,
+and other cases where a broader spatial context is not as important,
+or when the author is trying to make a specific point about a set of data.
+Single image layers may also be rendered on the fly from a <a href="#dfn-web-map-service" class="internalDFN" data-link-type="dfn">WMS</a>.
+</p>
+<p>
+To support slippy web maps with extensive pan and zoom capabilities, however,
+the custom images need to be divided into tilesets
+and the map viewer needs to be able to dynamically fetch the correct images.
+</p>
+<p>
+See <a href="examples/custom-map.html" target="examples">examples of specifying a data source for a map tile layer</a>
 as implemented by the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-38"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/38"><span class="issue-number">Issue 38</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use Case: Map coverages or custom image tiles <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-38"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/38"><span class="issue-number">Issue 38</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
-<h5 id="required-capabilities-3">Required capabilities<a class="self-link" aria-label="§" href="#use-case-custom-map"></a></h5>
+<h5 id="required-capabilities-5">Required capabilities<a class="self-link" aria-label="§" href="#use-case-custom-map"></a></h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-single-custom-image" class="sec-ref">§&nbsp;<bdi class="secno">5.1.3 </bdi>Display a map using a single custom image as a map layer</a> or <a href="#capability-custom-map-tiles" class="sec-ref">§&nbsp;<bdi class="secno">5.1.4 </bdi>Display a map using tile data from an author-specified web map service</a></li>
+<li><a href="#capability-single-custom-image" class="sec-ref">§&nbsp;<bdi class="secno">5.1.3 </bdi>Display an image file as a map layer</a> or <a href="#capability-custom-map-tiles" class="sec-ref">§&nbsp;<bdi class="secno">5.1.4 </bdi>Display a map using tile data from an author-specified web map service</a></li>
 <li>For more complex maps, <a href="#capability-lazyload" class="sec-ref">§&nbsp;<bdi class="secno">5.4.3 </bdi>Load additional map tiles when they pan into view</a> and <a href="#capability-zoom-swap" class="sec-ref">§&nbsp;<bdi class="secno">5.4.6 </bdi>Dynamically load different resolution map tile on zoom</a></li>
 <li>For adding custom maps from script, <a href="#capability-define-data-source-tile-layer">Define a data source for a tile layer</a></li>
 </ul>
@@ -1794,16 +1845,21 @@ as implemented by the reference JavaScript tools.
 <p>
 
 </p>
-<div class="issue" id="issue-container-number-11"><div role="heading" class="issue-title marker" id="h-issue-7" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/11"><span class="issue-number">Issue 11</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use Case: Layer together multiple map data sources <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<p>
+See <a href="examples/layers.html" target="examples">examples of multi-layer maps</a>
+as implemented by the reference JavaScript tools.
+</p>
+<div class="issue" id="issue-container-number-11"><div role="heading" class="issue-title marker" id="h-issue-7" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/11"><span class="issue-number">Issue 11</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
-<h5 id="required-capabilities-4">Required capabilities<a class="self-link" aria-label="§" href="#use-case-layers"></a></h5>
+<h5 id="required-capabilities-6">Required capabilities<a class="self-link" aria-label="§" href="#use-case-layers"></a></h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-single-custom-image" class="sec-ref">§&nbsp;<bdi class="secno">5.1.3 </bdi>Display a map using a single custom image as a map layer</a></li>
+<li><a href="#capability-single-custom-image" class="sec-ref">§&nbsp;<bdi class="secno">5.1.3 </bdi>Display an image file as a map layer</a> or …</li>
+<li>…</li>
 </ul>
 </section>
 
-<section id="use-case-selectable-alternative-layers" data-ucr-role="use-case">
-<h4 id="x3-1-9-provide-alternative-map-layers-which-the-user-can-select"><bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select<a class="self-link" aria-label="§" href="#use-case-selectable-alternative-layers"></a></h4>
+<section id="use-case-alternative-layers" data-ucr-role="use-case">
+<h4 id="x3-1-9-provide-alternative-map-layers-which-the-user-can-select"><bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select<a class="self-link" aria-label="§" href="#use-case-alternative-layers"></a></h4>
 <p>
 Different users may be interested in different aspects of a map (e.g., roads vs terrain),
 or may prefer different styles (e.g., light vs dark).
@@ -1817,11 +1873,11 @@ Note: the ability to re-style the default map interface is also listed
 But alternative map layers are part of the content, as well.
 </p>
 <p>
-See <a href="examples/use-case-allow-user-select-different-style-map.html" target="examples">examples of allowing the user to select a different style for a map</a>
+See <a href="examples/alternative-layers.html" target="examples">examples of allowing the user to select a different style for a map</a>
 as implemented by the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-81"><div role="heading" class="issue-title marker" id="h-issue-8" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/81"><span class="issue-number">Issue 81</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use Case: Allow the user to select a different style for a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-5">Required capabilities<a class="self-link" aria-label="§" href="#use-case-selectable-alternative-layers"></a></h5>
+<div class="issue" id="issue-container-number-81"><div role="heading" class="issue-title marker" id="h-issue-8" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/81"><span class="issue-number">Issue 81</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use Case: Allow the user to select a different style for a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<h5 id="required-capabilities-7">Required capabilities<a class="self-link" aria-label="§" href="#use-case-alternative-layers"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li>(declarative) or <a href="#capability-specify-style-map" class="sec-ref">§&nbsp;<bdi class="secno">6.1.13 </bdi>Specify the style of a map</a> (API)</li>
 <li><a href="#capability-determine-current-style-map" class="sec-ref">§&nbsp;<bdi class="secno">6.1.14 </bdi>Determine the current style of a map</a></li>
@@ -1845,13 +1901,14 @@ would want to reuse the same technology
 for displaying these types of map-like content.
 </p>
 <p>
-
+See <a href="examples/#technical-drawings" target="examples">examples of non-geographic content in map viewers</a>
+as implemented by the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue-9" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/1"><span class="issue-number">Issue 1</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use case: Technical drawings (panning, zooming, layers, etc.) <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-1"><div role="heading" class="issue-title marker" id="h-issue-9" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/1"><span class="issue-number">Issue 1</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
-<h5 id="required-capabilities-6">Required capabilities<a class="self-link" aria-label="§" href="#use-case-technical-drawings"></a></h5>
+<h5 id="required-capabilities-8">Required capabilities<a class="self-link" aria-label="§" href="#use-case-technical-drawings"></a></h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-single-custom-image" class="sec-ref">§&nbsp;<bdi class="secno">5.1.3 </bdi>Display a map using a single custom image as a map layer</a></li>
+<li><a href="#capability-single-custom-image" class="sec-ref">§&nbsp;<bdi class="secno">5.1.3 </bdi>Display an image file as a map layer</a></li>
 </ul>
 </section>
 
@@ -1882,7 +1939,7 @@ with all of the following input methods:
 Test out panning and zooming on the <a href="examples/single-location.html" target="examples">basic single-location map views</a>
 for the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-39"><div role="heading" class="issue-title marker" id="h-issue-10" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/39"><span class="issue-number">Issue 39</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use case: User-controlled pan &amp; zoom <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-39"><div role="heading" class="issue-title marker" id="h-issue-10" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/39"><span class="issue-number">Issue 39</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 </section>
 
 <section id="use-case-allow-user-reset-map-their-starting-point" data-ucr-role="use-case">
@@ -1891,11 +1948,11 @@ for the reference JavaScript tools.
 Description to follow.
 </p>
 <p>
-See <a href="examples/use-case-allow-user-reset-map-their-starting-point.html" target="examples">examples of allowing a user to reset the map to their starting point</a>
+See <a href="examples/allow-user-reset-map-their-starting-point.html" target="examples">examples of allowing a user to reset the map to their starting point</a>
 as implemented by the reference JavaScript tools.
 </p>
 <div class="issue" id="issue-container-number-83"><div role="heading" class="issue-title marker" id="h-issue-11" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/83"><span class="issue-number">Issue 83</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use Case: Allow a user to reset the map to their starting point <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-7">Required capabilities<a class="self-link" aria-label="§" href="#use-case-allow-user-reset-map-their-starting-point"></a></h5>
+<h5 id="required-capabilities-9">Required capabilities<a class="self-link" aria-label="§" href="#use-case-allow-user-reset-map-their-starting-point"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li>Declarative / default behavior:
   <a href=""></a>
@@ -1927,7 +1984,7 @@ for the reference JavaScript tools.
 </p>
 <div class="issue" id="issue-container-generatedID-1"><div role="heading" class="issue-title marker" id="h-issue-12" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/(GH issue number for discussion)"><span class="issue-number">Issue (GH issue number for discussion)</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
-<h5 id="required-capabilities-8">Required capabilities<a class="self-link" aria-label="§" href="#use-case-rotate-map"></a></h5>
+<h5 id="required-capabilities-10">Required capabilities<a class="self-link" aria-label="§" href="#use-case-rotate-map"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href=""></a></li>
 </ul>
@@ -1971,11 +2028,11 @@ by toggling between two states within the same display.
 Example to be expanded later: NLS old Ordnance Survey maps.
 </p>
 <p>
-See <a href="examples/use-case-allow-user-control-layer-displayed-map.html" target="examples">examples of allowing the user to control the layer displayed by a map</a>
+See <a href="examples/allow-user-control-layer-displayed-map.html" target="examples">examples of allowing the user to control the layer displayed by a map</a>
 as implemented by the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-82"><div role="heading" class="issue-title marker" id="h-issue-14" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/82"><span class="issue-number">Issue 82</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use Case: Allow the user to control the layer displayed by a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-9">Required capabilities<a class="self-link" aria-label="§" href="#use-case-hide-layers"></a></h5>
+<div class="issue" id="issue-container-number-82"><div role="heading" class="issue-title marker" id="h-issue-14" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/82"><span class="issue-number">Issue 82</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<h5 id="required-capabilities-11">Required capabilities<a class="self-link" aria-label="§" href="#use-case-hide-layers"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li>Declarative / default behavior:
   <a href=""></a>
@@ -2004,7 +2061,7 @@ as implemented by the reference JavaScript tools.
 <p>
 
 </p>
-<div class="issue" id="issue-container-number-42"><div role="heading" class="issue-title marker" id="h-issue-16" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/42"><span class="issue-number">Issue 42</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use case: search within a set of map features <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-42"><div role="heading" class="issue-title marker" id="h-issue-16" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/42"><span class="issue-number">Issue 42</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 </section>
 
 <section id="use-case-color-scheme" data-ucr-role="use-case">
@@ -2077,11 +2134,11 @@ accessible version that utilised a public API to effect
 zooming in response to the keyboard.
 </p>
 <p>
-See <a href="examples/use-case-add-a-custom-control-to-a-map.html" target="examples">examples of adding a custom control to a map</a>
+See <a href="examples/add-a-custom-control-to-a-map.html" target="examples">examples of adding a custom control to a map</a>
 as implemented by the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-79"><div role="heading" class="issue-title marker" id="h-issue-18" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/79"><span class="issue-number">Issue 79</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-10">Required capabilities<a class="self-link" aria-label="§" href="#use-case-add-a-custom-control-to-a-map"></a></h5>
+<div class="issue" id="issue-container-number-79"><div role="heading" class="issue-title marker" id="h-issue-18" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/79"><span class="issue-number">Issue 79</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use Case: Add a custom control to a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<h5 id="required-capabilities-12">Required capabilities<a class="self-link" aria-label="§" href="#use-case-add-a-custom-control-to-a-map"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-implement-a-custom-control">Implement a custom control</a></li>
 <li><a href="#capability-add-control-map">Add a control to a map</a></li>
@@ -2113,11 +2170,11 @@ selecting a marker could highlight the corresponding list
 item.
 </p>
 <p>
-See <a href="examples/use-case-provide-feedback-user-they-manipulate-map.html" target="examples">examples of providing feedback to a user as they manipulate the map</a>
+See <a href="examples/provide-feedback-user-they-manipulate-map.html" target="examples">examples of providing feedback to a user as they manipulate the map</a>
 as implemented by the reference JavaScript tools.
 </p>
-<div class="issue" id="issue-container-number-80"><div role="heading" class="issue-title marker" id="h-issue-19" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/80"><span class="issue-number">Issue 80</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-11">Required capabilities<a class="self-link" aria-label="§" href="#use-case-provide-feedback-user-they-manipulate-map"></a></h5>
+<div class="issue" id="issue-container-number-80"><div role="heading" class="issue-title marker" id="h-issue-19" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/80"><span class="issue-number">Issue 80</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: placeholder.">: Use Case: Provide feedback to a user as they manipulate the map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<h5 id="required-capabilities-13">Required capabilities<a class="self-link" aria-label="§" href="#use-case-provide-feedback-user-they-manipulate-map"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-get-bounds-map">Get the bounds of a map</a></li>
 <li><a href="#capability-subscribe-map-move-events">Subscribe to map move events</a></li>
@@ -2144,11 +2201,11 @@ need not only to move but also to adjust its zoom level to
 one which best fits the area.
 </p>
 <p>
-See <a href="examples/use-case-change-map-new-position-andor-zoom-level.html" target="examples">examples of moving a map to a new position and zoom level</a>
+See <a href="examples/change-map-new-position-andor-zoom-level.html" target="examples">examples of moving a map to a new position and zoom level</a>
 as implemented by the reference JavaScript tools.
 </p>
 <div class="issue" id="issue-container-generatedID-2"><div role="heading" class="issue-title marker" id="h-issue-20" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/None"><span class="issue-number">Issue None</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-12">Required capabilities<a class="self-link" aria-label="§" href="#use-case-move-a-map-to-a-new-position-andor-zoom-level"></a></h5>
+<h5 id="required-capabilities-14">Required capabilities<a class="self-link" aria-label="§" href="#use-case-move-a-map-to-a-new-position-andor-zoom-level"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-zoom-map-or-out">Zoom a map in or out</a></li>
 <li><a href="#capability-move-the-map-to-display-a-given-location">Move the map to display a given location</a></li>
@@ -2170,11 +2227,11 @@ a set of directions, or through a set of locations that form
 part of a temporal sequence.
 </p>
 <p>
-See <a href="examples/use-case-animate-map-through-sequence-points.html" target="examples">examples of animating a map through a sequence of points</a>
+See <a href="examples/animate-map-through-sequence-points.html" target="examples">examples of animating a map through a sequence of points</a>
 as implemented by the reference JavaScript tools.
 </p>
 <div class="issue" id="issue-container-generatedID-3"><div role="heading" class="issue-title marker" id="h-issue-21" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/None"><span class="issue-number">Issue None</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-13">Required capabilities<a class="self-link" aria-label="§" href="#use-case-animate-a-map-through-a-sequence-of-points"></a></h5>
+<h5 id="required-capabilities-15">Required capabilities<a class="self-link" aria-label="§" href="#use-case-animate-a-map-through-a-sequence-of-points"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-animate-the-zooming-of-the-map">Animate the zooming of the map</a></li>
 <li><a href="#capability-animate-the-re-centering-of-the-map">Animate the re-centering of the map</a></li>
@@ -2196,11 +2253,11 @@ and allowing the user to orient themselves with respect to the map
 by manipulating it with respect to local landmarks.
 </p>
 <p>
-See <a href="examples/use-case-change-bearing-map.html" target="examples">examples of changing the bearing of a map</a>
+See <a href="examples/change-bearing-map.html" target="examples">examples of changing the bearing of a map</a>
 as implemented by the reference JavaScript tools.
 </p>
 <div class="issue" id="issue-container-number-84"><div role="heading" class="issue-title marker" id="h-issue-22" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/84"><span class="issue-number">Issue 84</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-14">Required capabilities<a class="self-link" aria-label="§" href="#use-case-change-bearing-map"></a></h5>
+<h5 id="required-capabilities-16">Required capabilities<a class="self-link" aria-label="§" href="#use-case-change-bearing-map"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-change-bearing-map">Change the bearing of a map</a></li>
 <li><a href="#capability-reset-bearing-map">Reset the bearing of a map</a></li>
@@ -2218,11 +2275,11 @@ requires an API allowing it to be added as an overlay to the
 map view.
 </p>
 <p>
-See <a href="examples/use-case-show-vector-data-overlay-map.html" target="examples">examples of showing a vector data overlay</a>
+See <a href="examples/show-vector-data-overlay-map.html" target="examples">examples of showing a vector data overlay</a>
 as implemented by the reference JavaScript tools.
 </p>
 <div class="issue" id="issue-container-generatedID-4"><div role="heading" class="issue-title marker" id="h-issue-23" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/None"><span class="issue-number">Issue None</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-15">Required capabilities<a class="self-link" aria-label="§" href="#use-case-show-a-vector-data-overlay-on-a-map"></a></h5>
+<h5 id="required-capabilities-17">Required capabilities<a class="self-link" aria-label="§" href="#use-case-show-a-vector-data-overlay-on-a-map"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-add-layer-map">Add a layer to a map</a></li>
 <li><a href="#capability-create-an-overlay-defined-by-vector-data">Create an overlay defined by vector data</a></li>
@@ -2238,11 +2295,11 @@ A web developer wishing to display such data requires an API
 allowing such data to be added to a map as an overlay.
 </p>
 <p>
-See <a href="examples/use-case-show-heatmap-overlaid-map.html" target="examples">examples of showing a heatmap overlaid</a>
+See <a href="examples/show-heatmap-overlaid-map.html" target="examples">examples of showing a heatmap overlaid</a>
 as implemented by the reference JavaScript tools.
 </p>
 <div class="issue" id="issue-container-generatedID-5"><div role="heading" class="issue-title marker" id="h-issue-24" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/None"><span class="issue-number">Issue None</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
-<h5 id="required-capabilities-16">Required capabilities<a class="self-link" aria-label="§" href="#use-case-show-a-heatmap-overlay-on-a-map"></a></h5>
+<h5 id="required-capabilities-18">Required capabilities<a class="self-link" aria-label="§" href="#use-case-show-a-heatmap-overlay-on-a-map"></a></h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-display-layer-map">Display a layer on a map</a></li>
 <li><a href="#capability-create-an-overlay-defined-by-heatmap-data">Create an overlay defined by heatmap data</a></li>
@@ -2285,7 +2342,7 @@ configuration options are passed in as JS function parameters when initializing 
 <li>
 HTML custom elements,
 with configuration through attributes and child elements.
-<div class="issue" id="issue-container-number-23"><div role="heading" class="issue-title marker" id="h-issue-26" aria-level="3"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/23"><span class="issue-number">Issue 23</span></a></div><p class="">Need to decide on web component examples to use as reference.</p></div>
+<div class="issue" id="issue-container-number-23"><div role="heading" class="issue-title marker" id="h-issue-26" aria-level="3"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/23"><span class="issue-number">Issue 23</span></a><span class="issue-label" aria-label="This issue is labelled as bug: need info and section: reference tools.">: Tool: Best examples based on custom elements? <a class="respec-gh-label respec-label-dark" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22bug%3A+need+info%22" style="background-color: rgb(252, 41, 41);">bug: need info</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+reference+tools%22" style="background-color: rgb(223, 194, 249);">section: reference tools</a></span></div><p class="">Need to decide on web component examples to use as reference.</p></div>
 </li>
 </ul>
 <p>
@@ -2354,7 +2411,7 @@ for generating map viewers and adding custom features and data layers.
 It also includes methods to access more complex search functions, local images, and other data.
 Most features require an API key and is billed by usage (page views or API requests).
 </p>
-<div class="issue" id="issue-container-number-9"><div role="heading" class="issue-title marker" id="h-issue-27" aria-level="4"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/9"><span class="issue-number">Issue 9</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-9"><div role="heading" class="issue-title marker" id="h-issue-27" aria-level="4"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/9"><span class="issue-number">Issue 9</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: sample JS tool, section: reference tools, and status: editor's draft.">: Tool: Google maps api <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+sample+JS+tool%22" style="background-color: rgb(158, 247, 239);">discussion: sample JS tool</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+reference+tools%22" style="background-color: rgb(223, 194, 249);">section: reference tools</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 </section>
 
 <section id="openstreetmap">
@@ -2401,11 +2458,11 @@ and integrations with Apple search services.
 A developer account is required,
 along with a method of generating encrypted API tokens on demand on the webserver.
 </p>
-<div class="issue" id="issue-container-number-28"><div role="heading" class="issue-title marker" id="h-issue-30" aria-level="4"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/28"><span class="issue-number">Issue 28</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-28"><div role="heading" class="issue-title marker" id="h-issue-30" aria-level="4"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/28"><span class="issue-number">Issue 28</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: sample JS tool, section: reference tools, and status: editor's draft.">: Tool: MapKit JS (Apple maps) <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+sample+JS+tool%22" style="background-color: rgb(158, 247, 239);">discussion: sample JS tool</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+reference+tools%22" style="background-color: rgb(223, 194, 249);">section: reference tools</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 </section>
 
 <section id="mapbox">
-<h3 id="x4-5-mapbox-gl-js-api"><bdi class="secno">4.5 </bdi>Mapbox GL JS API<a class="self-link" aria-label="§" href="#mapbox"></a></h3>
+<h3 id="x4-5-mapbox-gl-js-api-and-mapbox-studio-embeds"><bdi class="secno">4.5 </bdi>Mapbox GL JS API and Mapbox Studio embeds<a class="self-link" aria-label="§" href="#mapbox"></a></h3>
 <p>
 <a href="https://docs.mapbox.com/">Mapbox</a> provides
 map data as a service, as well as frameworks for multiple platforms.
@@ -2418,7 +2475,7 @@ and so can be used as an iframe source. These maps can be configured through <a 
 <p>
 An API key is required, with cost based on usage.
 </p>
-<div class="issue" id="issue-container-number-12"><div role="heading" class="issue-title marker" id="h-issue-31" aria-level="4"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/12"><span class="issue-number">Issue 12</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-12"><div role="heading" class="issue-title marker" id="h-issue-31" aria-level="4"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/12"><span class="issue-number">Issue 12</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: sample JS tool, section: reference tools, and status: editor's draft.">: Tool: Mapbox (GL JS API) <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+sample+JS+tool%22" style="background-color: rgb(158, 247, 239);">discussion: sample JS tool</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+reference+tools%22" style="background-color: rgb(223, 194, 249);">section: reference tools</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 </section>
 
 <section id="leaflet-js">
@@ -2457,7 +2514,7 @@ Unlike the other JS tools being reviewed here,
 D3 does not include code for a ready-made map viewer widget,
 but it is used for custom client-side mapping applications.
 </p>
-<div class="issue" id="issue-container-number-13"><div role="heading" class="issue-title marker" id="h-issue-34" aria-level="4"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/13"><span class="issue-number">Issue 13</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-13"><div role="heading" class="issue-title marker" id="h-issue-34" aria-level="4"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/13"><span class="issue-number">Issue 13</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: sample JS tool, section: reference tools, and status: editor's draft.">: Tool: D3 maps <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+sample+JS+tool%22" style="background-color: rgb(158, 247, 239);">discussion: sample JS tool</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+reference+tools%22" style="background-color: rgb(223, 194, 249);">section: reference tools</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 </section>
 </section>
 
@@ -2612,23 +2669,21 @@ they would need to rely on a third-party service for the map data.
 </section>
 
 <section id="capability-single-custom-image" data-ucr-role="capability">
-<h4 id="x5-1-3-display-a-map-using-a-single-custom-image-as-a-map-layer"><bdi class="secno">5.1.3 </bdi>Display a map using a single custom image as a map layer<a class="self-link" aria-label="§" href="#capability-single-custom-image"></a></h4>
+<h4 id="x5-1-3-display-an-image-file-as-a-map-layer"><bdi class="secno">5.1.3 </bdi>Display an image file as a map layer<a class="self-link" aria-label="§" href="#capability-single-custom-image"></a></h4>
 <p>
-While most web maps are composed of tilesets,
-they may also consist of one of more layers
-that are just single images rendered on the fly (such as from a WMS),
-large images that a user pans across, or vector images.
-These kinds of maps can be useful in cases
-where a broader spatial context is not as important
-or when the author is trying to make a specific point about a set of data.
-Custom image layers can also be used for representing complex data 
-for a specific area that may not be available as a complete tileset,
-such as terrain maps or foliage coverage images produced by a specific researcher.
+If a web author already has (or can generate on the server) a map
+in a standard image format the browser can render — JPEG, PNG, SVG, etc. —
+can the map viewer display it as a map layer?
+Or will it need to be converted into a geospatial data format?
+</p>
+<p>
+For most use cases, at least some additional metadata will be required,
+to align the image pixels to the geographic coordinates of the map.
 </p>
 
 <h5 id="existing-implementations-1">Existing implementations<a class="self-link" aria-label="§" href="#capability-single-custom-image"></a></h5>
 <p>
-The majority of the embed maps do not support this feature.
+The majority of the embed maps do not support custom image layers.
 The API tools that do support this feature typically accept a layer source, attribution,
 and the coordinate system to be used by the image layers,
 which can be mapped to pixel units for more simple use cases.
@@ -2680,13 +2735,12 @@ has a wide variety of practical use cases.
 <section id="capability-custom-map-tiles" data-ucr-role="capability">
 <h4 id="x5-1-4-display-a-map-using-tile-data-from-an-author-specified-web-map-service"><bdi class="secno">5.1.4 </bdi>Display a map using tile data from an author-specified web map service<a class="self-link" aria-label="§" href="#capability-custom-map-tiles"></a></h4>
 <p>
-Custom tilesets are a necessary feature for more advanced mapping use cases.
-The majority of web maps are used for wayfinding and the default embed map
-tilesets all tend to be fairly similar, showing limited natural features in
-addition to streets and buildings.
-However, beyond this basic usage, 
-there are many use cases which require custom tilesets,
-including maps that involve coverage data, satellite images, historical geography and future/proposed developments.
+A single image for an entire map layer is impractical on the web
+for large, pan-able maps at good resolution.
+For this reason, most web map services provide map data as <a href="#dfn-tileset" class="internalDFN" data-link-type="dfn">tilesets</a>.
+Beyond any <a href="#capability-default-map">default map layer</a> that the viewer provides,
+can it process tilesets as a custom map layer?
+If so, in what form?
 </p>
 
 <h5 id="existing-implementations-2">Existing implementations<a class="self-link" aria-label="§" href="#capability-custom-map-tiles"></a></h5>
@@ -2820,11 +2874,11 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <section id="capability-marker-points" data-ucr-role="capability">
 <h4 id="x5-2-1-show-pinpoint-locations-or-custom-markers-on-the-map"><bdi class="secno">5.2.1 </bdi>Show pinpoint locations or custom markers on the map<a class="self-link" aria-label="§" href="#capability-marker-points"></a></h4>
 <p>
-For the purposes of wayfinding, custom markers are an essential part of web maps.
-The most common use case for a web map is to show one or more locations
-of a business or organization. Maps that display pinpoint locations can
-also be used for data visualization, demonstrating spatial patterns
-of particular events or occurrences.
+A map marker is a small icon that marks a <a href="#dfn-point" class="internalDFN" data-link-type="dfn">point feature</a>.
+Wayfinding maps often have extensive sets of icon markers
+that identify different types of features.
+In web maps, the pinpoint marker (a circle narrowing into a point at the bottom)
+has become standard for identifying any location of interest.
 </p>
 <div class="issue" id="issue-container-generatedID-9"><div role="heading" class="issue-title marker" id="h-issue-37" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/(GH issue number for discussion)"><span class="issue-number">Issue (GH issue number for discussion)</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
@@ -2890,15 +2944,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <section id="capability-vector-features" data-ucr-role="capability">
 <h4 id="x5-2-2-draw-polygons-or-polylines-as-stylable-interactive-vector-graphics-separate-from-the-image-tiles"><bdi class="secno">5.2.2 </bdi>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)<a class="self-link" aria-label="§" href="#capability-vector-features"></a></h4>
 <p>
-Polylines are used in maps to draw roads, rivers, directions between places,
-or the observed path of a moving object.
-Polygons are used for political regions (country and municipal boundaries),
-building footprint outlines,
-and for contour lines which mark the extent of a certain value within continuous data
-(e.g., elevation).
-Polygons are also used for roads, rivers and so on at higher zoom levels,
-where the true shape of the feature can no longer be approximated as a single line.
-They are two of the most common types of map data features.
+Polygons and polylines are two of the most common types of map data features.
 </p>
 <p>
 It is common on the web for vector map data to be pre-rendered
@@ -3265,7 +3311,7 @@ it is possible to use projections which more directly represent the 3D globe
 without trying to display it all at once,
 letting user interaction rotate it to show parts of interest.
 </p>
-<div class="issue" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue-41" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/3"><span class="issue-number">Issue 3</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-3"><div role="heading" class="issue-title marker" id="h-issue-41" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/3"><span class="issue-number">Issue 3</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: map viewer, and status: placeholder.">: Capability: Render maps as a globe or other non-Mercator projection <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+map+viewer%22" style="background-color: rgb(223, 194, 249);">section: map viewer</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
 <h5 id="existing-implementations-11">Existing implementations<a class="self-link" aria-label="§" href="#capability-reproject-maps"></a></h5>
 <p>
@@ -3781,7 +3827,7 @@ Replacing the full functionality of the controls requires a
 This capability focuses solely on the ability to declaratively control
 whether or not the web browser includes on-screen controls by default.
 </p>
-<div class="issue" id="issue-container-number-16"><div role="heading" class="issue-title marker" id="h-issue-44" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/16"><span class="issue-number">Issue 16</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-16"><div role="heading" class="issue-title marker" id="h-issue-44" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/16"><span class="issue-number">Issue 16</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: map viewer, and status: placeholder.">: Capability: Allow default and custom map furniture <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+map+viewer%22" style="background-color: rgb(223, 194, 249);">section: map viewer</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 
 <h5 id="existing-implementations-22">Existing implementations<a class="self-link" aria-label="§" href="#capability-custom-controls"></a></h5>
 <p>
@@ -3963,7 +4009,7 @@ A custom control is a user interface element that is
 integrated closely with the map's own user interface, and is
 under the control of the map once it has ben added.
 </p>
-<div class="issue" id="issue-container-number-57"><div role="heading" class="issue-title marker" id="h-issue-47" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/57"><span class="issue-number">Issue 57</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-57"><div role="heading" class="issue-title marker" id="h-issue-47" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/57"><span class="issue-number">Issue 57</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Implement a custom control <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-25">Existing implementations<a class="self-link" aria-label="§" href="#capability-implement-a-custom-control"></a></h5>
 <p>
 A custom control is a JavaScript object or a DOM element
@@ -4040,7 +4086,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <p>
 Description to follow
 </p>
-<div class="issue" id="issue-container-number-58"><div role="heading" class="issue-title marker" id="h-issue-48" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/58"><span class="issue-number">Issue 58</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-58"><div role="heading" class="issue-title marker" id="h-issue-48" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/58"><span class="issue-number">Issue 58</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Add a control to a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-26">Existing implementations<a class="self-link" aria-label="§" href="#capability-add-control-map"></a></h5>
 <p>
 Existing implementation support:
@@ -4132,7 +4178,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <p>
 Description to follow
 </p>
-<div class="issue" id="issue-container-number-61"><div role="heading" class="issue-title marker" id="h-issue-50" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/61"><span class="issue-number">Issue 61</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-61"><div role="heading" class="issue-title marker" id="h-issue-50" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/61"><span class="issue-number">Issue 61</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Add a layer to a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-28">Existing implementations<a class="self-link" aria-label="§" href="#capability-add-layer-map"></a></h5>
 <p>
 Existing implementation support:
@@ -4320,7 +4366,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <p>
 Description to follow
 </p>
-<div class="issue" id="issue-container-number-62"><div role="heading" class="issue-title marker" id="h-issue-54" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/62"><span class="issue-number">Issue 62</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-62"><div role="heading" class="issue-title marker" id="h-issue-54" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/62"><span class="issue-number">Issue 62</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Remove a layer from a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-32">Existing implementations<a class="self-link" aria-label="§" href="#capability-remove-layer-map"></a></h5>
 <p>
 Existing implementation support:
@@ -4464,7 +4510,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <p>
 Description to follow
 </p>
-<div class="issue" id="issue-container-number-65"><div role="heading" class="issue-title marker" id="h-issue-57" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/65"><span class="issue-number">Issue 65</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-65"><div role="heading" class="issue-title marker" id="h-issue-57" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/65"><span class="issue-number">Issue 65</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Specify the style of a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-35">Existing implementations<a class="self-link" aria-label="§" href="#capability-specify-style-map"></a></h5>
 <p>
 Existing implementation support:
@@ -4560,7 +4606,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <p>
 Description to follow
 </p>
-<div class="issue" id="issue-container-number-60"><div role="heading" class="issue-title marker" id="h-issue-59" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/60"><span class="issue-number">Issue 60</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-60"><div role="heading" class="issue-title marker" id="h-issue-59" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/60"><span class="issue-number">Issue 60</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Get the bounds of a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-37">Existing implementations<a class="self-link" aria-label="§" href="#capability-get-bounds-map"></a></h5>
 <p>
 Existing implementation support:
@@ -4606,7 +4652,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <p>
 Description to follow
 </p>
-<div class="issue" id="issue-container-number-67"><div role="heading" class="issue-title marker" id="h-issue-60" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/67"><span class="issue-number">Issue 67</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-67"><div role="heading" class="issue-title marker" id="h-issue-60" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/67"><span class="issue-number">Issue 67</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Pan a map or re-centre a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-38">Existing implementations<a class="self-link" aria-label="§" href="#capability-pan-map-or-re-centre-map"></a></h5>
 <p>
 Existing implementation support:
@@ -4790,7 +4836,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <p>
 Description to follow
 </p>
-<div class="issue" id="issue-container-number-71"><div role="heading" class="issue-title marker" id="h-issue-64" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/71"><span class="issue-number">Issue 71</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-71"><div role="heading" class="issue-title marker" id="h-issue-64" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/71"><span class="issue-number">Issue 71</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Subscribe to marker selection events <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-42">Existing implementations<a class="self-link" aria-label="§" href="#capability-subscribe-marker-selection-events"></a></h5>
 <p>
 Existing implementation support:
@@ -4836,7 +4882,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 <p>
 Description to follow
 </p>
-<div class="issue" id="issue-container-number-72"><div role="heading" class="issue-title marker" id="h-issue-65" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/72"><span class="issue-number">Issue 72</span></a></div><p class="discussion">Discuss this section on GitHub.</p></div>
+<div class="issue" id="issue-container-number-72"><div role="heading" class="issue-title marker" id="h-issue-65" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/72"><span class="issue-number">Issue 72</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Change the bearing of a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239);">discussion: capability</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249);">section: client-side API</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211);">status: placeholder</a></span></div><p class="discussion">Discuss this section on GitHub.</p></div>
 <h5 id="existing-implementations-43">Existing implementations<a class="self-link" aria-label="§" href="#capability-change-bearing-map"></a></h5>
 <p>
 Existing implementation support:
@@ -5203,7 +5249,7 @@ or that can be provided with minor server upgrades.
 <p>
 We are tracking issues on <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues">Github</a>.
 </p>
-<ul><li><a href="#issue-container-number-77">Issue 77</a><span style="text-transform: none">: Use Case: Display an interactive map within a web page</span></li><li><a href="#issue-container-number-33">Issue 33</a><span style="text-transform: none">: Use case: Display a location on a map</span></li><li><a href="#issue-container-number-17">Issue 17</a><span style="text-transform: none">: Use Case: Static maps</span></li><li><a href="#issue-container-number-78">Issue 78</a><span style="text-transform: none">: Use Case: Display multiple point locations on a single map</span></li><li><a href="#issue-container-number-36">Issue 36</a><span style="text-transform: none">: Use case: Display regions &amp; routes</span></li><li><a href="#issue-container-number-37">Issue 37</a><span style="text-transform: none">: Use case: Custom HTML annotations</span></li><li><a href="#issue-container-number-38">Issue 38</a><span style="text-transform: none">: Use Case: Map coverages or custom image tiles</span></li><li><a href="#issue-container-number-11">Issue 11</a><span style="text-transform: none">: Use Case: Layer together multiple map data sources</span></li><li><a href="#issue-container-number-81">Issue 81</a><span style="text-transform: none">: Use Case: Allow the user to select a different style for a map</span></li><li><a href="#issue-container-number-1">Issue 1</a><span style="text-transform: none">: Use case: Technical drawings (panning, zooming, layers, etc.)</span></li><li><a href="#issue-container-number-39">Issue 39</a><span style="text-transform: none">: Use case: User-controlled pan &amp; zoom</span></li><li><a href="#issue-container-number-83">Issue 83</a><span style="text-transform: none">: Use Case: Allow a user to reset the map to their starting point</span></li><li><a href="#issue-container-generatedID-1">Issue NaN</a></li><li><a href="#issue-container-number-21">Issue 21</a><span style="text-transform: none">: Use Case: Identify feature under the pointing device or other input method</span></li><li><a href="#issue-container-number-82">Issue 82</a><span style="text-transform: none">: Use Case: Allow the user to control the layer displayed by a map</span></li><li><a href="#issue-container-number-41">Issue 41</a><span style="text-transform: none">: Use Case: Bookmark/export a location</span></li><li><a href="#issue-container-number-42">Issue 42</a><span style="text-transform: none">: Use case: search within a set of map features</span></li><li><a href="#issue-container-number-43">Issue 43</a></li><li><a href="#issue-container-number-79">Issue 79</a></li><li><a href="#issue-container-number-80">Issue 80</a></li><li><a href="#issue-container-generatedID-2">Issue NaN</a></li><li><a href="#issue-container-generatedID-3">Issue NaN</a></li><li><a href="#issue-container-number-84">Issue 84</a></li><li><a href="#issue-container-generatedID-4">Issue NaN</a></li><li><a href="#issue-container-generatedID-5">Issue NaN</a></li><li><a href="#issue-container-number-25">Issue 25</a></li><li><a href="#issue-container-number-23">Issue 23</a></li><li><a href="#issue-container-number-9">Issue 9</a></li><li><a href="#issue-container-number-26">Issue 26</a></li><li><a href="#issue-container-number-27">Issue 27</a></li><li><a href="#issue-container-number-28">Issue 28</a></li><li><a href="#issue-container-number-12">Issue 12</a></li><li><a href="#issue-container-number-29">Issue 29</a></li><li><a href="#issue-container-number-30">Issue 30</a></li><li><a href="#issue-container-number-13">Issue 13</a></li><li><a href="#issue-container-generatedID-7">Issue NaN</a></li><li><a href="#issue-container-generatedID-8">Issue NaN</a></li><li><a href="#issue-container-generatedID-9">Issue NaN</a></li><li><a href="#issue-container-generatedID-10">Issue NaN</a></li><li><a href="#issue-container-generatedID-11">Issue NaN</a></li><li><a href="#issue-container-number-14">Issue 14</a></li><li><a href="#issue-container-number-3">Issue 3</a></li><li><a href="#issue-container-number-15">Issue 15</a></li><li><a href="#issue-container-generatedID-12">Issue NaN</a></li><li><a href="#issue-container-number-16">Issue 16</a></li><li><a href="#issue-container-number-55">Issue 55</a></li><li><a href="#issue-container-number-56">Issue 56</a></li><li><a href="#issue-container-number-57">Issue 57</a></li><li><a href="#issue-container-number-58">Issue 58</a></li><li><a href="#issue-container-number-59">Issue 59</a></li><li><a href="#issue-container-number-61">Issue 61</a></li><li><a href="#issue-container-number-74">Issue 74</a></li><li><a href="#issue-container-generatedID-13">Issue NaN</a></li><li><a href="#issue-container-generatedID-14">Issue NaN</a></li><li><a href="#issue-container-number-62">Issue 62</a></li><li><a href="#issue-container-number-63">Issue 63</a></li><li><a href="#issue-container-number-64">Issue 64</a></li><li><a href="#issue-container-number-65">Issue 65</a></li><li><a href="#issue-container-number-66">Issue 66</a></li><li><a href="#issue-container-number-60">Issue 60</a></li><li><a href="#issue-container-number-67">Issue 67</a></li><li><a href="#issue-container-number-68">Issue 68</a></li><li><a href="#issue-container-number-69">Issue 69</a></li><li><a href="#issue-container-number-70">Issue 70</a></li><li><a href="#issue-container-number-71">Issue 71</a></li><li><a href="#issue-container-number-72">Issue 72</a></li><li><a href="#issue-container-number-73">Issue 73</a></li><li><a href="#issue-container-generatedID-15">Issue NaN</a></li><li><a href="#issue-container-generatedID-16">Issue NaN</a></li><li><a href="#issue-container-generatedID-17">Issue NaN</a></li><li><a href="#issue-container-generatedID-18">Issue NaN</a></li><li><a href="#issue-container-generatedID-19">Issue NaN</a></li></ul></section>
+<ul><li><a href="#issue-container-number-77">Issue 77</a></li><li><a href="#issue-container-number-33">Issue 33</a></li><li><a href="#issue-container-number-17">Issue 17</a><span style="text-transform: none">: Use Case: Static maps</span></li><li><a href="#issue-container-number-78">Issue 78</a><span style="text-transform: none">: Use Case: Display multiple point locations on a single map</span></li><li><a href="#issue-container-number-36">Issue 36</a></li><li><a href="#issue-container-number-37">Issue 37</a><span style="text-transform: none">: Use case: Custom HTML annotations</span></li><li><a href="#issue-container-number-38">Issue 38</a></li><li><a href="#issue-container-number-11">Issue 11</a></li><li><a href="#issue-container-number-81">Issue 81</a><span style="text-transform: none">: Use Case: Allow the user to select a different style for a map</span></li><li><a href="#issue-container-number-1">Issue 1</a></li><li><a href="#issue-container-number-39">Issue 39</a></li><li><a href="#issue-container-number-83">Issue 83</a><span style="text-transform: none">: Use Case: Allow a user to reset the map to their starting point</span></li><li><a href="#issue-container-generatedID-1">Issue NaN</a></li><li><a href="#issue-container-number-21">Issue 21</a><span style="text-transform: none">: Use Case: Identify feature under the pointing device or other input method</span></li><li><a href="#issue-container-number-82">Issue 82</a></li><li><a href="#issue-container-number-41">Issue 41</a><span style="text-transform: none">: Use Case: Bookmark/export a location</span></li><li><a href="#issue-container-number-42">Issue 42</a></li><li><a href="#issue-container-number-43">Issue 43</a></li><li><a href="#issue-container-number-79">Issue 79</a><span style="text-transform: none">: Use Case: Add a custom control to a map</span></li><li><a href="#issue-container-number-80">Issue 80</a><span style="text-transform: none">: Use Case: Provide feedback to a user as they manipulate the map</span></li><li><a href="#issue-container-generatedID-2">Issue NaN</a></li><li><a href="#issue-container-generatedID-3">Issue NaN</a></li><li><a href="#issue-container-number-84">Issue 84</a></li><li><a href="#issue-container-generatedID-4">Issue NaN</a></li><li><a href="#issue-container-generatedID-5">Issue NaN</a></li><li><a href="#issue-container-number-25">Issue 25</a></li><li><a href="#issue-container-number-23">Issue 23</a><span style="text-transform: none">: Tool: Best examples based on custom elements?</span></li><li><a href="#issue-container-number-9">Issue 9</a><span style="text-transform: none">: Tool: Google maps api</span></li><li><a href="#issue-container-number-26">Issue 26</a></li><li><a href="#issue-container-number-27">Issue 27</a></li><li><a href="#issue-container-number-28">Issue 28</a><span style="text-transform: none">: Tool: MapKit JS (Apple maps)</span></li><li><a href="#issue-container-number-12">Issue 12</a><span style="text-transform: none">: Tool: Mapbox (GL JS API)</span></li><li><a href="#issue-container-number-29">Issue 29</a></li><li><a href="#issue-container-number-30">Issue 30</a></li><li><a href="#issue-container-number-13">Issue 13</a><span style="text-transform: none">: Tool: D3 maps</span></li><li><a href="#issue-container-generatedID-7">Issue NaN</a></li><li><a href="#issue-container-generatedID-8">Issue NaN</a></li><li><a href="#issue-container-generatedID-9">Issue NaN</a></li><li><a href="#issue-container-generatedID-10">Issue NaN</a></li><li><a href="#issue-container-generatedID-11">Issue NaN</a></li><li><a href="#issue-container-number-14">Issue 14</a></li><li><a href="#issue-container-number-3">Issue 3</a><span style="text-transform: none">: Capability: Render maps as a globe or other non-Mercator projection</span></li><li><a href="#issue-container-number-15">Issue 15</a></li><li><a href="#issue-container-generatedID-12">Issue NaN</a></li><li><a href="#issue-container-number-16">Issue 16</a><span style="text-transform: none">: Capability: Allow default and custom map furniture</span></li><li><a href="#issue-container-number-55">Issue 55</a></li><li><a href="#issue-container-number-56">Issue 56</a></li><li><a href="#issue-container-number-57">Issue 57</a><span style="text-transform: none">: Capability: Implement a custom control</span></li><li><a href="#issue-container-number-58">Issue 58</a><span style="text-transform: none">: Capability: Add a control to a map</span></li><li><a href="#issue-container-number-59">Issue 59</a></li><li><a href="#issue-container-number-61">Issue 61</a><span style="text-transform: none">: Capability: Add a layer to a map</span></li><li><a href="#issue-container-number-74">Issue 74</a></li><li><a href="#issue-container-generatedID-13">Issue NaN</a></li><li><a href="#issue-container-generatedID-14">Issue NaN</a></li><li><a href="#issue-container-number-62">Issue 62</a><span style="text-transform: none">: Capability: Remove a layer from a map</span></li><li><a href="#issue-container-number-63">Issue 63</a></li><li><a href="#issue-container-number-64">Issue 64</a></li><li><a href="#issue-container-number-65">Issue 65</a><span style="text-transform: none">: Capability: Specify the style of a map</span></li><li><a href="#issue-container-number-66">Issue 66</a></li><li><a href="#issue-container-number-60">Issue 60</a><span style="text-transform: none">: Capability: Get the bounds of a map</span></li><li><a href="#issue-container-number-67">Issue 67</a><span style="text-transform: none">: Capability: Pan a map or re-centre a map</span></li><li><a href="#issue-container-number-68">Issue 68</a></li><li><a href="#issue-container-number-69">Issue 69</a></li><li><a href="#issue-container-number-70">Issue 70</a></li><li><a href="#issue-container-number-71">Issue 71</a><span style="text-transform: none">: Capability: Subscribe to marker selection events</span></li><li><a href="#issue-container-number-72">Issue 72</a><span style="text-transform: none">: Capability: Change the bearing of a map</span></li><li><a href="#issue-container-number-73">Issue 73</a></li><li><a href="#issue-container-generatedID-15">Issue NaN</a></li><li><a href="#issue-container-generatedID-16">Issue NaN</a></li><li><a href="#issue-container-generatedID-17">Issue NaN</a></li><li><a href="#issue-container-generatedID-18">Issue NaN</a></li><li><a href="#issue-container-generatedID-19">Issue NaN</a></li></ul></section>
 
 <section class="appendix" id="acknowledgments">
 <h2 id="b-acknowledgments"><bdi class="secno">B. </bdi>Acknowledgments<a class="self-link" aria-label="§" href="#acknowledgments"></a></h2>

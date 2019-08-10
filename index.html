@@ -2515,7 +2515,9 @@ While most embed tools include some kind of geocoder in order to
 support address lookup, the tools typically utilize latitude and
 longitude coordinates under the hood, and map authors can pass in
 the coordinates to the URL or configuration object upon initialization.
+</p>
 
+<p>
 The notable standout here is the Google Maps Embed.
 Searching for a location by address  will return information
 for a 'Place', each with its own ID and information such as
@@ -3153,7 +3155,7 @@ and should be coordinated with panning.
 <h4>Pan the map display</h4>
 <p>
 A key part of the interactivity of a web map widget is that the user can change the region displayed.
-To pan the map is to shifting the view horizontally or vertically,
+To pan the map is to shift the view horizontally or vertically,
 so a different location is centered in the map display.
 </p>
 <p>
@@ -3268,9 +3270,23 @@ Thought is needed on how to make panning accessible to all users.
 <section id="capability-lazyload" data-ucr-role="capability">
 <h4>Load additional map tiles when they pan into view</h4>
 <p>
-
+For web maps using a tileset,
+an initial series of tiles is loaded based on the current position of the map.
+Additional tiles are then loaded using JavaScript when they are panned into view.
+This allows for a smaller initial payload and improved performance.
 </p>
+<p>
+This capability is closely tied to the previous capability,
+<a href="#capability-pan">panning the map display</a>.
+</p>
+
 <h5>Existing implementations</h5>
+<p>
+All of the reference tools support this capability as described.
+Most tools show gray placeholder tiles while the additional tiles are being loaded,
+but Google Maps shows a placeholder that is representative of the tile to be loaded
+(ie. a blue tile for ocean tiles).
+</p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -3286,9 +3302,18 @@ Thought is needed on how to make panning accessible to all users.
 <section id="capability-wrap-pan" data-ucr-role="capability">
 <h4>Wrap/duplicate data tiles when panning around the globe</h4>
 <p>
-
+A web map is not subject to the same limitations of printed maps
+and can be panned infinitely along the horizontal axis.
+Tiles should be wrapped along the X axis
+in order to create a seamless panning experience.
 </p>
 <h5>Existing implementations</h5>
+<p>
+All of the reference tools support this capability.
+Google Maps and Bing Maps cache the tiles once they are loaded,
+but Leaflet, Open Street Map and the Open Layers API
+re-fetch the same tiles as the user pans across the map.
+</p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -3297,7 +3322,7 @@ Thought is needed on how to make panning accessible to all users.
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dd><a>full support</a>:
+<dd><a>full support</a>: (as describe above)
 </dd>
 </dl>
 </section>
@@ -3307,9 +3332,13 @@ Thought is needed on how to make panning accessible to all users.
 <p>
 Zooming a map widget is different from
 magnifying a regular image, or adjusting the overall browser zoom level;
-the layout is magnified, but annotations such as text size and stroke width do not.
+the layout is magnified, but annotations such as text size and stroke width are not.
 </p>
 <h5>Existing implementations</h5>
+<p>All of these tools scale their labels to match the zoom level,
+but labels of smaller map features can be very small
+and may not reflect the users text size preference.
+</p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -3318,7 +3347,7 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dd><a>full support</a>: all of these tools scale their labels to match the zoom level, but labels of smaller map features can be very small and may not reflect the users text size preference.
+<dd><a>full support</a>: (as described above)
 </dd>
 </dl>
 </section>
@@ -3326,9 +3355,21 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <section id="capability-zoom-swap" data-ucr-role="capability">
 <h4>Dynamically load different resolution map tile on zoom</h4>
 <p>
-
+A limited set of tiles is loaded initially
+in order to send the user the smallest amount of data required to render the map.
+When the zoom level is changed, additional tiles should be loaded and rendered seamlessly.
 </p>
+<p>
+This capability is related to <a href="#capability-zoom">zoom the map display</a>.
+</p>
+
 <h5>Existing implementations</h5>
+<p>
+All reference tools support this capability as described.
+Google Maps differs from the other reference tools
+in that it uses colored placeholder tiles
+in order to provide an indication of the tile type before it has loaded.
+</p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -3336,7 +3377,7 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dt>bing-maps-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dd><a>full support</a>:
+<dd><a>full support</a>: (as described above)
 </dd>
 </dl>
 </section>
@@ -3344,9 +3385,14 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <section id="capability-zoom-swap-vectors" data-ucr-role="capability">
 <h4>Hide or show (and maybe dynamically load) vector features and labels on zoom</h4>
 <p>
-
+By default, web maps allow for the user to control the zoom level.
+Certain vector features may not be perceivable at higher zoom levels,
+and thus they should be hidden at higher zoom levels.
 </p>
 <h5>Existing implementations</h5>
+<p>Support for this capability depends on the tileset,
+but all of the reference tools implement this capability
+with their default tilesets.</p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
@@ -3354,7 +3400,7 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dd><a>full support</a>:
+<dd><a>full support</a>: (as described above)
 </dd>
 </dl>
 </section>
@@ -3367,16 +3413,29 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <section id="capability-styled-features" data-ucr-role="capability">
 <h4>Apply custom styling to map markers and vector features</h4>
 <p>
-<!-- Description of how it should work & why it is useful to users/authors of maps. -->
+When available as an option for map authors,
+custom styling should be set in a declarative way.
+Map markers can be either raster or vector images,
+with all relevant styling properties available to them.
+Vector features should have a variety of presentational properties available to style them,
+similar to how SVGs are styled on the web.
 </p>
 <p class="issue discussion" data-number="15">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+Mapbox is unique amongst the reference tools as it offers a GUI
+where styling can be applied to each vector feature.
+Their style editor is extremely powerful,
+and styles can be applied across particular zoom ranges, data ranges,
+or even through conditional logic.
+</p>
+<p>
+For the other reference tools,
+custom styles can be passed in as a JavaScript object on map initialization.
+There is significant overlap
+between the style properties used by these example tools and properties for formats like SVG,
+such as 'stroke width', 'fill', 'opacity'.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -3384,12 +3443,12 @@ the layout is magnified, but annotations such as text size and stroke width do n
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dd>
-  <a>full support</a>:
+  <a>full support</a>: (as described above)
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmaps-embed</dt>
 <dt>bing-maps-embed</dt>
-<dd><a>no support</a>:
+<dd><a>no support</a>
 <!-- details about what is/isn't supported -->
 </dd>
 </dl>
@@ -3444,18 +3503,22 @@ which then control the map viewer using a client-side API.
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+Only Leaflet.js and OpenLayers provide a method to style map controls freely.
+Because these tools are JavaScript libraries and not iframe embeds,
+their controls can be styled by writing CSS that overrides the default styling.
+</p>
+<p>
+The Google Maps API provides limited options when it comes to styling map controls.
+The map author has the ability to set which form the controls take (dropdown or horizontal bar),
+and set the position of the controls.
 </p>
 
 <dl data-ucr-role="implementation-notes">
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dd><a>full support</a>:</dd>
+<dd><a>full support</a></dd>
 <dt>google-maps-api</dt>
-<dd><a></a>supported, with limitations</a>: there are some configuration options which allow basic control over things like display type and positioning, but for advanced custom styling, the developer needs to implement a custom control</dd>
+<dd><a></a>supported, with limitations</a></dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmaps-embed</dt>
 <dt>bing-maps-embed</dt>
@@ -3516,17 +3579,16 @@ whether or not the web browser includes on-screen controls by default.
 
 <h5>Existing implementations</h5>
 <p>
-<!-- Summarize how this capability is implemented in the reference tools,
-    including common patterns, notable differences, and any limitations.
-    Specific details for each should be given in the list that follows.
-    Wherever possible, include the implementation in the example file for the use case -->
+Amongst the reference tools that support this capability,
+toggling the visibility of default controls is as simple as
+setting a boolean in a configuration object.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dd>
-  <a>full support</a>:
+  <a>full support</a>: (as described above)
 </dd>
 <dt>mapbox-embed</dt>
 <dd>

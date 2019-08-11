@@ -44,6 +44,7 @@ the examples in those cases use OpenStreetMap tiles.
     <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
     <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
     <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+    <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
     <li><a href="#d3-geo">D3 Geographies APIs</a></li>
   </ul></li>
 </ul>
@@ -84,7 +85,7 @@ the examples in those cases use OpenStreetMap tiles.
 
 <section id="leaflet-js">
   <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-  <div id="leaflet-osm" style="width: 600px; height: 450px;"></div>
+  <div id="leaflet-osm-create-map" style="width: 600px; height: 450px;"></div>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin=""/>
@@ -92,7 +93,7 @@ the examples in those cases use OpenStreetMap tiles.
           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
           crossorigin=""></script>
     <script class="example">
-let leafletMap = L.map('leaflet-osm').setView([0,0], 0);
+let leafletMap = L.map('leaflet-osm-create-map').setView([0,0], 0);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     minZoom: 0,
     maxZoom: 20,
@@ -103,7 +104,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 <section id="openlayers">
     <h2>OpenLayers (with OpenStreetMap tiles)</h2>
-    <div id="ol-osm" style="width: 600px; height: 450px;"></div>
+    <div id="ol-osm-create-map" style="width: 600px; height: 450px;"></div>
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script class="example">
@@ -117,7 +118,7 @@ let openLayersMap = new ol.Map({
             source: new ol.source.OSM()
         })
     ],
-    target: 'ol-osm'
+    target: 'ol-osm-create-map'
 });
     </script>
 </section>
@@ -149,19 +150,46 @@ or <p>Not applicable</p>
 -->***
 </section>
 
-<section>
+<section id="mapbox-api">
   <h2>MapBox GL</h2>
-  <div id="mapboxgl" style="width: 600px; height: 450px;"></div>
+  <div id="mapboxgl-create-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
 <script class="example">
 mapboxgl.accessToken = m4h.keys.mapboxGL;
     // token must be configured for your website
-let map = new mapboxgl.Map({
-    container: 'mapboxgl',
+let mapboxMap = new mapboxgl.Map({
+    container: 'mapboxgl-create-map',
     style: 'mapbox://styles/mapbox/streets-v9'
 });
 </script>
+</section>
+
+<section id="tomtom">
+  <h2>TomTom Maps SDK for Web with vector maps</h2>
+<div id="tomtom-create-map" style="width: 600px; height: 450px;"></div>
+<script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
+<!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
+<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
+<script class="example">
+tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+var tomtomVectorMap = tomtom.map('tomtom-create-map', {
+  key: m4h.keys.tomtom,
+    // token must be configured for your website
+  source: 'vector',
+  basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk'
+    // or self-host the JS + CSS
+});
+</script>
+</section>
+
+<section id="d3-geo">
+  <h2>D3 Geographies APIs</h2>
+
+***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
 </section>
 </body>
 </html>

@@ -57,6 +57,7 @@ for how to add point markers with the other services (where possible).
     <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
     <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
     <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+    <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
     <li><a href="#d3-geo">D3 Geographies APIs</a></li>
   </ul></li>
 </ul>
@@ -164,6 +165,24 @@ or <p>Not applicable</p>
 Replace with code including link/external scripts. Custom script has class="example".
 or <p>Not applicable</p>
 -->***
+</section>
+
+<section id="tomtom">
+  <h2>TomTom Maps SDK for Web with vector maps</h2>
+<div id="tomtom-single-location" style="width: 600px; height: 450px;"></div>
+<script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
+<!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
+<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
+<script class="example">
+tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+var tomtomVectorMap = tomtom.map('tomtom-single-location', {
+  key: m4h.keys.tomtom,
+  source: 'vector',
+  basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
+  center: [46.233226, 6.055737],
+  zoom: 15
+});
+</script>
 </section>
 
 <section id="d3-geo">

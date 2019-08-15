@@ -1866,7 +1866,7 @@ as implemented by the reference JavaScript tools.
 
 <section id="use-case-set-layer-visibility" data-ucr-role="use-case">
 <h4>Control which layers are currently visible & which can be hidden by the user</h4>
-  
+
 <p>
 See <a href="examples/set-layer-visibility.html" target="examples">examples of allowing the user to control the layer displayed by a map</a>
 as implemented by the reference JavaScript tools.
@@ -2287,6 +2287,7 @@ must be combined with an separate map provider (e.g., OpenStreetMap).
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>:
 this is the basic function for these widgets: give it a location, it will draw the map.
 </dd>
@@ -2355,6 +2356,7 @@ which can be mapped to pixel units for more simple use cases.
 <dt>google-maps-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd>
   <a>full support</a>
 </dd>
@@ -2417,6 +2419,7 @@ All API tools support some form of this feature, whether it be in the more popul
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd>
   <a>full support</a>
 </dd>
@@ -2491,6 +2494,7 @@ the map author must add this feature themselves.
 <dt>google-maps-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>supported, with limitations</a>:
   these tools offer options to serve a static image without JavaScript.
   However, this is not the default fallback behavior for the embeds
@@ -2578,6 +2582,7 @@ location information for that particular place.
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>: allows multiple user-specified pinpoint locations to be placed
 </dd>
 <dt>openstreetmap-embed</dt>
@@ -2650,6 +2655,7 @@ files in the GeoJSON format. The embed tools lack support for this capability.
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>: polygons and polylines can be added and have styling applied to them.
 </dd>
 <dt>google-maps-embed</dt>
@@ -2716,6 +2722,7 @@ and it can produce markup that is not consistent with the functionality of the m
 <dt>google-maps-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>: map markers and vector features can have popups
   that contain custom HTML, allowing the map author to display hyperlinks within the popups.
 </dd>
@@ -2788,9 +2795,10 @@ these "attribution control" values can be set in configuration.
 <dt>open-layers-api</dt>
 <dd><a>full support</a>: (as described above)
 </dd>
-<dt>mapbox-embeds</dt>
+<dt>mapbox-embed</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>supported, with limitations</a>: attribution is automatically generated,
-  but it is hidden under a non-keyboard-accessible tooltip</dd>
+but it is not keyboard accessible.</dd>
 </dl>
 </section>
 
@@ -2823,6 +2831,7 @@ from a map tile set.
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
 <dt>mapbox-embed</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>:
 setting a location by latitude and longitude is straightforward.
 </dd>
@@ -2895,6 +2904,7 @@ support for different localizations than other alternatives.
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>mapbox-embed</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>: by default, these tools provide address search when setting up the map
 </dd>
 <dt>leaflet-api</dt>
@@ -2945,6 +2955,8 @@ Elliptical Mercator and Web Mercator projections by default,
 and you can use the external plugin
 <a href="http://kartena.github.io/Proj4Leaflet/">Proj4Leaflet</a> to
 support other projections.
+OpenLayers also relies on <a href="https://github.com/proj4js/proj4js">Proj4</a>
+in order to support other projections.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -2957,6 +2969,7 @@ support other projections.
 <dt>openstreetmap-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
+<dt>tomtom-sdk</dt>
 <dd>
   <a>no support</a>: these embeds only support the Web Mercator projection.
 </dd>
@@ -3028,6 +3041,7 @@ in a different projection.
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>no support</a>:
 </dd>
 </dl>
@@ -3096,6 +3110,7 @@ only OpenStreetMap offers the option to export a map location in a standard form
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 </section>
@@ -3139,6 +3154,7 @@ and converted into continuous zoom adjustments
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>:
 (as described above)
 <dt>mapbox-embed</dt>
@@ -3231,6 +3247,7 @@ to indicate how keyboard panning should work.
 <dt>openstreetmap-embed</dt>
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>supported, with limitations</a>:
   Mouse, touch, and keyboard panning are supported; no keyboard focus indication
 </dd>
@@ -3341,6 +3358,7 @@ but Google Maps shows a placeholder that is representative of the tile to be loa
 <dt>bing-maps-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -3350,8 +3368,8 @@ but Google Maps shows a placeholder that is representative of the tile to be loa
 <h4>Wrap/duplicate data tiles when panning around the globe</h4>
 <p>
 A web map is not subject to the same limitations of printed maps
-and can be panned infinitely along the horizontal axis.
-Tiles should be wrapped along the X axis
+and can be panned infinitely along an axis.
+Tiles should be wrapped along at least one axis
 in order to create a seamless panning experience.
 </p>
 <h5>Existing implementations</h5>
@@ -3369,6 +3387,7 @@ re-fetch the same tiles as the user pans across the map.
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>: (as describe above)
 </dd>
 </dl>
@@ -3394,6 +3413,7 @@ and may not reflect the users text size preference.
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>: (as described above)
 </dd>
 </dl>
@@ -3424,6 +3444,7 @@ in order to provide an indication of the tile type before it has loaded.
 <dt>bing-maps-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>: (as described above)
 </dd>
 </dl>
@@ -3447,6 +3468,7 @@ with their default tilesets.</p>
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a>: (as described above)
 </dd>
 </dl>
@@ -3478,6 +3500,11 @@ and styles can be applied across particular zoom ranges, data ranges,
 or even through conditional logic.
 </p>
 <p>
+Behind the scenes, Mapbox's styles are stored in a JSON object
+that conforms to their own <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/">Style Specification</a>.
+The TomTom SDK for Web accepts custom styles in the format of Mapbox's Style Specification.
+</p>
+<p>
 For the other reference tools,
 custom styles can be passed in as a JavaScript object on map initialization.
 There is significant overlap
@@ -3489,6 +3516,7 @@ such as 'stroke width', 'fill', 'opacity'.
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd>
   <a>full support</a>: (as described above)
 </dd>
@@ -3553,6 +3581,7 @@ which then control the map viewer using a client-side API.
 Only Leaflet.js and OpenLayers provide a method to style map controls freely.
 Because these tools are JavaScript libraries and not iframe embeds,
 their controls can be styled by writing CSS that overrides the default styling.
+TomTom SDK inherits this capability due to it being a wrapper over Leaflet.js.
 </p>
 <p>
 The Google Maps API provides limited options when it comes to styling map controls.
@@ -3563,6 +3592,7 @@ and set the position of the controls.
 <dl data-ucr-role="implementation-notes">
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd><a>full support</a></dd>
 <dt>google-maps-api</dt>
 <dd><a></a>supported, with limitations</a></dd>
@@ -3634,6 +3664,7 @@ setting a boolean in a configuration object.
 <dt>google-maps-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom-sdk</dt>
 <dd>
   <a>full support</a>: (as described above)
 </dd>

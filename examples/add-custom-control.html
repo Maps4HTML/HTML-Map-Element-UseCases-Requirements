@@ -1,228 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Use Case - Client APIs - Add a custom control to a map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-          crossorigin=""/>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
-    <style type="text/css">
-        html {
-            background-color: #fefefe;
-            color: #222;
-        }
-        script.example {
-            display: block;
-            white-space: pre;
-            font-family: monospace;
-            padding: 1rem;
-            border: 1px solid #ccc;
-            margin-top: 1rem;
-            position: relative;
-        }
-
-        script.example:before {
-            content: 'Script';
-            background-color: #efefef;
-            position: absolute;
-            top: -0.5rem;
-            border: 1px solid #ccc;
-            padding: 0.1rem 0.5rem;
-        }
-
-        .custom-control {
-            border: 1px solid #000;
-            background-color: #fefefe;
-            color: #222;
-            font-size: small;
-            padding: 2px 4px;
-            box-shadow: 1px 1px 2px rgba(0,0,0,0.65);
-        }
-
-        .openlayers.custom-control {
-            position: absolute;
-            bottom: 1em;
-            left: 1em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Custom Control — Maps for HTML reference examples</title>
+  <link rel="stylesheet" href="examples.css" />
   <script src="api-keys.js"></script>
 </head>
 <body>
-<header>
-    <h1>Examples for
-        <a href="../#use-case-add-custom-control">
-            Use Case: Add a custom control to a map
-        </a>
-    </h1>
-    <p>
-        These examples use a custom control which is updated to show the
-        latitude and longitude of the map centre when the map is moved.
-    </p>
-</header>
-<main>
-  <section>
-    <h2>Google Maps</h2>
-    <div id="google-maps-add-custom-control" style="width: 600px; height: 450px;"></div>
-    <script>
+<h1>Examples for
+  <a href="../#use-case-add-custom-control">Use Case: Add a custom control to a map</a>
+</h1>
+
+<p>
+  These examples use a custom control which is updated to show the
+  latitude and longitude of the map centre when the map is moved.
+  The map is initialised with a marker at its central point. When the map
+  has been moved to another position, the "Mark" button will move the marker
+  to the new centre. Whenever the map has been moved such that the marker
+  is not at the centre, the "Return" button will re-centre the map on the marker.
+</p>
+
+<details>
+  <summary>Jump to section…</summary>
+<ul class="toc">
+  <li>Iframe embeds: <ul>
+    <li><a href="#google-maps-embed">Google Maps embed</a></li>
+    <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+    <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
+    <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
+  </ul></li>
+  <li>Client-side frameworks: <ul>
+    <li><a href="#leaflet-js">Leaflet.js API</a></li>
+    <li><a href="#openlayers">OpenLayers API</a></li>
+    <li><a href="#google-maps-api">Google Maps Platform API</a></li>
+    <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
+    <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
+    <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+    <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
+    <li><a href="#d3-geo">D3 Geographies APIs</a></li>
+  </ul></li>
+</ul>
+</details>
+
+<section id="google-maps-embed">
+  <h2>Google Maps embed</h2>
+  <p>Not applicable</p>
+</section>
+
+<section id="openstreetmap">
+  <h2>OpenStreetMap embed</h2>
+  <p>Not applicable</p>
+</section>
+
+<section id="bing-maps-embed">
+  <h2>Bing Maps embed</h2>
+  <p>Not applicable</p>
+</section>
+
+<section id="mapbox-embed">
+  <h2>MapBox Studio embed</h2>
+  <p>Not applicable</p>
+</section>
+
+<section id="leaflet-js">
+  <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
+  <div id="leaflet-osm-add-custom-control" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+          integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+          crossorigin=""></script>
+  <script class="example">
+      const leafletMap = L.map('leaflet-osm-add-custom-control').setView([46.233226, 6.055737], 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          minZoom: 0,
+          maxZoom: 20,
+          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+      }).addTo(leafletMap);
+
+      const centreMarker = L.marker(leafletMap.getCenter());
+      centreMarker.addTo(leafletMap);
+
+      let markButton, returnButton;
+      const markButtonOnClick = (ev) => {
+          centreMarker.setLatLng(leafletMap.getCenter());
+      };
+      const returnButtonOnClick = (ev) => {
+          leafletMap.setView(centreMarker.getLatLng());
+      };
+
+      L.Control.LatLonControl = L.Control.extend({
+          onAdd: (map) => {
+              const createButton = (text, onclick) => {
+                  const button = document.createElement('button');
+                  button.setAttribute('type', 'button');
+                  button.appendChild(document.createTextNode(text));
+                  L.DomEvent.on(button, 'click', onclick);
+                  return button;
+              };
+              const latLonContainer = document.createElement('div');
+              latLonContainer.classList.add('lat-lng');
+              latLonContainer.classList.add('custom-control');
+              latLonContainer.textContent = 'Centre: ';
+              const lat = latLonContainer.appendChild(document.createElement('span'));
+              latLonContainer.appendChild(document.createTextNode(','));
+              const lng = latLonContainer.appendChild(document.createElement('span'));
+              const updateLatLon = (ev) => {
+                  let currentCenter = map.getCenter();
+                  lat.textContent = currentCenter.lat.toFixed(6);
+                  lng.textContent = currentCenter.lng.toFixed(6);
+              };
+              map.on('moveend', updateLatLon);
+
+              markButton = createButton('Mark', markButtonOnClick);
+              latLonContainer.appendChild(markButton);
+
+              returnButton = createButton('Return', returnButtonOnClick);
+              latLonContainer.appendChild(returnButton);
+
+              updateLatLon();
+              return latLonContainer;
+          },
+          onRemove: (map) => {
+              L.DomEvent.off(markButton, 'click', markButtonOnClick);
+              L.DomEvent.off(returnButton, 'click', returnButtonOnClick)
+          }
+      });
+      L.Control.latLonControl = function(opts) {
+          return new L.Control.LatLonControl(opts);
+      };
+      L.Control.latLonControl({ position: 'bottomleft' }).addTo(leafletMap);
+
+  </script>
+</section>
+
+<section id="openlayers">
+  <h2>OpenLayers with OpenStreetMap tiles</h2>
+  <div id="openlayers-map" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+  <script class="example">
+      const markerSVGData = "data:image/svg+xml,%3Csvg width='36px' height='36px' viewBox='-18 -18 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Eround-marker%3C/title%3E%3Cg stroke-width='3' stroke='%236af'%3E%3Ccircle fill='%23fc2' fill-opacity='0.7' r='16'/%3E%3Ccircle r='1.5'/%3E%3C/g%3E%3C/svg%3E";
+      // simple SVG circle icon,
+      // the marker will be centered by default
+      let style = new ol.style.Style({
+          image: new ol.style.Icon({
+              opacity: 1,
+              scale: 0.5,
+              src: markerSVGData
+          })
+      });
+      const vectorLayerFeatures = [];
+      const vectorLayer = new ol.layer.Vector({
+          source: new ol.source.Vector({
+              features: vectorLayerFeatures
+          })
+      });
+      const view = new ol.View({
+          center: ol.proj.fromLonLat([6.055737, 46.233226]),
+          zoom: 15
+      });
+      const openLayersMap = new ol.Map({
+          view: view,
+          layers: [
+              new ol.layer.Tile({
+                  source: new ol.source.OSM()
+              }),
+              vectorLayer
+          ],
+          target: 'openlayers-map'
+      });
+      const openLayersLatLngControl = new ol.control.Control({
+          element: (() => {
+              const updateLatLon = (ev) => {
+                  const currentCenter = ol.proj.toLonLat(view.getCenter());
+                  lat.textContent = currentCenter[1].toFixed(6);
+                  lng.textContent = currentCenter[0].toFixed(6);
+              };
+              const createButton = (text, onclick) => {
+                  const button = document.createElement('button');
+                  button.setAttribute('type', 'button');
+                  button.appendChild(document.createTextNode(text));
+                  button.addEventListener('click', onclick);
+                  return button;
+              };
+              const latLonContainer = document.createElement('div');
+              latLonContainer.classList.add('lat-lng');
+              latLonContainer.classList.add('openlayers');
+              latLonContainer.classList.add('custom-control');
+              latLonContainer.textContent = 'Centre: ';
+              const lat = latLonContainer.appendChild(document.createElement('span'));
+              latLonContainer.appendChild(document.createTextNode(','));
+              const lng = latLonContainer.appendChild(document.createElement('span'));
+
+              const centreMarker = new ol.Feature({
+                  geometry: new ol.geom.Point(view.getCenter())
+              });
+              centreMarker.setStyle(style);
+              vectorLayer.getSource().addFeature(centreMarker);
+
+              const markButton = createButton('Mark', (ev) => {
+                  centreMarker.getGeometry().setCoordinates(view.getCenter());
+              });
+              latLonContainer.appendChild(markButton);
+
+              const returnButton = createButton('Return', (ev) => {
+                  view.setCenter(centreMarker.getGeometry().getCoordinates());
+              });
+              latLonContainer.appendChild(returnButton);
+
+              openLayersMap.on('moveend', updateLatLon);
+              updateLatLon();
+              return latLonContainer;
+          })()
+      });
+      openLayersMap.addControl(openLayersLatLngControl);
+  </script>
+</section>
+
+<section id="google-maps-api">
+  <h2>Google Maps</h2>
+  <div id="google-maps-add-custom-control" style="width: 600px; height: 450px;"></div>
+  <script>
       const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
           scriptElement = document.createElement('script');
       scriptElement.setAttribute('src', apiUrl);
       document.body.appendChild(scriptElement);
-    </script>
-    <script class="example">
-        function setupGoogleLatLonControl(latLonContainer, map) {
-            latLonContainer.classList.add('lat-lng');
-            latLonContainer.classList.add('custom-control');
-            latLonContainer.textContent = 'Centre: ';
-            const lat = latLonContainer.appendChild(document.createElement('span'));
-            latLonContainer.appendChild(document.createTextNode(','));
-            const lng = latLonContainer.appendChild(document.createElement('span'));
-            const updateLatLon = (ev) => {
-                let currentCenter = map.getCenter();
-                lat.textContent = currentCenter.lat().toFixed(4);
-                lng.textContent = currentCenter.lng().toFixed(4);
-            };
-            map.addListener('center_changed', updateLatLon);
-            updateLatLon();
-            return latLonContainer;
-        }
-        function initMap() {
-            const googleMap = new google.maps.Map(
-                document.getElementById('google-maps-add-custom-control'),
-                {
-                    center:{
-                        lat:46.233226,
-                        lng:6.055737
-                    },
-                    zoom: 15
-                }
-            );
-            const latLonControl = setupGoogleLatLonControl(document.createElement('div'), googleMap);
-            latLonControl.index = 1;
-            googleMap.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(latLonControl);
-        }
-    </script>
-  </section>
-<section>
-    <h2>Leaflet.js with OpenStreetMap tiles</h2>
-    <div id="leaflet-osm-add-custom-control" style="width: 600px; height: 450px;"></div>
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-            integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-            crossorigin=""></script>
-    <script class="example">
-const leafletMap = L.map('leaflet-osm-add-custom-control').setView([46.233226, 6.055737], 15);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    minZoom: 0,
-    maxZoom: 20,
-    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-}).addTo(leafletMap);
+  </script>
+  <script class="example">
+      function setupGoogleLatLonControl(latLonContainer, map) {
+          const createButton = (text, onclick) => {
+              const button = document.createElement('button');
+              button.setAttribute('type', 'button');
+              button.appendChild(document.createTextNode(text));
+              button.addEventListener('click', onclick);
+              return button;
+          };
 
-L.Control.LatLonControl = L.Control.extend({
-    onAdd: (map) => {
-        const latLonContainer = document.createElement('div');
-        latLonContainer.classList.add('lat-lng');
-        latLonContainer.classList.add('custom-control');
-        latLonContainer.textContent = 'Centre: ';
-        const lat = latLonContainer.appendChild(document.createElement('span'));
-        latLonContainer.appendChild(document.createTextNode(','));
-        const lng = latLonContainer.appendChild(document.createElement('span'));
-        const updateLatLon = (ev) => {
-            let currentCenter = map.getCenter();
-            lat.textContent = currentCenter.lat.toFixed(4);
-            lng.textContent = currentCenter.lng.toFixed(4);
-        };
-        map.on('moveend', updateLatLon);
-        updateLatLon();
-        return latLonContainer;
-    }
-});
-L.Control.latLonControl = function(opts) {
-    return new L.Control.LatLonControl(opts);
-};
-L.Control.latLonControl({ position: 'bottomleft' }).addTo(leafletMap);
+          latLonContainer.classList.add('lat-lng');
+          latLonContainer.classList.add('custom-control');
+          latLonContainer.textContent = 'Centre: ';
+          const lat = latLonContainer.appendChild(document.createElement('span'));
+          latLonContainer.appendChild(document.createTextNode(','));
+          const lng = latLonContainer.appendChild(document.createElement('span'));
+          const updateLatLon = (ev) => {
+              let currentCenter = map.getCenter();
+              lat.textContent = currentCenter.lat().toFixed(4);
+              lng.textContent = currentCenter.lng().toFixed(4);
+          };
+          map.addListener('center_changed', updateLatLon);
 
-    </script>
+          const markButton = createButton('Mark', (ev) => {
+              // centreMarker.getGeometry().setCoordinates(view.getCenter());
+          });
+          latLonContainer.appendChild(markButton);
+
+          const returnButton = createButton('Return', (ev) => {
+              // view.setCenter(centreMarker.getGeometry().getCoordinates());
+          });
+          latLonContainer.appendChild(returnButton);
+
+          updateLatLon();
+          return latLonContainer;
+      }
+      function initMap() {
+          const googleMap = new google.maps.Map(
+              document.getElementById('google-maps-add-custom-control'),
+              {
+                  center:{
+                      lat:46.233226,
+                      lng:6.055737
+                  },
+                  zoom: 15
+              }
+          );
+          const latLonControl = setupGoogleLatLonControl(document.createElement('div'), googleMap);
+          latLonControl.index = 1;
+          googleMap.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(latLonControl);
+      }
+  </script>
 </section>
-<section>
-    <h2>OpenLayers with OpenStreetMap tiles</h2>
-    <div id="ol-osm-add-custom-control" style="width: 600px; height: 450px;"></div>
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <script class="example">
-const openLayersMap = new ol.Map({
-    view: new ol.View({
-        center: ol.proj.fromLonLat([6.055737, 46.233226]),
-        zoom: 15
-    }),
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.OSM()
-        })
-    ],
-    target: 'ol-osm-add-custom-control'
-});
-const openLayersLatLngControl = new ol.control.Control({ element: (() => {
-    const latLonContainer = document.createElement('div');
-    latLonContainer.classList.add('lat-lng');
-    latLonContainer.classList.add('openlayers');
-    latLonContainer.classList.add('custom-control');
-    latLonContainer.textContent = 'Centre: ';
-    const lat = latLonContainer.appendChild(document.createElement('span'));
-    latLonContainer.appendChild(document.createTextNode(','));
-    const lng = latLonContainer.appendChild(document.createElement('span'));
-    const updateLatLon = (ev) => {
-        let currentCenter = ol.proj.toLonLat(openLayersMap.get('view').getCenter());
-        lat.textContent = currentCenter[1].toFixed(4);
-        lng.textContent = currentCenter[0].toFixed(4);
-    };
-    openLayersMap.on('moveend', updateLatLon);
-    updateLatLon();
-    return latLonContainer;
-})()});
-openLayersMap.addControl(openLayersLatLngControl);
-    </script>
+
+<section id="bing-maps-api">
+  <h2>Bing Maps Control API</h2>
+
+***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
 </section>
-<section>
-    <h2>MapBox GL</h2>
-    <div id="mapboxgl-add-custom-control" style="width: 600px; height: 450px;"></div>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-    <script class="example">
-mapboxgl.accessToken = m4h.keys.mapboxGL;
-const mapboxglMap = new mapboxgl.Map({
-    container: 'mapboxgl-add-custom-control',
-    style: 'mapbox://styles/mapbox/streets-v9',
-    center: [6.055737, 46.233226],
-    zoom: 15
-});
-const mapboxglLatLngControl = {
-    onAdd: (map) => {
-        const latLonContainer = document.createElement('div');
-        latLonContainer.classList.add('lat-lng');
-        latLonContainer.classList.add('openlayers');
-        latLonContainer.textContent = 'Centre: ';
-        const lat = latLonContainer.appendChild(document.createElement('span'));
-        latLonContainer.appendChild(document.createTextNode(','));
-        const lng = latLonContainer.appendChild(document.createElement('span'));
-        const updateLatLon = (ev) => {
-            let currentCenter = map.getCenter();
-            lat.textContent = currentCenter.lat.toFixed(4);
-            lng.textContent = currentCenter.lng.toFixed(4);
-        };
-        map.on('moveend', updateLatLon);
-        updateLatLon();
-        return latLonContainer;
-    },
-    getDefaultPosition: () => {
-        return 'bottom-left'
-    },
-    onRemove: () => {}
-};
-mapboxglMap.addControl(mapboxglLatLngControl);
-    </script>
+
+<section id="mapkit-js">
+  <h2>MapKit JS (Apple Maps) API</h2>
+
+***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
 </section>
-</main>
+
+<section id="mapbox-api">
+  <h2>MapBox GL</h2>
+  <div id="mapboxgl-add-custom-control" style="width: 600px; height: 450px;"></div>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <script class="example">
+      mapboxgl.accessToken = m4h.keys.mapboxGL;
+      const mapboxglMap = new mapboxgl.Map({
+          container: 'mapboxgl-add-custom-control',
+          style: 'mapbox://styles/mapbox/streets-v9',
+          center: [6.055737, 46.233226],
+          zoom: 15
+      });
+      const mapboxglLatLngControl = {
+          onAdd: (map) => {
+              const latLonContainer = document.createElement('div');
+              latLonContainer.classList.add('lat-lng');
+              latLonContainer.classList.add('custom-control');
+              latLonContainer.textContent = 'Centre: ';
+              const lat = latLonContainer.appendChild(document.createElement('span'));
+              latLonContainer.appendChild(document.createTextNode(','));
+              const lng = latLonContainer.appendChild(document.createElement('span'));
+              const updateLatLon = (ev) => {
+                  let currentCenter = map.getCenter();
+                  lat.textContent = currentCenter.lat.toFixed(4);
+                  lng.textContent = currentCenter.lng.toFixed(4);
+              };
+              map.on('moveend', updateLatLon);
+              updateLatLon();
+              return latLonContainer;
+          },
+          getDefaultPosition: () => {
+              return 'bottom-left'
+          },
+          onRemove: () => {}
+      };
+      mapboxglMap.addControl(mapboxglLatLngControl);
+  </script>
+</section>
+
+<section id="tomtom">
+  <h2>TomTom Maps SDK for Web with vector maps</h2>
+
+***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="d3-geo">
+  <h2>D3 Geographies APIs</h2>
+
+***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
 </body>
 </html>

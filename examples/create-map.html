@@ -150,11 +150,21 @@ let openLayersMap = new ol.Map({
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+      const bingApiUrl = 'http://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
+          bingScriptElement = document.createElement('script');
+      bingScriptElement.setAttribute('src', bingApiUrl);
+      document.body.appendChild(bingScriptElement);
+  </script>
+  <script class="example">
+    function initBingMap() {
+        let bingMap = Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+            center: new Microsoft.Maps.Location(46.233226, 6.055737),
+            zoom: 15
+        });
+    }
+  </script>
 </section>
 
 <section id="mapkit-js">

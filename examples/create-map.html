@@ -125,26 +125,26 @@ let openLayersMap = new ol.Map({
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
-  <div id="google-maps-create-map" style="width: 600px; height: 450px;"></div>
+  <div id="google-maps-api-map" style="width: 600px; height: 450px;"></div>
   <script>
-    const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
-      scriptElement = document.createElement('script');
-    scriptElement.setAttribute('src', apiUrl);
-    document.body.appendChild(scriptElement);
+      const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
+          scriptElement = document.createElement('script');
+      scriptElement.setAttribute('src', apiUrl);
+      document.body.appendChild(scriptElement);
   </script>
   <script class="example">
-    function initMap() {
-      const googleMap = new google.maps.Map(
-        document.getElementById('google-maps-create-map'),
-        {
-          center: {
-            lat: 0,
-            lng: 0
-          },
-          zoom: 1
-        }
-      );
-    }
+      function initMap() {
+          const googleMap = new google.maps.Map(
+              document.getElementById('google-maps-api-map'),
+              {
+                  center:{
+                      lat: 0,
+                      lng: 0
+                  },
+                  zoom: 0
+              }
+          );
+      }
   </script>
 </section>
 
@@ -160,8 +160,8 @@ let openLayersMap = new ol.Map({
   <script class="example">
     function initBingMap() {
         let bingMap = Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
-            center: new Microsoft.Maps.Location(46.233226, 6.055737),
-            zoom: 15
+            center: new Microsoft.Maps.Location(0, 0),
+            zoom: 0
         });
     }
   </script>
@@ -169,11 +169,29 @@ let openLayersMap = new ol.Map({
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
+  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <script class="example">
+      mapkit.addEventListener('error', function(err) {
+          console.log(err);
+      });
+      let mapkitKey = m4h.keys.mapkit.maps4html;
+      if (self.location.href.indexOf('localhost') !== -1) {
+          mapkitKey = m4h.keys.mapkit.localhost8000;
+      }
+      mapkit.init({
+          authorizationCallback: function(done) {
+              done(mapkitKey);
+          },
+          language: "en"
+      });
+      const center = new mapkit.Coordinate(0, 0),
+          span = new mapkit.CoordinateSpan(360, 180),
+          region = new mapkit.CoordinateRegion(center, span);
+      const mapkitMap = mapkit.Map(document.getElementById('mapkit-js-map'), {
+          region: region
+      });
+  </script>
 </section>
 
 <section id="mapbox-api">

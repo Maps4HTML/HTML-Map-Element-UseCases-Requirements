@@ -176,7 +176,7 @@ let openLayersMap = new ol.Map({
           console.log(err);
       });
       let mapkitKey = m4h.keys.mapkit.maps4html;
-      if (self.location.href.indexOf('localhost') !== -1) {
+      if (self.location.hostname === 'localhost') {
           mapkitKey = m4h.keys.mapkit.localhost8000;
       }
       mapkit.init({

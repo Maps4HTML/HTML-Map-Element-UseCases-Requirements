@@ -70,3 +70,10 @@ li:last-of-type {
     bottom: 1em;
     left: 1em;
 }
+
+.bing.custom-control {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    white-space: nowrap;
+}

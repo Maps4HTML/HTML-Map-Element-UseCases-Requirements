@@ -74,66 +74,67 @@
           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
           crossorigin=""></script>
   <script class="example">
-      const leafletMap = L.map('leaflet-osm-add-custom-control').setView([46.233226, 6.055737], 15);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          minZoom: 0,
-          maxZoom: 20,
-          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      }).addTo(leafletMap);
+      { // block to restrict let and const scope to this example
+          // create the map
+          const map = L.map('leaflet-osm-add-custom-control').setView([46.233226, 6.055737], 15);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              minZoom: 0,
+              maxZoom: 20,
+              attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+          }).addTo(map);
 
-      const centreMarker = L.marker(leafletMap.getCenter());
-      centreMarker.addTo(leafletMap);
+          // set up the center marker
+          const centerMarker = L.marker(map.getCenter());
+          centerMarker.addTo(map);
 
-      let markButton, returnButton;
-      const markButtonOnClick = (ev) => {
-          centreMarker.setLatLng(leafletMap.getCenter());
-      };
-      const returnButtonOnClick = (ev) => {
-          leafletMap.setView(centreMarker.getLatLng());
-      };
+          // set up the custom control
+          const createButton = (text, onclick) => {
+              const button = document.createElement('button');
+              button.setAttribute('type', 'button');
+              button.appendChild(document.createTextNode(text));
+              L.DomEvent.on(button, 'click', onclick);
+              return button;
+          };
 
-      L.Control.LatLonControl = L.Control.extend({
-          onAdd: (map) => {
-              const createButton = (text, onclick) => {
-                  const button = document.createElement('button');
-                  button.setAttribute('type', 'button');
-                  button.appendChild(document.createTextNode(text));
-                  L.DomEvent.on(button, 'click', onclick);
-                  return button;
-              };
-              const latLonContainer = document.createElement('div');
-              latLonContainer.classList.add('lat-lng');
-              latLonContainer.classList.add('custom-control');
-              latLonContainer.textContent = 'Centre: ';
-              const lat = latLonContainer.appendChild(document.createElement('span'));
-              latLonContainer.appendChild(document.createTextNode(','));
-              const lng = latLonContainer.appendChild(document.createElement('span'));
-              const updateLatLon = (ev) => {
-                  let currentCenter = map.getCenter();
-                  lat.textContent = currentCenter.lat.toFixed(6);
-                  lng.textContent = currentCenter.lng.toFixed(6);
-              };
-              map.on('moveend', updateLatLon);
+          const markButton = createButton('Mark', (ev) => {
+              centerMarker.setLatLng(map.getCenter());
+          });
+          const returnButton = createButton('Return', (ev) => {
+              map.setView(centerMarker.getLatLng());
+          });
 
-              markButton = createButton('Mark', markButtonOnClick);
-              latLonContainer.appendChild(markButton);
+          L.Control.LatLonControl = L.Control.extend({
+              onAdd: (map) => {
+                  const latLonContainer = document.createElement('div');
+                  latLonContainer.classList.add('lat-lng', 'custom-control', 'leafletjs');
+                  latLonContainer.textContent = 'Center: ';
+                  const lat = latLonContainer.appendChild(document.createElement('span'));
+                  latLonContainer.appendChild(document.createTextNode(','));
+                  const lng = latLonContainer.appendChild(document.createElement('span'));
+                  latLonContainer.appendChild(markButton);
+                  latLonContainer.appendChild(returnButton);
 
-              returnButton = createButton('Return', returnButtonOnClick);
-              latLonContainer.appendChild(returnButton);
+                  const updateLatLon = (ev) => {
+                      const currentCenter = map.getCenter();
+                      lat.textContent = currentCenter.lat.toFixed(6);
+                      lng.textContent = currentCenter.lng.toFixed(6);
+                  };
+                  map.on('moveend', updateLatLon);
 
-              updateLatLon();
-              return latLonContainer;
-          },
-          onRemove: (map) => {
-              L.DomEvent.off(markButton, 'click', markButtonOnClick);
-              L.DomEvent.off(returnButton, 'click', returnButtonOnClick)
-          }
-      });
-      L.Control.latLonControl = function(opts) {
-          return new L.Control.LatLonControl(opts);
-      };
-      L.Control.latLonControl({ position: 'bottomleft' }).addTo(leafletMap);
 
+                  updateLatLon();
+                  return latLonContainer;
+              },
+              onRemove: (map) => {
+                  L.DomEvent.off(markButton, 'click', markButtonOnClick);
+                  L.DomEvent.off(returnButton, 'click', returnButtonOnClick)
+              }
+          });
+          L.Control.latLonControl = function(opts) {
+              return new L.Control.LatLonControl(opts);
+          };
+          L.Control.latLonControl({ position: 'bottomleft' }).addTo(map);
+      }
   </script>
 </section>
 
@@ -143,81 +144,86 @@
   <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <script class="example">
-      const markerSVGData = "data:image/svg+xml,%3Csvg width='36px' height='36px' viewBox='-18 -18 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Eround-marker%3C/title%3E%3Cg stroke-width='3' stroke='%236af'%3E%3Ccircle fill='%23fc2' fill-opacity='0.7' r='16'/%3E%3Ccircle r='1.5'/%3E%3C/g%3E%3C/svg%3E";
-      // simple SVG circle icon,
-      // the marker will be centered by default
-      let style = new ol.style.Style({
-          image: new ol.style.Icon({
-              opacity: 1,
-              scale: 0.5,
-              src: markerSVGData
-          })
-      });
-      const vectorLayerFeatures = [];
-      const vectorLayer = new ol.layer.Vector({
-          source: new ol.source.Vector({
-              features: vectorLayerFeatures
-          })
-      });
-      const view = new ol.View({
-          center: ol.proj.fromLonLat([6.055737, 46.233226]),
-          zoom: 15
-      });
-      const openLayersMap = new ol.Map({
-          view: view,
-          layers: [
-              new ol.layer.Tile({
-                  source: new ol.source.OSM()
-              }),
-              vectorLayer
-          ],
-          target: 'openlayers-map'
-      });
-      const openLayersLatLngControl = new ol.control.Control({
-          element: (() => {
-              const updateLatLon = (ev) => {
-                  const currentCenter = ol.proj.toLonLat(view.getCenter());
-                  lat.textContent = currentCenter[1].toFixed(6);
-                  lng.textContent = currentCenter[0].toFixed(6);
-              };
-              const createButton = (text, onclick) => {
-                  const button = document.createElement('button');
-                  button.setAttribute('type', 'button');
-                  button.appendChild(document.createTextNode(text));
-                  button.addEventListener('click', onclick);
-                  return button;
-              };
-              const latLonContainer = document.createElement('div');
-              latLonContainer.classList.add('lat-lng');
-              latLonContainer.classList.add('openlayers');
-              latLonContainer.classList.add('custom-control');
-              latLonContainer.textContent = 'Centre: ';
-              const lat = latLonContainer.appendChild(document.createElement('span'));
-              latLonContainer.appendChild(document.createTextNode(','));
-              const lng = latLonContainer.appendChild(document.createElement('span'));
+      { // block to restrict let and const scope to this example
+          // set up the map
+          const vectorLayerFeatures = [];
+          const vectorLayer = new ol.layer.Vector({
+              source: new ol.source.Vector({
+                  features: vectorLayerFeatures
+              })
+          });
+          const view = new ol.View({
+              center: ol.proj.fromLonLat([6.055737, 46.233226]),
+              zoom: 15
+          });
+          const map = new ol.Map({
+              view: view,
+              layers: [
+                  new ol.layer.Tile({
+                      source: new ol.source.OSM()
+                  }),
+                  vectorLayer
+              ],
+              target: 'openlayers-map'
+          });
 
-              const centreMarker = new ol.Feature({
-                  geometry: new ol.geom.Point(view.getCenter())
-              });
-              centreMarker.setStyle(style);
-              vectorLayer.getSource().addFeature(centreMarker);
+          // set up the center marker
+          const markerSVGData = "data:image/svg+xml,%3Csvg width='36px' height='36px' viewBox='-18 -18 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Eround-marker%3C/title%3E%3Cg stroke-width='3' stroke='%236af'%3E%3Ccircle fill='%23fc2' fill-opacity='0.7' r='16'/%3E%3Ccircle r='1.5'/%3E%3C/g%3E%3C/svg%3E";
+          // simple SVG circle icon,
+          // the marker will be centered by default
+          let style = new ol.style.Style({
+              image: new ol.style.Icon({
+                  opacity: 1,
+                  scale: 0.5,
+                  src: markerSVGData
+              })
+          });
+          const centerMarker = new ol.Feature({
+              geometry: new ol.geom.Point(view.getCenter())
+          });
+          centerMarker.setStyle(style);
+          vectorLayer.getSource().addFeature(centerMarker);
 
-              const markButton = createButton('Mark', (ev) => {
-                  centreMarker.getGeometry().setCoordinates(view.getCenter());
-              });
-              latLonContainer.appendChild(markButton);
+          // set up the custom control
+          const createButton = (text, onclick) => {
+              const button = document.createElement('button');
+              button.setAttribute('type', 'button');
+              button.appendChild(document.createTextNode(text));
+              button.addEventListener('click', onclick);
+              return button;
+          };
 
-              const returnButton = createButton('Return', (ev) => {
-                  view.setCenter(centreMarker.getGeometry().getCoordinates());
-              });
-              latLonContainer.appendChild(returnButton);
+          const markButton = createButton('Mark', (ev) => {
+              centerMarker.getGeometry().setCoordinates(view.getCenter());
+          });
+          const returnButton = createButton('Return', (ev) => {
+              view.setCenter(centerMarker.getGeometry().getCoordinates());
+          });
 
-              openLayersMap.on('moveend', updateLatLon);
-              updateLatLon();
-              return latLonContainer;
-          })()
-      });
-      openLayersMap.addControl(openLayersLatLngControl);
+          const openLayersLatLngControl = new ol.control.Control({
+              element: (() => {
+                  const latLonContainer = document.createElement('div');
+                  latLonContainer.classList.add('lat-lng', 'custom-control', 'openlayers');
+                  latLonContainer.textContent = 'Center: ';
+                  const lat = latLonContainer.appendChild(document.createElement('span'));
+                  latLonContainer.appendChild(document.createTextNode(','));
+                  const lng = latLonContainer.appendChild(document.createElement('span'));
+                  latLonContainer.appendChild(markButton);
+                  latLonContainer.appendChild(returnButton);
+
+                  const updateLatLon = (ev) => {
+                      const currentCenter = ol.proj.toLonLat(view.getCenter());
+                      lat.textContent = currentCenter[1].toFixed(6);
+                      lng.textContent = currentCenter[0].toFixed(6);
+                  };
+
+                  map.on('moveend', updateLatLon);
+                  updateLatLon();
+                  return latLonContainer;
+              })()
+          });
+          map.addControl(openLayersLatLngControl);
+      }
   </script>
 </section>
 
@@ -231,7 +237,22 @@
       document.body.appendChild(scriptElement);
   </script>
   <script class="example">
-      function setupGoogleLatLonControl(latLonContainer, map) {
+      function initMap() {
+          // set up the map
+          const mapCenter = new google.maps.LatLng(46.233226, 6.055737);
+          const map = new google.maps.Map(
+              document.getElementById('google-maps-add-custom-control'),
+              {
+                  center:mapCenter,
+                  zoom: 15
+              }
+          );
+          // set up the center marker
+          const centerMarker = new google.maps.Marker({
+              map: map,
+              position: mapCenter
+          });
+          // set up the custom control
           const createButton = (text, onclick) => {
               const button = document.createElement('button');
               button.setAttribute('type', 'button');
@@ -240,105 +261,187 @@
               return button;
           };
 
-          latLonContainer.classList.add('lat-lng');
-          latLonContainer.classList.add('custom-control');
-          latLonContainer.textContent = 'Centre: ';
-          const lat = latLonContainer.appendChild(document.createElement('span'));
-          latLonContainer.appendChild(document.createTextNode(','));
-          const lng = latLonContainer.appendChild(document.createElement('span'));
-          const updateLatLon = (ev) => {
-              let currentCenter = map.getCenter();
-              lat.textContent = currentCenter.lat().toFixed(4);
-              lng.textContent = currentCenter.lng().toFixed(4);
-          };
-          map.addListener('center_changed', updateLatLon);
-
           const markButton = createButton('Mark', (ev) => {
-              // centreMarker.getGeometry().setCoordinates(view.getCenter());
+              centerMarker.setPosition(map.getCenter());
           });
-          latLonContainer.appendChild(markButton);
 
           const returnButton = createButton('Return', (ev) => {
-              // view.setCenter(centreMarker.getGeometry().getCoordinates());
+              map.setCenter(centerMarker.getPosition());
           });
-          latLonContainer.appendChild(returnButton);
 
-          updateLatLon();
-          return latLonContainer;
-      }
-      function initMap() {
-          const googleMap = new google.maps.Map(
-              document.getElementById('google-maps-add-custom-control'),
-              {
-                  center:{
-                      lat:46.233226,
-                      lng:6.055737
-                  },
-                  zoom: 15
-              }
-          );
-          const latLonControl = setupGoogleLatLonControl(document.createElement('div'), googleMap);
-          latLonControl.index = 1;
-          googleMap.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(latLonControl);
+          function GoogleLatLonControl(latLonContainer, map) {
+              latLonContainer.classList.add('lat-lng', 'custom-control', 'googlemaps');
+              latLonContainer.textContent = 'Center: ';
+              const lat = latLonContainer.appendChild(document.createElement('span'));
+              latLonContainer.appendChild(document.createTextNode(','));
+              const lng = latLonContainer.appendChild(document.createElement('span'));
+              latLonContainer.appendChild(markButton);
+              latLonContainer.appendChild(returnButton);
+
+              const updateLatLon = (ev) => {
+                  let currentCenter = map.getCenter();
+                  lat.textContent = currentCenter.lat().toFixed(6);
+                  lng.textContent = currentCenter.lng().toFixed(6);
+              };
+              map.addListener('center_changed', updateLatLon);
+
+              updateLatLon();
+          }
+          // add the custom control
+          const latLonContainer = document.createElement('div');
+          const latLonControl = new GoogleLatLonControl(latLonContainer, map);
+          latLonContainer.index = 1;
+          console.log(latLonContainer.outerHTML);
+          map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(latLonContainer);
+          console.log(latLonContainer.outerHTML);
       }
   </script>
 </section>
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
+  <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+      const bingApiUrl = 'http://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
+          bingScriptElement = document.createElement('script');
+      bingScriptElement.setAttribute('src', bingApiUrl);
+      document.body.appendChild(bingScriptElement);
+  </script>
+  <script class="example">
+      function initBingMap() {
+          // set up the map
+          const mapCenter = new Microsoft.Maps.Location(46.233226, 6.055737);
+          let map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+              center: mapCenter,
+              zoom: 15
+          });
+          // set up the center marker
+          const centerMarker = new Microsoft.Maps.Pushpin(mapCenter);
+          map.entities.push(centerMarker);
+          // set up the custom control
+          const createButton = (text, onclick) => {
+              const button = document.createElement('button');
+              button.setAttribute('type', 'button');
+              button.appendChild(document.createTextNode(text));
+              button.addEventListener('click', onclick);
+              return button;
+          };
+          const markButton = createButton('Mark', (ev) => {
+              centerMarker.setLocation(map.getCenter());
+          });
+          const returnButton = createButton('Return', (ev) => {
+              map.setView({
+                  center: centerMarker.getLocation()
+              });
+          });
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+          function BingLatLonControl() {}
+          let lat, lng;
+          const updateLatLon = (ev) => {
+              let currentCenter = map.getCenter();
+              lat.textContent = currentCenter.latitude.toFixed(6);
+              lng.textContent = currentCenter.longitude.toFixed(6);
+          };
+          BingLatLonControl.prototype = new Microsoft.Maps.CustomOverlay({
+              beneathLabels: false
+          });
+          BingLatLonControl.prototype.onAdd = function() {
+              const latLonContainer = document.createElement('div');
+              latLonContainer.classList.add('lat-lng', 'custom-control', 'bing');
+              latLonContainer.textContent = 'Centre: ';
+              lat = latLonContainer.appendChild(document.createElement('span'));
+              latLonContainer.appendChild(document.createTextNode(','));
+              lng = latLonContainer.appendChild(document.createElement('span'));
+              latLonContainer.appendChild(markButton);
+              latLonContainer.appendChild(returnButton);
+
+              Microsoft.Maps.Events.addHandler(map, 'viewchangeend', updateLatLon);
+
+              this.setHtmlElement(latLonContainer);
+          };
+          BingLatLonControl.prototype.onLoad = function() {
+              updateLatLon();
+          };
+          BingLatLonControl.prototype.onRemove = function() {
+            Microsoft.Maps.Events.removeHandler(map, 'viewchangeend', updateLatLon);
+          };
+          // add the custom control
+          map.layers.insert(new BingLatLonControl());
+      }
+  </script>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <p>Not applicable.</p>
 </section>
 
 <section id="mapbox-api">
   <h2>MapBox GL</h2>
-  <div id="mapboxgl-add-custom-control" style="width: 600px; height: 450px;"></div>
+  <div id="mapboxgl-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
   <script class="example">
-      mapboxgl.accessToken = m4h.keys.mapboxGL;
-      const mapboxglMap = new mapboxgl.Map({
-          container: 'mapboxgl-add-custom-control',
-          style: 'mapbox://styles/mapbox/streets-v9',
-          center: [6.055737, 46.233226],
-          zoom: 15
-      });
-      const mapboxglLatLngControl = {
-          onAdd: (map) => {
-              const latLonContainer = document.createElement('div');
-              latLonContainer.classList.add('lat-lng');
-              latLonContainer.classList.add('custom-control');
-              latLonContainer.textContent = 'Centre: ';
-              const lat = latLonContainer.appendChild(document.createElement('span'));
-              latLonContainer.appendChild(document.createTextNode(','));
-              const lng = latLonContainer.appendChild(document.createElement('span'));
-              const updateLatLon = (ev) => {
-                  let currentCenter = map.getCenter();
-                  lat.textContent = currentCenter.lat.toFixed(4);
-                  lng.textContent = currentCenter.lng.toFixed(4);
-              };
-              map.on('moveend', updateLatLon);
-              updateLatLon();
-              return latLonContainer;
-          },
-          getDefaultPosition: () => {
-              return 'bottom-left'
-          },
-          onRemove: () => {}
-      };
-      mapboxglMap.addControl(mapboxglLatLngControl);
+      { // block to restrict let and const scope to this example
+          // set up map
+          mapboxgl.accessToken = m4h.keys.mapboxGL;
+          const mapCenter = [6.055737, 46.233226];
+          const map = new mapboxgl.Map({
+              container: 'mapboxgl-map',
+              style: 'mapbox://styles/mapbox/streets-v9',
+              center: mapCenter,
+              zoom: 15
+          });
+
+          // set up the center marker
+          const centerMarker = new mapboxgl.Marker();
+          centerMarker.setLngLat(mapCenter);
+          centerMarker.addTo(map);
+          // set up the custom control
+          const createButton = (text, onclick) => {
+              const button = document.createElement('button');
+              button.setAttribute('type', 'button');
+              button.appendChild(document.createTextNode(text));
+              button.addEventListener('click', onclick);
+              return button;
+          };
+          const markButton = createButton('Mark', (ev) => {
+              centerMarker.setLngLat(map.getCenter());
+          });
+          const returnButton = createButton('Return', (ev) => {
+              map.setCenter(centerMarker.getLngLat());
+          });
+          let lat, lng;
+          const updateLatLon = (ev) => {
+              let currentCenter = map.getCenter();
+              lat.textContent = currentCenter.lat.toFixed(6);
+              lng.textContent = currentCenter.lng.toFixed(6);
+          };
+          const mapboxglLatLngControl = {
+              onAdd: (map) => {
+                  const latLonContainer = document.createElement('div');
+                  latLonContainer.classList.add('lat-lng', 'custom-control', 'mapboxgl-ctrl');
+                  latLonContainer.classList.add('lat-lng');
+                  latLonContainer.classList.add('custom-control');
+                  latLonContainer.textContent = 'Centre: ';
+                  lat = latLonContainer.appendChild(document.createElement('span'));
+                  latLonContainer.appendChild(document.createTextNode(','));
+                  lng = latLonContainer.appendChild(document.createElement('span'));
+                  latLonContainer.appendChild(markButton);
+                  latLonContainer.appendChild(returnButton);
+                  map.on('moveend', updateLatLon);
+                  updateLatLon();
+                  return latLonContainer;
+              },
+              getDefaultPosition: () => {
+                  return 'bottom-left'
+              },
+              onRemove: () => {
+                  map.off('moveend', updateLatLon);
+              }
+          };
+          map.addControl(mapboxglLatLngControl);
+      }
   </script>
 </section>
 

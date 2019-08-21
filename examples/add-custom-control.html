@@ -66,7 +66,7 @@
 
 <section id="leaflet-js">
   <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-  <div id="leaflet-osm-add-custom-control" style="width: 600px; height: 450px;"></div>
+  <div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin=""/>
@@ -76,7 +76,7 @@
   <script class="example">
       { // block to restrict let and const scope to this example
           // create the map
-          const map = L.map('leaflet-osm-add-custom-control').setView([46.233226, 6.055737], 15);
+          const map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
               minZoom: 0,
               maxZoom: 20,
@@ -229,7 +229,7 @@
 
 <section id="google-maps-api">
   <h2>Google Maps</h2>
-  <div id="google-maps-add-custom-control" style="width: 600px; height: 450px;"></div>
+  <div id="google-maps-api-map" style="width: 600px; height: 450px;"></div>
   <script>
       const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
           scriptElement = document.createElement('script');
@@ -241,7 +241,7 @@
           // set up the map
           const mapCenter = new google.maps.LatLng(46.233226, 6.055737);
           const map = new google.maps.Map(
-              document.getElementById('google-maps-add-custom-control'),
+              document.getElementById('google-maps-api-map'),
               {
                   center:mapCenter,
                   zoom: 15
@@ -311,7 +311,7 @@
       function initBingMap() {
           // set up the map
           const mapCenter = new Microsoft.Maps.Location(46.233226, 6.055737);
-          let map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+          const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
               center: mapCenter,
               zoom: 15
           });
@@ -378,7 +378,7 @@
 
 <section id="mapbox-api">
   <h2>MapBox GL</h2>
-  <div id="mapboxgl-map" style="width: 600px; height: 450px;"></div>
+  <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
   <script class="example">
@@ -387,7 +387,7 @@
           mapboxgl.accessToken = m4h.keys.mapboxGL;
           const mapCenter = [6.055737, 46.233226];
           const map = new mapboxgl.Map({
-              container: 'mapboxgl-map',
+              container: 'mapbox-api-map',
               style: 'mapbox://styles/mapbox/streets-v9',
               center: mapCenter,
               zoom: 15

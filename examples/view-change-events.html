@@ -1,93 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Use Case - Client APIs - Provide feedback to a user as they manipulate the map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-          crossorigin=""/>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
-    <style type="text/css">
-        html {
-            background-color: #fefefe;
-            color: #222;
-        }
-        script.example {
-            display: block;
-            white-space: pre;
-            font-family: monospace;
-            padding: 1rem;
-            border: 1px solid #ccc;
-            margin-top: 1rem;
-            position: relative;
-        }
-
-        script.example:before {
-            content: 'Script';
-            background-color: #efefef;
-            position: absolute;
-            top: -0.5rem;
-            border: 1px solid #ccc;
-            padding: 0.1rem 0.5rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>***Description*** — Maps for HTML reference examples</title>
+  <link rel="stylesheet" href="examples.css" />
+  <script src="api-keys.js"></script>
 </head>
 <body>
 <h1>Examples for
-    <a href="../#use-case-view-change-events">
-        Use Case: Provide feedback to a user as they manipulate the map
-    </a>
+  <a href="../#use-case-***ID***">Use Case: ***Title***</a>
 </h1>
-<section>
-    <h2>Leaflet.js with OpenStreetMap tiles</h2>
-    <div id="leaflet-osm-view-change-events" style="width: 600px; height: 450px;"></div>
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-            integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-            crossorigin=""></script>
-    <script class="example">
-let leafletMap = L.map('leaflet-osm-view-change-events').setView([46.233226, 6.055737], 15);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    minZoom: 0,
-    maxZoom: 20,
-    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-}).addTo(leafletMap);
-    </script>
+
+<p>
+  ***Introduction***
+</p>
+
+<details>
+  <summary>Jump to section…</summary>
+  <ul class="toc">
+    <li>Iframe embeds: <ul>
+      <li><a href="#google-maps-embed">Google Maps embed</a></li>
+      <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+      <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
+      <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
+    </ul></li>
+    <li>Client-side frameworks: <ul>
+      <li><a href="#leaflet-js">Leaflet.js API</a></li>
+      <li><a href="#openlayers">OpenLayers API</a></li>
+      <li><a href="#google-maps-api">Google Maps Platform API</a></li>
+      <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
+      <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
+      <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+      <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
+      <li><a href="#d3-geo">D3 Geographies APIs</a></li>
+    </ul></li>
+  </ul>
+</details>
+
+<section id="google-maps-embed">
+  <h2>Google Maps embed</h2>
+
+  ***TODO<!--
+Copy & paste embed code or <p>Not applicable</p>
+-->***
 </section>
-<section>
-    <h2>OpenLayers with OpenStreetMap tiles</h2>
-    <div id="ol-osm-view-change-events" style="width: 600px; height: 450px;"></div>
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <script class="example">
-let openLayersMap = new ol.Map({
-    view: new ol.View({
-        center: ol.proj.fromLonLat([6.055737, 46.233226]),
-        zoom: 15
-    }),
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.OSM()
-        })
-    ],
-    target: 'ol-osm-view-change-events'
-});
-    </script>
+
+<section id="openstreetmap">
+  <h2>OpenStreetMap embed</h2>
+
+  ***TODO<!--
+Copy & paste embed code or <p>Not applicable</p>
+-->***
 </section>
-<section>
-    <h2>MapBox GL</h2>
-    <div id="mapboxgl-view-change-events" style="width: 600px; height: 450px;"></div>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-    <script class="example">
-        mapboxgl.accessToken = m4h.keys.mapboxGL;
-        let map = new mapboxgl.Map({
-            container: 'mapboxgl-view-change-events',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            center: [6.055737, 46.233226],
-            zoom: 15
-        });
-    </script>
+
+<section id="bing-maps-embed">
+  <h2>Bing Maps embed</h2>
+
+  ***TODO<!--
+Copy & paste embed code or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="mapbox-embed">
+  <h2>MapBox Studio embed</h2>
+
+  ***TODO<!--
+Copy & paste embed code or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="leaflet-js">
+  <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
+
+  ***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="openlayers">
+  <h2>OpenLayers with OpenStreetMap tiles</h2>
+
+  ***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="google-maps-api">
+  <h2>Google Maps API</h2>
+
+  ***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="bing-maps-api">
+  <h2>Bing Maps Control API</h2>
+
+  ***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="mapkit-js">
+  <h2>MapKit JS (Apple Maps) API</h2>
+
+  ***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="mapbox-api">
+  <h2>Mapbox GL JS API</h2>
+
+  ***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="tomtom">
+  <h2>TomTom Maps SDK for Web with vector maps</h2>
+
+  ***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
+</section>
+
+<section id="d3-geo">
+  <h2>D3 Geographies APIs</h2>
+
+  ***TODO<!--
+Replace with code including link/external scripts. Custom script has class="example".
+or <p>Not applicable</p>
+-->***
 </section>
 </body>
 </html>

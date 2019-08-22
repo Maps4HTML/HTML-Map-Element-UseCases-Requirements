@@ -27,3 +27,53 @@ script.example:before {
     border: 1px solid #ccc;
     padding: 0.1rem 0.5rem;
 }
+
+.map-container {
+    display: grid;
+    min-width: 320px;
+    min-height: 320px;
+    grid-template-columns: minmax(80px, 1fr) minmax(240px, 5fr);
+    border: 1px solid #0c0b0b;
+    max-width: 50%;
+}
+
+.map-container > ol {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    border-bottom: 1px solid #0c0b0b;
+    border-right: 1px solid #0c0b0b;
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+li:last-of-type {
+    border-bottom-width: 0;
+}
+
+.custom-control {
+    border: 1px solid #000;
+    background-color: #fefefe;
+    color: #222;
+    font-size: small;
+    padding: 2px 4px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.65);
+}
+
+.openlayers.custom-control {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+}
+
+.bing.custom-control {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    white-space: nowrap;
+}

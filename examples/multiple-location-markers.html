@@ -190,7 +190,7 @@ Copy & paste embed code or <p>Not applicable</p>
   <h2>Bing Maps Control API</h2>
   <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
   <script>
-      const bingApiUrl = 'http://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
+      const bingApiUrl = 'https://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
           bingScriptElement = document.createElement('script');
       bingScriptElement.setAttribute('src', bingApiUrl);
       document.body.appendChild(bingScriptElement);
@@ -248,7 +248,6 @@ Copy & paste embed code or <p>Not applicable</p>
           ];
           locations.forEach((location) => {
               let marker = new mapkit.MarkerAnnotation(new mapkit.Coordinate(location.lat, location.lng));
-              console.log(marker);
               map.addAnnotation(marker);
           });
       }

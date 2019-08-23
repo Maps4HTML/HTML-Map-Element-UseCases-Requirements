@@ -291,9 +291,7 @@
           const latLonContainer = document.createElement('div');
           const latLonControl = new GoogleLatLonControl(latLonContainer, map);
           latLonContainer.index = 1;
-          console.log(latLonContainer.outerHTML);
           map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(latLonContainer);
-          console.log(latLonContainer.outerHTML);
       }
   </script>
 </section>
@@ -302,7 +300,7 @@
   <h2>Bing Maps Control API</h2>
   <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
   <script>
-      const bingApiUrl = 'http://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
+      const bingApiUrl = 'https://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
           bingScriptElement = document.createElement('script');
       bingScriptElement.setAttribute('src', bingApiUrl);
       document.body.appendChild(bingScriptElement);

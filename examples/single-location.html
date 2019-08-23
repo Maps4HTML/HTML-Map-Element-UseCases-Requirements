@@ -98,7 +98,7 @@ for how to add point markers with the other services (where possible).
 
 <section id="leaflet-js">
 <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-<div id="leaflet-single-location" style="width: 600px; height: 450px;"></div>
+<div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
   crossorigin=""/>
@@ -106,65 +106,171 @@ for how to add point markers with the other services (where possible).
   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
   crossorigin=""></script>
 <script class="example">
-  let leafletMap = L.map('leaflet-single-location').setView([46.233226, 6.055737], 15);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    minZoom: 0,
-    maxZoom: 20,
-    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-  }).addTo(leafletMap);
+    {
+        const map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            minZoom: 0,
+            maxZoom: 20,
+            attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        const centerMarker = L.marker(map.getCenter());
+        centerMarker.addTo(map);
+    }
 </script>
 </section>
 
 <section id="openlayers">
 <h2>OpenLayers (with OpenStreetMap tiles)</h2>
-<div id="ol-single-location" style="width: 600px; height: 450px;"></div>
+<div id="openlayers-map" style="width: 600px; height: 450px;"></div>
 <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
 <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 <script class="example">
-var baseMapLayer = new ol.layer.Tile({
-  source: new ol.source.OSM()
-});
-var openLayersMap = new ol.Map({
-  target: 'ol-single-location',
-  layers: [ baseMapLayer],
-  view: new ol.View({
-    center: ol.proj.fromLonLat([6.054893732070923, 46.2334537001]),
-    zoom: 15
-  })
-});
+    {
+        const vectorLayerFeatures = [];
+        const vectorLayer = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: vectorLayerFeatures
+            })
+        });
+        const baseMapLayer = new ol.layer.Tile({
+            source: new ol.source.OSM()
+        });
+        const view = new ol.View({
+            center: ol.proj.fromLonLat([6.054893732070923, 46.2334537001]),
+            zoom: 15
+        });
+        const map = new ol.Map({
+            target: 'openlayers-map',
+            layers: [baseMapLayer, vectorLayer],
+            view: view
+        });
+        // set up the center marker
+        const markerSVGData = "data:image/svg+xml,%3Csvg width='36px' height='36px' viewBox='-18 -18 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Eround-marker%3C/title%3E%3Cg stroke-width='3' stroke='%236af'%3E%3Ccircle fill='%23fc2' fill-opacity='0.7' r='16'/%3E%3Ccircle r='1.5'/%3E%3C/g%3E%3C/svg%3E";
+        // simple SVG circle icon,
+        // the marker will be centered by default
+        const style = new ol.style.Style({
+            image: new ol.style.Icon({
+                opacity: 1,
+                scale: 0.5,
+                src: markerSVGData
+            })
+        });
+        const centerMarker = new ol.Feature({
+            geometry: new ol.geom.Point(view.getCenter())
+        });
+        centerMarker.setStyle(style);
+        vectorLayer.getSource().addFeature(centerMarker);
+    }
 </script>
 </section>
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <div id="google-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+      const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
+          scriptElement = document.createElement('script');
+      scriptElement.setAttribute('src', apiUrl);
+      document.body.appendChild(scriptElement);
+  </script>
+  <script class="example">
+      function initMap() {
+          // set up the map
+          const mapCenter = new google.maps.LatLng(46.233226, 6.055737);
+          const map = new google.maps.Map(
+              document.getElementById('google-maps-api-map'),
+              {
+                  center:mapCenter,
+                  zoom: 15
+              }
+          );
+          // set up the center marker
+          const centerMarker = new google.maps.Marker({
+              map: map,
+              position: mapCenter
+          });
+      }
+  </script>
 </section>
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+      const bingApiUrl = 'https://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
+          bingScriptElement = document.createElement('script');
+      bingScriptElement.setAttribute('src', bingApiUrl);
+      document.body.appendChild(bingScriptElement);
+  </script>
+  <script class="example">
+      function initBingMap() {
+          // set up the map
+          const mapCenter = new Microsoft.Maps.Location(46.233226, 6.055737);
+          const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+              center: mapCenter,
+              zoom: 15
+          });
+          // set up the center marker
+          const centerMarker = new Microsoft.Maps.Pushpin(mapCenter);
+          map.entities.push(centerMarker);
+      }
+  </script>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
+  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <script class="example">
+      {
+          mapkit.addEventListener('error', function(err) {
+              console.log(err);
+          });
+          let mapkitKey = m4h.keys.mapkit.maps4html;
+          if (self.location.hostname === 'localhost') {
+              mapkitKey = m4h.keys.mapkit.localhost8000;
+          }
+          mapkit.init({
+              authorizationCallback: function(done) {
+                  done(mapkitKey);
+              },
+              language: "en"
+          });
+          const center = new mapkit.Coordinate(46.233226, 6.055737),
+              span = new mapkit.CoordinateSpan(0.004, 0.004),
+              region = new mapkit.CoordinateRegion(center, span);
+          const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+              region: region
+          });
+          // set up the center marker
+          const marker = new mapkit.MarkerAnnotation(center);
+          map.addAnnotation(marker);
+      }
+  </script>
 </section>
 
 <section id="mapbox-api">
   <h2>Mapbox GL JS API</h2>
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <script class="example">
+      { // block to restrict let and const scope to this example
+          // set up map
+          mapboxgl.accessToken = m4h.keys.mapboxGL;
+          const mapCenter = [6.055737, 46.233226];
+          const map = new mapboxgl.Map({
+              container: 'mapbox-api-map',
+              style: 'mapbox://styles/mapbox/streets-v9',
+              center: mapCenter,
+              zoom: 15
+          });
+          // set up the center marker
+          const centerMarker = new mapboxgl.Marker();
+          centerMarker.setLngLat(mapCenter);
+          centerMarker.addTo(map);
+      }
+  </script>
 </section>
 
 <section id="tomtom">

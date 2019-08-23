@@ -1318,7 +1318,7 @@ as implemented by the reference JavaScript tools.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li></li>
+<li><a href="#capability-no-js"></a></li>
 </ul>
 </section>
 
@@ -1348,7 +1348,7 @@ as implemented by the reference JavaScript tools.
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li>Everything listed in <a href="#use-case-single-location"></a></li>
-<li>…</li>
+<li><a href="#capability-marker-points"></a></li>
 </ul>
 </section>
 
@@ -1374,14 +1374,23 @@ as implemented by the reference JavaScript tools.
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li>Everything listed in <a href="#use-case-single-location"></a></li>
-<li>…</li>
+<li><a href="#capability-vector-features"></a></li>
 </ul>
 </section>
 
 <section id="use-case-html-annotations" data-ucr-role="use-case">
 <h4>Display custom web content describing map features</h4>
 <p>
-
+Map features often need additional content attached to them
+in order to provide context for the viewer.
+For example, with the most common mapping use case of displaying the various locations of an organization,
+additional content can display a location's opening hours or street address.
+</p>
+<p>
+This use case is especially important for data visualization;
+a map can serve as a visual interface that allows a user to navigate map features
+and only show the information that they are interested in.
+</p>
 </p>
 <p>
 See <a href="examples/html-annotations.html" target="examples">examples of displaying custom HTML annotations</a>
@@ -1392,7 +1401,7 @@ as implemented by the reference JavaScript tools.
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li>Everything listed in <a href="#use-case-single-location"></a></li>
-<li>…</li>
+<li><a href="#capability-hyperlinks"></a></li>
 </ul>
 </section>
 
@@ -1447,7 +1456,11 @@ as implemented by the reference JavaScript tools.
 <section id="use-case-layers" data-ucr-role="use-case">
 <h4>Combine multiple layers of map tile data or features</h4>
 <p>
-
+This is one of the fundamental use cases of web mapping.
+Because creating a complete tileset is such a large endeavor,
+almost all web maps use a pre-existing set of tiles from a provider,
+in combination with any number of layers
+consisting of data or features created by the map author.
 </p>
 <p>
 See <a href="examples/layers.html" target="examples">examples of multi-layer maps</a>
@@ -1457,8 +1470,8 @@ as implemented by the reference JavaScript tools.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-single-custom-image"></a> or …</li>
-<li>…</li>
+<li><a href="#capability-single-custom-image"></a> or <a href="#capability-custom-map-tiles"></a></li>
+<li>For adding custom maps from script, <a href="#capability-define-data-source-tile-layer">Define a data source for a tile layer</a></li>
 </ul>
 </section>
 

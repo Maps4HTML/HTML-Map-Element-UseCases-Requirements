@@ -1564,7 +1564,20 @@ for the reference JavaScript tools.
 <section id="use-case-reset-map-view" data-ucr-role="use-case">
 <h4>Reset the map to the initial view</h4>
 <p>
-Description to follow.
+It is common for a map viewer to be provided in a web page to show an area relevant to the subject of the page.
+An encyclopedia might include a map on its page about a battlefield;
+a city guide might include a map on its page about the central railway station.
+</p>
+<p>
+When a user interacts with the map,
+they may end up viewing a location far from the starting point,
+or with the map at a zoom level which is inconvenient for relating the map view
+to the primary content of the page.
+</p>
+<p>
+In such a case it would be useful to provide a mechanism
+by which the user can reset the map to the original configuration provided
+by the web page author.
 </p>
 <p>
 See <a href="examples/reset-map-view.html" target="examples">examples of allowing a user to reset the map to their starting point</a>
@@ -1573,9 +1586,6 @@ as implemented by the reference JavaScript tools.
 <p class="issue discussion" data-number="83">Discuss this section on GitHub.</p>
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li>Declarative / default behavior:
-  <a href=""></a>
-</li>
 <li>As a custom application feature:
   <ul>
   <li><a href="#capability-pan-map-or-re-centre-map">Pan a map or re-centre a map</a></li>

@@ -5450,7 +5450,21 @@ function processCapability(node) {
     : "undecided";
   if (conclusionNode) processTag(conclusionNode, conclusionDict);
 
-  // TODO: extract the “supported use cases” & generate cross references
+  // extract the “supported use cases” & generate cross references
+  const capabilityUseCasesList = node.querySelector("ul[data-ucr-role='capability-uses']");
+  if (capabilityUseCasesList) {
+    const supportedUseCaseLinks = [...document.querySelectorAll(`[data-ucr-role='use-case'] [href='#${id}']`)];
+    supportedUseCaseLinks.forEach((link) => {
+      const useCase = link.closest("[data-ucr-role='use-case']");
+      const useCaseTitle = findSectionTitle(useCase);
+      const a = document.createElement('a');
+      a.appendChild(document.createTextNode(useCaseTitle));
+      a.href = `#${useCase.id}`;
+      const li = document.createElement('li');
+      li.appendChild(a);
+      capabilityUseCasesList.appendChild(li);
+    });
+  }
 
   return { node, name, id, conclusion,
            tags: [], implementations: {} };

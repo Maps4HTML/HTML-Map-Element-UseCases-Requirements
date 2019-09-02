@@ -5433,7 +5433,7 @@ let conclusionDict = dictFromArray(conclusionDfns);
 function findSectionTitle(node) {
   let heading = node.querySelector("h2,h3,h4,h5,h6")
         || node.firstElementChild || node;
-  return node.textContent.trim();
+  return heading.textContent.trim();
 }
 function processUseCase(node) {
   let name = findSectionTitle(node);

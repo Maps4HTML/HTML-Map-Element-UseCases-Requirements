@@ -5433,7 +5433,7 @@ let conclusionDict = dictFromArray(conclusionDfns);
 function findSectionTitle(node) {
   let heading = node.querySelector("h2,h3,h4,h5,h6")
         || node.firstElementChild || node;
-  return node.textContent.trim();
+  return heading.textContent.trim();
 }
 function processUseCase(node) {
   let name = findSectionTitle(node);
@@ -5450,7 +5450,19 @@ function processCapability(node) {
     : "undecided";
   if (conclusionNode) processTag(conclusionNode, conclusionDict);
 
-  // TODO: extract the “supported use cases” & generate cross references
+  // extract the “supported use cases” & generate cross references
+  const capabilityUseCasesList = node.querySelector("ul[data-ucr-role='capability-uses']");
+  if (capabilityUseCasesList) {
+    const supportedUseCaseLinks = [...document.querySelectorAll(`[data-ucr-role='required-capabilities'] [href='#${id}']`)];
+    supportedUseCaseLinks.forEach((link) => {
+      const useCase = link.closest("[data-ucr-role='use-case']");
+      const a = document.createElement('a');
+      a.href = `#${useCase.id}`;
+      const li = document.createElement('li');
+      li.appendChild(a);
+      capabilityUseCasesList.appendChild(li);
+    });
+  }
 
   return { node, name, id, conclusion,
            tags: [], implementations: {} };

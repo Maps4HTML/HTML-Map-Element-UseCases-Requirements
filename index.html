@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="processed"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.30.5"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- ISSUES/NOTES --- */
+<!DOCTYPE html><html lang="en" class="processed"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.31.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- ISSUES/NOTES --- */
 .issue-label {
     text-transform: initial;
 }
@@ -539,8 +539,8 @@ var[data-type]:hover::before {
       ]
     }
   ],
-  "publishISODate": "2019-08-24T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 24 August 2019"
+  "publishISODate": "2019-09-04T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 04 September 2019"
 }</script><meta name="description" content="This report outlines the use cases and requirements
 for standardizing modern Web maps,
 in a way that works
@@ -553,7 +553,7 @@ consultation with the Maps for HTML Community Group and others."><link rel="styl
       
       <h2>
         Draft Community Group Report
-        <time class="dt-published" datetime="2019-08-24">24 August 2019</time>
+        <time class="dt-published" datetime="2019-09-04">04 September 2019</time>
       </h2>
       <dl>
         
@@ -942,7 +942,7 @@ the user can pan the displayed map to view a different region.
 An interactive map integrated into a web page.
 </dd>
 
-<dt><dfn data-lt="gis|geographic information system|geographic information system (gis)" data-dfn-type="dfn" id="dfn-gis">geographic information system (GIS)</dfn></dt>
+<dt><dfn data-lt="GIS|geographic information system|geographic information system (GIS)" data-dfn-type="dfn" id="dfn-gis">geographic information system (GIS)</dfn></dt>
 <dd>
 A database system for managing geographic data (or other spatial data),
 often including software for displaying the data as interactive maps.
@@ -959,7 +959,7 @@ Some of these are described by formal standards,
 others are defined only by the documentation of a particular map server.
 </dd>
 
-<dt><dfn data-lt="ows|ogc web services|open geospatial consortium web services|ogc web services (ows)" data-dfn-type="dfn" id="dfn-ows">OGC Web Services (OWS)</dfn></dt>
+<dt><dfn data-lt="OWS|OGC Web Services|Open Geospatial Consortium Web Services|OGC Web Services (OWS)" data-dfn-type="dfn" id="dfn-ows">OGC Web Services (OWS)</dfn></dt>
 <dd>
 A set of <a href="https://www.opengeospatial.org/standards/">standards developed by the Open Geospatial Consortium (OGC)</a>
 that define communication protocols between map servers and client software.
@@ -969,15 +969,15 @@ possibly restricted by other search parameters.
 The format of the returned map data is defined separately.
 OWS standards include:
 <ul>
-  <li><dfn data-lt="web map service|wms|web map service (wms)" data-dfn-type="dfn" id="dfn-web-map-service">Web Map Service (WMS)</dfn>,
+  <li><dfn data-lt="Web Map Service|WMS|Web Map Service (WMS)" data-dfn-type="dfn" id="dfn-web-map-service">Web Map Service (WMS)</dfn>,
     for accessing a custom processed map image
     that directly represents the requested region and query parameters</li>
-  <li><dfn data-lt="web map tile service|wmts|web map tile service (wmts)" data-dfn-type="dfn" id="dfn-web-map-tile-service">Web Map Tile Service (WMTS)</dfn>,
+  <li><dfn data-lt="Web Map Tile Service|WMTS|Web Map Tile Service (WMTS)" data-dfn-type="dfn" id="dfn-web-map-tile-service">Web Map Tile Service (WMTS)</dfn>,
     for accessing pre-processed map <a href="#dfn-tile" class="internalDFN" data-link-type="dfn">tiles</a>,
     which may only represent a <a href="#dfn-layer" class="internalDFN" data-link-type="dfn">layer</a> of the final map</li>
-  <li><dfn data-lt="web feature service|wfs|web feature service (wfs)" data-dfn-type="dfn" id="dfn-web-feature-service">Web Feature Service (WFS)</dfn>,
+  <li><dfn data-lt="Web Feature Service|WFS|Web Feature Service (WFS)" data-dfn-type="dfn" id="dfn-web-feature-service">Web Feature Service (WFS)</dfn>,
     for accessing <a href="#dfn-vector" class="internalDFN" data-link-type="dfn">vector feature</a> data</li>
-  <li><dfn data-lt="web coverage service|wcs|web coverage service (wcs)" data-dfn-type="dfn" id="dfn-web-coverage-service">Web Coverage Service (WCS)</dfn>,
+  <li><dfn data-lt="Web Coverage Service|WCS|Web Coverage Service (WCS)" data-dfn-type="dfn" id="dfn-web-coverage-service">Web Coverage Service (WCS)</dfn>,
     for accessing raw <a href="#dfn-coverage" class="internalDFN" data-link-type="dfn">coverage</a> data</li>
   <li><dfn data-dfn-type="dfn" id="dfn-ows-context">OWS Context</dfn>,
     for returning metadata with references to other map services</li>
@@ -1005,7 +1005,7 @@ depending on whether the location they defining is in two dimensions
 or three dimensions.
 </dd>
 
-<dt><dfn data-lt="crs|coordinate reference system|coordinate reference system (crs)" data-dfn-type="dfn" data-plurals="coordinate reference systems" id="dfn-crs">coordinate reference system (CRS)</dfn></dt>
+<dt><dfn data-lt="CRS|coordinate reference system|coordinate reference system (CRS)" data-dfn-type="dfn" data-plurals="coordinate reference systems" id="dfn-crs">coordinate reference system (CRS)</dfn></dt>
 <dd>
 A standard way of defining map or geographic coordinates,
 so that locations can be precisely compared or aligned
@@ -1044,7 +1044,7 @@ This information may be conveyed on the map with text labels
 or with icons, colors, or other cartographic symbols.
 </dd>
 
-<dt><dfn data-lt="vector|vector feature|vector feature" data-dfn-type="dfn" data-plurals="vector features" id="dfn-vector">vector feature</dfn></dt>
+<dt><dfn data-lt="vector|vector feature" data-dfn-type="dfn" data-plurals="vector features" id="dfn-vector">vector feature</dfn></dt>
 <dd>
 A map feature that has a mathematically defined spatial geometry
 based on coordinate data.
@@ -1055,7 +1055,7 @@ but the basic 2D vector feature types are
 </dd>
 
 <dt><dfn data-dfn-type="dfn" id="dfn-coordinate-point">coordinate point</dfn></dt>
-<dt><dfn data-lt="point|point feature|point feature" data-dfn-type="dfn" id="dfn-point">point feature</dfn></dt>
+<dt><dfn data-lt="point|point feature" data-dfn-type="dfn" id="dfn-point">point feature</dfn></dt>
 <dd>
 A spatial location defined by a single set (pair or triple) of coordinates.
 A point has no shape or extent,
@@ -1106,7 +1106,7 @@ A partially-transparent <a href="#dfn-layer" class="internalDFN" data-link-type=
 designed to be positioned on top of a <a href="#dfn-base-layer" class="internalDFN" data-link-type="dfn">base layer</a>.
 </dd>
 
-<dt><dfn data-lt="vector map|vector map layer|vector map layer" data-dfn-type="dfn" id="dfn-vector-map">vector map layer</dfn></dt>
+<dt><dfn data-lt="vector map|vector map layer" data-dfn-type="dfn" id="dfn-vector-map">vector map layer</dfn></dt>
 <dd>
 A map layer defined using data structures that describe individual <a href="#dfn-vector" class="internalDFN" data-link-type="dfn">vector features</a>
 and their coordinates,
@@ -1117,7 +1117,7 @@ But, that flexibility requires more processing power in the rendering software,
 and may require more data to represent very detailed graphics.
 </dd>
 
-<dt><dfn data-lt="raster|raster map|raster layer|raster map layer|raster map layer" data-dfn-type="dfn" id="dfn-raster">raster map layer</dfn></dt>
+<dt><dfn data-lt="raster|raster map|raster layer|raster map layer" data-dfn-type="dfn" id="dfn-raster">raster map layer</dfn></dt>
 <dd>
 A map layer defined using raster image formats,
 which specify the final colors at each position (pixel) in the rendered result.
@@ -2632,13 +2632,13 @@ in addition to the mapping library JavaScript.
 
 <dt>short-name-embed</dt>
 <dt>short-name-api</dt>
-<dd><a href="#dfn-full-support" class="internalDFN" data-link-type="dfn">full support|supported, with limitations|partial support|no support|not applicable</a>:
+<dd><a class="respec-offending-element" title="Error: No matching dfn found." id="respec-offender-error-no-matching-dfn-found">full support|supported, with limitations|partial support|no support|not applicable</a>:
 TO DO
 </dd>
 </dl>
 
 <h5 id="supported-use-cases">Supported use cases<a class="self-link" aria-label="§" href="#capability-declarative-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-create-map" class="sec-ref">§&nbsp;<bdi class="secno">3.1.1 </bdi>Display an interactive map within a web page</a></li></ul>
 
 <h5 id="uses-beyond-mapping">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-declarative-map"></a></h5>
 <p>
@@ -2699,7 +2699,7 @@ must be combined with a separate map provider.
 </dl>
 
 <h5 id="supported-use-cases-0">Supported use cases<a class="self-link" aria-label="§" href="#capability-default-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li></ul>
 
 <h5 id="uses-beyond-mapping-0">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-default-map"></a></h5>
 <p>
@@ -2770,7 +2770,7 @@ which can be mapped to pixel units for more simple use cases.
 </dl>
 
 <h5 id="supported-use-cases-1">Supported use cases<a class="self-link" aria-label="§" href="#capability-single-custom-image"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-custom-map" class="sec-ref">§&nbsp;<bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer</a></li><li><a href="#use-case-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.8 </bdi>Combine multiple layers of map tile data or features</a></li><li><a href="#use-case-technical-drawings" class="sec-ref">§&nbsp;<bdi class="secno">3.1.10 </bdi>Display drawings or schematics without geographic coordinates</a></li></ul>
 
 <h5 id="uses-beyond-mapping-1">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-single-custom-image"></a></h5>
 <p>
@@ -2829,7 +2829,7 @@ All API tools support some form of this feature, whether it be in the more popul
 </dl>
 
 <h5 id="supported-use-cases-2">Supported use cases<a class="self-link" aria-label="§" href="#capability-custom-map-tiles"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li><li><a href="#use-case-custom-map" class="sec-ref">§&nbsp;<bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer</a></li><li><a href="#use-case-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.8 </bdi>Combine multiple layers of map tile data or features</a></li></ul>
 
 <h5 id="uses-beyond-mapping-2">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-custom-map-tiles"></a></h5>
 <p>
@@ -2903,7 +2903,7 @@ the map author must add this feature themselves.
 </dl>
 
 <h5 id="supported-use-cases-3">Supported use cases<a class="self-link" aria-label="§" href="#capability-no-js"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-static-map" class="sec-ref">§&nbsp;<bdi class="secno">3.1.3 </bdi>Display a region of map data as a static image</a></li></ul>
 
 <h5 id="uses-beyond-mapping-3">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-no-js"></a></h5>
 <p>
@@ -2981,7 +2981,7 @@ location information for that particular place.
 </dl>
 
 <h5 id="supported-use-cases-4">Supported use cases<a class="self-link" aria-label="§" href="#capability-marker-points"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li><li><a href="#use-case-multiple-location-markers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.4 </bdi>Display multiple point locations as map markers</a></li></ul>
 
 <h5 id="uses-beyond-mapping-4">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-marker-points"></a></h5>
 <p>If the map element were to support non-georeferenced images,
@@ -3048,7 +3048,7 @@ files in the GeoJSON format. The embed tools lack support for this capability.
 </dl>
 
 <h5 id="supported-use-cases-5">Supported use cases<a class="self-link" aria-label="§" href="#capability-vector-features"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-poly-features" class="sec-ref">§&nbsp;<bdi class="secno">3.1.5 </bdi>Display routes/paths or regions</a></li></ul>
 
 <h5 id="uses-beyond-mapping-5">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-vector-features"></a></h5>
 <p>
@@ -3111,7 +3111,7 @@ and it can produce markup that is not consistent with the functionality of the m
 </dl>
 
 <h5 id="supported-use-cases-6">Supported use cases<a class="self-link" aria-label="§" href="#capability-hyperlinks"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-html-annotations" class="sec-ref">§&nbsp;<bdi class="secno">3.1.6 </bdi>Display custom web content describing map features</a></li></ul>
 
 <h5 id="uses-beyond-mapping-6">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-hyperlinks"></a></h5>
 <p>
@@ -3217,7 +3217,7 @@ but the API provides the conversion function.
 </dl>
 
 <h5 id="supported-use-cases-7">Supported use cases<a class="self-link" aria-label="§" href="#capability-location-latlong"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li></ul>
 
 <h5 id="uses-beyond-mapping-7">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-location-latlong"></a></h5>
 <p>
@@ -4094,7 +4094,7 @@ sources in addition.
 </dd>
 </dl>
 <h5 id="supported-use-cases-15">Supported use cases<a class="self-link" aria-label="§" href="#capability-create-initialise-and-display-a-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-create-map" class="sec-ref">§&nbsp;<bdi class="secno">3.1.1 </bdi>Display an interactive map within a web page</a></li></ul>
 <h5 id="uses-beyond-mapping-15">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-initialise-and-display-a-map"></a></h5>
 <p>
 ToDo
@@ -4144,7 +4144,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-16">Supported use cases<a class="self-link" aria-label="§" href="#capability-add-marker-or-multiple-markers-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li></ul>
 <h5 id="uses-beyond-mapping-16">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-add-marker-or-multiple-markers-map"></a></h5>
 <p>
 ToDo
@@ -4222,7 +4222,7 @@ distinguishing such controls from other overlays.
 </dd>
 </dl>
 <h5 id="supported-use-cases-17">Supported use cases<a class="self-link" aria-label="§" href="#capability-implement-a-custom-control"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-add-custom-control" class="sec-ref">§&nbsp;<bdi class="secno">3.3.1 </bdi>Add a custom control to a map</a></li></ul>
 <h5 id="uses-beyond-mapping-17">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-implement-a-custom-control"></a></h5>
 <p>
 ToDo
@@ -4269,7 +4269,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-18">Supported use cases<a class="self-link" aria-label="§" href="#capability-add-control-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-add-custom-control" class="sec-ref">§&nbsp;<bdi class="secno">3.3.1 </bdi>Add a custom control to a map</a></li></ul>
 <h5 id="uses-beyond-mapping-18">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-add-control-map"></a></h5>
 <p>
 ToDo
@@ -4315,7 +4315,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-19">Supported use cases<a class="self-link" aria-label="§" href="#capability-remove-control-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-add-custom-control" class="sec-ref">§&nbsp;<bdi class="secno">3.3.1 </bdi>Add a custom control to a map</a></li></ul>
 <h5 id="uses-beyond-mapping-19">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-remove-control-map"></a></h5>
 <p>
 ToDo
@@ -4365,7 +4365,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-20">Supported use cases<a class="self-link" aria-label="§" href="#capability-add-layer-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-hide-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li><li><a href="#use-case-generate-vector-features" class="sec-ref">§&nbsp;<bdi class="secno">3.3.7 </bdi>Generate new vector features from data</a></li></ul>
 <h5 id="uses-beyond-mapping-20">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-add-layer-map"></a></h5>
 <p>
 ToDo
@@ -4411,7 +4411,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-21">Supported use cases<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-custom-map" class="sec-ref">§&nbsp;<bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer</a></li><li><a href="#use-case-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.8 </bdi>Combine multiple layers of map tile data or features</a></li></ul>
 <h5 id="uses-beyond-mapping-21">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
 <p>
 ToDo
@@ -4457,7 +4457,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-22">Supported use cases<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-vector-data"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-generate-vector-features" class="sec-ref">§&nbsp;<bdi class="secno">3.3.7 </bdi>Generate new vector features from data</a></li></ul>
 <h5 id="uses-beyond-mapping-22">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-vector-data"></a></h5>
 <p>
 ToDo
@@ -4503,7 +4503,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-23">Supported use cases<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-heatmap" class="sec-ref">§&nbsp;<bdi class="secno">3.3.8 </bdi>Generate a heatmap overlay from point intensity data</a></li></ul>
 <h5 id="uses-beyond-mapping-23">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
 <p>
 ToDo
@@ -4551,7 +4551,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-24">Supported use cases<a class="self-link" aria-label="§" href="#capability-remove-layer-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-hide-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li></ul>
 <h5 id="uses-beyond-mapping-24">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-remove-layer-map"></a></h5>
 <p>
 ToDo
@@ -4599,7 +4599,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-25">Supported use cases<a class="self-link" aria-label="§" href="#capability-display-layer-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-hide-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li><li><a href="#use-case-heatmap" class="sec-ref">§&nbsp;<bdi class="secno">3.3.8 </bdi>Generate a heatmap overlay from point intensity data</a></li></ul>
 <h5 id="uses-beyond-mapping-25">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-display-layer-map"></a></h5>
 <p>
 ToDo
@@ -4647,7 +4647,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-26">Supported use cases<a class="self-link" aria-label="§" href="#capability-hide-layer-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-hide-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li></ul>
 <h5 id="uses-beyond-mapping-26">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-hide-layer-map"></a></h5>
 <p>
 ToDo
@@ -4693,7 +4693,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-27">Supported use cases<a class="self-link" aria-label="§" href="#capability-specify-style-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-alternative-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select</a></li></ul>
 <h5 id="uses-beyond-mapping-27">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-specify-style-map"></a></h5>
 <p>
 ToDo
@@ -4739,7 +4739,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-28">Supported use cases<a class="self-link" aria-label="§" href="#capability-determine-current-style-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-alternative-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select</a></li></ul>
 <h5 id="uses-beyond-mapping-28">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-determine-current-style-map"></a></h5>
 <p>
 ToDo
@@ -4789,7 +4789,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-29">Supported use cases<a class="self-link" aria-label="§" href="#capability-get-bounds-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-view-change-events" class="sec-ref">§&nbsp;<bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li></ul>
 <h5 id="uses-beyond-mapping-29">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-get-bounds-map"></a></h5>
 <p>
 ToDo
@@ -4835,7 +4835,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-30">Supported use cases<a class="self-link" aria-label="§" href="#capability-pan-map-or-re-centre-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-reset-map-view" class="sec-ref">§&nbsp;<bdi class="secno">3.2.2 </bdi>Reset the map to the initial view</a></li></ul>
 <h5 id="uses-beyond-mapping-30">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-pan-map-or-re-centre-map"></a></h5>
 <p>
 ToDo
@@ -4881,7 +4881,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-31">Supported use cases<a class="self-link" aria-label="§" href="#capability-zoom-map-or-out"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-reset-map-view" class="sec-ref">§&nbsp;<bdi class="secno">3.2.2 </bdi>Reset the map to the initial view</a></li><li><a href="#use-case-set-view-zoom" class="sec-ref">§&nbsp;<bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li></ul>
 <h5 id="uses-beyond-mapping-31">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-zoom-map-or-out"></a></h5>
 <p>
 ToDo
@@ -4927,7 +4927,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-32">Supported use cases<a class="self-link" aria-label="§" href="#capability-subscribe-map-move-events"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-view-change-events" class="sec-ref">§&nbsp;<bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li></ul>
 <h5 id="uses-beyond-mapping-32">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-subscribe-map-move-events"></a></h5>
 <p>
 ToDo
@@ -4973,7 +4973,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-33">Supported use cases<a class="self-link" aria-label="§" href="#capability-subscribe-map-zoom-events"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-view-change-events" class="sec-ref">§&nbsp;<bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li></ul>
 <h5 id="uses-beyond-mapping-33">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-subscribe-map-zoom-events"></a></h5>
 <p>
 ToDo
@@ -5019,7 +5019,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-34">Supported use cases<a class="self-link" aria-label="§" href="#capability-subscribe-marker-selection-events"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-view-change-events" class="sec-ref">§&nbsp;<bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li></ul>
 <h5 id="uses-beyond-mapping-34">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-subscribe-marker-selection-events"></a></h5>
 <p>
 ToDo
@@ -5065,7 +5065,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-35">Supported use cases<a class="self-link" aria-label="§" href="#capability-change-bearing-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-change-bearing-map" class="sec-ref">§&nbsp;<bdi class="secno">3.3.5 </bdi>Change the bearing of a map</a></li></ul>
 <h5 id="uses-beyond-mapping-35">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-change-bearing-map"></a></h5>
 <p>
 ToDo
@@ -5111,7 +5111,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-36">Supported use cases<a class="self-link" aria-label="§" href="#capability-reset-bearing-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-change-bearing-map" class="sec-ref">§&nbsp;<bdi class="secno">3.3.5 </bdi>Change the bearing of a map</a></li></ul>
 <h5 id="uses-beyond-mapping-36">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-reset-bearing-map"></a></h5>
 <p>
 ToDo
@@ -5158,7 +5158,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-37">Supported use cases<a class="self-link" aria-label="§" href="#capability-move-the-map-to-display-a-given-location"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-set-view-zoom" class="sec-ref">§&nbsp;<bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li></ul>
 <h5 id="uses-beyond-mapping-37">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-move-the-map-to-display-a-given-location"></a></h5>
 <p>
 ToDo
@@ -5204,7 +5204,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-38">Supported use cases<a class="self-link" aria-label="§" href="#capability-pan-and-zoom-to-bounding-box"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-set-view-zoom" class="sec-ref">§&nbsp;<bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li></ul>
 <h5 id="uses-beyond-mapping-38">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-pan-and-zoom-to-bounding-box"></a></h5>
 <p>
 ToDo
@@ -5296,7 +5296,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-40">Supported use cases<a class="self-link" aria-label="§" href="#capability-animate-the-zooming-of-the-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-animate-view-change" class="sec-ref">§&nbsp;<bdi class="secno">3.3.4 </bdi>Animate a map through a sequence of points</a></li></ul>
 <h5 id="uses-beyond-mapping-40">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-animate-the-zooming-of-the-map"></a></h5>
 <p>
 ToDo
@@ -5342,7 +5342,7 @@ Existing implementation support:
 </dd>
 </dl>
 <h5 id="supported-use-cases-41">Supported use cases<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map"></a></h5>
-<ul data-ucr-role="capability-uses"></ul>
+<ul data-ucr-role="capability-uses"><li><a href="#use-case-animate-view-change" class="sec-ref">§&nbsp;<bdi class="secno">3.3.4 </bdi>Animate a map through a sequence of points</a></li></ul>
 <h5 id="uses-beyond-mapping-41">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map"></a></h5>
 <p>
 ToDo

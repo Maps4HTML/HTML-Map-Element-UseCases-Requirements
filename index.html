@@ -5456,7 +5456,6 @@ function processCapability(node) {
     const supportedUseCaseLinks = [...document.querySelectorAll(`[data-ucr-role='required-capabilities'] [href='#${id}']`)];
     supportedUseCaseLinks.forEach((link) => {
       const useCase = link.closest("[data-ucr-role='use-case']");
-      const useCaseTitle = findSectionTitle(useCase);
       const a = document.createElement('a');
       a.appendChild(document.createTextNode(useCaseTitle));
       a.href = `#${useCase.id}`;

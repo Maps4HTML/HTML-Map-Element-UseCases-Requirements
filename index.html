@@ -3855,21 +3855,40 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
+<dd>
+<p><a>full support</a>:
+Google, Bing, MapKit and TomTom  allow straightforward creation of a map
+with configuration options.
+</p>
+<p>
+Leaflet, OpenLayers, and MapBox require explicit construction of objects defining the map layers
+and viewport, with sensible defaults for creation of, for example, a map showing OpenStreetMap tiles
+in a standard [[[WGS84]]] projection.
+This provides added flexibility, at the expense of increasing the complexity of code that uses these libraries.
+</p>
 </dd>
 </dl>
 <h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical imagery.
 </p>
 <h5>Related web specifications</h5>
 <p>
+<a data-cite="HTML" data-no-xref="">HTML</a> specifies a number of aspects of elements
+that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
+</p>
+<p>
+The <a data-cite="DOM" data-no-xref="">DOM</a> provides interfaces for creating
+HTML elements, which are what these implementations are using under the hood.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
+</p>
+<p>
+[[[DOM]]] [[[HTML]]]
 </p>
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
@@ -3879,6 +3898,16 @@ See examples.
 -->
 <p>
 This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
+Incorporating this functionality of existing map libraries in HTML would benefit users
+by reducing download size and time to interactivity. Web developers would benefit from
+being able to program against a standard interface.
+</p>
+<p>However, it is to be expected that a native HTML web map element would be constructed
+and initialised via existing DOM interfaces such as <var>document.createElement</var>
+and <var>DOMElement.insertAdjacentHTML</var>. Additional aspects of the map element's
+configuration might be achieved either through existing <var>DOMElement</var> interfaces
+such as <var>setAttribute</var>, or through element-specific attributes and methods;
+<i>cf.</i> the attributes and methods of the <var>HTMLMediaElement</var>.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
@@ -3940,6 +3969,16 @@ See examples.
 -->
 <p>
 This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
+Incorporating this functionality of existing map libraries in HTML would benefit users
+by reducing download size and time to interactivity. Web developers would benefit from
+being able to program against a standard interface.
+</p>
+<p>However, it is to be expected that a native HTML web map element would be constructed
+and initialised via existing DOM interfaces such as <code>document.createElement</code>
+and <code>DOMElement.insertAdjacentHTML</code>. Additional aspects of the map element's
+configuration might be achieved either through existing <var>DOMElement</var> interfaces
+such as <var>setAttribute</var>, or through element-specific attributes and methods;
+<i>cf.</i> the attributes and methods of the <var>HTMLMediaElement</var>.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
@@ -4063,21 +4102,40 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
+<dd>
+<p><a>full support</a>:
+Google, Bing, MapKit and TomTom  allow straightforward creation of a map
+with configuration options.
+</p>
+<p>
+Leaflet, OpenLayers, and MapBox require explicit construction of objects defining the map layers
+and viewport, with sensible defaults for creation of, for example, a map showing OpenStreetMap tiles
+in a standard [[[WGS84]]] projection.
+This provides added flexibility, at the expense of increasing the complexity of code that uses these libraries.
+</p>
 </dd>
 </dl>
 <h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical imagery.
 </p>
 <h5>Related web specifications</h5>
 <p>
+<a data-cite="HTML" data-no-xref="">HTML</a> specifies a number of aspects of elements
+that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
+</p>
+<p>
+The <a data-cite="DOM" data-no-xref="">DOM</a> provides interfaces for creating
+HTML elements, which are what these implementations are using under the hood.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
+</p>
+<p>
+[[[DOM]]] [[[HTML]]]
 </p>
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.

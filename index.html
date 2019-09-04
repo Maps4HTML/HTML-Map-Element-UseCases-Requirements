@@ -5453,7 +5453,7 @@ function processCapability(node) {
   // extract the “supported use cases” & generate cross references
   const capabilityUseCasesList = node.querySelector("ul[data-ucr-role='capability-uses']");
   if (capabilityUseCasesList) {
-    const supportedUseCaseLinks = [...document.querySelectorAll(`[data-ucr-role='use-case'] [href='#${id}']`)];
+    const supportedUseCaseLinks = [...document.querySelectorAll(`[data-ucr-role='required-capabilities'] [href='#${id}']`)];
     supportedUseCaseLinks.forEach((link) => {
       const useCase = link.closest("[data-ucr-role='use-case']");
       const useCaseTitle = findSectionTitle(useCase);

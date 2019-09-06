@@ -77,3 +77,7 @@ li:last-of-type {
     left: 1em;
     white-space: nowrap;
 }
+
+.mapboxgl.custom-control {
+    position: absolute;
+}

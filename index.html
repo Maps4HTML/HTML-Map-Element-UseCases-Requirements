@@ -2303,6 +2303,8 @@ must be combined with an separate map provider (e.g., OpenStreetMap).
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>:
 this is the basic function for these widgets: give it a location, it will draw the map.
 </dd>
@@ -2372,6 +2374,8 @@ which can be mapped to pixel units for more simple use cases.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd>
   <a>full support</a>
 </dd>
@@ -2435,6 +2439,8 @@ All API tools support some form of this feature, whether it be in the more popul
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd>
   <a>full support</a>
 </dd>
@@ -2510,12 +2516,14 @@ the map author must add this feature themselves.
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
 <dd><a>supported, with limitations</a>:
   these tools offer options to serve a static image without JavaScript.
   However, this is not the default fallback behavior for the embeds
   when JavaScript is turned off;
   adding a fallback image must be implemented as a custom feature.
 </dd>
+<dt>apple-mapkit-js-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
@@ -2598,6 +2606,8 @@ location information for that particular place.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: allows multiple user-specified pinpoint locations to be placed
 </dd>
 <dt>openstreetmap-embed</dt>
@@ -2671,6 +2681,8 @@ files in the GeoJSON format. The embed tools lack support for this capability.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: polygons and polylines can be added and have styling applied to them.
 </dd>
 <dt>google-maps-embed</dt>
@@ -2738,6 +2750,8 @@ and it can produce markup that is not consistent with the functionality of the m
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: map markers and vector features can have popups
   that contain custom HTML, allowing the map author to display hyperlinks within the popups.
 </dd>
@@ -2808,6 +2822,8 @@ these "attribution control" values can be set in configuration.
 <dt>google-maps-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: (as described above)
 </dd>
 <dt>mapbox-embed</dt>
@@ -2847,6 +2863,8 @@ from a map tile set.
 <dt>leaflet-api</dt>
 <dt>mapbox-embed</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>:
 setting a location by latitude and longitude is straightforward.
 </dd>
@@ -2920,6 +2938,8 @@ support for different localizations than other alternatives.
 <dt>openstreetmap-embed</dt>
 <dt>mapbox-embed</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: by default, these tools provide address search when setting up the map
 </dd>
 <dt>leaflet-api</dt>
@@ -2985,6 +3005,8 @@ in order to support other projections.
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd>
   <a>no support</a>: these embeds only support the Web Mercator projection.
 </dd>
@@ -3057,6 +3079,8 @@ in a different projection.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>no support</a>:
 </dd>
 </dl>
@@ -3126,6 +3150,8 @@ only OpenStreetMap offers the option to export a map location in a standard form
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>no support</a>:</dd>
 </dl>
 </section>
@@ -3152,7 +3178,10 @@ zooming out to decrease magnification (show a wider area).
 </li>
 <li>Mouse wheel movements (usually used to scroll the page) are captured
 and converted into continuous zoom adjustments
-(mouse scroll down becomes zoom in, mouse scroll up becomes zoom out).
+(mouse scroll down becomes zoom out, mouse scroll up becomes zoom in).
+Apple Mapkit JS inverts this popular convention.
+Modifier keys (such as Ctrl for Google Maps and Shift for Apple Mapkit JS)
+may be required so as not to intefere with default scroll behavior.
 </li>
 <li>Touch gestures for pinch zoom are used to zoom the map instead of the page.
 </li>
@@ -3170,6 +3199,8 @@ and converted into continuous zoom adjustments
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>:
 (as described above)
 <dt>mapbox-embed</dt>
@@ -3258,7 +3289,8 @@ to indicate how keyboard panning should work.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>open-layers-api</dt>
-<dd><a>full support</a>: a tabindex value must be added to the map container, but keyboard panning events are included natively</dd>
+<dt>bing-maps-api</dt>
+<dd><a>full support</a>: for OpenLayers, a tabindex value must be added to the map container, but keyboard panning events are included natively</dd>
 <dt>openstreetmap-embed</dt>
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
@@ -3268,6 +3300,7 @@ to indicate how keyboard panning should work.
 </dd>
 <dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>partial support</a>:
   Mouse and touch panning only. Keyboard panning is possible on the google maps web application. Keyboard panning is
   activated when a specific region of the map is focused.
@@ -3365,6 +3398,8 @@ All of the reference tools support this capability as described.
 Most tools show gray placeholder tiles while the additional tiles are being loaded,
 but Google Maps shows a placeholder that is representative of the tile to be loaded
 (ie. a blue tile for ocean tiles).
+Bing maps takes a similar approach and shows a very low resolution tile,
+until new tiles are fetched.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-embed</dt>
@@ -3374,6 +3409,8 @@ but Google Maps shows a placeholder that is representative of the tile to be loa
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>:
 </dd>
 </dl>
@@ -3403,6 +3440,8 @@ re-fetch the same tiles as the user pans across the map.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: (as describe above)
 </dd>
 </dl>
@@ -3429,6 +3468,8 @@ and may not reflect the users text size preference.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: (as described above)
 </dd>
 </dl>
@@ -3460,6 +3501,8 @@ in order to provide an indication of the tile type before it has loaded.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: (as described above)
 </dd>
 </dl>
@@ -3484,6 +3527,8 @@ with their default tilesets.</p>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>full support</a>: (as described above)
 </dd>
 </dl>
@@ -3532,6 +3577,8 @@ such as 'stroke width', 'fill', 'opacity'.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd>
   <a>full support</a>: (as described above)
 </dd>
@@ -3615,6 +3662,8 @@ and set the position of the controls.
 <dt>openstreetmaps-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
+  <dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd>
   <a>no support</a>:
   <!-- details about what is/isn't supported -->
@@ -3680,6 +3729,8 @@ setting a boolean in a configuration object.
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom-sdk</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd>
   <a>full support</a>: (as described above)
 </dd>

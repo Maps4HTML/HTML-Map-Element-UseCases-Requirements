@@ -3389,7 +3389,7 @@ Thought is needed on how to make panning accessible to all users.
 <p>
 For web maps using a tileset,
 an initial series of tiles is loaded based on the current position of the map.
-Additional tiles are then loaded using JavaScript when they are panned into view.
+Tiles are <a href="https://web.dev/native-lazy-loading">lazily loaded</a>, and as such additional ones are loaded when they are panned into view.
 This allows for a smaller initial payload and improved performance.
 </p>
 <p>

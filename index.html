@@ -1227,7 +1227,6 @@ A web browser could expose the native feature instead of re-implementing it from
 <section id="use-cases">
 <h2>Use Cases</h2>
 <p>
-</p>
 The basic use cases for website authors focus on presenting information.
 Different types of map data require different display capabilities.
 More advanced geographic application development
@@ -1392,7 +1391,6 @@ additional content can display a location's opening hours or street address.
 This use case is especially important for data visualization;
 a map can serve as a visual interface that allows a user to navigate map features
 and only show the information that they are interested in.
-</p>
 </p>
 <p>
 See <a href="examples/html-annotations.html" target="examples">examples of displaying custom HTML annotations</a>
@@ -2220,7 +2218,7 @@ in a web page.
 This is the basic capability that it currently missing from the web:
 the ability to use HTML code alone to add a map to a web page.
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="137">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2287,6 +2285,7 @@ would be one of the key benefit of having a built-in feature, compared to existi
 Often, the website author does not want to specify the map data source or other details about the map;
 they just want a generic wayfinding map of the area.
 </p>
+<p class="issue discussion" data-number="8">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2361,6 +2360,7 @@ Or will it need to be converted into a geospatial data format?
 For most use cases, at least some additional metadata will be required,
 to align the image pixels to the geographic coordinates of the map.
 </p>
+<p class="issue discussion" data-number="138">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2428,6 +2428,7 @@ Beyond any <a href="#capability-default-map">default map layer</a> that the view
 can it process tilesets as a custom map layer?
 If so, in what form?
 </p>
+<p class="issue discussion" data-number="139">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2580,7 +2581,7 @@ that identify different types of features.
 In web maps, the pinpoint marker (a circle narrowing into a point at the bottom)
 has become standard for identifying any location of interest.
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="140">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2665,7 +2666,7 @@ drawing it as separate graphic object means it can be dynamically styled,
 associated with labels or descriptions,
 and the target of user events.
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="141">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2732,9 +2733,7 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 For a map to be truly a part of the web,
 it needs to be able to link to other web resources.
 </p>
-
-</p>
-<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="142">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2805,6 +2804,7 @@ and use of the maps on the web usually requires at least attribution,
 and maybe links to terms of use.
 Many map services also include links for end users to report errors.
 </p>
+<p class="issue discussion" data-number="143">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2849,6 +2849,7 @@ or it might be calculated by the author using map search services.
 In a dynamic web app, latitude and longitude might be generated
 from geolocation on the user's device.
 </p>
+<p class="issue discussion" data-number="144">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -2922,6 +2923,7 @@ in a human-readable, localized format.
 To convert these addresses or names into a point on a web map,
 the web mapping service needs access to a Gazetteer search and corresponding databases.
 </p>
+<p class="issue discussion" data-number="145">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 The majority of reference tools support this functionality, either
@@ -3129,6 +3131,7 @@ separate from the website which included it.
 The user may want to export the location to a GPS or native mapping application
 so they can calculate directions to it.
 </p>
+<p class="issue discussion" data-number="146">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 Most of the reference tools do not support this capability. Of the tested tools,
@@ -3169,6 +3172,7 @@ it is standard to allow the user to adjust the map scale:
 zooming in to increase magnification (show finer detail),
 zooming out to decrease magnification (show a wider area).
 </p>
+<p class="issue discussion" data-number="147">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>The following UI is standard across the reviewed map widgets:
@@ -3272,6 +3276,7 @@ For mapping, panning is tightly linked with zooming and with dynamic loading of 
 For this discussion, we've divided them into separate features
 so that the costs, benefits, and non-mapping use cases can be assessed separately.
 </p>
+<p class="issue discussion" data-number="148">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>The following UI is standard among the reviewed map viewers:</p>
@@ -3391,6 +3396,7 @@ This allows for a smaller initial payload and improved performance.
 This capability is closely tied to the previous capability,
 <a href="#capability-pan">panning the map display</a>.
 </p>
+<p class="issue discussion" data-number="149">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -3424,6 +3430,7 @@ and can be panned infinitely along an axis.
 Tiles should be wrapped along at least one axis
 in order to create a seamless panning experience.
 </p>
+<p class="issue discussion" data-number="150">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 All of the reference tools support this capability.
@@ -3454,6 +3461,7 @@ Zooming a map widget is different from
 magnifying a regular image, or adjusting the overall browser zoom level;
 the layout is magnified, but annotations such as text size and stroke width are not.
 </p>
+<p class="issue discussion" data-number="151">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>All of these tools scale their labels to match the zoom level,
 but labels of smaller map features can be very small
@@ -3485,6 +3493,7 @@ When the zoom level is changed, additional tiles should be loaded and rendered s
 <p>
 This capability is related to <a href="#capability-zoom">zoom the map display</a>.
 </p>
+<p class="issue discussion" data-number="152">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -3515,6 +3524,7 @@ By default, web maps allow for the user to control the zoom level.
 Certain vector features may not be perceivable at higher zoom levels,
 and thus they should be hidden at higher zoom levels.
 </p>
+<p class="issue discussion" data-number="153">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>Support for this capability depends on the tileset,
 but all of the reference tools implement this capability
@@ -3636,7 +3646,7 @@ This capability — custom styling —
 is separate from the ability of the author to create complete custom controls
 which then control the map viewer using a client-side API.
 </p>
-<p class="issue discussion" data-number="(GH issue number for discussion)">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="154">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -3657,7 +3667,7 @@ and set the position of the controls.
 <dt>tomtom-sdk</dt>
 <dd><a>full support</a></dd>
 <dt>google-maps-api</dt>
-<dd><a></a>supported, with limitations</a></dd>
+<dd><a>supported, with limitations</a></dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmaps-embed</dt>
 <dt>bing-maps-embed</dt>
@@ -3979,7 +3989,7 @@ Items having the form and behaviour of custom controls can
 be implemented in the form of overlays, but there is no facility for
 distinguishing such controls from other overlays.
 </dd>
-</dd><dt>d3-geographies-api</dt>
+<dt>d3-geographies-api</dt>
 <dd><a>not applicable</a>:
 <!-- details about what is/isn't supported -->
 </dd>
@@ -4251,7 +4261,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <p>
 Description to follow
 </p>
-<p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="155">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 Existing implementation support:
@@ -4308,7 +4318,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <p>
 Description to follow
 </p>
-<p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="156">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 Existing implementation support:
@@ -5117,7 +5127,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 An API should support allowing the map to be moved to
 display a given location.
 </p>
-<p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="157">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 Existing implementation support:
@@ -5174,7 +5184,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <p>
 Description to follow
 </p>
-<p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="158">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 Existing implementation support:
@@ -5231,7 +5241,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <p>
 Description to follow
 </p>
-<p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="159">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 Existing implementation support:
@@ -5288,7 +5298,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <p>
 Description to follow
 </p>
-<p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="160">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 Existing implementation support:
@@ -5345,7 +5355,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <p>
 Description to follow
 </p>
-<p class="issue discussion" data-number="None">Discuss this section on GitHub.</p>
+<p class="issue discussion" data-number="161">Discuss this section on GitHub.</p>
 <h5>Existing implementations</h5>
 <p>
 Existing implementation support:

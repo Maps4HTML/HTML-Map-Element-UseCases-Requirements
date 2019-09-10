@@ -5,17 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>***Description*** — Maps for HTML reference examples</title>
+  <title>Change the Bearing of a Map</title>
   <link rel="stylesheet" href="examples.css" />
   <script src="api-keys.js"></script>
 </head>
 <body>
 <h1>Examples for
-  <a href="../#use-case-***ID***">Use Case: ***Title***</a>
+  <a href="../#use-case-change-bearing-map">Use Case: Change the Bearing of a Map</a>
 </h1>
 
 <p>
-  ***Introduction***
+Those mapping APIs that allow the map view to be rotated,
+in the sense of the projected view being rotated around the centre point
+so that the bearing of the top of the map is not North,
+usually allow this to be specified either when the map view is created and initialised
+or later via an exposed property or method.
+</p>
+<p>
+In the API examples the latter technique is used,
+to demonstrate that the map view can be dynamically updated in this respect.
 </p>
 
 <details>
@@ -42,34 +50,26 @@
 
 <section id="google-maps-embed">
   <h2>Google Maps embed</h2>
-
-  ***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="openstreetmap">
   <h2>OpenStreetMap embed</h2>
-
-  ***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="bing-maps-embed">
   <h2>Bing Maps embed</h2>
-
-  ***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="mapbox-embed">
   <h2>MapBox Studio embed</h2>
-
-  ***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  <div>
+  <iframe width="500" height="400" frameborder="0"
+          src="https://api.mapbox.com/styles/v1/nchan0154/cjx9sxbqt08611cp94xvmkwu1.html?fresh=true&amp;access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#2/0/0/45">
+  </iframe>
+  </div>
 </section>
 
 <section id="leaflet-js">
@@ -82,64 +82,81 @@ Copy & paste embed code or <p>Not applicable</p>
   <div id="ol-osm-use-case-change-bearing-map" style="width: 600px; height: 450px;"></div>
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <script class="example">
-      let openLayersMap = new ol.Map({
-          view: new ol.View({
-              center: ol.proj.fromLonLat([6.055737, 46.233226]),
-              zoom: 3
-          }),
-          layers: [
-              new ol.layer.Tile({
-                  source: new ol.source.OSM()
-              })
-          ],
-          target: 'ol-osm-use-case-change-bearing-map'
+    {
+      let map = new ol.Map({
+        view: new ol.View({
+          center: ol.proj.fromLonLat([6.055737, 46.233226]),
+          zoom: 3
+        }),
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        target: 'ol-osm-use-case-change-bearing-map'
       });
-      openLayersMap.getView().setRotation(-45 * (Math.PI / 180));
+      map.getView().setRotation(-45 * (Math.PI / 180));
+    }
   </script>
 </section>
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
-
-  ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
-
-  ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
-
-  ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
+  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <script class="example">
+    {
+      let mapkitKey = m4h.keys.mapkit.maps4html;
+      if (self.location.hostname === 'localhost') {
+        if (self.location.protocol === 'https:') {
+          mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+        } else {
+          mapkitKey = m4h.keys.mapkit.localhost8000;
+        }
+      }
+      mapkit.init({
+        authorizationCallback: function(done) {
+          done(mapkitKey);
+        },
+        language: "en"
+      });
+      const center = new mapkit.Coordinate(0, 0),
+        span = new mapkit.CoordinateSpan(360, 180),
+        region = new mapkit.CoordinateRegion(center, span);
+      const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+        region: region
+      });
+      map.rotation = -45;
+    }
+    </script>
 </section>
 
 <section id="mapbox-api">
   <h2>Mapbox GL JS API</h2>
-  <h2>MapBox GL</h2>
-  <div id="mapboxgl-use-case-change-bearing-map" style="width: 600px; height: 450px;"></div>
+  <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
   <script class="example">
+    {
       mapboxgl.accessToken = m4h.keys.mapboxGL;
-      let mapboxglMap = new mapboxgl.Map({
-          container: 'mapboxgl-use-case-change-bearing-map',
-          style: 'mapbox://styles/mapbox/streets-v9',
-          center: [6.055737, 46.233226],
-          zoom: 3
+      let map = new mapboxgl.Map({
+        container: 'mapbox-api-map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [6.055737, 46.233226],
+        zoom: 3
       });
-      mapboxglMap.setBearing(45);
+      map.setBearing(45);
+    }
   </script>
 </section>
 

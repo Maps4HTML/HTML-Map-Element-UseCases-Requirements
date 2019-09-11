@@ -1484,7 +1484,7 @@ Discuss this section on GitHub.
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-single-custom-image"></a> or <a href="#capability-custom-map-tiles"></a></li>
 <li>For more complex maps, <a href="#capability-lazy-load"></a> and <a href="#capability-zoom-swap"></a></li>
-<li>For adding custom maps from script, <a href="#capability-define-data-source-tile-layer">Define a data source for a tile layer</a></li>
+<li>For adding custom maps from script, <a href="#capability-define-data-source-tile-layer"></a></li>
 </ul>
 </section>
 
@@ -1508,7 +1508,7 @@ Discuss this section on GitHub.
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-single-custom-image"></a> or <a href="#capability-custom-map-tiles"></a></li>
-<li>For adding custom maps from script, <a href="#capability-define-data-source-tile-layer">Define a data source for a tile layer</a></li>
+<li>For adding custom maps from script, <a href="#capability-define-data-source-tile-layer"></a></li>
 </ul>
 </section>
 
@@ -1601,12 +1601,31 @@ for the reference JavaScript tools.
 <p class="issue discussion" data-number="39">
 Discuss this section on GitHub.
 </p>
+
+<h5>Required capabilities</h5>
+<ul data-ucr-role="required-capabilities">
+<li><a href="#capability-pan-map-or-re-centre-map"></a></li>
+<li><a href="#capability-zoom-map-in-or-out"></a></li>
+</ul>
 </section>
 
 <section id="use-case-reset-map-view" data-ucr-role="use-case">
 <h4>Reset the map to the initial view</h4>
 <p>
-Description to follow.
+It is common for a map viewer to be provided in a web page to show an area relevant to the subject of the page.
+An encyclopedia might include a map on its page about a battlefield;
+a city guide might include a map on its page about the central railway station.
+</p>
+<p>
+When a user interacts with the map,
+they may end up viewing a location far from the starting point,
+or with the map at a zoom level which is inconvenient for relating the map view
+to the primary content of the page.
+</p>
+<p>
+In such a case it would be useful to provide a mechanism
+by which the user can reset the map to the original configuration provided
+by the web page author.
 </p>
 <p>
 See <a href="examples/reset-map-view.html" target="examples">examples of allowing a user to reset the map to their starting point</a>
@@ -1618,13 +1637,10 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li>Declarative / default behavior:
-  <a href=""></a>
-</li>
 <li>As a custom application feature:
   <ul>
-  <li><a href="#capability-pan-map-or-re-centre-map">Pan a map or re-centre a map</a></li>
-  <li><a href="#capability-zoom-map-or-out">Zoom a map in or out</a></li>
+  <li><a href="#capability-pan-map-or-re-centre-map"></a></li>
+  <li><a href="#capability-zoom-map-in-or-out"></a></li>
   </ul>
 </li>
 </ul>
@@ -1652,7 +1668,7 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href=""></a></li>
+<li><a href="#capability-change-bearing-map"></a></li>
 </ul>
 </section>
 
@@ -1706,10 +1722,10 @@ Discuss this section on GitHub.
 </li>
 <li>As a custom application feature:
   <ul>
-    <li><a href="#capability-add-layer-map">Add a layer to a map</a></li>
-    <li><a href="#capability-remove-layer-map">Remove a layer from a map</a></li>
-    <li><a href="#capability-display-layer-map">Display a layer on a map</a></li>
-    <li><a href="#capability-hide-layer-map">Hide a layer on a map</a></li>
+    <li><a href="#capability-add-layer-map"></a></li>
+    <li><a href="#capability-remove-layer-map"></a></li>
+    <li><a href="#capability-display-layer-map"></a></li>
+    <li><a href="#capability-hide-layer-map"></a></li>
   </ul>
 </li>
 </ul>
@@ -1816,9 +1832,9 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-implement-a-custom-control">Implement a custom control</a></li>
-<li><a href="#capability-add-control-map">Add a control to a map</a></li>
-<li><a href="#capability-remove-control-map">Remove a control from a map</a></li>
+<li><a href="#capability-implement-a-custom-control"></a></li>
+<li><a href="#capability-add-control-map"></a></li>
+<li><a href="#capability-remove-control-map"></a></li>
 </ul>
 </section>
 
@@ -1855,10 +1871,10 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-get-bounds-map">Get the bounds of a map</a></li>
-<li><a href="#capability-subscribe-map-move-events">Subscribe to map move events</a></li>
-<li><a href="#capability-subscribe-map-zoom-events">Subscribe to map zoom events</a></li>
-<li><a href="#capability-subscribe-marker-selection-events">Subscribe to marker selection events</a></li>
+<li><a href="#capability-get-bounds-map"></a></li>
+<li><a href="#capability-subscribe-map-move-events"></a></li>
+<li><a href="#capability-subscribe-map-zoom-events"></a></li>
+<li><a href="#capability-subscribe-marker-selection-events"></a></li>
 </ul>
 </section>
 
@@ -1889,9 +1905,9 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-zoom-map-or-out">Zoom a map in or out</a></li>
-<li><a href="#capability-move-the-map-to-display-a-given-location">Move the map to display a given location</a></li>
-<li><a href="#capability-pan-and-zoom-to-bounding-box">Pan and zoom a map so as to completely show the area covered by a given bounding box</a></li>
+<li><a href="#capability-zoom-map-in-or-out"></a></li>
+<li><a href="#capability-move-the-map-to-display-a-given-location"></a></li>
+<li><a href="#capability-pan-and-zoom-to-bounding-box"></a></li>
 </ul>
 </section>
 
@@ -1918,8 +1934,8 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-animate-the-zooming-of-the-map">Animate the zooming of the map</a></li>
-<li><a href="#capability-animate-the-re-centering-of-the-map">Animate the re-centering of the map</a></li>
+<li><a href="#capability-animate-the-zooming-of-the-map"></a></li>
+<li><a href="#capability-animate-the-re-centering-of-the-map"></a></li>
 </ul>
 </section>
 
@@ -1947,8 +1963,8 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-change-bearing-map">Change the bearing of a map</a></li>
-<li><a href="#capability-reset-bearing-map">Reset the bearing of a map</a></li>
+<li><a href="#capability-change-bearing-map"></a></li>
+<li><a href="#capability-reset-bearing-map"></a></li>
 </ul>
 </section>
 
@@ -1996,8 +2012,8 @@ Discuss this section on GitHub.
   
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-add-layer-map">Add a layer to a map</a></li>
-<li><a href="#capability-create-an-overlay-defined-by-vector-data">Create an overlay defined by vector data</a></li>
+<li><a href="#capability-add-layer-map"></a></li>
+<li><a href="#capability-create-an-overlay-defined-by-vector-data"></a></li>
 </ul>
 </section>
 
@@ -2025,8 +2041,8 @@ Discuss this section on GitHub.
   
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-display-layer-map">Display a layer on a map</a></li>
-<li><a href="#capability-create-an-overlay-defined-by-heatmap-data">Create an overlay defined by heatmap data</a></li>
+<li><a href="#capability-display-layer-map"></a></li>
+<li><a href="#capability-create-an-overlay-defined-by-heatmap-data"></a></li>
 </ul>
 </section>
 
@@ -3999,9 +4015,19 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
+<dd>
+<p><a>full support</a>:
+Google, Bing, MapKit and TomTom  allow straightforward creation of a map
+with configuration options.
+</p>
+<p>
+Leaflet, OpenLayers, and MapBox require explicit construction of objects defining the map layers
+and viewport, with sensible defaults for creation of, for example, a map showing OpenStreetMap tiles
+in a standard [[[WGS84]]] projection.
+This provides added flexibility, at the expense of increasing the complexity of code that uses these libraries.
+</p>
 </dd>
 </dl>
   
@@ -4010,13 +4036,22 @@ Group implementations (multiple dt for the same dd) when they have the same supp
   
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical imagery.
 </p>
   
 <h5>Related web specifications</h5>
 <p>
+<a data-cite="HTML" data-no-xref="">HTML</a> specifies a number of aspects of elements
+that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
+</p>
+<p>
+The <a data-cite="DOM" data-no-xref="">DOM</a> provides interfaces for creating
+HTML elements, which are what these implementations are using under the hood.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
+</p>
+<p>
+[[[DOM]]] [[[HTML]]]
 </p>
 
 <h5>Conclusion</h5>
@@ -4027,6 +4062,16 @@ See examples.
 -->
 <p>
 This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
+Incorporating this functionality of existing map libraries in HTML would benefit users
+by reducing download size and time to interactivity. Web developers would benefit from
+being able to program against a standard interface.
+</p>
+<p>However, it is to be expected that a native HTML web map element would be constructed
+and initialised via existing DOM interfaces such as <var>document.createElement</var>
+and <var>DOMElement.insertAdjacentHTML</var>. Additional aspects of the map element's
+configuration might be achieved either through existing <var>DOMElement</var> interfaces
+such as <var>setAttribute</var>, or through element-specific attributes and methods;
+<i>cf.</i> the attributes and methods of the <var>HTMLMediaElement</var>.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
@@ -4093,6 +4138,16 @@ See examples.
 -->
 <p>
 This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
+Incorporating this functionality of existing map libraries in HTML would benefit users
+by reducing download size and time to interactivity. Web developers would benefit from
+being able to program against a standard interface.
+</p>
+<p>However, it is to be expected that a native HTML web map element would be constructed
+and initialised via existing DOM interfaces such as <code>document.createElement</code>
+and <code>DOMElement.insertAdjacentHTML</code>. Additional aspects of the map element's
+configuration might be achieved either through existing <var>DOMElement</var> interfaces
+such as <var>setAttribute</var>, or through element-specific attributes and methods;
+<i>cf.</i> the attributes and methods of the <var>HTMLMediaElement</var>.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
@@ -4226,9 +4281,19 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
+<dd>
+<p><a>full support</a>:
+Google, Bing, MapKit and TomTom  allow straightforward creation of a map
+with configuration options.
+</p>
+<p>
+Leaflet, OpenLayers, and MapBox require explicit construction of objects defining the map layers
+and viewport, with sensible defaults for creation of, for example, a map showing OpenStreetMap tiles
+in a standard [[[WGS84]]] projection.
+This provides added flexibility, at the expense of increasing the complexity of code that uses these libraries.
+</p>
 </dd>
 </dl>
   
@@ -4237,15 +4302,24 @@ Group implementations (multiple dt for the same dd) when they have the same supp
   
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical imagery.
 </p>
   
 <h5>Related web specifications</h5>
 <p>
+<a data-cite="HTML" data-no-xref="">HTML</a> specifies a number of aspects of elements
+that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
+</p>
+<p>
+The <a data-cite="DOM" data-no-xref="">DOM</a> provides interfaces for creating
+HTML elements, which are what these implementations are using under the hood.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
 </p>
-  
+<p>
+[[[DOM]]] [[[HTML]]]
+</p>
+
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
 Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
@@ -5044,7 +5118,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </ul>
 </section>
 
-<section id="capability-zoom-map-or-out" data-ucr-role="capability">
+<section id="capability-zoom-map-in-or-out" data-ucr-role="capability">
 <h4>Zoom a map in or out</h4>
 <p>
 Description to follow

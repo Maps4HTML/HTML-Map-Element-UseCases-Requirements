@@ -229,7 +229,11 @@ for how to add point markers with the other services (where possible).
           });
           let mapkitKey = m4h.keys.mapkit.maps4html;
           if (self.location.hostname === 'localhost') {
-              mapkitKey = m4h.keys.mapkit.localhost8000;
+            if (self.location.protocol === 'https:') {
+                mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+            } else {
+                mapkitKey = m4h.keys.mapkit.localhost8000;
+            }
           }
           mapkit.init({
               authorizationCallback: function(done) {

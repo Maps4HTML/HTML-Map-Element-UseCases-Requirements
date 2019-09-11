@@ -17,9 +17,28 @@
 </h1>
 
 <p>
-***Introduction***
+The examples below use a tile layer that shows a map of stream courses in the Mississippi delta area,
+produced by Harold N. Fisk for the Presidential Mississippi River Commission, 1944.
+The maps included in the report are in the public domain.
+The map used here is sheet 4 of plate 15 of the report.
+The TileJSON representation of the map, as a JavaScript object, is:
 </p>
+<script class="example">
+  m4h.fiskMapJSON = {
+    "tilejson": "2.2.0",
+    "name": "Mississippi Stream Courses sheet 4 - Harold Fisk, US Army Corps of Engineers",
+    "attribution": "Presidential Mississippi River Commission, 1944. Public Domain.",
+    "scheme": "tms",
+    "tiles": [
+      "https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{-y}.png"
+    ],
+    "bounds": [-92.60431421311640, 28.79036396296392, -88.72531489137181, 31.04551669046586],
+    "minzoom": 6,
+    "maxzoom": 12
+  };
 
+
+</script>
 <details>
   <summary>Jump to section…</summary>
 <ul class="toc">
@@ -44,39 +63,27 @@
 
 <section id="google-maps-embed">
 <h2>Google Maps embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="openstreetmap">
 <h2>OpenStreetMap embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="bing-maps-embed">
 <h2>Bing Maps embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="mapbox-embed">
 <h2>MapBox Studio embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="leaflet-js">
     <h2>Leaflet.js with OpenStreetMap tiles</h2>
-    <div id="leaflet-osm-use-case-specify-data-source-map" style="width: 600px; height: 450px;"></div>
+    <div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin=""/>
@@ -84,43 +91,100 @@ Copy & paste embed code or <p>Not applicable</p>
             integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
             crossorigin=""></script>
     <script class="example">
-let leafletMap = L.map('leaflet-osm-use-case-specify-data-source-map').setView([46.233226, 6.055737], 15);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    minZoom: 0,
-    maxZoom: 20,
-    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-}).addTo(leafletMap);
+      {
+        const map = L.map('leaflet-js-map').setView([29.91794032671489, -90.664814552244105], 8);
+        L.tileLayer('https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png', {
+          tms: true,
+          minZoom: 6,
+          maxZoom: 12,
+          attribution: m4h.fiskMapJSON.attribution
+        }).addTo(map);
+      }
     </script>
 </section>
 
 <section id="openlayers">
-    <h2>OpenLayers with OpenStreetMap tiles</h2>
-    <div id="ol-osm-use-case-specify-data-source-map" style="width: 600px; height: 450px;"></div>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <script class="example">
-let openLayersMap = new ol.Map({
-    view: new ol.View({
-        center: ol.proj.fromLonLat([6.055737, 46.233226]),
-        zoom: 15
-    }),
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.OSM()
+<h2>OpenLayers with OpenStreetMap tiles</h2>
+<div id="openlayers-map" style="width: 600px; height: 450px; background-color: #ccc;"></div>
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script class="example">
+  {
+
+    const map = (() => {
+      const fiskMapLayer = new ol.layer.Tile({
+        source: new ol.source.TileJSON({
+          tileJSON: m4h.fiskMapJSON,
         })
-    ],
-    target: 'ol-osm-use-case-specify-data-source-map'
-});
-    </script>
+      });
+
+      const view = new ol.View({
+        center: ol.proj.fromLonLat([-90.664814552244105, 29.91794032671489]),
+        zoom: 8,
+        maxZoom: 12,
+        minZoom: 6,
+        projection: "EPSG:3857",
+        displayProjection: new ol.proj.Projection("EPSG:4326")
+      });
+
+      const map = new ol.Map({
+        view: view,
+        layers: [
+          fiskMapLayer
+        ],
+        controls: [
+          new ol.control.ZoomSlider()
+        ],
+        target: 'openlayers-map',
+      });
+
+      return map;
+    })();
+  }
+</script>
 </section>
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
+  <div id="google-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+    const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
+      scriptElement = document.createElement('script');
+    scriptElement.setAttribute('src', apiUrl);
+    document.body.appendChild(scriptElement);
+  </script>
+<script class="example">
+function initMap() {
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  var mapEl = document.querySelector('#google-maps-api-map');
+  var map = new google.maps.Map(mapEl, {
+    center: new google.maps.LatLng(29.91794032671489, -90.664814552244105),
+    zoom: 8
+  });
+  var TILE_URL = 'https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+
+  // Name the layer anything you like.
+  var layerID = 'fisk_map';
+
+  // Create a new ImageMapType layer.
+  var layer = new google.maps.ImageMapType({
+    name: layerID,
+    getTileUrl: function (coord, zoom) {
+      console.log(coord);
+      var url = TILE_URL
+        .replace('{x}', coord.x)
+        .replace('{y}', coord.y)
+        .replace('{z}', zoom);
+      return url;
+    },
+    tileSize: new google.maps.Size(256, 256),
+    minZoom: m4h.fiskMapJSON.minzoom,
+    maxZoom: m4h.fiskMapJSON.maxzoom
+  });
+  map.mapTypes.set(layerID, layer);
+  map.setMapTypeId(layerID);
+}
+</script>
 </section>
 
 <section id="bing-maps-api">
@@ -143,17 +207,41 @@ or <p>Not applicable</p>
 
 <section id="mapbox-api">
     <h2>MapBox GL</h2>
-    <div id="mapboxgl-use-case-specify-data-source-map" style="width: 600px; height: 450px;"></div>
+    <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
     <script class="example">
+      {
         mapboxgl.accessToken = m4h.keys.mapboxGL;
-        let map = new mapboxgl.Map({
-            container: 'mapboxgl-use-case-specify-data-source-map',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            center: [6.055737, 46.233226],
-            zoom: 15
+        const mapCenter = [-90.664814552244105, 29.91794032671489];
+        const map = new mapboxgl.Map({
+          container: 'mapbox-api-map',
+          style: {
+            "version": 8,
+            "sources": {
+              "raster-tiles": {
+                "type": "raster",
+                "scheme": m4h.fiskMapJSON.scheme,
+                "tiles": ['https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png'],
+                "tileSize": 256,
+                "bounds": m4h.fiskMapJSON.bounds,
+                "attribution": m4h.fiskMapJSON.attribution
+              }
+            },
+            "layers": [{
+              "id": "simple-tiles",
+              "type": "raster",
+              "source": "raster-tiles",
+              "minzoom": m4h.fiskMapJSON.minzoom,
+              "maxzoom": m4h.fiskMapJSON.maxzoom
+            }]
+          },
+          center: mapCenter,
+          zoom: 8
         });
+        map.addControl(new mapboxgl.NavigationControl());
+
+      }
     </script>
 </section>
 

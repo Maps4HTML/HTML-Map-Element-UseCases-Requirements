@@ -21,7 +21,7 @@ The examples below use a tile layer that shows a map of stream courses in the Mi
 produced by Harold N. Fisk for the Presidential Mississippi River Commission, 1944.
 The maps included in the report are in the public domain.
 The map used here is sheet 4 of plate 15 of the report.
-The TileJSON representation of the map is:
+The TileJSON representation of the map, as a JavaScript object, is:
 </p>
 <script class="example">
   m4h.fiskMapJSON = {
@@ -63,34 +63,22 @@ The TileJSON representation of the map is:
 
 <section id="google-maps-embed">
 <h2>Google Maps embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="openstreetmap">
 <h2>OpenStreetMap embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="bing-maps-embed">
 <h2>Bing Maps embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="mapbox-embed">
 <h2>MapBox Studio embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="leaflet-js">
@@ -158,11 +146,45 @@ Copy & paste embed code or <p>Not applicable</p>
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
+  <div id="google-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+    const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
+      scriptElement = document.createElement('script');
+    scriptElement.setAttribute('src', apiUrl);
+    document.body.appendChild(scriptElement);
+  </script>
+<script class="example">
+function initMap() {
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  var mapEl = document.querySelector('#google-maps-api-map');
+  var map = new google.maps.Map(mapEl, {
+    center: new google.maps.LatLng(29.91794032671489, -90.664814552244105),
+    zoom: 8
+  });
+  var TILE_URL = 'https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+
+  // Name the layer anything you like.
+  var layerID = 'fisk_map';
+
+  // Create a new ImageMapType layer.
+  var layer = new google.maps.ImageMapType({
+    name: layerID,
+    getTileUrl: function (coord, zoom) {
+      console.log(coord);
+      var url = TILE_URL
+        .replace('{x}', coord.x)
+        .replace('{y}', coord.y)
+        .replace('{z}', zoom);
+      return url;
+    },
+    tileSize: new google.maps.Size(256, 256),
+    minZoom: m4h.fiskMapJSON.minzoom,
+    maxZoom: m4h.fiskMapJSON.maxzoom
+  });
+  map.mapTypes.set(layerID, layer);
+  map.setMapTypeId(layerID);
+}
+</script>
 </section>
 
 <section id="bing-maps-api">

@@ -79,14 +79,14 @@ the examples in those cases use OpenStreetMap tiles.
 <h2>MapBox Studio embed</h2>
 <div>
   <iframe width="500" height="400" frameborder="0"
-    src="https://api.mapbox.com/styles/v1/nchan0154/cjx9sxbqt08611cp94xvmkwu1.html?fresh=true&access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#0/0/0">
+    src="https://api.mapbox.com/styles/v1/nchan0154/cjx9sxbqt08611cp94xvmkwu1.html?fresh=true&amp;access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#0/0/0">
   </iframe>
 </div>
 </section>
 
 <section id="leaflet-js">
   <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-  <div id="leaflet-osm-create-map" style="width: 600px; height: 450px;"></div>
+  <div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin=""/>
@@ -94,7 +94,7 @@ the examples in those cases use OpenStreetMap tiles.
           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
           crossorigin=""></script>
     <script class="example">
-let leafletMap = L.map('leaflet-osm-create-map').setView([0,0], 0);
+let leafletMap = L.map('leaflet-js-map').setView([0,0], 0);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     minZoom: 0,
     maxZoom: 20,
@@ -105,7 +105,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 <section id="openlayers">
     <h2>OpenLayers (with OpenStreetMap tiles)</h2>
-    <div id="ol-osm-create-map" style="width: 600px; height: 450px;"></div>
+    <div id="openlayers-map" style="width: 600px; height: 450px;"></div>
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script class="example">
@@ -119,7 +119,7 @@ let openLayersMap = new ol.Map({
             source: new ol.source.OSM()
         })
     ],
-    target: 'ol-osm-create-map'
+    target: 'openlayers-map'
 });
     </script>
 </section>
@@ -160,7 +160,7 @@ let openLayersMap = new ol.Map({
   </script>
   <script class="example">
     function initBingMap() {
-        let bingMap = Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+        let bingMap = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
             center: new Microsoft.Maps.Location(0, 0),
             zoom: 0
         });
@@ -178,7 +178,11 @@ let openLayersMap = new ol.Map({
       });
       let mapkitKey = m4h.keys.mapkit.maps4html;
       if (self.location.hostname === 'localhost') {
-          mapkitKey = m4h.keys.mapkit.localhost8000;
+          if (self.location.protocol === 'https:') {
+              mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+          } else {
+              mapkitKey = m4h.keys.mapkit.localhost8000;
+          }
       }
       mapkit.init({
           authorizationCallback: function(done) {
@@ -189,7 +193,7 @@ let openLayersMap = new ol.Map({
       const center = new mapkit.Coordinate(0, 0),
           span = new mapkit.CoordinateSpan(360, 180),
           region = new mapkit.CoordinateRegion(center, span);
-      const mapkitMap = mapkit.Map(document.getElementById('mapkit-js-map'), {
+      const mapkitMap = new mapkit.Map(document.getElementById('mapkit-js-map'), {
           region: region
       });
   </script>
@@ -197,14 +201,14 @@ let openLayersMap = new ol.Map({
 
 <section id="mapbox-api">
   <h2>MapBox GL</h2>
-  <div id="mapboxgl-create-map" style="width: 600px; height: 450px;"></div>
+  <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
 <script class="example">
 mapboxgl.accessToken = m4h.keys.mapboxGL;
     // token must be configured for your website
 let mapboxMap = new mapboxgl.Map({
-    container: 'mapboxgl-create-map',
+    container: 'mapbox-api-map',
     style: 'mapbox://styles/mapbox/streets-v9'
 });
 </script>
@@ -212,13 +216,13 @@ let mapboxMap = new mapboxgl.Map({
 
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
-<div id="tomtom-create-map" style="width: 600px; height: 450px;"></div>
+<div id="tomtom-map" style="width: 600px; height: 450px;"></div>
 <script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
 <!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
 <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
 <script class="example">
 tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
-var tomtomVectorMap = tomtom.map('tomtom-create-map', {
+var tomtomVectorMap = tomtom.map('tomtom-map', {
   key: m4h.keys.tomtom,
     // token must be configured for your website
   source: 'vector',

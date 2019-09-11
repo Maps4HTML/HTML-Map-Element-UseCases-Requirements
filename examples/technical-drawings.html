@@ -74,20 +74,59 @@ Copy & paste embed code or <p>Not applicable</p>
 
 <section id="leaflet-js">
 <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+<div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+<script class="example">
+  {
+    const map = L.map('leaflet-js-map').setView([0,0], 1);
+    L.tileLayer('https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{-y}.png', {
+      minZoom: 0,
+      maxZoom: 4,
+      attribution: 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
+    }).addTo(map);
+  }
+</script>
 </section>
 
 <section id="openlayers">
 <h2>OpenLayers with OpenStreetMap tiles</h2>
+<div id="openlayers-map" style="width: 600px; height: 450px;"></div>
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script class="example">
+  const map = (() => {
+    const pictureLayer = new ol.layer.Tile({
+      source: new ol.source.TileJSON({
+        url: 'https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/tiles.json',
+      })
+    });
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+    const view = new ol.View({
+      center: [0, 0],
+      zoom: 1,
+      maxZoom: 4,
+      minZoom: 0,
+    });
+
+    const map = new ol.Map({
+      view: view,
+      layers: [
+        pictureLayer
+      ],
+      controls: [
+        new ol.control.ZoomSlider()
+      ],
+      target: 'openlayers-map',
+    });
+
+    return map;
+  })();
+</script>
 </section>
 
 <section id="google-maps-api">
@@ -119,11 +158,41 @@ or <p>Not applicable</p>
 
 <section id="mapbox-api">
   <h2>Mapbox GL JS API</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <script class="example">
+    { // block to restrict let and const scope to this example
+      // set up map
+      mapboxgl.accessToken = m4h.keys.mapboxGL;
+      const mapCenter = [0, 0];
+      const map = new mapboxgl.Map({
+        container: 'mapbox-api-map',
+        style: {
+          "version": 8,
+          "sources": {
+            "raster-tiles": {
+              "type": "raster",
+              "scheme": "tms",
+              "tiles": ["https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{y}.png"],
+              "tileSize": 256,
+              "attribution": 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
+            }
+          },
+          "layers": [{
+            "id": "simple-tiles",
+            "type": "raster",
+            "source": "raster-tiles",
+            "minzoom": 0,
+            "maxzoom": 4
+          }]
+        },
+        center: mapCenter,
+        zoom: 1
+      });
+      map.addControl(new mapboxgl.NavigationControl());
+    }
+  </script>
 </section>
 
 <section id="tomtom">

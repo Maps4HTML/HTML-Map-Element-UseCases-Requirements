@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Non-geographic content in map viewers — Maps for HTML reference examples</title>
-  <link rel="stylesheet" href="examples.css" />
+  <link rel="stylesheet" href="examples.css">
   <script src="api-keys.js"></script>
 </head>
 <body>
@@ -20,28 +20,28 @@
 
 <details>
   <summary>Jump to section…</summary>
-<ul class="toc">
-  <li>Iframe embeds: <ul>
-    <li><a href="#google-maps-embed">Google Maps embed</a></li>
-    <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
-    <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
-    <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
-  </ul></li>
-  <li>Client-side frameworks: <ul>
-    <li><a href="#leaflet-js">Leaflet.js API</a></li>
-    <li><a href="#openlayers">OpenLayers API</a></li>
-    <li><a href="#google-maps-api">Google Maps Platform API</a></li>
-    <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
-    <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
-    <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
-    <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
-    <li><a href="#d3-geo">D3 Geographies APIs</a></li>
-  </ul></li>
-</ul>
+  <ul class="toc">
+    <li>Iframe embeds: <ul>
+      <li><a href="#google-maps-embed">Google Maps embed</a></li>
+      <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+      <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
+      <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
+    </ul></li>
+    <li>Client-side frameworks: <ul>
+      <li><a href="#leaflet-js">Leaflet.js API</a></li>
+      <li><a href="#openlayers">OpenLayers API</a></li>
+      <li><a href="#google-maps-api">Google Maps Platform API</a></li>
+      <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
+      <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
+      <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+      <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
+      <li><a href="#d3-geo">D3 Geographies APIs</a></li>
+    </ul></li>
+  </ul>
 </details>
 
 <section id="google-maps-embed">
-<h2>Google Maps embed</h2>
+  <h2>Google Maps embed</h2>
 
 ***TODO<!--
 Copy & paste embed code or <p>Not applicable</p>
@@ -49,7 +49,7 @@ Copy & paste embed code or <p>Not applicable</p>
 </section>
 
 <section id="openstreetmap">
-<h2>OpenStreetMap embed</h2>
+  <h2>OpenStreetMap embed</h2>
 
 ***TODO<!--
 Copy & paste embed code or <p>Not applicable</p>
@@ -57,7 +57,7 @@ Copy & paste embed code or <p>Not applicable</p>
 </section>
 
 <section id="bing-maps-embed">
-<h2>Bing Maps embed</h2>
+  <h2>Bing Maps embed</h2>
 
 ***TODO<!--
 Copy & paste embed code or <p>Not applicable</p>
@@ -65,7 +65,7 @@ Copy & paste embed code or <p>Not applicable</p>
 </section>
 
 <section id="mapbox-embed">
-<h2>MapBox Studio embed</h2>
+  <h2>MapBox Studio embed</h2>
 
 ***TODO<!--
 Copy & paste embed code or <p>Not applicable</p>
@@ -73,67 +73,71 @@ Copy & paste embed code or <p>Not applicable</p>
 </section>
 
 <section id="leaflet-js">
-<h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-<div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-        crossorigin=""></script>
-<script class="example">
-  {
-    const map = L.map('leaflet-js-map').setView([0,0], 1);
-    L.tileLayer('https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{-y}.png', {
-      minZoom: 0,
-      maxZoom: 4,
-      attribution: 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
-    }).addTo(map);
-  }
-</script>
+  <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
+  <div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+          integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+          crossorigin=""></script>
+  <div class="script-example">
+    <script>
+      {
+        const map = L.map('leaflet-js-map').setView([0,0], 1);
+        L.tileLayer('https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{-y}.png', {
+          minZoom: 0,
+          maxZoom: 4,
+          attribution: 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
+        }).addTo(map);
+      }
+    </script>
+  </div>
 </section>
 
 <section id="openlayers">
-<h2>OpenLayers with OpenStreetMap tiles</h2>
-<div id="openlayers-map" style="width: 600px; height: 450px;"></div>
-<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-<script class="example">
-  const map = (() => {
-    const pictureLayer = new ol.layer.Tile({
-      source: new ol.source.TileJSON({
-        url: 'https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/tiles.json',
-      })
-    });
+  <h2>OpenLayers with OpenStreetMap tiles</h2>
+  <div id="openlayers-map" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+  <div class="script-example">
+    <script>
+      const map = (() => {
+        const pictureLayer = new ol.layer.Tile({
+          source: new ol.source.TileJSON({
+            url: 'https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/tiles.json',
+          })
+        });
 
-    const view = new ol.View({
-      center: [0, 0],
-      zoom: 1,
-      maxZoom: 4,
-      minZoom: 0,
-    });
+        const view = new ol.View({
+          center: [0, 0],
+          zoom: 1,
+          maxZoom: 4,
+          minZoom: 0,
+        });
 
-    const map = new ol.Map({
-      view: view,
-      layers: [
-        pictureLayer
-      ],
-      controls: [
-        new ol.control.ZoomSlider()
-      ],
-      target: 'openlayers-map',
-    });
+        const map = new ol.Map({
+          view: view,
+          layers: [
+            pictureLayer
+          ],
+          controls: [
+            new ol.control.ZoomSlider()
+          ],
+          target: 'openlayers-map',
+        });
 
-    return map;
-  })();
-</script>
+        return map;
+      })();
+    </script>
+  </div>
 </section>
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
 
 ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
+Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>
@@ -142,7 +146,7 @@ or <p>Not applicable</p>
   <h2>Bing Maps Control API</h2>
 
 ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
+Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>
@@ -151,7 +155,7 @@ or <p>Not applicable</p>
   <h2>MapKit JS (Apple Maps) API</h2>
 
 ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
+Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>
@@ -161,45 +165,47 @@ or <p>Not applicable</p>
   <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <script class="example">
-    { // block to restrict let and const scope to this example
-      // set up map
-      mapboxgl.accessToken = m4h.keys.mapboxGL;
-      const mapCenter = [0, 0];
-      const map = new mapboxgl.Map({
-        container: 'mapbox-api-map',
-        style: {
-          "version": 8,
-          "sources": {
-            "raster-tiles": {
+  <div class="script-example">
+    <script>
+      { // block to restrict let and const scope to this example
+        // set up map
+        mapboxgl.accessToken = m4h.keys.mapboxGL;
+        const mapCenter = [0, 0];
+        const map = new mapboxgl.Map({
+          container: 'mapbox-api-map',
+          style: {
+            "version": 8,
+            "sources": {
+              "raster-tiles": {
+                "type": "raster",
+                "scheme": "tms",
+                "tiles": ["https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{y}.png"],
+                "tileSize": 256,
+                "attribution": 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
+              }
+            },
+            "layers": [{
+              "id": "simple-tiles",
               "type": "raster",
-              "scheme": "tms",
-              "tiles": ["https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{y}.png"],
-              "tileSize": 256,
-              "attribution": 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
-            }
+              "source": "raster-tiles",
+              "minzoom": 0,
+              "maxzoom": 4
+            }]
           },
-          "layers": [{
-            "id": "simple-tiles",
-            "type": "raster",
-            "source": "raster-tiles",
-            "minzoom": 0,
-            "maxzoom": 4
-          }]
-        },
-        center: mapCenter,
-        zoom: 1
-      });
-      map.addControl(new mapboxgl.NavigationControl());
-    }
-  </script>
+          center: mapCenter,
+          zoom: 1
+        });
+        map.addControl(new mapboxgl.NavigationControl());
+      }
+    </script>
+  </div>
 </section>
 
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
 
 ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
+Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>
@@ -208,7 +214,7 @@ or <p>Not applicable</p>
   <h2>D3 Geographies APIs</h2>
 
 ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
+Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>

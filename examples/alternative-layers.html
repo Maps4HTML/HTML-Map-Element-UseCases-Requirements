@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Provide alternative map layers which the user can select</title>
-  <link rel="stylesheet" href="examples.css" />
+  <link rel="stylesheet" href="examples.css">
   <script src="api-keys.js"></script>
 </head>
 <body>
@@ -82,76 +82,80 @@ but may or may not provide a standard control enabling users to choose among the
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
           crossorigin=""></script>
-  <script class="example">
-    {
-      const map = L.map('leaflet-map').setView([46.233226, 6.055737], 15);
-      const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        minZoom: 0,
-        maxZoom: 20,
-        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      });
-      osmLayer.addTo(map);
+  <div class="script-example">
+    <script>
+      {
+        const map = L.map('leaflet-map').setView([46.233226, 6.055737], 15);
+        const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          minZoom: 0,
+          maxZoom: 20,
+          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        });
+        osmLayer.addTo(map);
 
-      const hotLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        minZoom: 0,
-        maxZoom: 20,
-        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      });
-      hotLayer.addTo(map);
+        const hotLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+          minZoom: 0,
+          maxZoom: 20,
+          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        });
+        hotLayer.addTo(map);
 
-      L.control.layers({
-        'OSM': osmLayer,
-        'HOT': hotLayer
-      }).addTo(map);
-    }
-  </script>
+        L.control.layers({
+          'OSM': osmLayer,
+          'HOT': hotLayer
+        }).addTo(map);
+      }
+    </script>
+  </div>
 </section>
 
 <section id="openlayers">
   <h2>OpenLayers with OpenStreetMap tiles</h2>
   <div id="openlayers-map" style="width: 600px; height: 450px;"></div>
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  <script class="example">
-    {
-      let map = new ol.Map({
-        view: new ol.View({
-          center: ol.proj.fromLonLat([6.055737, 46.233226]),
-          zoom: 15
-        }),
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM(),
-            visible: true
+  <div class="script-example">
+    <script>
+      {
+        let map = new ol.Map({
+          view: new ol.View({
+            center: ol.proj.fromLonLat([6.055737, 46.233226]),
+            zoom: 15
           }),
-          new ol.layer.Tile({
-            source: new ol.source.OSM({url: 'https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'}),
-            visible: false
-          })
-        ],
-        target: 'openlayers-map'
-      });
-      const openLayersLayerControl = new ol.control.Control({ element: (() => {
-          const layerNames = ['OSM Layer', 'HOT Layer'];
-          const layerControlContainer = document.createElement('div');
-          layerControlContainer.classList.add('layers');
-          layerControlContainer.classList.add('openlayers');
-          layerControlContainer.classList.add('custom-control');
-          const layerSwitcher = layerControlContainer.appendChild(document.createElement('button'));
-          layerSwitcher.type = 'button';
-          layerSwitcher.textContent = layerNames[0];
-          layerSwitcher.addEventListener('click', function(ev) {
-            let layers = map.getLayers(),
-              osmLayer = layers.item(0),
-              hotLayer = layers.item(1);
-            osmLayer.setVisible(!osmLayer.getVisible());
-            hotLayer.setVisible(!hotLayer.getVisible());
-            layerSwitcher.textContent = (osmLayer.getVisible() ? layerNames[0] : layerNames[1]);
-          });
-          return layerControlContainer;
-        })()});
-      map.addControl(openLayersLayerControl);
-    }
-  </script>
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM(),
+              visible: true
+            }),
+            new ol.layer.Tile({
+              source: new ol.source.OSM({url: 'https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'}),
+              visible: false
+            })
+          ],
+          target: 'openlayers-map'
+        });
+        const openLayersLayerControl = new ol.control.Control({ element: (() => {
+            const layerNames = ['OSM Layer', 'HOT Layer'];
+            const layerControlContainer = document.createElement('div');
+            layerControlContainer.classList.add('layers');
+            layerControlContainer.classList.add('openlayers');
+            layerControlContainer.classList.add('custom-control');
+            const layerSwitcher = layerControlContainer.appendChild(document.createElement('button'));
+            layerSwitcher.type = 'button';
+            layerSwitcher.textContent = layerNames[0];
+            layerSwitcher.addEventListener('click', function(ev) {
+              let layers = map.getLayers(),
+                osmLayer = layers.item(0),
+                hotLayer = layers.item(1);
+              osmLayer.setVisible(!osmLayer.getVisible());
+              hotLayer.setVisible(!hotLayer.getVisible());
+              layerSwitcher.textContent = (osmLayer.getVisible() ? layerNames[0] : layerNames[1]);
+            });
+            return layerControlContainer;
+          })()});
+        map.addControl(openLayersLayerControl);
+      }
+    </script>
+  </div>
 </section>
 
 <section id="google-maps-api">
@@ -163,20 +167,22 @@ but may or may not provide a standard control enabling users to choose among the
     scriptElement.setAttribute('src', apiUrl);
     document.body.appendChild(scriptElement);
   </script>
-  <script class="example">
-    function initMap() {
-      const googleMap = new google.maps.Map(
-        document.getElementById('google-maps-api-map'),
-        {
-          center:{
-            lat: 0,
-            lng: 0
-          },
-          zoom: 0
-        }
-      );
-    }
-  </script>
+  <div class="script-example">
+    <script>
+      function initMap() {
+        const googleMap = new google.maps.Map(
+          document.getElementById('google-maps-api-map'),
+          {
+            center:{
+              lat: 0,
+              lng: 0
+            },
+            zoom: 0
+          }
+        );
+      }
+    </script>
+  </div>
 </section>
 
 <section id="bing-maps-api">
@@ -188,45 +194,49 @@ but may or may not provide a standard control enabling users to choose among the
     bingScriptElement.setAttribute('src', bingApiUrl);
     document.body.appendChild(bingScriptElement);
   </script>
-  <script class="example">
-    function initBingMap() {
-      let bingMap = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
-        center: new Microsoft.Maps.Location(0, 0),
-        zoom: 0
-      });
-    }
-  </script>
+  <div class="script-example">
+    <script>
+      function initBingMap() {
+        let bingMap = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+          center: new Microsoft.Maps.Location(0, 0),
+          zoom: 0
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
   <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
-  <script class="example">
-      mapkit.addEventListener('error', function(err) {
-        console.log(err);
-      });
-      let mapkitKey = m4h.keys.mapkit.maps4html;
-      if (self.location.hostname === 'localhost') {
-        if (self.location.protocol === 'https:') {
-          mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
-        } else {
-          mapkitKey = m4h.keys.mapkit.localhost8000;
+  <div class="script-example">
+    <script>
+        mapkit.addEventListener('error', function(err) {
+          console.log(err);
+        });
+        let mapkitKey = m4h.keys.mapkit.maps4html;
+        if (self.location.hostname === 'localhost') {
+          if (self.location.protocol === 'https:') {
+            mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+          } else {
+            mapkitKey = m4h.keys.mapkit.localhost8000;
+          }
         }
-      }
-      mapkit.init({
-        authorizationCallback: function(done) {
-          done(mapkitKey);
-        },
-        language: "en"
-      });
-      const center = new mapkit.Coordinate(0, 0),
-        span = new mapkit.CoordinateSpan(360, 180),
-        region = new mapkit.CoordinateRegion(center, span);
-      const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
-        region: region
-      });
-  </script>
+        mapkit.init({
+          authorizationCallback: function(done) {
+            done(mapkitKey);
+          },
+          language: "en"
+        });
+        const center = new mapkit.Coordinate(0, 0),
+          span = new mapkit.CoordinateSpan(360, 180),
+          region = new mapkit.CoordinateRegion(center, span);
+        const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+          region: region
+        });
+    </script>
+  </div>
 </section>
 
 <section id="mapbox-api">
@@ -234,61 +244,63 @@ but may or may not provide a standard control enabling users to choose among the
   <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <script class="example">
-    {
-      mapboxgl.accessToken = m4h.keys.mapboxGL;
-      const stylesAvailable = [
-        {
-          label: 'Street Map',
-          url: 'mapbox://styles/mapbox/streets-v10'
-        },
-        {
-          label: 'Satellite Map',
-          url: 'mapbox://styles/mapbox/satellite-streets-v10'
-        }
-      ];
-      let currentStyle = 0;
+  <div class="script-example">
+    <script>
+      {
+        mapboxgl.accessToken = m4h.keys.mapboxGL;
+        const stylesAvailable = [
+          {
+            label: 'Street Map',
+            url: 'mapbox://styles/mapbox/streets-v10'
+          },
+          {
+            label: 'Satellite Map',
+            url: 'mapbox://styles/mapbox/satellite-streets-v10'
+          }
+        ];
+        let currentStyle = 0;
 
-      const map = new mapboxgl.Map({
-        container: 'mapbox-api-map',
-        style: stylesAvailable[currentStyle].url,
-        center: [6.055737, 46.233226],
-        zoom: 15
-      });
+        const map = new mapboxgl.Map({
+          container: 'mapbox-api-map',
+          style: stylesAvailable[currentStyle].url,
+          center: [6.055737, 46.233226],
+          zoom: 15
+        });
 
-      const layerControlContainer = document.createElement('div');
-      layerControlContainer.classList.add('layers');
-      layerControlContainer.classList.add('custom-control');
-      layerControlContainer.classList.add('mapboxgl');
-      const layerSwitcher = layerControlContainer.appendChild(document.createElement('button'));
-      layerSwitcher.type = 'button';
-      layerSwitcher.textContent = stylesAvailable[currentStyle ^ 1].label;
-      layerSwitcher.addEventListener('click', function(ev) {
-        currentStyle = currentStyle ^ 1;
-        map.setStyle(stylesAvailable[currentStyle].url);
+        const layerControlContainer = document.createElement('div');
+        layerControlContainer.classList.add('layers');
+        layerControlContainer.classList.add('custom-control');
+        layerControlContainer.classList.add('mapboxgl');
+        const layerSwitcher = layerControlContainer.appendChild(document.createElement('button'));
+        layerSwitcher.type = 'button';
         layerSwitcher.textContent = stylesAvailable[currentStyle ^ 1].label;
-      });
+        layerSwitcher.addEventListener('click', function(ev) {
+          currentStyle = currentStyle ^ 1;
+          map.setStyle(stylesAvailable[currentStyle].url);
+          layerSwitcher.textContent = stylesAvailable[currentStyle ^ 1].label;
+        });
 
-      const mapboxglLayerControl = {
-        onAdd: (map) => {
-          return layerControlContainer;
-        },
-        getDefaultPosition: () => {
-          return 'top-right'
-        },
-        onRemove: () => {}
-      };
+        const mapboxglLayerControl = {
+          onAdd: (map) => {
+            return layerControlContainer;
+          },
+          getDefaultPosition: () => {
+            return 'top-right'
+          },
+          onRemove: () => {}
+        };
 
-      map.getContainer().appendChild(mapboxglLayerControl.onAdd(map));
-    }
-  </script>
+        map.getContainer().appendChild(mapboxglLayerControl.onAdd(map));
+      }
+    </script>
+  </div>
 </section>
 
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
 
   ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
+Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>
@@ -297,7 +309,7 @@ or <p>Not applicable</p>
   <h2>D3 Geographies APIs</h2>
 
   ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
+Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>

@@ -92,7 +92,7 @@ h1 a:link, h1 a:visited {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    padding: 1rem .5rem;
+    padding: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
 }

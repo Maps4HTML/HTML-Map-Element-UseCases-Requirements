@@ -186,6 +186,8 @@ a[data-type='point']::before {
 #openlayers .ol-zoomslider {
   top: 1rem;
   background-color: rgba(255,255,255,.8);
+  border: 1px solid rgba(0,60,136,.2);
+  height: 207px;
 }
 
 #labelCanvasId,

@@ -92,7 +92,7 @@ h1 a:link, h1 a:visited {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    padding: 1rem;
+    padding: 1rem .5rem;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -114,6 +114,10 @@ a[data-type='point']::before {
     box-shadow: 1px 1px 2px rgba(0,0,0,0.65);
 }
 
+.custom-control span:last-of-type {
+  margin-right: .5rem;
+}
+
 .openlayers.custom-control {
     position: absolute;
     bottom: 1em;
@@ -124,7 +128,6 @@ a[data-type='point']::before {
     position: absolute;
     top: 1em;
     left: 1em;
-    white-space: nowrap;
 }
 
 .mapboxgl.custom-control {
@@ -149,29 +152,40 @@ a[data-type='point']::before {
     font-weight: bold;
 }
 
-.NavBar_MapTypeButtonDropDownIcon {
+.bing-maps-links {
+  text-align: center;
+  width: 500px;
+  padding: 6px 0;
+  max-width: 100%;
+}
+
+.bing.custom-control.lat-lng {
+  position: absolute;
+  top: auto;
+  bottom: 3rem;
+  left: 1rem;
+}
+
+.MicrosoftMap .ms-composite {
+  width: 100%;
+  height: 100%;
+}
+
+.MicrosoftMap .NavBar_MapTypeButtonDropDownIcon {
   box-sizing: initial;
 }
 
-#bing-maps-embed iframe ~ div {
-  max-width: 100%;
-  white-space: normal !important;
-}
-
-#bing-maps-api .MicrosoftMap .NavBar_Container {
-  right: 0 !important;
-}
-
-#bing-maps-api .NavBar_Button {
-  margin-right: 1.5rem;
-}
-
-#bing-maps-api #NavBar_MapTypeIcon {
+.MicrosoftMap .NavBar_MapTypeButtonIcon {
   margin-left: 5px;
 }
 
 #openlayers-map {
   background-color: #f6f6f6;
+}
+
+#openlayers .ol-zoomslider {
+  top: 1rem;
+  background-color: rgba(255,255,255,.8);
 }
 
 #labelCanvasId,
@@ -216,8 +230,9 @@ iframe,
     max-height: 275px;
     height: 275px;
   }
-  .map-container {
-    font-size: 14px;
+
+  .custom-control.lat-lng {
+    max-width: 200px;
   }
 }
 

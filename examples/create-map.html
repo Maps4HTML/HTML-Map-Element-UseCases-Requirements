@@ -94,12 +94,14 @@ the examples in those cases use OpenStreetMap tiles.
           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
           crossorigin=""></script>
     <script class="example">
-let leafletMap = L.map('leaflet-js-map').setView([0,0], 0);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    minZoom: 0,
-    maxZoom: 20,
-    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-}).addTo(leafletMap);
+      {
+        const map = L.map('leaflet-js-map').setView([0,0], 0);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          minZoom: 0,
+          maxZoom: 20,
+          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
+      }
     </script>
 </section>
 
@@ -109,18 +111,20 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script class="example">
-let openLayersMap = new ol.Map({
-    view: new ol.View({
-        center: ol.proj.fromLonLat([0,0]),
-        zoom: 0
-    }),
-    layers: [
-        new ol.layer.Tile({
-            source: new ol.source.OSM()
-        })
-    ],
-    target: 'openlayers-map'
-});
+      {
+        const map = new ol.Map({
+          view: new ol.View({
+            center: ol.proj.fromLonLat([0,0]),
+            zoom: 0
+          }),
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+          ],
+          target: 'openlayers-map'
+        });
+      }
     </script>
 </section>
 
@@ -135,7 +139,7 @@ let openLayersMap = new ol.Map({
   </script>
   <script class="example">
       function initMap() {
-          const googleMap = new google.maps.Map(
+          const map = new google.maps.Map(
               document.getElementById('google-maps-api-map'),
               {
                   center:{
@@ -160,7 +164,7 @@ let openLayersMap = new ol.Map({
   </script>
   <script class="example">
     function initBingMap() {
-        let bingMap = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+        const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
             center: new Microsoft.Maps.Location(0, 0),
             zoom: 0
         });
@@ -173,29 +177,31 @@ let openLayersMap = new ol.Map({
   <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
   <script class="example">
+    {
       mapkit.addEventListener('error', function(err) {
-          console.log(err);
+        console.log(err);
       });
       let mapkitKey = m4h.keys.mapkit.maps4html;
       if (self.location.hostname === 'localhost') {
-          if (self.location.protocol === 'https:') {
-              mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
-          } else {
-              mapkitKey = m4h.keys.mapkit.localhost8000;
-          }
+        if (self.location.protocol === 'https:') {
+          mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+        } else {
+          mapkitKey = m4h.keys.mapkit.localhost8000;
+        }
       }
       mapkit.init({
-          authorizationCallback: function(done) {
-              done(mapkitKey);
-          },
-          language: "en"
+        authorizationCallback: function(done) {
+          done(mapkitKey);
+        },
+        language: "en"
       });
       const center = new mapkit.Coordinate(0, 0),
-          span = new mapkit.CoordinateSpan(360, 180),
-          region = new mapkit.CoordinateRegion(center, span);
-      const mapkitMap = new mapkit.Map(document.getElementById('mapkit-js-map'), {
-          region: region
+        span = new mapkit.CoordinateSpan(360, 180),
+        region = new mapkit.CoordinateRegion(center, span);
+      const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+        region: region
       });
+    }
   </script>
 </section>
 
@@ -205,12 +211,14 @@ let openLayersMap = new ol.Map({
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
 <script class="example">
-mapboxgl.accessToken = m4h.keys.mapboxGL;
+  {
+    mapboxgl.accessToken = m4h.keys.mapboxGL;
     // token must be configured for your website
-let mapboxMap = new mapboxgl.Map({
-    container: 'mapbox-api-map',
-    style: 'mapbox://styles/mapbox/streets-v9'
-});
+    const map = new mapboxgl.Map({
+      container: 'mapbox-api-map',
+      style: 'mapbox://styles/mapbox/streets-v9'
+    });
+  }
 </script>
 </section>
 
@@ -221,14 +229,16 @@ let mapboxMap = new mapboxgl.Map({
 <!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
 <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
 <script class="example">
-tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
-var tomtomVectorMap = tomtom.map('tomtom-map', {
-  key: m4h.keys.tomtom,
-    // token must be configured for your website
-  source: 'vector',
-  basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk'
-    // or self-host the JS + CSS
-});
+  {
+    tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+    const map = tomtom.map('tomtom-map', {
+      key: m4h.keys.tomtom,
+      // token must be configured for your website
+      source: 'vector',
+      basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk'
+      // or self-host the JS + CSS
+    });
+  }
 </script>
 </section>
 

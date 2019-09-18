@@ -84,18 +84,18 @@ Copy & paste embed code or <p>Not applicable</p>
             crossorigin=""></script>
     <script class="example">
         {
-            const leafletMap = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
+            const map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 minZoom: 0,
                 maxZoom: 20,
                 attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-            }).addTo(leafletMap);
+            }).addTo(map);
             const leafletMarkers = L.layerGroup([
                 new L.marker([46.233226, 6.055737]),
                 new L.marker([46.2278, 6.0510]),
                 new L.marker([46.23336, 6.0471])
             ]);
-            leafletMarkers.addTo(leafletMap);
+            leafletMarkers.addTo(map);
         }
     </script>
 </section>
@@ -134,7 +134,7 @@ Copy & paste embed code or <p>Not applicable</p>
                     features: iconFeatures
                 })
             });
-            let openLayersMap = new ol.Map({
+            let map = new ol.Map({
                 view: new ol.View({
                     center: ol.proj.fromLonLat([6.055737, 46.233226]),
                     zoom: 15
@@ -162,7 +162,7 @@ Copy & paste embed code or <p>Not applicable</p>
   </script>
   <script class="example">
       function initMap() {
-          const googleMap = new google.maps.Map(
+          const map = new google.maps.Map(
               document.getElementById('google-maps-api-map'),
               {
                   center: {
@@ -180,7 +180,7 @@ Copy & paste embed code or <p>Not applicable</p>
           locations.forEach((location) => {
               new google.maps.Marker({
                   position: location,
-                  map: googleMap
+                  map: map
               });
           });
       }
@@ -267,7 +267,7 @@ Copy & paste embed code or <p>Not applicable</p>
     <script class="example">
         {
             mapboxgl.accessToken = m4h.keys.mapboxGL;
-            const mapboxglMap = new mapboxgl.Map({
+            const map = new mapboxgl.Map({
                 container: 'mapbox-api-map',
                 style: 'mapbox://styles/mapbox/streets-v9',
                 center: [6.055737, 46.233226],
@@ -279,7 +279,7 @@ Copy & paste embed code or <p>Not applicable</p>
                 [6.0471, 46.23336]
             ];
             locations.forEach(function(coords) {
-                new mapboxgl.Marker().setLngLat(coords).addTo(mapboxglMap);
+                new mapboxgl.Marker().setLngLat(coords).addTo(map);
             });
         }
     </script>
@@ -302,22 +302,24 @@ Copy & paste embed code or <p>Not applicable</p>
 }
 </style>
 <script class="example">
-tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
-var tomtomVectorMap = tomtom.map('tomtom-multiple-points', {
-key: m4h.keys.tomtom,
-source: 'vector',
-basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
-center: [46.233226, 6.055737],
-zoom: 15
-});
+  {
+    tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+    const map = tomtom.map('tomtom-multiple-points', {
+      key: m4h.keys.tomtom,
+      source: 'vector',
+      basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
+      center: [46.233226, 6.055737],
+      zoom: 15
+    });
 
-[
-    [46.233226, 6.055737],
-    [46.2278, 6.0510],
-    [46.23336, 6.0471]
-].forEach(function(coords) {
-    new tomtom.L.marker(coords, {}).addTo(tomtomVectorMap);
-});
+    [
+      [46.233226, 6.055737],
+      [46.2278, 6.0510],
+      [46.23336, 6.0471]
+    ].forEach(function(coords) {
+      new tomtom.L.marker(coords, {}).addTo(map);
+    });
+  }
 </script>
 </section>
 

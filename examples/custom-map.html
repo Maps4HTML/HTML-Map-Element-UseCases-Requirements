@@ -155,31 +155,28 @@ The TileJSON representation of the map, as a JavaScript object, is:
   </script>
 <script class="example">
 function initMap() {
-
-  var mapEl = document.querySelector('#google-maps-api-map');
-  var map = new google.maps.Map(mapEl, {
-    center: new google.maps.LatLng(29.91794032671489, -90.664814552244105),
-    zoom: 8
-  });
-  var TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
-
-  // Name the layer anything you like.
-  var layerID = 'fisk_map';
-
+  const TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+  const layerID = 'fisk_map';
   // Create a new ImageMapType layer.
-  var layer = new google.maps.ImageMapType({
+  const layer = new google.maps.ImageMapType({
     name: layerID,
     getTileUrl: function (coord, zoom) {
-      console.log(coord);
-      var url = TILE_URL
+      return TILE_URL
         .replace('{x}', coord.x)
-        .replace('{y}', coord.y)
+        .replace('{y}', ((1 << zoom) - coord.y - 1)) // adjust y to account for TMS coordinates on the server
         .replace('{z}', zoom);
-      return url;
     },
     tileSize: new google.maps.Size(256, 256),
     minZoom: m4h.fiskMapJSON.minzoom,
     maxZoom: m4h.fiskMapJSON.maxzoom
+  });
+
+  const mapEl = document.querySelector('#google-maps-api-map');
+  const map = new google.maps.Map(mapEl, {
+    center: new google.maps.LatLng(29.91794032671489, -90.664814552244105),
+    zoom: 8,
+    mapTypeId: layerID,
+    mapTypeControl: false
   });
   map.mapTypes.set(layerID, layer);
   map.setMapTypeId(layerID);

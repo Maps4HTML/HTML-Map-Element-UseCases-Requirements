@@ -84,7 +84,7 @@ Copy & paste embed code or <p>Not applicable</p>
 <script class="example">
   {
     const map = L.map('leaflet-js-map').setView([0,0], 1);
-    L.tileLayer('https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{-y}.png', {
+    L.tileLayer('https://maps4html.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{-y}.png', {
       minZoom: 0,
       maxZoom: 4,
       attribution: 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
@@ -102,7 +102,7 @@ Copy & paste embed code or <p>Not applicable</p>
   const map = (() => {
     const pictureLayer = new ol.layer.Tile({
       source: new ol.source.TileJSON({
-        url: 'https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/tiles.json',
+        url: 'https://maps4html.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/tiles.json',
       })
     });
 
@@ -174,7 +174,7 @@ or <p>Not applicable</p>
             "raster-tiles": {
               "type": "raster",
               "scheme": "tms",
-              "tiles": ["https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{y}.png"],
+              "tiles": ["https://maps4html.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{y}.png"],
               "tileSize": 256,
               "attribution": 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
             }

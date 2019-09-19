@@ -234,7 +234,53 @@ function initMap() {
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
-  <p>Not applicable</p>
+  <p>
+    Strictly speaking this is not a custom map,
+    as it does not sem to be possible to disable the default map layer.
+  </p>
+  <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
+  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <script class="example">
+    {
+      const TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+      mapkit.addEventListener('error', function(err) {
+        console.log(err);
+      });
+      let mapkitKey = m4h.keys.mapkit.maps4html;
+      if (self.location.hostname === 'localhost') {
+        if (self.location.protocol === 'https:') {
+          mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+        } else {
+          mapkitKey = m4h.keys.mapkit.localhost8000;
+        }
+      }
+      mapkit.init({
+        authorizationCallback: function(done) {
+          done(mapkitKey);
+        },
+        language: "en"
+      });
+      const center = new mapkit.Coordinate(29.91794032671489, -90.664814552244105),
+        span = new mapkit.CoordinateSpan(2, 2),
+        region = new mapkit.CoordinateRegion(center, span);
+      const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+        region: region,
+        showsMapTypeControl: false,
+        mapType: null
+      });
+
+      const tileOverlay = new mapkit.TileOverlay((x, y, z, scale, data) => {
+        return TILE_URL
+          .replace('{x}', x)
+          .replace('{y}', ((1 << z) - y - 1)) // adjust y to account for TMS coordinates on the server
+          .replace('{z}', z);
+      }, {
+        minimumZ: m4h.fiskMapJSON.minzoom,
+        maximumZ: m4h.fiskMapJSON.maxzoom
+      });
+      map.tileOverlays = [tileOverlay];
+    }
+  </script>
 </section>
 
 <section id="mapbox-api">

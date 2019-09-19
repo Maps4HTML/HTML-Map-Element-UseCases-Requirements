@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>***Description*** — Maps for HTML reference examples</title>
+  <title>Animate a map through a sequence of points — Maps for HTML reference examples</title>
   <link rel="stylesheet" href="examples.css" />
   <script src="api-keys.js"></script>
 </head>
 <body>
 <h1>Examples for
-  <a href="../#use-case-***ID***">Use Case: ***Title***</a>
+  <a href="../#use-case-animate-view-change">Use Case: Animate a map through a sequence of points</a>
 </h1>
 
 <p>
-***Introduction***
+Only OpenLayers supports chained animations directly.
+Other libraries require the developer to implement the sequencing of animations themselves.
 </p>
 
 <details>
@@ -42,149 +43,139 @@
 
 <section id="google-maps-embed">
 <h2>Google Maps embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="openstreetmap">
 <h2>OpenStreetMap embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="bing-maps-embed">
 <h2>Bing Maps embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="mapbox-embed">
 <h2>MapBox Studio embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+<p>Not applicable</p>
 </section>
 
 <section id="leaflet-js">
   <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-  <div class="map-container">
-    <ol>
-      <li>
-        <a href="index.html?latlng=51.428585,-1.854244" data-lat="51.428585" data-lng="-1.854244" data-zoom="">First</a>
-      </li>
-      <li>
-        <a href="index.html?latlng=51.415731,-1.857441" data-lat="51.415731" data-lng="-1.857441" data-zoom="">Second</a>
-      </li>
-      <li>
-        <a href="index.html?latlng=51.408626,-1.850331" data-lat="51.408626" data-lng="-1.850331" data-zoom="">Third</a>
-      </li>
-      <li>
-        <a href="index.html?latlng=51.178828,-1.826205" data-lat="51.178828" data-lng="-1.826205" data-zoom="">Fourth</a>
-      </li>
-      <li>
-        <a href="index.html?latlng=51.178828,-1.826205" data-lat="51.178828" data-lng="-1.826205" data-zoom="">Fifth</a>
-      </li>
-      <li>
-        <a href="index.html?latlng=51.178828,-1.826205" data-lat="51.178828" data-lng="-1.826205" data-zoom="">Sixth</a>
-      </li>
-    </ol>
-    <div class="map" id="leaflet-osm-animate-view-change">
-    </div>
-  </div>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-          integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-          crossorigin=""></script>
-  <script class="example">
-      let leafletMap = L.map('leaflet-osm-animate-view-change').setView([46.233226, 6.055737], 15);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          minZoom: 0,
-          maxZoom: 20,
-          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      }).addTo(leafletMap);
-  </script>
+  <p>Not applicable</p>
 </section>
 
 <section id="openlayers">
   <h2>OpenLayers with OpenStreetMap tiles</h2>
-  <div id="ol-osm-animate-view-change" style="width: 600px; height: 450px;"></div>
+  <div class="map-container">
+    <ol>
+      <li>
+        <h3>Route from Holborn Tube Station to Conway Hall</h3>
+        <div class="buttons"><button type="button" class="go">Go</button></div>
+      </li>
+      <li>
+        <a href="?latlng=51.517462,-0.119877" data-lat="51.517462" data-lng="-0.119877" data-zoom="19">Leave Holborn Tube Station by the High Holborn exit</a>
+      </li>
+      <li>
+        <a href="?latlng=51.517627,-0.119951" data-lat="51.517627" data-lng="-0.119951" data-zoom="19">Turn right along High Holborn</a>
+      </li>
+      <li>
+        <a href="?latlng=51.517656,-0.118945" data-lat="51.517656" data-lng="-0.118945" data-zoom="19">Cross High Holborn at the junction with Drake Street</a>
+      </li>
+      <li>
+        <a href="?latlng=51.517862,-0.118911" data-lat="51.517862" data-lng="-0.118911" data-zoom="19">Continue up Drake Street</a>
+      </li>
+      <li>
+        <a href="?latlng=51.518772,-0.119374" data-lat="51.518772" data-lng="-0.119374" data-zoom="19">Turn right on to Red Lion Square</a>
+      </li>
+      <li>
+        <a href="?latlng=51.519225,-0.118039" data-lat="51.519225" data-lng="-0.118039" data-zoom="19">Turn left at the southeast corner of Red Lion Square</a>
+      </li>
+      <li>
+        <a href="?latlng=51.519691,-0.118249" data-lat="51.519691" data-lng="-0.118249" data-zoom="19">You have arrived at Conway Hall</a>
+      </li>
+    </ol>
+    <div class="map" id="openlayers-map">
+    </div>
+  </div>
   <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <script class="example">
-      let openLayersMap = new ol.Map({
-          view: new ol.View({
-              center: ol.proj.fromLonLat([6.055737, 46.233226]),
-              zoom: 15
-          }),
-          layers: [
-              new ol.layer.Tile({
-                  source: new ol.source.OSM()
-              })
-          ],
-          target: 'ol-osm-animate-view-change'
+    {
+      // convert values from DOM attributes to properties for animation
+      const locationLinks = [...document.querySelectorAll("#openlayers .map-container>ol>li>a")];
+      const locations = locationLinks.map(locationLink => {
+        return {
+          center: ol.proj.fromLonLat([parseFloat(locationLink.dataset.lng), parseFloat(locationLink.dataset.lat)]),
+          zoom: parseInt(locationLink.dataset.zoom, 10),
+        };
       });
+
+      const vectorLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+          url: './data/route-holborn-conwayhall.json',
+          format: new ol.format.GeoJSON()
+        }),
+        style: new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: [0, 0, 0, 1],
+            width: 3
+          })
+        })
+      });
+
+      const startLocation = Object.assign({}, locations[0]);
+      startLocation.zoom = Math.max(startLocation.zoom - 3, 0);
+      locations.unshift(startLocation);
+      const endLocation = Object.assign({}, locations[locations.length - 1]);
+      endLocation.zoom = Math.max(endLocation.zoom - 3, 0);
+      locations.push(endLocation);
+
+      let map = new ol.Map({
+        view: new ol.View(startLocation),
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          }),
+          vectorLayer
+        ],
+        target: 'openlayers-map'
+      });
+
+      const goButton = document.querySelector('#openlayers button.go');
+      goButton.addEventListener('click', ev => {
+        ev.preventDefault();
+        const view = map.getView();
+        view.animate(...locations);
+      });
+    }
   </script>
 </section>
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
-
-  ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
-
-  ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
-
-  ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="mapbox-api">
   <h2>MapBox GL JS API</h2>
-  <div id="mapboxgl-animate-view-change" style="width: 600px; height: 450px;"></div>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <script class="example">
-      mapboxgl.accessToken = m4h.keys.mapboxGL;
-      let map = new mapboxgl.Map({
-          container: 'mapboxgl-animate-view-change',
-          style: 'mapbox://styles/mapbox/streets-v9',
-          center: [6.055737, 46.233226],
-          zoom: 15
-      });
-  </script>
+  <p>Not applicable</p>
 </section>
 
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
-
-  ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="d3-geo">

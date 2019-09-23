@@ -1,158 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>***Description*** — Maps for HTML reference examples</title>
-  <link rel="stylesheet" href="examples.css" />
-  <script src="api-keys.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Control which layers are currently visible & which can be hidden by the user</title>
+    <link rel="stylesheet" href="examples.css" />
+    <script src="api-keys.js"></script>
+    <script src="data/fisk-maps.js"></script>
 </head>
 <body>
 <h1>Examples for
-  <a href="../#use-case-***ID***">Use Case: ***Title***</a>
+    <a href="../#use-case-set-layer-visibility">
+        Control which layers are currently visible & which can be hidden by the user
+    </a>
 </h1>
 
 <p>
-  ***Introduction***
+The examples below use supplementary tile layers that show maps of stream courses in the Mississippi delta area,
+produced by Harold N. Fisk for the Presidential Mississippi River Commission, 1944.
+The maps included in the report are in the public domain.
+The maps used here are the four sheets of plate 15 of the report.
+An example of the TileJSON representation of the map is:
+
 </p>
+<pre class="example"><code>
+{
+    "tilejson": "2.2.0",
+    "name": "Mississippi Stream Courses sheet 4 - Harold Fisk, US Army Corps of Engineers",
+    "attribution": "Presidential Mississippi River Commission, 1944. Public Domain.",
+    "scheme": "tms",
+    "tiles": [
+      "https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{-y}.png"
+    ],
+    "bounds": [-92.60431421311640, 28.79036396296392, -88.72531489137181, 31.04551669046586],
+    "minzoom": 6,
+    "maxzoom": 12
+};
+</code>
+</pre>
 
 <details>
   <summary>Jump to section…</summary>
-  <ul class="toc">
-    <li>Iframe embeds: <ul>
-      <li><a href="#google-maps-embed">Google Maps embed</a></li>
-      <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
-      <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
-      <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
-    </ul></li>
-    <li>Client-side frameworks: <ul>
-      <li><a href="#leaflet-js">Leaflet.js API</a></li>
-      <li><a href="#openlayers">OpenLayers API</a></li>
-      <li><a href="#google-maps-api">Google Maps Platform API</a></li>
-      <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
-      <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
-      <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
-      <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
-      <li><a href="#d3-geo">D3 Geographies APIs</a></li>
-    </ul></li>
-  </ul>
+<ul class="toc">
+  <li>Iframe embeds: <ul>
+    <li><a href="#google-maps-embed">Google Maps embed</a></li>
+    <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+    <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
+    <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
+  </ul></li>
+  <li>Client-side frameworks: <ul>
+    <li><a href="#leaflet-js">Leaflet.js API</a></li>
+    <li><a href="#openlayers">OpenLayers API</a></li>
+    <li><a href="#google-maps-api">Google Maps Platform API</a></li>
+    <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
+    <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
+    <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+    <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
+    <li><a href="#d3-geo">D3 Geographies APIs</a></li>
+  </ul></li>
+</ul>
 </details>
 
 <section id="google-maps-embed">
-  <h2>Google Maps embed</h2>
+<h2>Google Maps embed</h2>
 
-  ***TODO<!--
+***TODO<!--
 Copy & paste embed code or <p>Not applicable</p>
 -->***
 </section>
 
 <section id="openstreetmap">
-  <h2>OpenStreetMap embed</h2>
+<h2>OpenStreetMap embed</h2>
 
-  ***TODO<!--
+***TODO<!--
 Copy & paste embed code or <p>Not applicable</p>
 -->***
 </section>
 
 <section id="bing-maps-embed">
-  <h2>Bing Maps embed</h2>
+<h2>Bing Maps embed</h2>
 
-  ***TODO<!--
+***TODO<!--
 Copy & paste embed code or <p>Not applicable</p>
 -->***
 </section>
 
 <section id="mapbox-embed">
-  <h2>MapBox Studio embed</h2>
+<h2>MapBox Studio embed</h2>
 
-  ***TODO<!--
+***TODO<!--
 Copy & paste embed code or <p>Not applicable</p>
 -->***
 </section>
 
 <section id="leaflet-js">
-  <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-  <div id="leaflet-osm-set-layer-visibility" style="width: 600px; height: 450px;"></div>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-          integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-          crossorigin=""></script>
-  <script class="example">
-      const leafletMap = L.map('leaflet-osm-set-layer-visibility').setView([46.233226, 6.055737], 15);
-      const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          minZoom: 0,
-          maxZoom: 20,
-          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      });
-      osmLayer.addTo(leafletMap);
+<h2>Leaflet.js with OpenStreetMap tiles</h2>
+<div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+<script class="example">
+  {
+    const map = L.map('leaflet-js-map').setView([33.024, -90.664814552244105], 6);
+    const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      id: 'OSM',
+      minZoom: 0,
+      maxZoom: 20,
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    });
+    osmLayer.addTo(map);
 
-      const hotLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-          minZoom: 0,
-          maxZoom: 20,
-          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    const fiskLayers = m4h.fiskMaps.streamCourses.sheets.map(sheet => {
+      return L.tileLayer(sheet.tileJSON.tiles[0], {
+        id: sheet.id,
+        tms: true,
+        minZoom: sheet.tileJSON.minzoom,
+        maxZoom: sheet.tileJSON.maxzoom,
+        opacity: 0.8,
+        attribution: sheet.tileJSON.attribution
       });
-      hotLayer.addTo(leafletMap);
+    });
+    const fiskLayerGroup = L.layerGroup(fiskLayers);
 
-      L.control.layers({
-          'OSM': osmLayer,
-          'HOT': hotLayer
-      }).addTo(leafletMap);
-  </script>
+    fiskLayerGroup.addTo(map);
+    const baseLayers = {
+      'OpenStreetMap': osmLayer
+    };
+    const overlayLayers = m4h.fiskMaps.streamCourses.sheets.reduce((accumulator, sheet, index) => {
+      accumulator[sheet.label] = fiskLayers[index];
+      return accumulator;
+    }, {});
+    L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+  }
+</script>
 </section>
 
 <section id="openlayers">
-  <h2>OpenLayers with OpenStreetMap tiles</h2>
-  <div id="ol-osm-set-layer-visibility" style="width: 600px; height: 450px;"></div>
-  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  <script class="example">
-      let openLayersMap = new ol.Map({
+    <h2>OpenLayers with OpenStreetMap tiles</h2>
+    <div id="ol-osm-alternative-layers" style="width: 600px; height: 450px;"></div>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script class="example">
+      {
+        const map = new ol.Map({
           view: new ol.View({
-              center: ol.proj.fromLonLat([6.055737, 46.233226]),
-              zoom: 15
+            center: ol.proj.fromLonLat([6.055737, 46.233226]),
+            zoom: 15
           }),
           layers: [
-              new ol.layer.Tile({
-                  source: new ol.source.OSM(),
-                  visible: true
-              }),
-              new ol.layer.Tile({
-                  source: new ol.source.OSM({url: 'https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'}),
-                  visible: false
-              })
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
           ],
-          target: 'ol-osm-set-layer-visibility'
-      });
-      const openLayersLayerControl = new ol.control.Control({ element: (() => {
-              const layerNames = ['OSM Layer', 'HOT Layer'];
-              const layerControlContainer = document.createElement('div');
-              layerControlContainer.classList.add('layers');
-              layerControlContainer.classList.add('openlayers');
-              layerControlContainer.classList.add('custom-control');
-              const layerSwitcher = layerControlContainer.appendChild(document.createElement('button'));
-              layerSwitcher.type = 'button';
-              layerSwitcher.textContent = layerNames[0];
-              layerSwitcher.addEventListener('click', function(ev) {
-                  let layers = openLayersMap.getLayers(),
-                      osmLayer = layers.item(0),
-                      hotLayer = layers.item(1);
-                  osmLayer.setVisible(!osmLayer.getVisible());
-                  hotLayer.setVisible(!hotLayer.getVisible());
-                  layerSwitcher.textContent = (osmLayer.getVisible() ? layerNames[0] : layerNames[1]);
-              });
-              return layerControlContainer;
-          })()});
-      openLayersMap.addControl(openLayersLayerControl);
-  </script>
+          target: 'ol-osm-alternative-layers'
+        });
+        // TODO: finish this!
+      }
+    </script>
 </section>
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
 
-  ***TODO<!--
+***TODO<!--
 Replace with code including link/external scripts. Custom script has class="example".
 or <p>Not applicable</p>
 -->***
@@ -161,7 +176,7 @@ or <p>Not applicable</p>
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
 
-  ***TODO<!--
+***TODO<!--
 Replace with code including link/external scripts. Custom script has class="example".
 or <p>Not applicable</p>
 -->***
@@ -170,81 +185,33 @@ or <p>Not applicable</p>
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
 
-  ***TODO<!--
+***TODO<!--
 Replace with code including link/external scripts. Custom script has class="example".
 or <p>Not applicable</p>
 -->***
 </section>
 
 <section id="mapbox-api">
-  <h2>Mapbox GL JS API</h2>
-  <div id="mapboxgl-set-layer-visibility" style="width: 600px; height: 450px;"></div>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <script class="example">
-      mapboxgl.accessToken = m4h.keys.mapboxGL;
-      const mapboxglMap = new mapboxgl.Map({
-          container: 'mapboxgl-set-layer-visibility',
-          style: 'mapbox://styles/mapbox/streets-v9',
-          center: [6.055737, 46.233226],
-          zoom: 15
-      });
-      mapboxglMap.on('load', function() {
-          mapboxglMap.addSource('contours', {
-              type: 'vector',
-              url: 'mapbox://mapbox.mapbox-terrain-v2'
-          });
-          mapboxglMap.addLayer({
-              'id': 'contours',
-              'type': 'line',
-              'source': 'contours',
-              'source-layer': 'contour',
-              'layout': {
-                  'visibility': 'visible',
-                  'line-join': 'round',
-                  'line-cap': 'round'
-              },
-              'paint': {
-                  'line-color': '#877b59',
-                  'line-width': 1
-              }
-          });
-      });
-      const mapboxglLayerControl = {
-          onAdd: (map) => {
-              const layerNames = ['Hide Contours', 'Show Contours'];
-              const layerControlContainer = document.createElement('div');
-              layerControlContainer.classList.add('layers');
-              layerControlContainer.classList.add('custom-control');
-              layerControlContainer.classList.add('mapboxgl');
-              const layerSwitcher = layerControlContainer.appendChild(document.createElement('button'));
-              layerSwitcher.type = 'button';
-              layerSwitcher.textContent = layerNames[0];
-              layerSwitcher.addEventListener('click', function(ev) {
-                  let visibility = mapboxglMap.getLayoutProperty('contours', 'visibility');
-                  if (visibility == 'none') {
-                      mapboxglMap.setLayoutProperty('contours', 'visibility', 'visible');
-                      layerSwitcher.textContent = layerNames[0];
-                  } else {
-                      mapboxglMap.setLayoutProperty('contours', 'visibility', 'none');
-                      layerSwitcher.textContent = layerNames[1];
-                  }
-              });
-              return layerControlContainer;
-          },
-          getDefaultPosition: () => {
-              return 'top-right'
-          },
-          onRemove: () => {}
-      };
-      mapboxglMap.getContainer().appendChild(mapboxglLayerControl.onAdd(mapboxglMap));
-  </script>
+    <h2>MapBox GL</h2>
+    <div id="mapboxgl-alternative-layers" style="width: 600px; height: 450px;"></div>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+    <script class="example">
+        mapboxgl.accessToken = m4h.keys.mapboxGL;
+        let map = new mapboxgl.Map({
+            container: 'mapboxgl-alternative-layers',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            center: [6.055737, 46.233226],
+            zoom: 15
+        });
+    // TODO: finish this!
+    </script>
 </section>
 
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
 
-  ***TODO<!--
+***TODO<!--
 Replace with code including link/external scripts. Custom script has class="example".
 or <p>Not applicable</p>
 -->***
@@ -253,7 +220,7 @@ or <p>Not applicable</p>
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
 
-  ***TODO<!--
+***TODO<!--
 Replace with code including link/external scripts. Custom script has class="example".
 or <p>Not applicable</p>
 -->***

@@ -285,14 +285,16 @@ for how to add point markers with the other services (where possible).
 <!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
 <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
 <script class="example">
-tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
-var tomtomVectorMap = tomtom.map('tomtom-single-location', {
-  key: m4h.keys.tomtom,
-  source: 'vector',
-  basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
-  center: [46.233226, 6.055737],
-  zoom: 15
-});
+  {
+    tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+    const map = tomtom.map('tomtom-single-location', {
+      key: m4h.keys.tomtom,
+      source: 'vector',
+      basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
+      center: [46.233226, 6.055737],
+      zoom: 15
+    });
+  }
 </script>
 </section>
 

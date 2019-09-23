@@ -30,7 +30,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
     "attribution": "Presidential Mississippi River Commission, 1944. Public Domain.",
     "scheme": "tms",
     "tiles": [
-      "https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{-y}.png"
+      "https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{-y}.png"
     ],
     "bounds": [-92.60431421311640, 28.79036396296392, -88.72531489137181, 31.04551669046586],
     "minzoom": 6,
@@ -93,7 +93,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
     <script class="example">
       {
         const map = L.map('leaflet-js-map').setView([29.91794032671489, -90.664814552244105], 8);
-        L.tileLayer('https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png', {
+        L.tileLayer('https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png', {
           tms: true,
           minZoom: 6,
           maxZoom: 12,
@@ -155,31 +155,28 @@ The TileJSON representation of the map, as a JavaScript object, is:
   </script>
 <script class="example">
 function initMap() {
-
-  var mapEl = document.querySelector('#google-maps-api-map');
-  var map = new google.maps.Map(mapEl, {
-    center: new google.maps.LatLng(29.91794032671489, -90.664814552244105),
-    zoom: 8
-  });
-  var TILE_URL = 'https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
-
-  // Name the layer anything you like.
-  var layerID = 'fisk_map';
-
+  const TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+  const layerID = 'fisk_map';
   // Create a new ImageMapType layer.
-  var layer = new google.maps.ImageMapType({
+  const layer = new google.maps.ImageMapType({
     name: layerID,
     getTileUrl: function (coord, zoom) {
-      console.log(coord);
-      var url = TILE_URL
+      return TILE_URL
         .replace('{x}', coord.x)
-        .replace('{y}', coord.y)
+        .replace('{y}', ((1 << zoom) - coord.y - 1)) // adjust y to account for TMS coordinates on the server
         .replace('{z}', zoom);
-      return url;
     },
     tileSize: new google.maps.Size(256, 256),
     minZoom: m4h.fiskMapJSON.minzoom,
     maxZoom: m4h.fiskMapJSON.maxzoom
+  });
+
+  const mapEl = document.querySelector('#google-maps-api-map');
+  const map = new google.maps.Map(mapEl, {
+    center: new google.maps.LatLng(29.91794032671489, -90.664814552244105),
+    zoom: 8,
+    mapTypeId: layerID,
+    mapTypeControl: false
   });
   map.mapTypes.set(layerID, layer);
   map.setMapTypeId(layerID);
@@ -189,20 +186,101 @@ function initMap() {
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
+  <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+    const bingApiUrl = 'https://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
+      bingScriptElement = document.createElement('script');
+    bingScriptElement.setAttribute('src', bingApiUrl);
+    document.body.appendChild(bingScriptElement);
+  </script>
+  <script class="example">
+    function initBingMap() {
+      const TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+      const layerID = 'fisk_map';
+      // Create a new ImageMapType layer.
+      const tileSource = new Microsoft.Maps.TileSource({
+        uriConstructor: function (coord) {
+          return TILE_URL
+            .replace('{x}', coord.x)
+            .replace('{y}', ((1 << coord.zoom) - coord.y - 1)) // adjust y to account for TMS coordinates on the server
+            .replace('{z}', coord.zoom);
+        },
+        minZoom: m4h.fiskMapJSON.minzoom,
+        maxZoom: m4h.fiskMapJSON.maxzoom,
+        bounds: Microsoft.Maps.LocationRect.fromEdges(
+          m4h.fiskMapJSON.bounds[3],
+          m4h.fiskMapJSON.bounds[0],
+          m4h.fiskMapJSON.bounds[1],
+          m4h.fiskMapJSON.bounds[2]
+        )
+      });
+      const layer = new Microsoft.Maps.TileLayer({
+        mercator: tileSource
+      });
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+      const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+        center: new Microsoft.Maps.Location(29.91794032671489, -90.664814552244105),
+        zoom: 8,
+        minZoom: m4h.fiskMapJSON.minzoom,
+        maxZoom: m4h.fiskMapJSON.maxzoom,
+        mapTypeId: Microsoft.Maps.MapTypeId.mercator,
+        showMapTypeSelector: false,
+        showLocateMeButton: false
+      });
+      map.layers.insert(layer);
+    }
+  </script>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
+  <p>
+    Strictly speaking this is not a custom map,
+    as it does not sem to be possible to disable the default map layer.
+  </p>
+  <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
+  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <script class="example">
+    {
+      const TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+      mapkit.addEventListener('error', function(err) {
+        console.log(err);
+      });
+      let mapkitKey = m4h.keys.mapkit.maps4html;
+      if (self.location.hostname === 'localhost') {
+        if (self.location.protocol === 'https:') {
+          mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+        } else {
+          mapkitKey = m4h.keys.mapkit.localhost8000;
+        }
+      }
+      mapkit.init({
+        authorizationCallback: function(done) {
+          done(mapkitKey);
+        },
+        language: "en"
+      });
+      const center = new mapkit.Coordinate(29.91794032671489, -90.664814552244105),
+        span = new mapkit.CoordinateSpan(2, 2),
+        region = new mapkit.CoordinateRegion(center, span);
+      const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+        region: region,
+        showsMapTypeControl: false,
+        mapType: null
+      });
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+      const tileOverlay = new mapkit.TileOverlay((x, y, z, scale, data) => {
+        return TILE_URL
+          .replace('{x}', x)
+          .replace('{y}', ((1 << z) - y - 1)) // adjust y to account for TMS coordinates on the server
+          .replace('{z}', z);
+      }, {
+        minimumZ: m4h.fiskMapJSON.minzoom,
+        maximumZ: m4h.fiskMapJSON.maxzoom
+      });
+      map.tileOverlays = [tileOverlay];
+    }
+  </script>
 </section>
 
 <section id="mapbox-api">
@@ -222,7 +300,7 @@ or <p>Not applicable</p>
               "raster-tiles": {
                 "type": "raster",
                 "scheme": m4h.fiskMapJSON.scheme,
-                "tiles": ['https://earthmarks.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png'],
+                "tiles": ['https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png'],
                 "tileSize": 256,
                 "bounds": m4h.fiskMapJSON.bounds,
                 "attribution": m4h.fiskMapJSON.attribution
@@ -247,11 +325,7 @@ or <p>Not applicable</p>
 
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="d3-geo">

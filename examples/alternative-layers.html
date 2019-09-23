@@ -165,7 +165,7 @@ but may or may not provide a standard control enabling users to choose among the
   </script>
   <script class="example">
     function initMap() {
-      const googleMap = new google.maps.Map(
+      const map = new google.maps.Map(
         document.getElementById('google-maps-api-map'),
         {
           center:{
@@ -190,7 +190,7 @@ but may or may not provide a standard control enabling users to choose among the
   </script>
   <script class="example">
     function initBingMap() {
-      let bingMap = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+      let map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
         center: new Microsoft.Maps.Location(0, 0),
         zoom: 0
       });

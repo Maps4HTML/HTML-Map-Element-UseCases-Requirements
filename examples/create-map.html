@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Display an interactive map</title>
-  <link rel="stylesheet" href="./examples.css">
+  <link rel="stylesheet" href="examples.css">
   <script src="api-keys.js"></script>
 </head>
 <body>
@@ -93,12 +93,14 @@ the examples in those cases use OpenStreetMap tiles.
           crossorigin=""></script>
   <div class="script-example">
     <script>
-      let leafletMap = L.map('leaflet-js-map').setView([0,0], 0);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      {
+        const map = L.map('leaflet-js-map').setView([0,0], 0);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           minZoom: 0,
           maxZoom: 20,
           attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      }).addTo(leafletMap);
+        }).addTo(map);
+      }
     </script>
   </div>
 </section>
@@ -110,18 +112,20 @@ the examples in those cases use OpenStreetMap tiles.
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <div class="script-example">
     <script>
-      let openLayersMap = new ol.Map({
+      {
+        const map = new ol.Map({
           view: new ol.View({
-              center: ol.proj.fromLonLat([0,0]),
-              zoom: 0
+            center: ol.proj.fromLonLat([0,0]),
+            zoom: 0
           }),
           layers: [
-              new ol.layer.Tile({
-                  source: new ol.source.OSM()
-              })
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
           ],
           target: 'openlayers-map'
-      });
+        });
+      }
     </script>
   </div>
 </section>
@@ -138,7 +142,7 @@ the examples in those cases use OpenStreetMap tiles.
   <div class="script-example">
     <script>
       function initMap() {
-          const googleMap = new google.maps.Map(
+          const map = new google.maps.Map(
               document.getElementById('google-maps-api-map'),
               {
                   center:{
@@ -165,7 +169,7 @@ the examples in those cases use OpenStreetMap tiles.
   <div class="script-example">
     <script>
       function initBingMap() {
-          let bingMap = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+          const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
               center: new Microsoft.Maps.Location(0, 0),
               zoom: 0
           });
@@ -180,29 +184,31 @@ the examples in those cases use OpenStreetMap tiles.
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
   <div class="script-example">
     <script>
-      mapkit.addEventListener('error', function(err) {
+      {
+        mapkit.addEventListener('error', function(err) {
           console.log(err);
-      });
-      let mapkitKey = m4h.keys.mapkit.maps4html;
-      if (self.location.hostname === 'localhost') {
+        });
+        let mapkitKey = m4h.keys.mapkit.maps4html;
+        if (self.location.hostname === 'localhost') {
           if (self.location.protocol === 'https:') {
-              mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+            mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
           } else {
-              mapkitKey = m4h.keys.mapkit.localhost8000;
+            mapkitKey = m4h.keys.mapkit.localhost8000;
           }
-      }
-      mapkit.init({
+        }
+        mapkit.init({
           authorizationCallback: function(done) {
-              done(mapkitKey);
+            done(mapkitKey);
           },
           language: "en"
-      });
-      const center = new mapkit.Coordinate(0, 0),
+        });
+        const center = new mapkit.Coordinate(0, 0),
           span = new mapkit.CoordinateSpan(360, 180),
           region = new mapkit.CoordinateRegion(center, span);
-      const mapkitMap = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+        const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
           region: region
-      });
+        });
+      }
     </script>
   </div>
 </section>
@@ -214,12 +220,14 @@ the examples in those cases use OpenStreetMap tiles.
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
   <div class="script-example">
     <script>
-      mapboxgl.accessToken = m4h.keys.mapboxGL;
-          // token must be configured for your website
-      let mapboxMap = new mapboxgl.Map({
+      {
+        mapboxgl.accessToken = m4h.keys.mapboxGL;
+        // token must be configured for your website
+        const map = new mapboxgl.Map({
           container: 'mapbox-api-map',
           style: 'mapbox://styles/mapbox/streets-v9'
-      });
+        });
+      }
     </script>
   </div>
 </section>
@@ -232,14 +240,16 @@ the examples in those cases use OpenStreetMap tiles.
   <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
   <div class="script-example">
     <script>
-      tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
-      var tomtomVectorMap = tomtom.map('tomtom-map', {
-        key: m4h.keys.tomtom,
+      {
+        tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+        const map = tomtom.map('tomtom-map', {
+          key: m4h.keys.tomtom,
           // token must be configured for your website
-        source: 'vector',
-        basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk'
+          source: 'vector',
+          basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk'
           // or self-host the JS + CSS
-      });
+        });
+      }
     </script>
   </div>
 </section>
@@ -247,10 +257,10 @@ the examples in those cases use OpenStreetMap tiles.
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 </body>
 </html>

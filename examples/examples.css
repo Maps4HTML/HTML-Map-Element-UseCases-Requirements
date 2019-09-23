@@ -19,7 +19,7 @@ body {
 }
 
 body > details {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 section {
@@ -76,14 +76,15 @@ h1 a:link, h1 a:visited {
     padding: 0;
 }
 
-.map-container li {
+.map-container > ol > li {
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
     flex-grow: 1;
     flex-basis: 0;
+    padding: 0 .5rem;
 }
 
-.map-container li:last-of-type {
+.map-container > ol > li:last-of-type {
     border-bottom-width: 0;
 }
 
@@ -194,6 +195,28 @@ a[data-type='point']::before {
 [id*="Microsoft.Maps"] {
   max-height: none;
   max-width: none;
+}
+
+.buttons {
+    display: flex;
+}
+
+.buttons .go {
+    background-color: #88ffaa;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px #808080;
+    color: inherit;
+    flex-grow: 1;
+    flex-basis: 1;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5.rem;
+    min-height: 2rem;
+}
+
+button {
+  cursor: pointer;
 }
 
 iframe {

@@ -43,33 +43,33 @@
 <section id="google-maps-embed">
   <h2>Google Maps embed</h2>
 
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Copy & paste embed code or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="openstreetmap">
   <h2>OpenStreetMap embed</h2>
 
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Copy & paste embed code or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="bing-maps-embed">
   <h2>Bing Maps embed</h2>
 
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Copy & paste embed code or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="mapbox-embed">
   <h2>MapBox Studio embed</h2>
 
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Copy & paste embed code or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="leaflet-js">
@@ -83,14 +83,14 @@ Copy & paste embed code or <p>Not applicable</p>
           crossorigin=""></script>
   <div class="script-example">
     <script>
-      {
-        const map = L.map('leaflet-js-map').setView([0,0], 1);
-        L.tileLayer('https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{-y}.png', {
-          minZoom: 0,
-          maxZoom: 4,
-          attribution: 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
-        }).addTo(map);
-      }
+    {
+      const map = L.map('leaflet-js-map').setView([0,0], 1);
+      L.tileLayer('https://maps4html.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{-y}.png', {
+        minZoom: 0,
+        maxZoom: 4,
+        attribution: 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
+      }).addTo(map);
+    }
     </script>
   </div>
 </section>
@@ -102,33 +102,33 @@ Copy & paste embed code or <p>Not applicable</p>
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   <div class="script-example">
     <script>
-      const map = (() => {
-        const pictureLayer = new ol.layer.Tile({
-          source: new ol.source.TileJSON({
-            url: 'https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/tiles.json',
-          })
-        });
+    const map = (() => {
+      const pictureLayer = new ol.layer.Tile({
+        source: new ol.source.TileJSON({
+          url: 'https://maps4html.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/tiles.json',
+        })
+      });
 
-        const view = new ol.View({
-          center: [0, 0],
-          zoom: 1,
-          maxZoom: 4,
-          minZoom: 0,
-        });
+      const view = new ol.View({
+        center: [0, 0],
+        zoom: 1,
+        maxZoom: 4,
+        minZoom: 0,
+      });
 
-        const map = new ol.Map({
-          view: view,
-          layers: [
-            pictureLayer
-          ],
-          controls: [
-            new ol.control.ZoomSlider()
-          ],
-          target: 'openlayers-map',
-        });
+      const map = new ol.Map({
+        view: view,
+        layers: [
+          pictureLayer
+        ],
+        controls: [
+          new ol.control.ZoomSlider()
+        ],
+        target: 'openlayers-map',
+      });
 
-        return map;
-      })();
+      return map;
+    })();
     </script>
   </div>
 </section>
@@ -136,28 +136,28 @@ Copy & paste embed code or <p>Not applicable</p>
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="mapbox-api">
@@ -179,7 +179,7 @@ or <p>Not applicable</p>
               "raster-tiles": {
                 "type": "raster",
                 "scheme": "tms",
-                "tiles": ["https://earthmarks.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{y}.png"],
+                "tiles": ["https://maps4html.github.io/TiledArt-Rousseau/TheBanksOfTheBièvreNearBicêtre/{z}/{x}/{y}.png"],
                 "tileSize": 256,
                 "attribution": 'Henri Rousseau: The Banks Of The Bièvre Near Bicêtre'
               }
@@ -204,19 +204,19 @@ or <p>Not applicable</p>
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
 
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  ***TODO<!--
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 </body>
 </html>

@@ -170,7 +170,7 @@ but may or may not provide a standard control enabling users to choose among the
   <div class="script-example">
     <script>
       function initMap() {
-        const googleMap = new google.maps.Map(
+        const map = new google.maps.Map(
           document.getElementById('google-maps-api-map'),
           {
             center:{
@@ -197,7 +197,7 @@ but may or may not provide a standard control enabling users to choose among the
   <div class="script-example">
     <script>
       function initBingMap() {
-        let bingMap = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+        let map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
           center: new Microsoft.Maps.Location(0, 0),
           zoom: 0
         });
@@ -212,29 +212,29 @@ but may or may not provide a standard control enabling users to choose among the
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
   <div class="script-example">
     <script>
-        mapkit.addEventListener('error', function(err) {
-          console.log(err);
-        });
-        let mapkitKey = m4h.keys.mapkit.maps4html;
-        if (self.location.hostname === 'localhost') {
-          if (self.location.protocol === 'https:') {
-            mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
-          } else {
-            mapkitKey = m4h.keys.mapkit.localhost8000;
-          }
+      mapkit.addEventListener('error', function(err) {
+        console.log(err);
+      });
+      let mapkitKey = m4h.keys.mapkit.maps4html;
+      if (self.location.hostname === 'localhost') {
+        if (self.location.protocol === 'https:') {
+          mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+        } else {
+          mapkitKey = m4h.keys.mapkit.localhost8000;
         }
-        mapkit.init({
-          authorizationCallback: function(done) {
-            done(mapkitKey);
-          },
-          language: "en"
-        });
-        const center = new mapkit.Coordinate(0, 0),
-          span = new mapkit.CoordinateSpan(360, 180),
-          region = new mapkit.CoordinateRegion(center, span);
-        const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
-          region: region
-        });
+      }
+      mapkit.init({
+        authorizationCallback: function(done) {
+          done(mapkitKey);
+        },
+        language: "en"
+      });
+      const center = new mapkit.Coordinate(0, 0),
+        span = new mapkit.CoordinateSpan(360, 180),
+        region = new mapkit.CoordinateRegion(center, span);
+      const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+        region: region
+      });
     </script>
   </div>
 </section>
@@ -300,18 +300,18 @@ but may or may not provide a standard control enabling users to choose among the
   <h2>TomTom Maps SDK for Web with vector maps</h2>
 
   ***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
 
   ***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 </body>
 </html>

@@ -66,21 +66,34 @@ for how to add point markers with the other services (where possible).
 
 <section id="google-maps-embed">
   <h2>Google Maps embed</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44156.06881542181!2d6.0130244457978295!3d46.23523057360836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c62fcec737b11%3A0x81bef3ae7a885e31!2sCERN!5e0!3m2!1sen!2sca!4v1552858082440" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <iframe width="600" height="450" allowfullscreen allow="fullscreen"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44156.06881542181!2d6.0130244457978295!3d46.23523057360836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c62fcec737b11%3A0x81bef3ae7a885e31!2sCERN!5e0!3m2!1sen!2sca!4v1552858082440">
+  </iframe>
 </section>
 
 <section id="openstreetmap">
   <h2>OpenStreetMap embed</h2>
-  <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=6.052817702293396%2C46.23131259369175%2C6.056969761848451%2C46.235594723049495&amp;layer=mapnik&amp;marker=46.23345370013554%2C6.054893732070923" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=46.23345&amp;mlon=6.05489#map=18/46.23345/6.05489">View Larger Map</a></small>
+  <iframe width="600" height="450" scrolling="no"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=6.052817702293396%2C46.23131259369175%2C6.056969761848451%2C46.235594723049495&amp;layer=mapnik&amp;marker=46.23345370013554%2C6.054893732070923">
+  </iframe>
+  <div class="map-links">
+    <small>
+      <a href="https://www.openstreetmap.org/?mlat=46.23345&amp;mlon=6.05489#map=18/46.23345/6.05489">View Larger Map</a>
+    </small>
+  </div>
 </section>
 
 <section id="bing-maps-embed">
 <h2>Bing Maps embed</h2>
   <div>
-    <iframe width="500" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=46.23234202714631~6.070279394261964&lvl=14&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no"></iframe>
-    <div class="bing-maps-links">
-     <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=46.23234202714631~6.070279394261964&amp;sty=r&amp;lvl=14&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
-     <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=46.23234202714631~6.070279394261964&amp;sty=r&amp;lvl=14&amp;rtp=~pos.46.23234202714631_6.070279394261964____&amp;FORM=MBEDLD">Get Directions</a>
+    <iframe width="600" height="450" scrolling="no"
+      src="https://www.bing.com/maps/embed?w=600&h=450&cp=46.23234202714631~6.070279394261964&lvl=14&typ=d&sty=r&src=SHELL&FORM=MBEDV8">
+    </iframe>
+    <div class="map-links">
+      <small>
+        <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=46.23234202714631~6.070279394261964&amp;sty=r&amp;lvl=14&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
+        <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=46.23234202714631~6.070279394261964&amp;sty=r&amp;lvl=14&amp;rtp=~pos.46.23234202714631_6.070279394261964____&amp;FORM=MBEDLD">Get Directions</a>
+      </small>
    </div>
   </div>
 </section>
@@ -88,7 +101,7 @@ for how to add point markers with the other services (where possible).
 <section id="mapbox-embed">
   <h2>MapBox Studio embed</h2>
   <div>
-    <iframe width="500" height="400" frameborder="0"
+    <iframe width="500" height="400"
       src="https://api.mapbox.com/styles/v1/nchan0154/cjx9tt51t2d7d1dl7z92tnjks.html?fresh=true&access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#12.9/46.234099/6.055079/0">
     </iframe>
   </div>
@@ -311,7 +324,7 @@ for how to add point markers with the other services (where possible).
 
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
-  
+
   ***TODO<!--
   Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
   or <p>Not applicable</p>

@@ -43,7 +43,6 @@ h1 a:link, h1 a:visited {
   display: block;
   white-space: pre;
   font-family: monospace;
-  position: relative;
   padding: 0 2rem 1rem 0;
   z-index: 2;
   overflow-x: auto;

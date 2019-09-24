@@ -125,6 +125,16 @@ a[href]:hover .tag-span, a[href]:focus .tag-span {
   content: " (#" attr(data-number) ")";
   /* applies if ReSpec JS doesn't run */
 }
+[id^="use-case-"] figure img {
+  border-radius: 2px;
+  height: auto;
+  max-width: 100%;
+  margin: auto;
+  margin-bottom: .5rem;
+}
+.figno::after {
+  content: ":";
+}
 </style>
 
 
@@ -539,8 +549,8 @@ var[data-type]:hover::before {
       ]
     }
   ],
-  "publishISODate": "2019-09-23T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 23 September 2019"
+  "publishISODate": "2019-09-24T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 24 September 2019"
 }</script><meta name="description" content="This report outlines the use cases and requirements
 for standardizing modern Web maps,
 in a way that works
@@ -553,7 +563,7 @@ consultation with the Maps for HTML Community Group and others."><link rel="styl
       
       <h2>
         Draft Community Group Report
-        <time class="dt-published" datetime="2019-09-23">23 September 2019</time>
+        <time class="dt-published" datetime="2019-09-24">24 September 2019</time>
       </h2>
       <dl>
         
@@ -1672,6 +1682,10 @@ among many other uses.
 Of course, most use cases require additional capabilities
 — this is just the foundation!
 </p>
+<figure id="fig-google-maps-example-implementation-of-display-an-interactive-map-within-a-web-page">
+  <img src="images/examples/create-map_google-maps.jpg" width="450" height="336" alt="Google Maps example: Create a basic map.">
+  <figcaption>Figure <bdi class="figno">1</bdi> <span class="fig-title">Google Maps example implementation of "Display an interactive map within a web page".</span></figcaption>
+</figure>
 <p>
 See <a href="examples/create-map.html" target="examples">examples of creating a basic map</a>
 as implemented by the reference JavaScript tools.
@@ -1703,6 +1717,10 @@ In social media and blogs,
 a single-location map can be used to show where a post was uploaded from,
 or where a photograph or video was taken.
 </p>
+<figure id="fig-tomtom-maps-sdk-for-web-example-implementation-of-display-a-map-centered-on-a-point-location">
+  <img src="images/examples/single-location_tomtom-sdk-web-vector-maps.jpg" width="450" height="336" alt="TomTom Maps SDK for Web example: Single-location map viewer.">
+  <figcaption>Figure <bdi class="figno">2</bdi> <span class="fig-title">TomTom Maps SDK for Web example implementation of "Display a map centered on a point location".</span></figcaption>
+</figure>
 <p>
 See <a href="examples/single-location.html" target="examples">examples of single-location map viewers</a>
 as implemented by the reference JavaScript tools.
@@ -1763,6 +1781,10 @@ For many use cases,
 the website author will want to choose the icon used to mark the location,
 with different markers for different types of point features.
 </p>
+<figure id="fig-bing-maps-control-api-example-implementation-of-display-multiple-point-locations-as-map-markers">
+  <img src="images/examples/multiple-location-markers_bing-maps-control-api.jpg" width="450" height="336" alt="Bing Maps Control API example: Display multiple point locations as map markers.">
+  <figcaption>Figure <bdi class="figno">3</bdi> <span class="fig-title">Bing Maps Control API example implementation of "Display multiple point locations as map markers".</span></figcaption>
+</figure>
 <p>
 See <a href="examples/multiple-location-markers.html" target="examples">examples of displaying multiple point locations as map markers</a>
 as implemented by the reference JavaScript tools.
@@ -1868,6 +1890,10 @@ To support slippy web maps with extensive pan and zoom capabilities, however,
 the custom images need to be divided into tilesets
 and the map viewer needs to be able to dynamically fetch the correct images.
 </p>
+<figure id="fig-mapbox-gl-example-implementation-of-display-custom-imagery-as-a-map-layer">
+  <img src="images/examples/custom-map_mapbox-gl.jpg" width="450" height="336" alt="MapBox GL example: Display custom imagery as a map layer.">
+  <figcaption>Figure <bdi class="figno">4</bdi> <span class="fig-title">MapBox GL example implementation of "Display custom imagery as a map layer".</span></figcaption>
+</figure>
 <p>
 See <a href="examples/custom-map.html" target="examples">examples of specifying a data source for a map tile layer</a>
 as implemented by the reference JavaScript tools.
@@ -1922,6 +1948,10 @@ Note: the ability to re-style the default map interface is also listed
 <a href="#use-case-color-scheme">as a web-visitor use case</a>.
 But alternative map layers are part of the content, as well.
 </p>
+<figure id="fig-mapkit-js-apple-maps-api-example-implementation-of-provide-alternative-map-layers-which-the-user-can-select">
+  <img src="images/examples/alternative-layers_apple-maps-mapkit-js-api.jpg" width="450" height="336" alt="MapKit JS (Apple Maps) API example: Provide alternative map layers which the user can select.">
+  <figcaption>Figure <bdi class="figno">5</bdi> <span class="fig-title">MapKit JS (Apple Maps) API example implementation of "Provide alternative map layers which the user can select".</span></figcaption>
+</figure>
 <p>
 See <a href="examples/alternative-layers.html" target="examples">examples of allowing the user to select a different style for a map</a>
 as implemented by the reference JavaScript tools.
@@ -1953,6 +1983,10 @@ An author who is familiar with map widgets
 would want to reuse the same technology
 for displaying these types of map-like content.
 </p>
+<figure id="fig-leaflet-js-with-openstreetmap-tiles-example-implementation-of-display-drawings-or-schematics-without-geographic-coordinates">
+  <img src="images/examples/technical-drawings_leafletjs-openstreetmap-tiles.jpg" width="450" height="336" alt="Leaflet.js (with OpenStreetMap tiles) example: Non-geographic content in map viewers.">
+  <figcaption>Figure <bdi class="figno">6</bdi> <span class="fig-title">Leaflet.js (with OpenStreetMap tiles) example implementation of "Display drawings or schematics without geographic coordinates".</span></figcaption>
+</figure>
 <p>
 See <a href="examples/technical-drawings.html" target="examples">examples of non-geographic content in map viewers</a>
 as implemented by the reference JavaScript tools.
@@ -2214,6 +2248,10 @@ keyboard users, in which case it could be replaced with an
 accessible version that utilised a public API to effect
 zooming in response to the keyboard.
 </p>
+<figure id="fig-openlayers-with-openstreetmap-tiles-example-implementation-of-add-a-custom-control-to-a-map">
+  <img src="images/examples/add-custom-control_openlayers-openstreetmap-tiles.jpg" width="450" height="336" alt="OpenLayers (with OpenStreetMap tiles) example: Add a custom control to a map.">
+  <figcaption>Figure <bdi class="figno">7</bdi> <span class="fig-title">OpenLayers (with OpenStreetMap tiles) example implementation of "Add a custom control to a map".</span></figcaption>
+</figure>
 <p>
 See <a href="examples/add-custom-control.html" target="examples">examples of adding a custom control to a map</a>
 as implemented by the reference JavaScript tools.
@@ -2367,6 +2405,10 @@ Discuss this section on GitHub.
 See <a href="examples/set-layer-visibility.html" target="examples">examples of allowing the user to control the layer displayed by a map</a>
 as implemented by the reference JavaScript tools.
 </p>
+<figure id="fig-leaflet-js-with-openstreetmap-tiles-example-implementation-of-control-which-layers-are-currently-visible-which-can-be-hidden-by-the-user">
+  <img src="images/examples/set-layer-visibility_leafletjs-openstreetmap-tiles.jpg" width="450" height="336" alt="Leaflet.js (with OpenStreetMap tiles) example: Control which layers are currently visible &amp; which can be hidden by the user.">
+  <figcaption>Figure <bdi class="figno">8</bdi> <span class="fig-title">Leaflet.js (with OpenStreetMap tiles) example implementation of "Control which layers are currently visible &amp; which can be hidden by the user".</span></figcaption>
+</figure>
 <div class="issue" id="issue-container-number-82"><div role="heading" class="issue-title marker" id="h-issue-23" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/82"><span class="issue-number">Issue 82</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use Case: Allow the user to control the layer displayed by a map <a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239);">discussion: use case</a><a class="respec-gh-label respec-label-light" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211);">status: editor's draft</a></span></div><p class="discussion">
 Discuss this section on GitHub.
 </p></div>

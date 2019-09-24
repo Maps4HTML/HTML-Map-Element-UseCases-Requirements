@@ -1,41 +1,71 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
 
 html {
   background-color: #fefefe;
   color: #222;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
 }
+
+body {
+  line-height: 1.5;
+  padding: 0 1.5rem 2rem;
+  margin: 0 auto;
+  max-width: 50em;
+}
+
+body > details {
+  padding: 1rem 0;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
 h1 a:link, h1 a:visited {
   color: navy;
 }
-p {
-  max-width: 50em;
-}
-script.example {
-    display: block;
-    white-space: pre-wrap;
-    font-family: monospace;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    margin-top: 1rem;
-    position: relative;
+
+.toc > li {
+  margin-bottom: 1rem;
 }
 
-script.example:before {
-    content: 'Script';
-    background-color: #efefef;
-    position: absolute;
-    top: -0.5rem;
-    border: 1px solid #ccc;
-    padding: 0.1rem 0.5rem;
+.script-example script {
+  display: block;
+  white-space: pre;
+  font-family: monospace;
+  overflow: visible;
+  position: relative;
+  padding: 0 2rem 2rem 0;
+  z-index: 2;
+  overflow-y: auto;
+}
+
+.script-example {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  margin-top: 1rem;
+  overflow-x: visible;
+}
+
+.script-example::before {
+  content: 'Script';
+  background-color: #efefef;
+  position: relative;
+  top: -0.5rem;
+  left: 1.5rem;
+  border: 1px solid #ccc;
+  z-index: 2;
+  padding: 0.1rem 0.5rem;
 }
 
 .map-container {
-    display: grid;
-    min-width: 320px;
-    min-height: 320px;
-    grid-template-columns: minmax(80px, 1fr) minmax(240px, 5fr);
-    border: 1px solid #0c0b0b;
-    max-width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 2px;
 }
 
 .map-container > ol {
@@ -47,10 +77,11 @@ script.example:before {
 }
 
 .map-container > ol > li {
-    border-bottom: 1px solid #0c0b0b;
-    border-right: 1px solid #0c0b0b;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     flex-grow: 1;
     flex-basis: 0;
+    padding: 0 .5rem;
 }
 
 .map-container > ol > li:last-of-type {
@@ -62,7 +93,9 @@ script.example:before {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    padding: 1rem;
+    padding: 1rem .5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 a[data-type='bounds']::before {
@@ -82,6 +115,10 @@ a[data-type='point']::before {
     box-shadow: 1px 1px 2px rgba(0,0,0,0.65);
 }
 
+.custom-control span:last-of-type {
+  margin-right: .5rem;
+}
+
 .openlayers.custom-control {
     position: absolute;
     bottom: 1em;
@@ -92,7 +129,6 @@ a[data-type='point']::before {
     position: absolute;
     top: 1em;
     left: 1em;
-    white-space: nowrap;
 }
 
 .mapboxgl.custom-control {
@@ -106,7 +142,6 @@ a[data-type='point']::before {
 .controls {
     text-align: center;
     padding: 0.5rem;
-    box-sizing: border-box;
 }
 
 .controls.external {
@@ -118,14 +153,119 @@ a[data-type='point']::before {
     font-weight: bold;
 }
 
+.bing-maps-links {
+  text-align: center;
+  width: 500px;
+  padding: 6px 0;
+  max-width: 100%;
+}
+
+.bing.custom-control.lat-lng {
+  position: absolute;
+  top: auto;
+  bottom: 3rem;
+  left: 1rem;
+}
+
+.MicrosoftMap .ms-composite {
+  width: 100%;
+  height: 100%;
+}
+
+.MicrosoftMap .NavBar_MapTypeButtonDropDownIcon {
+  box-sizing: initial;
+}
+
+.MicrosoftMap .NavBar_MapTypeButtonIcon {
+  margin-left: 5px;
+}
+
+#openlayers-map {
+  background-color: #f6f6f6;
+}
+
+#openlayers .ol-zoomslider {
+  top: 1rem;
+  background-color: rgba(255,255,255,.8);
+  border: 1px solid rgba(0,60,136,.2);
+  height: 207px;
+}
+
+#labelCanvasId,
+[id*="Microsoft.Maps"] {
+  max-height: none;
+  max-width: none;
+}
+
 .buttons {
     display: flex;
 }
 
 .buttons .go {
     background-color: #88ffaa;
-    color: #050505;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px #808080;
+    color: inherit;
     flex-grow: 1;
     flex-basis: 1;
     font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5.rem;
+    min-height: 2rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+iframe {
+  border: none !important;
+}
+
+canvas,
+iframe,
+#bing-maps-api-map,
+#google-maps-api-map,
+#leaflet-js-map,
+#mapkit-js-map,
+#openlayers-map,
+#openlayers > div:not(.script-example):not(.map-container),
+#tomtom-map,
+.leaflet-container,
+.leaflet-map-pane,
+.mapboxgl-map {
+  max-width: 100%;
+  border-radius: 2px;
+}
+
+@media (max-width: 429px) {
+  canvas,
+  iframe,
+  #bing-maps-api-map,
+  #google-maps-api-map,
+  #leaflet-js-map,
+  #mapkit-js-map,
+  #openlayers-map,
+  #openlayers > div:not(.script-example):not(.map-container),
+  #tomtom-map,
+  .leaflet-container,
+  .leaflet-map-pane,
+  .mapboxgl-map {
+    max-height: 275px;
+    height: 275px;
+  }
+
+  .custom-control.lat-lng {
+    max-width: 200px;
+  }
+}
+
+@media (min-width: 430px) {
+  .map-container {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) minmax(300px, 5fr);
+    min-width: 400px;
+    min-height: 400px;
+  }
 }

@@ -43,7 +43,6 @@ h1 a:link, h1 a:visited {
   display: block;
   white-space: pre;
   font-family: monospace;
-  overflow: visible;
   position: relative;
   padding: 0 2rem 1rem 0;
   z-index: 2;
@@ -54,7 +53,6 @@ h1 a:link, h1 a:visited {
   border: 1px solid #ccc;
   border-radius: 2px;
   margin-top: 1rem;
-  overflow-x: visible;
 }
 
 .script-example::before {

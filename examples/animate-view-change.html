@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Animate a map through a sequence of points — Maps for HTML reference examples</title>
-  <link rel="stylesheet" href="examples.css" />
+  <link rel="stylesheet" href="examples.css">
   <script src="api-keys.js"></script>
 </head>
 <body>
@@ -21,44 +21,44 @@ Other libraries require the developer to implement the sequencing of animations 
 
 <details>
   <summary>Jump to section…</summary>
-<ul class="toc">
-  <li>Iframe embeds: <ul>
-    <li><a href="#google-maps-embed">Google Maps embed</a></li>
-    <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
-    <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
-    <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
-  </ul></li>
-  <li>Client-side frameworks: <ul>
-    <li><a href="#leaflet-js">Leaflet.js API</a></li>
-    <li><a href="#openlayers">OpenLayers API</a></li>
-    <li><a href="#google-maps-api">Google Maps Platform API</a></li>
-    <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
-    <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
-    <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
-    <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
-    <li><a href="#d3-geo">D3 Geographies APIs</a></li>
-  </ul></li>
-</ul>
+  <ul class="toc">
+    <li>Iframe embeds: <ul>
+      <li><a href="#google-maps-embed">Google Maps embed</a></li>
+      <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+      <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
+      <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
+    </ul></li>
+    <li>Client-side frameworks: <ul>
+      <li><a href="#leaflet-js">Leaflet.js API</a></li>
+      <li><a href="#openlayers">OpenLayers API</a></li>
+      <li><a href="#google-maps-api">Google Maps Platform API</a></li>
+      <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
+      <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
+      <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+      <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
+      <li><a href="#d3-geo">D3 Geographies APIs</a></li>
+    </ul></li>
+  </ul>
 </details>
 
 <section id="google-maps-embed">
-<h2>Google Maps embed</h2>
-<p>Not applicable</p>
+  <h2>Google Maps embed</h2>
+  <p>Not applicable</p>
 </section>
 
 <section id="openstreetmap">
-<h2>OpenStreetMap embed</h2>
-<p>Not applicable</p>
+  <h2>OpenStreetMap embed</h2>
+  <p>Not applicable</p>
 </section>
 
 <section id="bing-maps-embed">
-<h2>Bing Maps embed</h2>
-<p>Not applicable</p>
+  <h2>Bing Maps embed</h2>
+  <p>Not applicable</p>
 </section>
 
 <section id="mapbox-embed">
-<h2>MapBox Studio embed</h2>
-<p>Not applicable</p>
+  <h2>MapBox Studio embed</h2>
+  <p>Not applicable</p>
 </section>
 
 <section id="leaflet-js">
@@ -101,56 +101,58 @@ Other libraries require the developer to implement the sequencing of animations 
   </div>
   <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  <script class="example">
-    {
-      // convert values from DOM attributes to properties for animation
-      const locationLinks = [...document.querySelectorAll("#openlayers .map-container>ol>li>a")];
-      const locations = locationLinks.map(locationLink => {
-        return {
-          center: ol.proj.fromLonLat([parseFloat(locationLink.dataset.lng), parseFloat(locationLink.dataset.lat)]),
-          zoom: parseInt(locationLink.dataset.zoom, 10),
-        };
-      });
+  <div class="script-example">
+    <script>
+      {
+        // convert values from DOM attributes to properties for animation
+        const locationLinks = [...document.querySelectorAll("#openlayers .map-container>ol>li>a")];
+        const locations = locationLinks.map(locationLink => {
+          return {
+            center: ol.proj.fromLonLat([parseFloat(locationLink.dataset.lng), parseFloat(locationLink.dataset.lat)]),
+            zoom: parseInt(locationLink.dataset.zoom, 10),
+          };
+        });
 
-      const vectorLayer = new ol.layer.Vector({
-        source: new ol.source.Vector({
-          url: './data/route-holborn-conwayhall.json',
-          format: new ol.format.GeoJSON()
-        }),
-        style: new ol.style.Style({
-          stroke: new ol.style.Stroke({
-            color: [0, 0, 0, 1],
-            width: 3
-          })
-        })
-      });
-
-      const startLocation = Object.assign({}, locations[0]);
-      startLocation.zoom = Math.max(startLocation.zoom - 3, 0);
-      locations.unshift(startLocation);
-      const endLocation = Object.assign({}, locations[locations.length - 1]);
-      endLocation.zoom = Math.max(endLocation.zoom - 3, 0);
-      locations.push(endLocation);
-
-      let map = new ol.Map({
-        view: new ol.View(startLocation),
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
+        const vectorLayer = new ol.layer.Vector({
+          source: new ol.source.Vector({
+            url: './data/route-holborn-conwayhall.json',
+            format: new ol.format.GeoJSON()
           }),
-          vectorLayer
-        ],
-        target: 'openlayers-map'
-      });
+          style: new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: [0, 0, 0, 1],
+              width: 3
+            })
+          })
+        });
 
-      const goButton = document.querySelector('#openlayers button.go');
-      goButton.addEventListener('click', ev => {
-        ev.preventDefault();
-        const view = map.getView();
-        view.animate(...locations);
-      });
-    }
-  </script>
+        const startLocation = Object.assign({}, locations[0]);
+        startLocation.zoom = Math.max(startLocation.zoom - 3, 0);
+        locations.unshift(startLocation);
+        const endLocation = Object.assign({}, locations[locations.length - 1]);
+        endLocation.zoom = Math.max(endLocation.zoom - 3, 0);
+        locations.push(endLocation);
+
+        let map = new ol.Map({
+          view: new ol.View(startLocation),
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            }),
+            vectorLayer
+          ],
+          target: 'openlayers-map'
+        });
+
+        const goButton = document.querySelector('#openlayers button.go');
+        goButton.addEventListener('click', ev => {
+          ev.preventDefault();
+          const view = map.getView();
+          view.animate(...locations);
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="google-maps-api">
@@ -182,9 +184,9 @@ Other libraries require the developer to implement the sequencing of animations 
   <h2>D3 Geographies APIs</h2>
 
   ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 </body>
 </html>

@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Single Location Map Views — Maps for HTML reference examples</title>
-  <link rel="stylesheet" href="examples.css" />
+  <link rel="stylesheet" href="examples.css">
   <script src="api-keys.js"></script>
 </head>
 <body>
@@ -44,125 +44,126 @@ for how to add point markers with the other services (where possible).
 
 <details>
   <summary>Jump to section…</summary>
-<ul class="toc">
-  <li>Iframe embeds: <ul>
-    <li><a href="#google-maps-embed">Google Maps embed</a></li>
-    <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
-    <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
-    <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
-  </ul></li>
-  <li>Client-side frameworks: <ul>
-    <li><a href="#leaflet-js">Leaflet.js API</a></li>
-    <li><a href="#openlayers">OpenLayers API</a></li>
-    <li><a href="#google-maps-api">Google Maps Platform API</a></li>
-    <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
-    <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
-    <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
-    <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
-    <li><a href="#d3-geo">D3 Geographies APIs</a></li>
-  </ul></li>
-</ul>
+  <ul class="toc">
+    <li>Iframe embeds: <ul>
+      <li><a href="#google-maps-embed">Google Maps embed</a></li>
+      <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+      <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
+      <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
+    </ul></li>
+    <li>Client-side frameworks: <ul>
+      <li><a href="#leaflet-js">Leaflet.js API</a></li>
+      <li><a href="#openlayers">OpenLayers API</a></li>
+      <li><a href="#google-maps-api">Google Maps Platform API</a></li>
+      <li><a href="#bing-maps-api">Bing Maps Control API</a></li>
+      <li><a href="#mapkit-js">MapKit JS (Apple Maps) API</a></li>
+      <li><a href="#mapbox-api">Mapbox GL JS API</a></li>
+      <li><a href="#tomtom">TomTom Maps SDK for Web with vector maps</a></li>
+      <li><a href="#d3-geo">D3 Geographies APIs</a></li>
+    </ul></li>
+  </ul>
 </details>
 
 <section id="google-maps-embed">
-<h2>Google Maps embed</h2>
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44156.06881542181!2d6.0130244457978295!3d46.23523057360836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c62fcec737b11%3A0x81bef3ae7a885e31!2sCERN!5e0!3m2!1sen!2sca!4v1552858082440" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <h2>Google Maps embed</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44156.06881542181!2d6.0130244457978295!3d46.23523057360836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c62fcec737b11%3A0x81bef3ae7a885e31!2sCERN!5e0!3m2!1sen!2sca!4v1552858082440" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 </section>
 
 <section id="openstreetmap">
-<h2>OpenStreetMap embed</h2>
-
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=6.052817702293396%2C46.23131259369175%2C6.056969761848451%2C46.235594723049495&amp;layer=mapnik&amp;marker=46.23345370013554%2C6.054893732070923" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=46.23345&amp;mlon=6.05489#map=18/46.23345/6.05489">View Larger Map</a></small>
+  <h2>OpenStreetMap embed</h2>
+  <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=6.052817702293396%2C46.23131259369175%2C6.056969761848451%2C46.235594723049495&amp;layer=mapnik&amp;marker=46.23345370013554%2C6.054893732070923" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=46.23345&amp;mlon=6.05489#map=18/46.23345/6.05489">View Larger Map</a></small>
 </section>
 
 <section id="bing-maps-embed">
 <h2>Bing Maps embed</h2>
-<div>
-    <iframe width="500" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=46.23234202714631~6.070279394261964&lvl=14&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no">
-    </iframe>
-    <div style="white-space: nowrap; text-align: center; width: 500px; padding: 6px 0;">
-       <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=46.23234202714631~6.070279394261964&amp;sty=r&amp;lvl=14&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
-       <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=46.23234202714631~6.070279394261964&amp;sty=r&amp;lvl=14&amp;rtp=~pos.46.23234202714631_6.070279394261964____&amp;FORM=MBEDLD">Get Directions</a>
+  <div>
+    <iframe width="500" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=46.23234202714631~6.070279394261964&lvl=14&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no"></iframe>
+    <div class="bing-maps-links">
+     <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=46.23234202714631~6.070279394261964&amp;sty=r&amp;lvl=14&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
+     <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=46.23234202714631~6.070279394261964&amp;sty=r&amp;lvl=14&amp;rtp=~pos.46.23234202714631_6.070279394261964____&amp;FORM=MBEDLD">Get Directions</a>
    </div>
-</div>
+  </div>
 </section>
 
 <section id="mapbox-embed">
-<h2>MapBox Studio embed</h2>
-<div>
-  <iframe width="500" height="400" frameborder="0"
-    src="https://api.mapbox.com/styles/v1/nchan0154/cjx9tt51t2d7d1dl7z92tnjks.html?fresh=true&access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#12.9/46.234099/6.055079/0">
-  </iframe>
-</div>
+  <h2>MapBox Studio embed</h2>
+  <div>
+    <iframe width="500" height="400" frameborder="0"
+      src="https://api.mapbox.com/styles/v1/nchan0154/cjx9tt51t2d7d1dl7z92tnjks.html?fresh=true&access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#12.9/46.234099/6.055079/0">
+    </iframe>
+  </div>
 </section>
 
 <section id="leaflet-js">
-<h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-<div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-  crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-  crossorigin=""></script>
-<script class="example">
-    {
-        const map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            minZoom: 0,
-            maxZoom: 20,
-            attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        const centerMarker = L.marker(map.getCenter());
-        centerMarker.addTo(map);
-    }
-</script>
+  <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
+  <div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+  <div class="script-example">
+    <script>
+        {
+            const map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                minZoom: 0,
+                maxZoom: 20,
+                attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            const centerMarker = L.marker(map.getCenter());
+            centerMarker.addTo(map);
+        }
+    </script>
+  </div>
 </section>
 
 <section id="openlayers">
-<h2>OpenLayers (with OpenStreetMap tiles)</h2>
-<div id="openlayers-map" style="width: 600px; height: 450px;"></div>
-<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-<script class="example">
-    {
-        const vectorLayerFeatures = [];
-        const vectorLayer = new ol.layer.Vector({
-            source: new ol.source.Vector({
-                features: vectorLayerFeatures
-            })
-        });
-        const baseMapLayer = new ol.layer.Tile({
-            source: new ol.source.OSM()
-        });
-        const view = new ol.View({
-            center: ol.proj.fromLonLat([6.054893732070923, 46.2334537001]),
-            zoom: 15
-        });
-        const map = new ol.Map({
-            target: 'openlayers-map',
-            layers: [baseMapLayer, vectorLayer],
-            view: view
-        });
-        // set up the center marker
-        const markerSVGData = "data:image/svg+xml,%3Csvg width='36px' height='36px' viewBox='-18 -18 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Eround-marker%3C/title%3E%3Cg stroke-width='3' stroke='%236af'%3E%3Ccircle fill='%23fc2' fill-opacity='0.7' r='16'/%3E%3Ccircle r='1.5'/%3E%3C/g%3E%3C/svg%3E";
-        // simple SVG circle icon,
-        // the marker will be centered by default
-        const style = new ol.style.Style({
-            image: new ol.style.Icon({
-                opacity: 1,
-                scale: 0.5,
-                src: markerSVGData
-            })
-        });
-        const centerMarker = new ol.Feature({
-            geometry: new ol.geom.Point(view.getCenter())
-        });
-        centerMarker.setStyle(style);
-        vectorLayer.getSource().addFeature(centerMarker);
-    }
-</script>
+  <h2>OpenLayers (with OpenStreetMap tiles)</h2>
+  <div id="openlayers-map" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+  <div class="script-example">
+    <script>
+        {
+            const vectorLayerFeatures = [];
+            const vectorLayer = new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    features: vectorLayerFeatures
+                })
+            });
+            const baseMapLayer = new ol.layer.Tile({
+                source: new ol.source.OSM()
+            });
+            const view = new ol.View({
+                center: ol.proj.fromLonLat([6.054893732070923, 46.2334537001]),
+                zoom: 15
+            });
+            const map = new ol.Map({
+                target: 'openlayers-map',
+                layers: [baseMapLayer, vectorLayer],
+                view: view
+            });
+            // set up the center marker
+            const markerSVGData = "data:image/svg+xml,%3Csvg width='36px' height='36px' viewBox='-18 -18 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Eround-marker%3C/title%3E%3Cg stroke-width='3' stroke='%236af'%3E%3Ccircle fill='%23fc2' fill-opacity='0.7' r='16'/%3E%3Ccircle r='1.5'/%3E%3C/g%3E%3C/svg%3E";
+            // simple SVG circle icon,
+            // the marker will be centered by default
+            const style = new ol.style.Style({
+                image: new ol.style.Icon({
+                    opacity: 1,
+                    scale: 0.5,
+                    src: markerSVGData
+                })
+            });
+            const centerMarker = new ol.Feature({
+                geometry: new ol.geom.Point(view.getCenter())
+            });
+            centerMarker.setStyle(style);
+            vectorLayer.getSource().addFeature(centerMarker);
+        }
+    </script>
+  </div>
 </section>
 
 <section id="google-maps-api">
@@ -174,14 +175,15 @@ for how to add point markers with the other services (where possible).
       scriptElement.setAttribute('src', apiUrl);
       document.body.appendChild(scriptElement);
   </script>
-  <script class="example">
+  <div class="script-example">
+    <script>
       function initMap() {
           // set up the map
           const mapCenter = new google.maps.LatLng(46.233226, 6.055737);
           const map = new google.maps.Map(
               document.getElementById('google-maps-api-map'),
               {
-                  center:mapCenter,
+                  center: mapCenter,
                   zoom: 15
               }
           );
@@ -191,7 +193,8 @@ for how to add point markers with the other services (where possible).
               position: mapCenter
           });
       }
-  </script>
+    </script>
+  </div>
 </section>
 
 <section id="bing-maps-api">
@@ -203,55 +206,59 @@ for how to add point markers with the other services (where possible).
       bingScriptElement.setAttribute('src', bingApiUrl);
       document.body.appendChild(bingScriptElement);
   </script>
-  <script class="example">
-      function initBingMap() {
-          // set up the map
-          const mapCenter = new Microsoft.Maps.Location(46.233226, 6.055737);
-          const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
-              center: mapCenter,
-              zoom: 15
-          });
-          // set up the center marker
-          const centerMarker = new Microsoft.Maps.Pushpin(mapCenter);
-          map.entities.push(centerMarker);
-      }
-  </script>
+  <div class="script-example">
+    <script>
+        function initBingMap() {
+            // set up the map
+            const mapCenter = new Microsoft.Maps.Location(46.233226, 6.055737);
+            const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+                center: mapCenter,
+                zoom: 15
+            });
+            // set up the center marker
+            const centerMarker = new Microsoft.Maps.Pushpin(mapCenter);
+            map.entities.push(centerMarker);
+        }
+    </script>
+  </div>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
   <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
-  <script class="example">
+  <div class="script-example">
+    <script>
       {
-          mapkit.addEventListener('error', function(err) {
-              console.log(err);
-          });
-          let mapkitKey = m4h.keys.mapkit.maps4html;
-          if (self.location.hostname === 'localhost') {
-            if (self.location.protocol === 'https:') {
-                mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
-            } else {
-                mapkitKey = m4h.keys.mapkit.localhost8000;
-            }
+        mapkit.addEventListener('error', function(err) {
+            console.log(err);
+        });
+        let mapkitKey = m4h.keys.mapkit.maps4html;
+        if (self.location.hostname === 'localhost') {
+          if (self.location.protocol === 'https:') {
+              mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+          } else {
+              mapkitKey = m4h.keys.mapkit.localhost8000;
           }
-          mapkit.init({
-              authorizationCallback: function(done) {
-                  done(mapkitKey);
-              },
-              language: "en"
-          });
-          const center = new mapkit.Coordinate(46.233226, 6.055737),
-              span = new mapkit.CoordinateSpan(0.004, 0.004),
-              region = new mapkit.CoordinateRegion(center, span);
-          const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
-              region: region
-          });
-          // set up the center marker
-          const marker = new mapkit.MarkerAnnotation(center);
-          map.addAnnotation(marker);
+        }
+        mapkit.init({
+            authorizationCallback: function(done) {
+                done(mapkitKey);
+            },
+            language: "en"
+        });
+        const center = new mapkit.Coordinate(46.233226, 6.055737),
+            span = new mapkit.CoordinateSpan(0.004, 0.004),
+            region = new mapkit.CoordinateRegion(center, span);
+        const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+            region: region
+        });
+        // set up the center marker
+        const marker = new mapkit.MarkerAnnotation(center);
+        map.addAnnotation(marker);
       }
-  </script>
+    </script>
+  </div>
 </section>
 
 <section id="mapbox-api">
@@ -259,7 +266,8 @@ for how to add point markers with the other services (where possible).
   <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <script class="example">
+  <div class="script-example">
+    <script>
       { // block to restrict let and const scope to this example
           // set up map
           mapboxgl.accessToken = m4h.keys.mapboxGL;
@@ -275,35 +283,39 @@ for how to add point markers with the other services (where possible).
           centerMarker.setLngLat(mapCenter);
           centerMarker.addTo(map);
       }
-  </script>
+    </script>
+  </div>
 </section>
 
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
-<div id="tomtom-single-location" style="width: 600px; height: 450px;"></div>
-<script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
-<!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
-<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
-<script class="example">
-  {
-    tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
-    const map = tomtom.map('tomtom-single-location', {
-      key: m4h.keys.tomtom,
-      source: 'vector',
-      basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
-      center: [46.233226, 6.055737],
-      zoom: 15
-    });
-  }
-</script>
+  <div id="tomtom-single-location" style="width: 600px; height: 450px;"></div>
+  <script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
+  <!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
+  <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
+  <div class="script-example">
+    <script>
+      {
+        tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+        const map = tomtom.map('tomtom-single-location', {
+          key: m4h.keys.tomtom,
+          source: 'vector',
+          basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
+          center: [46.233226, 6.055737],
+          zoom: 15
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
-***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
-or <p>Not applicable</p>
--->***
+  
+  ***TODO<!--
+  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  or <p>Not applicable</p>
+  -->***
 </section>
 </body>
 </html>

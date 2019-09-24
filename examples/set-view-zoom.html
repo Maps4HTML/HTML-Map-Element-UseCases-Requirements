@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>***Description*** — Maps for HTML reference examples</title>
-  <link rel="stylesheet" href="examples.css" />
+  <link rel="stylesheet" href="examples.css">
   <script src="api-keys.js"></script>
 </head>
 <body>
@@ -85,33 +85,35 @@
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
           crossorigin=""></script>
-  <script class="example">
-    {
-      let map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        minZoom: 0,
-        maxZoom: 20,
-        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-      }).addTo(map);
-      document.getElementById('leaflet-js').querySelector('ol').addEventListener('click', function(evt) {
-        evt.preventDefault();
-        const place = evt.target;
-        if (place.dataset.type === 'bounds') {
-          const n = parseFloat(place.dataset.n),
-            e = parseFloat(place.dataset.e),
-            s = parseFloat(place.dataset.s),
-            w = parseFloat(place.dataset.w);
-          map.flyToBounds([[s,w], [n,e]]);
-        }
-        if (place.dataset.type === 'point') {
-          const lat = parseFloat(place.dataset.lat),
-            lng = parseFloat(place.dataset.lng),
-            zoom = parseInt(place.dataset.zoom, 10);
-          map.flyTo([lat, lng], zoom);
-        }
-      });
-    }
-  </script>
+  <div class="script-example">
+    <script>
+      {
+        let map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          minZoom: 0,
+          maxZoom: 20,
+          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        document.getElementById('leaflet-js').querySelector('ol').addEventListener('click', function(evt) {
+          evt.preventDefault();
+          const place = evt.target;
+          if (place.dataset.type === 'bounds') {
+            const n = parseFloat(place.dataset.n),
+              e = parseFloat(place.dataset.e),
+              s = parseFloat(place.dataset.s),
+              w = parseFloat(place.dataset.w);
+            map.flyToBounds([[s,w], [n,e]]);
+          }
+          if (place.dataset.type === 'point') {
+            const lat = parseFloat(place.dataset.lat),
+              lng = parseFloat(place.dataset.lng),
+              zoom = parseInt(place.dataset.zoom, 10);
+            map.flyTo([lat, lng], zoom);
+          }
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="openlayers">
@@ -135,46 +137,48 @@
   </div>
   <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  <script class="example">
-    {
-      const view = new ol.View({
-          center: ol.proj.fromLonLat([6.055737, 46.233226]),
-          zoom: 15
-        }),
-        map = new ol.Map({
-        view: view,
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        target: 'openlayers-map'
-      });
-      document.getElementById('openlayers').querySelector('ol').addEventListener('click', function(evt) {
-        evt.preventDefault();
-        const place = evt.target;
-        if (place.dataset.type === 'bounds') {
-          const n = parseFloat(place.dataset.n),
-            e = parseFloat(place.dataset.e),
-            s = parseFloat(place.dataset.s),
-            w = parseFloat(place.dataset.w),
-            bl = ol.proj.fromLonLat([w, s]),
-            tr = ol.proj.fromLonLat([e, n]);
-          const extent = [bl[0], bl[1], tr[0], tr[1]];
-          map.getView().fit(extent);
-        }
-        if (place.dataset.type === 'point') {
-          const lat = parseFloat(place.dataset.lat),
-            lng = parseFloat(place.dataset.lng),
-            zoom = parseInt(place.dataset.zoom, 10);
-          view.animate({
-            center: ol.proj.fromLonLat([lng, lat]),
-            zoom: zoom
-          });
-        }
-      });
-    }
-  </script>
+  <div class="script-example">
+    <script>
+      {
+        const view = new ol.View({
+            center: ol.proj.fromLonLat([6.055737, 46.233226]),
+            zoom: 15
+          }),
+          map = new ol.Map({
+          view: view,
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+          ],
+          target: 'openlayers-map'
+        });
+        document.getElementById('openlayers').querySelector('ol').addEventListener('click', function(evt) {
+          evt.preventDefault();
+          const place = evt.target;
+          if (place.dataset.type === 'bounds') {
+            const n = parseFloat(place.dataset.n),
+              e = parseFloat(place.dataset.e),
+              s = parseFloat(place.dataset.s),
+              w = parseFloat(place.dataset.w),
+              bl = ol.proj.fromLonLat([w, s]),
+              tr = ol.proj.fromLonLat([e, n]);
+            const extent = [bl[0], bl[1], tr[0], tr[1]];
+            map.getView().fit(extent);
+          }
+          if (place.dataset.type === 'point') {
+            const lat = parseFloat(place.dataset.lat),
+              lng = parseFloat(place.dataset.lng),
+              zoom = parseInt(place.dataset.zoom, 10);
+            view.animate({
+              center: ol.proj.fromLonLat([lng, lat]),
+              zoom: zoom
+            });
+          }
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="google-maps-api">
@@ -202,42 +206,44 @@
     scriptElement.setAttribute('src', apiUrl);
     document.body.appendChild(scriptElement);
   </script>
-  <script class="example">
-    function initMap() {
-      // set up the map
-      const mapCenter = new google.maps.LatLng(46.233226, 6.055737);
-      const map = new google.maps.Map(
-        document.getElementById('google-maps-api-map'),
-        {
-          center:mapCenter,
-          zoom: 15
-        }
-      );
-      // set up the center marker
-      const centerMarker = new google.maps.Marker({
-        map: map,
-        position: mapCenter
-      });
-      document.getElementById('google-maps-api').querySelector('ol').addEventListener('click', function(evt) {
-        evt.preventDefault();
-        const place = evt.target;
-        if (place.dataset.type === 'bounds') {
-          const n = parseFloat(place.dataset.n),
-            e = parseFloat(place.dataset.e),
-            s = parseFloat(place.dataset.s),
-            w = parseFloat(place.dataset.w);
-          map.fitBounds({south: s, west: w, north: n, east: e});
-        }
-        if (place.dataset.type === 'point') {
-          const lat = parseFloat(place.dataset.lat),
-            lng = parseFloat(place.dataset.lng),
-            zoom = parseInt(place.dataset.zoom, 10);
-          map.panTo({lat: lat, lng: lng});
-          map.setZoom(zoom);
-        }
-      });
-    }
-  </script>
+  <div class="script-example">
+    <script>
+      function initMap() {
+        // set up the map
+        const mapCenter = new google.maps.LatLng(46.233226, 6.055737);
+        const map = new google.maps.Map(
+          document.getElementById('google-maps-api-map'),
+          {
+            center:mapCenter,
+            zoom: 15
+          }
+        );
+        // set up the center marker
+        const centerMarker = new google.maps.Marker({
+          map: map,
+          position: mapCenter
+        });
+        document.getElementById('google-maps-api').querySelector('ol').addEventListener('click', function(evt) {
+          evt.preventDefault();
+          const place = evt.target;
+          if (place.dataset.type === 'bounds') {
+            const n = parseFloat(place.dataset.n),
+              e = parseFloat(place.dataset.e),
+              s = parseFloat(place.dataset.s),
+              w = parseFloat(place.dataset.w);
+            map.fitBounds({south: s, west: w, north: n, east: e});
+          }
+          if (place.dataset.type === 'point') {
+            const lat = parseFloat(place.dataset.lat),
+              lng = parseFloat(place.dataset.lng),
+              zoom = parseInt(place.dataset.zoom, 10);
+            map.panTo({lat: lat, lng: lng});
+            map.setZoom(zoom);
+          }
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="bing-maps-api">
@@ -265,47 +271,49 @@
     bingScriptElement.setAttribute('src', bingApiUrl);
     document.body.appendChild(bingScriptElement);
   </script>
-  <script class="example">
-    function initBingMap() {
-      // set up the map
-      const mapCenter = new Microsoft.Maps.Location(46.233226, 6.055737);
-      const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
-        center: mapCenter,
-        zoom: 15
-      });
-      // set up the center marker
-      const centerMarker = new Microsoft.Maps.Pushpin(mapCenter);
-      map.entities.push(centerMarker);
-      document.getElementById('bing-maps-api').querySelector('ol').addEventListener('click', function(evt) {
-        evt.preventDefault();
-        const place = evt.target;
-        if (place.dataset.type === 'bounds') {
-          const n = parseFloat(place.dataset.n),
-            e = parseFloat(place.dataset.e),
-            s = parseFloat(place.dataset.s),
-            w = parseFloat(place.dataset.w);
-          const bounds = Microsoft.Maps.LocationRect.fromEdges(n, w, s, e);
-          map.setView({
-            bounds: bounds,
-            animate: true
-          });
-        }
-        if (place.dataset.type === 'point') {
-          const lat = parseFloat(place.dataset.lat),
-            lng = parseFloat(place.dataset.lng),
-            zoom = parseInt(place.dataset.zoom, 10);
-          map.setView({
-            center: {
-              latitude: lat,
-              longitude: lng
-            },
-            zoom: zoom,
-            animate: true
-          });
-        }
-      });
-    }
-  </script>
+  <div class="script-example">
+    <script>
+      function initBingMap() {
+        // set up the map
+        const mapCenter = new Microsoft.Maps.Location(46.233226, 6.055737);
+        const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+          center: mapCenter,
+          zoom: 15
+        });
+        // set up the center marker
+        const centerMarker = new Microsoft.Maps.Pushpin(mapCenter);
+        map.entities.push(centerMarker);
+        document.getElementById('bing-maps-api').querySelector('ol').addEventListener('click', function(evt) {
+          evt.preventDefault();
+          const place = evt.target;
+          if (place.dataset.type === 'bounds') {
+            const n = parseFloat(place.dataset.n),
+              e = parseFloat(place.dataset.e),
+              s = parseFloat(place.dataset.s),
+              w = parseFloat(place.dataset.w);
+            const bounds = Microsoft.Maps.LocationRect.fromEdges(n, w, s, e);
+            map.setView({
+              bounds: bounds,
+              animate: true
+            });
+          }
+          if (place.dataset.type === 'point') {
+            const lat = parseFloat(place.dataset.lat),
+              lng = parseFloat(place.dataset.lng),
+              zoom = parseInt(place.dataset.zoom, 10);
+            map.setView({
+              center: {
+                latitude: lat,
+                longitude: lng
+              },
+              zoom: zoom,
+              animate: true
+            });
+          }
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="mapkit-js">
@@ -328,54 +336,56 @@
     <div id="mapkit-js-map"></div>
   </div>
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
-  <script class="example">
-    {
-      mapkit.addEventListener('error', function(err) {
-        console.log(err);
-      });
-      let mapkitKey = m4h.keys.mapkit.maps4html;
-      if (self.location.hostname === 'localhost') {
-        if (self.location.protocol === 'https:') {
-          mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
-        } else {
-          mapkitKey = m4h.keys.mapkit.localhost8000;
+  <div class="script-example">
+    <script>
+      {
+        mapkit.addEventListener('error', function(err) {
+          console.log(err);
+        });
+        let mapkitKey = m4h.keys.mapkit.maps4html;
+        if (self.location.hostname === 'localhost') {
+          if (self.location.protocol === 'https:') {
+            mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+          } else {
+            mapkitKey = m4h.keys.mapkit.localhost8000;
+          }
         }
+        mapkit.init({
+          authorizationCallback: function(done) {
+            done(mapkitKey);
+          },
+          language: "en"
+        });
+        const center = new mapkit.Coordinate(46.233226, 6.055737),
+          span = new mapkit.CoordinateSpan(0.004, 0.004),
+          region = new mapkit.CoordinateRegion(center, span);
+        const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+          region: region
+        });
+        document.getElementById('mapkit-js').querySelector('ol').addEventListener('click', function(evt) {
+          evt.preventDefault();
+          const place = evt.target;
+          if (place.dataset.type === 'bounds') {
+            const n = parseFloat(place.dataset.n),
+              e = parseFloat(place.dataset.e),
+              s = parseFloat(place.dataset.s),
+              w = parseFloat(place.dataset.w);
+            const center = new mapkit.Coordinate((n + s) / 2, (e + w) / 2),
+              span = new mapkit.CoordinateSpan(n - s, e - w),
+              region = new mapkit.CoordinateRegion(center, span);
+            map.setRegionAnimated(region);
+          }
+          if (place.dataset.type === 'point') {
+            const lat = parseFloat(place.dataset.lat),
+              lng = parseFloat(place.dataset.lng),
+              zoom = parseInt(place.dataset.zoom, 10);
+            map.setCenterAnimated(new mapkit.Coordinate(lat, lng));
+          }
+          map.flyTo([lat, lng], zoom);
+        });
       }
-      mapkit.init({
-        authorizationCallback: function(done) {
-          done(mapkitKey);
-        },
-        language: "en"
-      });
-      const center = new mapkit.Coordinate(46.233226, 6.055737),
-        span = new mapkit.CoordinateSpan(0.004, 0.004),
-        region = new mapkit.CoordinateRegion(center, span);
-      const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
-        region: region
-      });
-      document.getElementById('mapkit-js').querySelector('ol').addEventListener('click', function(evt) {
-        evt.preventDefault();
-        const place = evt.target;
-        if (place.dataset.type === 'bounds') {
-          const n = parseFloat(place.dataset.n),
-            e = parseFloat(place.dataset.e),
-            s = parseFloat(place.dataset.s),
-            w = parseFloat(place.dataset.w);
-          const center = new mapkit.Coordinate((n + s) / 2, (e + w) / 2),
-            span = new mapkit.CoordinateSpan(n - s, e - w),
-            region = new mapkit.CoordinateRegion(center, span);
-          map.setRegionAnimated(region);
-        }
-        if (place.dataset.type === 'point') {
-          const lat = parseFloat(place.dataset.lat),
-            lng = parseFloat(place.dataset.lng),
-            zoom = parseInt(place.dataset.zoom, 10);
-          map.setCenterAnimated(new mapkit.Coordinate(lat, lng));
-        }
-        map.flyTo([lat, lng], zoom);
-      });
-    }
-  </script>
+    </script>
+  </div>
 </section>
 
 <section id="mapbox-api">
@@ -399,37 +409,39 @@
   </div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <script class="example">
-    {
-      mapboxgl.accessToken = m4h.keys.mapboxGL;
-      let map = new mapboxgl.Map({
-        container: 'mapbox-api-map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        center: [6.055737, 46.233226],
-        zoom: 15
-      });
-      document.getElementById('mapbox-api').querySelector('ol').addEventListener('click', function(evt) {
-        evt.preventDefault();
-        const place = evt.target;
-        if (place.dataset.type === 'bounds') {
-          const n = parseFloat(place.dataset.n),
-            e = parseFloat(place.dataset.e),
-            s = parseFloat(place.dataset.s),
-            w = parseFloat(place.dataset.w);
-          map.fitBounds([[w,s], [e,n]]);
-        }
-        if (place.dataset.type === 'point') {
-          const lat = parseFloat(place.dataset.lat),
-            lng = parseFloat(place.dataset.lng),
-            zoom = parseInt(place.dataset.zoom, 10);
-          map.flyTo({
-            center: [lng, lat],
-            zoom: zoom
-          });
-        }
-      });
-    }
-  </script>
+  <div class="script-example">
+    <script>
+      {
+        mapboxgl.accessToken = m4h.keys.mapboxGL;
+        let map = new mapboxgl.Map({
+          container: 'mapbox-api-map',
+          style: 'mapbox://styles/mapbox/streets-v9',
+          center: [6.055737, 46.233226],
+          zoom: 15
+        });
+        document.getElementById('mapbox-api').querySelector('ol').addEventListener('click', function(evt) {
+          evt.preventDefault();
+          const place = evt.target;
+          if (place.dataset.type === 'bounds') {
+            const n = parseFloat(place.dataset.n),
+              e = parseFloat(place.dataset.e),
+              s = parseFloat(place.dataset.s),
+              w = parseFloat(place.dataset.w);
+            map.fitBounds([[w,s], [e,n]]);
+          }
+          if (place.dataset.type === 'point') {
+            const lat = parseFloat(place.dataset.lat),
+              lng = parseFloat(place.dataset.lng),
+              zoom = parseInt(place.dataset.zoom, 10);
+            map.flyTo({
+              center: [lng, lat],
+              zoom: zoom
+            });
+          }
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="tomtom">
@@ -454,43 +466,45 @@
   <script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
   <!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
   <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
-  <script class="example">
-    {
-      tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
-      var map = tomtom.map('tomtom-map', {
-        key: m4h.keys.tomtom,
-        source: 'vector',
-        basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
-        center: [46.233226, 6.055737],
-        zoom: 15
-      });
-      document.getElementById('tomtom').querySelector('ol').addEventListener('click', function(evt) {
-        evt.preventDefault();
-        const place = evt.target;
-        if (place.dataset.type === 'bounds') {
-          const n = parseFloat(place.dataset.n),
-            e = parseFloat(place.dataset.e),
-            s = parseFloat(place.dataset.s),
-            w = parseFloat(place.dataset.w);
-          map.flyToBounds([[s,w], [n,e]]);
-        }
-        if (place.dataset.type === 'point') {
-          const lat = parseFloat(place.dataset.lat),
-            lng = parseFloat(place.dataset.lng),
-            zoom = parseInt(place.dataset.zoom, 10);
+  <div class="script-example">
+    <script>
+      {
+        tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+        var map = tomtom.map('tomtom-map', {
+          key: m4h.keys.tomtom,
+          source: 'vector',
+          basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
+          center: [46.233226, 6.055737],
+          zoom: 15
+        });
+        document.getElementById('tomtom').querySelector('ol').addEventListener('click', function(evt) {
+          evt.preventDefault();
+          const place = evt.target;
+          if (place.dataset.type === 'bounds') {
+            const n = parseFloat(place.dataset.n),
+              e = parseFloat(place.dataset.e),
+              s = parseFloat(place.dataset.s),
+              w = parseFloat(place.dataset.w);
+            map.flyToBounds([[s,w], [n,e]]);
+          }
+          if (place.dataset.type === 'point') {
+            const lat = parseFloat(place.dataset.lat),
+              lng = parseFloat(place.dataset.lng),
+              zoom = parseInt(place.dataset.zoom, 10);
+            map.flyTo([lat, lng], zoom);
+          }
           map.flyTo([lat, lng], zoom);
-        }
-        map.flyTo([lat, lng], zoom);
-      });
-    }
-  </script>
+        });
+      }
+    </script>
+  </div>
 </section>
 
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
 
   ***TODO<!--
-Replace with code including link/external scripts. Custom script has class="example".
+Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>

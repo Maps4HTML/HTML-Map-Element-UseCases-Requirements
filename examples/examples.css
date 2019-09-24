@@ -211,7 +211,7 @@ a[data-type='point']::before {
     flex-basis: 1;
     font-weight: bold;
     font-size: 1.2rem;
-    margin-bottom: 5.rem;
+    margin-bottom: .5rem;
     min-height: 2rem;
 }
 

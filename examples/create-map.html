@@ -53,22 +53,34 @@ the examples in those cases use OpenStreetMap tiles.
 
 <section id="google-maps-embed">
   <h2>Google Maps</h2>
-  <iframe src="https://www.google.com/maps/embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <iframe width="600" height="450" allowfullscreen allow="fullscreen"
+    src="https://www.google.com/maps/embed">
+  </iframe>
 </section>
 
 <section id="openstreetmap">
   <h2>OpenStreetMap</h2>
-  <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/">View Larger Map</a></small>
+  <iframe width="600" height="450" scrolling="no"
+    src="https://www.openstreetmap.org/export/embed.html">
+  </iframe>
+  <div class="map-links">
+    <small>
+      <a href="https://www.openstreetmap.org/">View Larger Map</a>
+    </small>
+  </div>
 </section>
 
 <section id="bing-maps-embed">
   <h2>Bing Maps</h2>
   <div>
-      <iframe width="500" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=27.683528083787735~5.306411922086829&lvl=1&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no">
+      <iframe width="600" height="450" scrolling="no"
+        src="https://www.bing.com/maps/embed?w=600&h=450&cp=27.683528083787735~5.306411922086829&lvl=1&typ=d&sty=r&src=SHELL&FORM=MBEDV8">
       </iframe>
-      <div class="bing-maps-links">
-         <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
-         <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;rtp=~pos.27.683528083787735_5.306411922086829____&amp;FORM=MBEDLD">Get Directions</a>
+      <div class="map-links">
+        <small>
+          <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
+          <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;rtp=~pos.27.683528083787735_5.306411922086829____&amp;FORM=MBEDLD">Get Directions</a>
+       </small>
      </div>
   </div>
 </section>
@@ -76,7 +88,7 @@ the examples in those cases use OpenStreetMap tiles.
 <section id="mapbox-embed">
   <h2>MapBox Studio embed</h2>
   <div>
-    <iframe width="500" height="400" frameborder="0"
+    <iframe width="600" height="450"
       src="https://api.mapbox.com/styles/v1/nchan0154/cjx9sxbqt08611cp94xvmkwu1.html?fresh=true&amp;access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#0/0/0">
     </iframe>
   </div>

@@ -2440,8 +2440,19 @@ would be one of the key benefit of having a built-in feature, compared to existi
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
      Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-  <!-- short summary of how the tag applies -->
+<li>
+<a data-ucr-role="tag" href="#accessibility-potential"></a>
+Web maps provided by existing reference tools
+tend to disregard accessibility best practices,
+and assistive technology users have poor to middling experiences with web maps,
+so much so that it is common for developers to hide them completely from assistive technology.
+A standard implementation of a map element
+has the potential to dramatically improve accessibility for wide range of assistive technology users.
+</li>
+<li>
+<a data-ucr-role="tag" href="#accessibility-info-needed"></a>
+As mentioned, the current state of web map accessibility is so poor
+that there needs to be significant discussion about what constitutes a basic accessible map experience.
 </li>
 </ul>
 </section>
@@ -2510,8 +2521,22 @@ they would need to rely on a third-party service for the map data.
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
       Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-  <!-- short summary of how the tag applies -->
+<li>
+<a data-ucr-role="tag" href="#author-simplicity"></a>
+Many map services are either paid or require some form of authentication,
+even for simple use cases such this.
+Having this capability be a browser feature
+reduces complexity for the vast majority of use cases.
+</li>
+<li>
+<a data-ucr-role="tag" href="#author-independence"></a>
+The vast majority of web maps currently require either third-party mapping libraries
+or third party tiles.
+</li>
+<li>
+<a data-ucr-role="tag" href="#accessibility-author-context"></a>
+Author input is necessary in order to provide an appropriate accessible experience,
+as any programmatic attempt to generate a textual equivalent to the map will be lacking in context.
 </li>
 </ul>
 
@@ -2573,18 +2598,20 @@ has a wide variety of practical use cases.
 
 <h5>Related web specifications</h5>
 <p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-      Include links with proper ReSpec references. -->
+The <a data-cite="SVG2#">SVG</a> <code>image</code> element provides an example
+of external image content being rendered into a specified rectangle within a coordinate system.
 </p>
-
+<!-- TODO: Canvas-->
 <h5>Conclusion</h5>
 <p>
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
       Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-  <!-- short summary of how the tag applies -->
+<li>
+<a data-ucr-role="tag" href="#implementation-incremental"></a>
+As described above, both SVG and Canvas are examples of existing web specifications
+that implement similar functionality.
 </li>
 </ul>
 </section>
@@ -2612,11 +2639,14 @@ All API tools support some form of this feature, whether it be in the more popul
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dt>tomtom-sdk</dt>
 <dt>bing-maps-api</dt>
 <dt>apple-mapkit-js-api</dt>
 <dd>
   <a>full support</a>
+</dd>
+<dt>tomtom-sdk</dt>
+<dd>
+  <a>supported, with limitations</a>: supports WMS services, but not TMS
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -2646,8 +2676,9 @@ All API tools support some form of this feature, whether it be in the more popul
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
       Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-  <!-- short summary of how the tag applies -->
+<li>
+<a data-ucr-role="#author-extensible"></a>
+This capability is necessary for many advanced use cases.
 </li>
 </ul>
 
@@ -2693,13 +2724,15 @@ the map author must add this feature themselves.
 <dt>mapbox-embed</dt>
 <dt>tomtom-sdk</dt>
 <dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a>supported, with limitations</a>:
-  these tools offer options to serve a static image without JavaScript.
+  these tools offer options to serve a static image without JavaScript,
+  typically by joining together tiles when the map author passes in a center and zoom level parameter
+  into a specific URL format.
   However, this is not the default fallback behavior for the embeds
   when JavaScript is turned off;
   adding a fallback image must be implemented as a custom feature.
 </dd>
-<dt>apple-mapkit-js-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
@@ -2736,8 +2769,20 @@ Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> ab
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
       Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-  <!-- short summary of how the tag applies -->
+<li>
+<a data-ucr-role="tag" href="#author-simplicity"></a>
+As no tools include this by default,
+supporting this capability would dramatically simplify the process of building progressively enhanced maps.
+</li>
+<li>
+<a data-ucr-role="tag" href="#performance-data-savings"></a>
+Supporting fallbacks for devices without JavaScript would allow users on poor connections
+or those who intentionally disable JavaScript
+to have a decent baseline experience.
+</li>
+<li>
+<a data-ucr-role="tag" href="#consistency-progressive"></a>
+This capability is fundamental to building progressively enhanced maps.
 </li>
 </ul>
 </section>

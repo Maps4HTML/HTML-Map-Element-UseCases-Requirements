@@ -144,6 +144,11 @@ var respecConfig = {
       title: "World Geodetic System 1984",
       href: "http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf",
       publisher: "US National Imagery and Mapping Agency"
+    },
+    "Canvas" : {
+      title: "The canvas element",
+      href: "https://html.spec.whatwg.org/multipage/canvas.html#the-canvas-element",
+      publisher: "WHATWG"
     }
   }
 };
@@ -2447,7 +2452,7 @@ tend to disregard accessibility best practices,
 and assistive technology users have poor to middling experiences with web maps,
 so much so that it is common for developers to hide them completely from assistive technology.
 A standard implementation of a map element
-has the potential to dramatically improve accessibility for wide range of assistive technology users.
+has the potential to dramatically improve accessibility for users with different forms of imparity.
 </li>
 <li>
 <a data-ucr-role="tag" href="#accessibility-info-needed"></a>
@@ -2524,7 +2529,7 @@ they would need to rely on a third-party service for the map data.
 <li>
 <a data-ucr-role="tag" href="#author-simplicity"></a>
 Many map services are either paid or require some form of authentication,
-even for simple use cases such this.
+even for simple use cases such as this.
 Having this capability be a browser feature
 reduces complexity for the vast majority of use cases.
 </li>
@@ -2601,7 +2606,10 @@ has a wide variety of practical use cases.
 The <a data-cite="SVG2#">SVG</a> <code>image</code> element provides an example
 of external image content being rendered into a specified rectangle within a coordinate system.
 </p>
-<!-- TODO: Canvas-->
+<p>
+[[[Canvas]]] includes a JavaScript method, <code>drawImage()</code>
+for embedding external images within the canvas element.
+</p>
 <h5>Conclusion</h5>
 <p>
 </p>

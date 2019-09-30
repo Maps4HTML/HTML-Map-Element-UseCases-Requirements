@@ -7,8 +7,12 @@
 html {
   background-color: #fefefe;
   color: #222;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+}
+
+html,
+.script-example::before {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -34,22 +38,20 @@ h1 a:link, h1 a:visited {
   margin-bottom: 1rem;
 }
 
+.script-example code,
 .script-example script {
   display: block;
   white-space: pre;
   font-family: monospace;
-  overflow: visible;
-  position: relative;
-  padding: 0 2rem 2rem 0;
+  padding: 0 2rem 1rem 0;
   z-index: 2;
-  overflow-y: auto;
+  overflow-x: auto;
 }
 
 .script-example {
   border: 1px solid #ccc;
   border-radius: 2px;
   margin-top: 1rem;
-  overflow-x: visible;
 }
 
 .script-example::before {
@@ -106,6 +108,13 @@ a[data-type='point']::before {
     content: 'Place: '
 }
 
+.map-links {
+  text-align: center;
+  width: 100%;
+  padding: 6px 0;
+  max-width: 600px;
+}
+
 .custom-control {
     border: 1px solid #000;
     background-color: #fefefe;
@@ -151,13 +160,6 @@ a[data-type='point']::before {
 
 .controls .primary {
     font-weight: bold;
-}
-
-.bing-maps-links {
-  text-align: center;
-  width: 500px;
-  padding: 6px 0;
-  max-width: 100%;
 }
 
 .bing.custom-control.lat-lng {
@@ -211,7 +213,7 @@ a[data-type='point']::before {
     flex-basis: 1;
     font-weight: bold;
     font-size: 1.2rem;
-    margin-bottom: 5.rem;
+    margin-bottom: .5rem;
     min-height: 2rem;
 }
 

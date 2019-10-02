@@ -8,6 +8,7 @@
   <title>Display routes/paths or regions — Maps for HTML reference examples</title>
   <link rel="stylesheet" href="examples.css">
   <script src="api-keys.js"></script>
+  <script src="data/glooston.js"></script>
 </head>
 <body>
 <h1>Examples for
@@ -15,7 +16,10 @@
 </h1>
 
 <p>
-***Introduction***
+These examples show the boundary of the parish of Glooston, Leicestershire, UK.
+The boundary is defined as a GeoJSON object in the file
+<a href="./data/glooston.js">/examples/data/glooston.js</a>.
+This was exported from OpenStreetMap data.
 </p>
 
 <details>
@@ -42,97 +46,278 @@
 
 <section id="google-maps-embed">
   <h2>Google Maps embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="openstreetmap">
   <h2>OpenStreetMap embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="bing-maps-embed">
   <h2>Bing Maps embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="mapbox-embed">
   <h2>MapBox Studio embed</h2>
-
-***TODO<!--
-Copy & paste embed code or <p>Not applicable</p>
--->***
+  <p>Not applicable</p>
 </section>
 
 <section id="leaflet-js">
   <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  <div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+          integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+          crossorigin=""></script>
+  <div class="script-example">
+    <script>
+        {
+            const map = L.map('leaflet-js-map').setView([52.5548, -0.8971], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                minZoom: 0,
+                maxZoom: 20,
+                attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            const style = {
+                color: 'rgb(60,59,255)',
+                fillColor: 'rgba(60,59,255,0.8)',
+                weight: 1,
+                opacity: 1
+            };
+            const glooston = L.geoJSON(m4h.geojson.glooston, {style: style});
+            glooston.addTo(map);
+        }
+    </script>
+  </div>
 </section>
 
 <section id="openlayers">
   <h2>OpenLayers with OpenStreetMap tiles</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  <div id="openlayers-map" style="width: 600px; height: 450px;"></div>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+  <div class="script-example">
+    <script>
+        {
+            const vectorSource = new ol.source.Vector({
+                features: new ol.format.GeoJSON().readFeatures(m4h.geojson.glooston, {
+                    featureProjection: 'EPSG:3857'
+                })
+            });
+            const polygonStyle = new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: [60,59,255],
+                    width: 1
+                }),
+                fill: new ol.style.Fill({
+                    color: [60,59,255,0.6],
+                })
+            });
+            const vectorLayer = new ol.layer.Vector({
+                source: vectorSource,
+                style: polygonStyle
+            });
+            const map = new ol.Map({
+                view: new ol.View({
+                    center: ol.proj.fromLonLat([-0.8971, 52.5548]),
+                    zoom: 13
+                }),
+                layers: [
+                    new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    }),
+                    vectorLayer
+                ],
+                target: 'openlayers-map'
+            });
+        }
+    </script>
+  </div>
 </section>
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  <div id="google-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+      const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
+          scriptElement = document.createElement('script');
+      scriptElement.setAttribute('src', apiUrl);
+      document.body.appendChild(scriptElement);
+  </script>
+  <div class="script-example">
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(
+                document.getElementById('google-maps-api-map'),
+                {
+                    center:{
+                        lat: 52.5548,
+                        lng: -0.8971
+                    },
+                    zoom: 13
+                }
+            );
+            map.data.addGeoJson(m4h.geojson.glooston);
+            map.data.setStyle({
+                fillColor: 'rgba(60,59,255,0.8)',
+                strokeColor: 'rgb(60,59,255)',
+                strokeWeight: 1
+            });
+        }
+    </script>
+  </div>
 </section>
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+      const bingApiUrl = 'https://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
+          bingScriptElement = document.createElement('script');
+      bingScriptElement.setAttribute('src', bingApiUrl);
+      document.body.appendChild(bingScriptElement);
+  </script>
+  <div class="script-example">
+    <script>
+        function initBingMap() {
+            const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+                center: new Microsoft.Maps.Location(52.5548, -0.8971),
+                zoom: 13
+            });
+            Microsoft.Maps.loadModule('Microsoft.Maps.GeoJson', () => {
+                const glooston = Microsoft.Maps.GeoJson.read(m4h.geojson.glooston, {
+                    polygonOptions: {
+                        fillColor: 'rgba(60,59,255,0.5)',
+                        strokeColor: 'rgb(60,59,255)',
+                        strokeThickness: 1
+                    }
+                });
+                map.entities.push(glooston);
+            });
+        }
+    </script>
+  </div>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
+  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <div class="script-example">
+    <script>
+        {
+            mapkit.addEventListener('error', function(err) {
+                console.log(err);
+            });
+            let mapkitKey = m4h.keys.mapkit.maps4html;
+            if (self.location.hostname === 'localhost') {
+                if (self.location.protocol === 'https:') {
+                    mapkitKey = m4h.keys.mapkit.httpslocalhost8000;
+                } else {
+                    mapkitKey = m4h.keys.mapkit.localhost8000;
+                }
+            }
+            mapkit.init({
+                authorizationCallback: function(done) {
+                    done(mapkitKey);
+                },
+                language: "en"
+            });
+            const center = new mapkit.Coordinate(52.5548, -0.8971),
+                span = new mapkit.CoordinateSpan(0.03, 0.03),
+                region = new mapkit.CoordinateRegion(center, span);
+            const map = new mapkit.Map(document.getElementById('mapkit-js-map'), {
+                region: region
+            });
+            mapkit.importGeoJSON(m4h.geojson.glooston, {
+                styleForOverlay: (overlay, geoJSON) => {
+                    return new mapkit.Style({
+                        strokeColor: 'rgb(60,59,255)',
+                        strokeOpacity: 1,
+                        fillColor: 'rgb(60,59,255)',
+                        fillOpacity: 0.6,
+                        lineWidth: 1
+                    });
+                },
+                geoJSONDidComplete: (result, geoJSON) => {
+                    console.log('geoJSONDidComplete', result);
+                    map.addOverlay(result.items[0]);
+                }
+            });
+        }
+    </script>
+  </div>
 </section>
 
 <section id="mapbox-api">
   <h2>Mapbox GL JS API</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <div class="script-example">
+    <script>
+        { // block to restrict let and const scope to this example
+            // set up map
+            mapboxgl.accessToken = m4h.keys.mapboxGL;
+            const mapCenter = [-0.8971, 52.5548];
+            const map = new mapboxgl.Map({
+                container: 'mapbox-api-map',
+                style: 'mapbox://styles/mapbox/streets-v9',
+                center: mapCenter,
+                zoom: 12
+            });
+            map.on('load', () => {
+                map.addLayer({
+                    id: 'glooston',
+                    type: 'fill',
+                    source: {
+                        type: 'geojson',
+                        data: m4h.geojson.glooston
+                    },
+                    paint: {
+                        'fill-color': 'rgb(60,59,255)',
+                        'fill-opacity': 0.8,
+                        'fill-outline-color': 'rgb(40,39,101)'
+                    }
+                });
+            });
+        }
+    </script>
+  </div>
 </section>
 
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
-
-***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-or <p>Not applicable</p>
--->***
+  <div id="tomtom-single-location" style="width: 600px; height: 450px;"></div>
+  <script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
+  <!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
+  <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
+  <div class="script-example">
+    <script>
+        {
+            tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
+            const map = tomtom.map('tomtom-single-location', {
+                key: m4h.keys.tomtom,
+                source: 'vector',
+                basePath: 'https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk',
+                center: [52.5548, -0.8971],
+                zoom: 13
+            });
+            const style = {
+                color: 'rgb(60,59,255)',
+                fillColor: 'rgba(60,59,255,0.8)',
+                weight: 1,
+                opacity: 1
+            };
+            const glooston = tomtom.L.geoJSON(m4h.geojson.glooston, {style: style});
+            glooston.addTo(map);
+        }
+    </script>
+  </div>
 </section>
 
 <section id="d3-geo">

@@ -2449,8 +2449,44 @@ would be one of the key benefit of having a built-in feature, compared to existi
 <section id="capability-default-map" data-ucr-role="capability">
 <h4>Generate a default map for a given area</h4>
 <p>
-Often, the website author does not want to specify the map data source or other details about the map;
-they just want a generic wayfinding map of the area.
+In the commercial Web mapping APIs listed below, the website author typically does not 
+specify the map data source or other details about the map.  This is considered 
+a default map: a map is created in the page according to page specifications, 
+but little to no control is required or given over the map that is generated or authored.
+</p>
+<p>
+This capability forms a distinct division between the commercial and open 
+source Web mapping toolkits.
+</p>
+<p>
+In considering the design and use of a native map widget for the Web platform, by allowing 
+a map to 'default' to a provider, a Web author would be forcing the user of their
+Web page to a use a third-party service which could harvest not only the fact that the 
+user visited the Web page - potentially a minor violation of user privacy - but
+if the geolocation API of the browser was in use by the map, potentially transmitting 
+enough information to the third party to deduce the exact location of 
+the user, which could be a much more significant privacy violation, since a user's 
+location should be considered sensitive information under most circumstances.
+</p>
+<p>
+While the above scenario is not very different than the current situation (with the 
+notable and salutary exception of the open source mapping toolkits), incorporating 
+Web mapping capability into the Web platform should create this opportunity to improve 
+the situation for Web map users, and not perpetuate a current failure mode.
+</p>
+<p>
+There are additional negative aspects to this capability. Browser system defaults are 
+powerful economic forces.  This is exemplified by the value placed on being the 
+default search engine in a browser.  The effect of being a defaultable value 
+would be the opposite of that which is desired by creating native Web maps, that is 
+to say it would be a force for centralization. And centralization of the Web and the
+resulting aggregate effects of small privacy violations has arguably given rise to 
+negative externalities including erosion of democratic institutions due to 
+manipulation of public opinion through targeted advertising.
+</p>
+<p>
+As such, a 'default maps' capability is a failure of <a>Consistency: breaks established patterns</a>,
+and represents a risk to <a>Privacy: reveals sensitive data</a>.
 </p>
 <p class="issue discussion" data-number="8">
 Discuss this section on GitHub.
@@ -2495,17 +2531,27 @@ in addition to using them within map widgets.
 
 <h5>Related web specifications</h5>
 <p>
-…
-</p>
-
+  The default map capability is not consistent with the <a href="https://www.w3.org/TR/webarch/">
+  Architecture of the World Wide Web</a>, because it does not rely on 
+  <a href="https://www.w3.org/TR/webarch/#hypertext">hyperlinks</a>.  
+  It is also inconsistent with the <a href="https://www.w3.org/TR/html-design-principles/">
+  HTML Design Principles</a>, because it violates the 
+  <a href="https://www.w3.org/TR/html-design-principles/#priority-of-constituencies">priority of 
+  constituencies</a>>, in that it places author convenience ahead of user privacy, and it violates 
+  the principle of specifying well-defined and testable / 
+  <a href="https://www.w3.org/TR/html-design-principles/#well-defined-behavior">non-implementation 
+  defined behaviour</a>.  Finally, it is inconsistent with the 
+  <a href="https://extensiblewebmanifesto.org/#capabilities">Extensible Web Manifesto</a> in that it 
+  is an existing high level behaviour defined exclusively in JavaScript, that is not 
+  defined in terms of the low-level capabilities that are required to implement it.
+  </p>
+  
 <h5>Conclusion</h5>
 <p>
-This functionality is a highly valuable <a data-ucr-role="conclusion">enhancement</a>
-for native web maps,
-especially if it could be built on native platform features
-that allow the users to download maps in advance for later use.
-However, if user agents cannot integrate with a native operating system feature,
-they would need to rely on a third-party service for the map data.
+This functionality, although potentially convenient for authors, is <a data-ucr-role="conclusion">impractical</a> 
+when considered as a capability of the Web platform. It should be noted that nothing 
+would prevent commercial services from developing default maps and embeds on top of a new platform 
+capability.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.

@@ -271,3 +271,22 @@ iframe,
     min-height: 400px;
   }
 }
+
+.static-embed {
+    position: relative;
+    width: 600px;
+    height: 480px;
+}
+
+.static-embed img {
+    position: absolute;
+    z-index: 0;
+}
+
+.static-embed .static-streetview {
+    z-index: 1;
+    bottom: 24px;
+    left: 8px;
+    border: 4px solid #bbb;
+    border-radius: 4px;
+}

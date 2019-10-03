@@ -296,3 +296,19 @@ iframe,
     border: 4px solid #bbb;
     border-radius: 4px;
 }
+
+.popup.openlayers {
+    background-color: #f6f6f6;
+    color: #060606;
+    border: 1px solid #060606;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    padding: 12px;
+    position: relative;
+}
+
+.popup.openlayers .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}

@@ -5,7 +5,7 @@
 var m4h = m4h || {};
 m4h.keys = {
   google: 'AIzaSyCP1y_kwKFUy_jBDb-4EvUjt7b5jCYftfc',
-  mapboxGL: 'pk.eyJ1Ijoibmlja2ZpdHoiLCJhIjoiY2p3d2g2cnZkMGk5eTQ4cnoxNzk3NmdkdCJ9.KiZI4VGB2rzLdqkCoGa7pw',
+  mapboxGL: 'pk.eyJ1IjoibWFwczRodG1sLWFtZWxpYWJyIiwiYSI6ImNqeXhrampmMTB3d2EzZ3BlenFvMHVicmIifQ.zE60jyQ0QH_NlKFyo9EmvA',
   tomtom: 'kcm72J917QftQG43eSwuUeKmm5fyni3G',
   bing: 'AmD9pKWiGBXZ6XrD5jWzzJ5ikdkMiXjhLMbb8_drsxVFiyS_jjqDAbRYtkcaKI7r',
   mapkit: {

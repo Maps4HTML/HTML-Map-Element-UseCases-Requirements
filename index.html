@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="processed"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.33.5"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- ISSUES/NOTES --- */
+<!DOCTYPE html><html lang="en" class="processed"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.34.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- ISSUES/NOTES --- */
 .issue-label {
     text-transform: initial;
 }
@@ -24,12 +24,10 @@ span.warning { padding: .1em .5em .15em; }
 
 .warning-title:before{
     content: "⚠"; /*U+26A0 WARNING SIGN*/
-    font-size: 3em;
+    font-size: 1.3em;
     float: left;
-    height: 100%;
     padding-right: .3em;
-    vertical-align: top;
-    margin-top: -0.5em;
+    margin-top: -0.3em;
 }
 
 li.task-list-item {
@@ -555,8 +553,8 @@ var[data-type]:hover::before {
       ]
     }
   ],
-  "publishISODate": "2019-10-09T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 09 October 2019"
+  "publishISODate": "2019-10-16T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 16 October 2019"
 }</script><meta name="description" content="This report outlines the use cases and requirements
 for standardizing modern Web maps,
 in a way that works
@@ -569,7 +567,7 @@ consultation with the Maps for HTML Community Group and others."><link rel="styl
       
       <h2>
         Draft Community Group Report
-        <time class="dt-published" datetime="2019-10-09">09 October 2019</time>
+        <time class="dt-published" datetime="2019-10-16">16 October 2019</time>
       </h2>
       <dl>
         
@@ -2831,9 +2829,6 @@ would be one of the key benefit of having a built-in feature, compared to existi
 </p>
 <ul data-ucr-role="conclusion-notes">
 
-<li><a data-ucr-role="tag" href=""></a>
-  
-</li>
 </ul>
 </section>
 
@@ -2900,8 +2895,19 @@ they would need to rely on a third-party service for the map data.
 </p>
 <ul data-ucr-role="conclusion-notes">
 
-<li><a data-ucr-role="tag" href=""></a>
-  
+<li>
+<a data-ucr-role="tag" href="#author-simplicity"><span class="tag-span tag-good">Author experience: simple defaults</span></a>
+Many map services are either paid or require some form of authentication,
+even for simple use cases such as this.
+Having this capability be a browser feature
+reduces complexity for most use cases.
+</li>
+<li>
+<a data-ucr-role="tag" href="#author-independence"><span class="tag-span tag-good">Author maintainability: removes dependencies on third-party services</span></a>
+The vast majority of web maps currently utilize either third-party mapping libraries or third party tiles.
+Web maps that self-host both library code and tiles avoid third-party dependencies,
+but due to the resources required to self-host tilesets,
+only a small percentage of map authors opt for this approach.
 </li>
 </ul>
 
@@ -2963,17 +2969,18 @@ has a wide variety of practical use cases.
 
 <h5 id="related-web-specifications-1">Related web specifications<a class="self-link" aria-label="§" href="#capability-single-custom-image"></a></h5>
 <p>
-
+The <a href="https://www.w3.org/TR/SVG2/#">SVG</a> <code>image</code> element provides an example
+of external image content being rendered into a specified rectangle within a coordinate system.
 </p>
-
+<p>
+Similarly, the <a href="https://html.spec.whatwg.org/multipage/#the-canvas-element">HTML Canvas2D API</a> has a <code>drawImage()</code> method
+for rendering a scaled and positioned copy of an external image within the canvas.
+</p>
 <h5 id="conclusion-1">Conclusion<a class="self-link" aria-label="§" href="#capability-single-custom-image"></a></h5>
 <p>
 </p>
 <ul data-ucr-role="conclusion-notes">
 
-<li><a data-ucr-role="tag" href=""></a>
-  
-</li>
 </ul>
 </section>
 
@@ -3000,11 +3007,15 @@ All API tools support some form of this feature, whether it be in the more popul
 <dt>mapbox-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dt>tomtom-sdk</dt>
 <dt>bing-maps-api</dt>
 <dt>apple-mapkit-js-api</dt>
 <dd>
   <a href="#dfn-full-support" class="internalDFN" data-link-type="dfn">full support</a>
+</dd>
+<dt>tomtom-sdk</dt>
+<dd>
+  <a href="#dfn-no-support" class="internalDFN" data-link-type="dfn">no support</a>: Although TomTom supports <a href="#dfn-web-map-service" class="internalDFN" data-link-type="dfn">WMS</a> services (where the server can generate a single image file for custom map coordinates),
+      it does not support <a class="respec-offending-element" title="Error: No matching dfn found." id="respec-offender-error-no-matching-dfn-found-0">TMS</a> or other custom tile sources
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -3032,8 +3043,9 @@ All API tools support some form of this feature, whether it be in the more popul
 </p>
 <ul data-ucr-role="conclusion-notes">
 
-<li><a data-ucr-role="tag" href=""></a>
-  
+<li>
+<a data-ucr-role="#author-extensibility"></a>
+This capability is necessary for many advanced use cases.
 </li>
 </ul>
 
@@ -3079,13 +3091,15 @@ the map author must add this feature themselves.
 <dt>mapbox-embed</dt>
 <dt>tomtom-sdk</dt>
 <dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
 <dd><a href="#dfn-supported-with-limitations" class="internalDFN" data-link-type="dfn">supported, with limitations</a>:
-  these tools offer options to serve a static image without JavaScript.
+  these tools offer options to serve a static image without JavaScript,
+  typically by joining together tiles when the map author passes in a center and zoom level parameter
+  into a specific URL format.
   However, this is not the default fallback behavior for the embeds
   when JavaScript is turned off;
   adding a fallback image must be implemented as a custom feature.
 </dd>
-<dt>apple-mapkit-js-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
@@ -3116,8 +3130,20 @@ Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided
 </p>
 <ul data-ucr-role="conclusion-notes">
 
-<li><a data-ucr-role="tag" href=""></a>
-  
+<li>
+<a data-ucr-role="tag" href="#author-simplicity"><span class="tag-span tag-good">Author experience: simple defaults</span></a>
+As no tools include this by default,
+supporting this capability would dramatically simplify the process of building progressively enhanced maps.
+</li>
+<li>
+<a data-ucr-role="tag" href="#performance-data-savings"><span class="tag-span tag-good">Performance: data savings</span></a>
+Supporting fallbacks for devices without JavaScript would allow users on poor connections
+or those who intentionally disable JavaScript
+to have a decent baseline experience.
+</li>
+<li>
+<a data-ucr-role="tag" href="#consistency-progressive"><span class="tag-span tag-good">Consistency: progressive enhancement</span></a>
+This capability is fundamental to building progressively enhanced maps.
 </li>
 </ul>
 </section>

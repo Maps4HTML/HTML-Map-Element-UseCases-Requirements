@@ -101,7 +101,7 @@ for how to add point markers with the other services (where possible).
 <section id="mapbox-embed">
   <h2>MapBox Studio embed</h2>
   <div>
-    <iframe width="500" height="400"
+    <iframe width="600" height="450"
       src="https://api.mapbox.com/styles/v1/nchan0154/cjx9tt51t2d7d1dl7z92tnjks.html?fresh=true&access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#12.9/46.234099/6.055079/0">
     </iframe>
   </div>
@@ -304,7 +304,6 @@ for how to add point markers with the other services (where possible).
   <h2>TomTom Maps SDK for Web with vector maps</h2>
   <div id="tomtom-single-location" style="width: 600px; height: 450px;"></div>
   <script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
-  <!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
   <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
   <div class="script-example">
     <script>
@@ -317,6 +316,8 @@ for how to add point markers with the other services (where possible).
           center: [46.233226, 6.055737],
           zoom: 15
         });
+        const centerMarker = tomtom.L.marker(map.getCenter());
+        centerMarker.addTo(map);
       }
     </script>
   </div>

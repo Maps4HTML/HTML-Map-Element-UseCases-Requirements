@@ -4063,13 +4063,16 @@ Discuss this section on GitHub.
 
 <h5>Existing implementations</h5>
 <p>
-Implementations differ in how much is expected of the
-developer wishing simply to initialise and display a map.
-Those APIs that are tightly bound to a single source of
-mapping data tend to provide a single method call with
-options for configuration, whereas APIs that are data-
-provider-agnostic at least require initialisation of data
-sources in addition.
+Implementations differ in how much is expected of the developer wishing simply to initialise and display a map.
+Those APIs that are tightly bound to a single source of mapping data
+tend to provide a single method call with options for configuration,
+whereas APIs that are data-provider-agnostic at least require initialisation of data sources in addition.
+</p>
+<p>
+Implementations also differ in the sources and types of mapping data they support.
+Tiled raster map layers, with additional support for vector layers to provide supplementary content such as routes,
+are widely supported.
+Some implementations also support rendering maps using tiled vector map layers or untiled vector data.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -4085,17 +4088,27 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom</dt>
-<dt>d3-geographies-api</dt>
 <dd>
 <p><a>full support</a>:
-Google, Bing, MapKit and TomTom  allow straightforward creation of a map
-with configuration options.
+Google, Bing, MapKit and TomTom  allow straightforward creation of a map with configuration options.
 </p>
 <p>
 Leaflet, OpenLayers, and MapBox require explicit construction of objects defining the map layers
 and viewport, with sensible defaults for creation of, for example, a map showing OpenStreetMap tiles
 in a standard [[[WGS84]]] projection.
 This provides added flexibility, at the expense of increasing the complexity of code that uses these libraries.
+</p>
+</dd>
+<dt>d3-geographies-api</dt>
+<dd>
+<p><a>supported, with limitations</a>:
+The <var>d3-geo</var> module supports vector data in the form of either GeoJSON or TopoJSON.
+It renders this data to either an SVG or Canvas element.
+It requires the developer to implement support for interaction using other d3 modules, such as <var>d3-zoom</var>
+and <var>d3-transition</var>.
+</p>
+<p>
+By utilising the <var>d3-tile</var> module, tiled raster data can be combined with vector map data.
 </p>
 </dd>
 </dl>
@@ -4105,22 +4118,34 @@ This provides added flexibility, at the expense of increasing the complexity of 
 
 <h5>Uses beyond mapping</h5>
 <p>
-Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical imagery.
+Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical raster tiles.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
-<a data-cite="HTML" data-no-xref="">HTML</a> specifies a number of aspects of elements
+The <a data-cite="HTML" data-no-xref=""></a> specifies a number of aspects of elements
 that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
 </p>
 <p>
-The <a data-cite="DOM" data-no-xref="">DOM</a> provides interfaces for creating
+The <a data-cite="DOM" data-no-xref=""></a> provides interfaces for creating
 HTML elements, which are what these implementations are using under the hood.
+</p>
+<p>
+<a data-cite="SVG" data-no-xref=""></a> provides interfaces for creating vector graphics.
+These are used as one of the available primary methods of rendering map data by <var>d3-geo</var>,
+and for rendering supplementary content by other implementations.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
 </p>
 <p>
-[[[DOM]]] [[[HTML]]]
+<a data-cite="rfc7946" data-no-xref=""></a> defines a method for representing geographical data in JSON.
+This is one of the primary data formats supported by d3-geo and is also used by other implementations
+for representing additional content.
+<!-- Any existing/proposed specs that address similar needs or otherwise interact.
+Include links with proper ReSpec references. -->
+</p>
+<p>
+[[[DOM]]] [[[HTML]]] [[[SVG]]] [[[rfc7946]]]
 </p>
 
 <h5>Conclusion</h5>
@@ -4135,7 +4160,8 @@ Incorporating this functionality of existing map libraries in HTML would benefit
 by reducing download size and time to interactivity. Web developers would benefit from
 being able to program against a standard interface.
 </p>
-<p>However, it is to be expected that a native HTML web map element would be constructed
+<p>
+However, it is to be expected that a native HTML web map element would be constructed
 and initialised via existing DOM interfaces such as <var>document.createElement</var>
 and <var>DOMElement.insertAdjacentHTML</var>. Additional aspects of the map element's
 configuration might be achieved either through existing <var>DOMElement</var> interfaces

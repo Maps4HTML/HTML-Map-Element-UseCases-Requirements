@@ -4180,7 +4180,10 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-add-marker-or-multiple-markers-map" data-ucr-role="capability">
 <h4>Add a marker or multiple markers to a map</h4>
 <p>
-Description to follow
+Markers are discussed in more detail at <a href="#capability-marker-points"></a>.
+The APIs provided for adding markers to a map generally allow a developer to use default icons
+or to specify their own, to specify a short label such as a letter or number to be displayed
+within a marker, and to attach annotations which are displayed when the marker is selected by the user.
 </p>
 <p class="issue discussion" data-number="56">Discuss this section on GitHub.</p>
 
@@ -4202,12 +4205,29 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>leaflet-api</dt>
 <dd><a>full support</a>:
 <!-- details about what is/isn't supported -->
+<p>
+These implementations all provide straightforward APIs for adding markers to locations using a default icon.
+</p>
 </dd><dt>open-layers-api</dt>
 <dd><a>supported, with limitations</a>:
 <!-- details about what is/isn't supported -->
+<p>
+Rather than providing a straightforward API, OpenLayers requires a number of steps to be followed:
+providing icon imagery (as there is no default imagery provided),
+creating icon features, creating a map layer to hold thos features, and finally ading the layer to a map.
+This is noticeably more complex than the APIs provided by a number of other implementations.
+</p>
 </dd><dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
+<dd><a>partial support</a>:
 <!-- details about what is/isn't supported -->
+<p>
+By default, d3-geo will render point features as circles.
+These can be styled using whatever techniques are being used to style the map content,
+typically either using presentational SVG attributes, or CSS.
+In practice, adding markers in a manner similar to that offered by other mapping APIs might best be achieved
+by dynamically creating a GeoJSON feature containing the point features in a FeatureCollection
+and adding this as an additional layer on the map.
+</p>
 </dd>
 </dl>
 
@@ -4216,13 +4236,23 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+In cases where non-geographical data is being displayed,
+markers could indicate points of interest in the same way that they do on maps.
+</p>
+<p>
+The
 </p>
 
 <h5>Related web specifications</h5>
 <p>
+<a data-cite="rfc7946" data-no-xref=""></a> defines a method for representing geographical data in JSON.
+This is one of the primary data formats supported by d3-geo and is also used by other implementations
+for representing additional content.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
+</p>
+<p>
+[[[rfc7946]]]
 </p>
 
 <h5>Conclusion</h5>
@@ -4236,13 +4266,6 @@ This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern
 Incorporating this functionality of existing map libraries in HTML would benefit users
 by reducing download size and time to interactivity. Web developers would benefit from
 being able to program against a standard interface.
-</p>
-<p>However, it is to be expected that a native HTML web map element would be constructed
-and initialised via existing DOM interfaces such as <code>document.createElement</code>
-and <code>DOMElement.insertAdjacentHTML</code>. Additional aspects of the map element's
-configuration might be achieved either through existing <var>DOMElement</var> interfaces
-such as <var>setAttribute</var>, or through element-specific attributes and methods;
-<i>cf.</i> the attributes and methods of the <var>HTMLMediaElement</var>.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.

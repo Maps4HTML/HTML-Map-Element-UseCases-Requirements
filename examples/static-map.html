@@ -33,7 +33,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
 
 <section id="google-maps">
   <h2>Google Static Maps &amp; Static Street View images</h2>
-  <div class="script-example">
+  <div class="html-example">
     <br>
     Map:
     <br>
@@ -52,7 +52,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
           const location = '51.4082343,30.0558434';
           const staticMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=16&size=640x480&markers=color:red|location:51.408365,30.055867&key=${m4h.keys.google}`;
           const mapEmbedElement = document.querySelector('#google-maps .static-embed');
-          const mapCodeElement = document.querySelectorAll('#google-maps .script-example code');
+          const mapCodeElement = document.querySelectorAll('#google-maps .html-example code');
           const staticMap = document.createElement('img');
           staticMap.src = staticMapURL;
           staticMap.alt = 'Pripyat Amusement Park';
@@ -73,7 +73,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
 
 <section id="bing-maps">
   <h2>Bing Static Map image</h2>
-  <div class="script-example">
+  <div class="html-example">
     <br>
     Map:
     <br>
@@ -88,7 +88,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
           const location = '51.4082343,30.0558434';
           const staticMapURL = `https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/${location}/16?mapSize=640,480&pushpin=51.408365,30.055867;0;&format=png&key=${m4h.keys.bing}`;
           const mapEmbedElement = document.querySelector('#bing-maps .static-embed');
-          const mapCodeElement = document.querySelectorAll('#bing-maps .script-example code');
+          const mapCodeElement = document.querySelectorAll('#bing-maps .html-example code');
           const staticMap = document.createElement('img');
           staticMap.src = staticMapURL;
           staticMap.alt = 'Pripyat Amusement Park';
@@ -101,7 +101,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
 
 <section id="mapbox">
   <h2>MapBox Static Map image</h2>
-  <div class="script-example">
+  <div class="html-example">
     <br>
     Map:
     <br>
@@ -116,7 +116,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
           const location = ['51.4082343','30.0558434'];
           const staticMapURL = `https://api.mapbox.com/styles/v1/mapbox/light-v9/static/pin-s+f00(30.055867,51.408365)/${location[1]},${location[0]},15,0,0/640x480?access_token=pk.eyJ1Ijoibmlja2ZpdHoiLCJhIjoiY2p3d2g3N2F5MDZ4azQwcG12dWticDB0diJ9.qnQV5QgYN_eDwg4uUdbO6Q`;
           const mapEmbedElement = document.querySelector('#mapbox .static-embed');
-          const mapCodeElement = document.querySelectorAll('#mapbox .script-example code');
+          const mapCodeElement = document.querySelectorAll('#mapbox .html-example code');
           const staticMap = document.createElement('img');
           staticMap.src = staticMapURL;
           staticMap.alt = 'Pripyat Amusement Park';
@@ -129,7 +129,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
 
 <section id="mapkit">
   <h2>MapKit Snapshot image</h2>
-  <div class="script-example">
+  <div class="html-example">
     <br>
     Map:
     <br>
@@ -149,7 +149,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
           const { referer, teamId, keyId, signature} = mapkitAuth;
           const staticMapURL = `https://snapshot.apple-mapkit.com/api/v1/snapshot?center=${location}&z=16&size=640x480&referer=${referer}&teamId=${teamId}&keyId=${keyId}&signature=${signature}`;
           const mapEmbedElement = document.querySelector('#mapkit .static-embed');
-          const mapCodeElement = document.querySelectorAll('#mapkit .script-example code');
+          const mapCodeElement = document.querySelectorAll('#mapkit .html-example code');
           const staticMap = document.createElement('img');
           staticMap.src = staticMapURL;
           staticMap.alt = 'Pripyat Amusement Park';
@@ -162,7 +162,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
 
 <section id="tomtom">
   <h2>TomTom Static Map image</h2>
-  <div class="script-example">
+  <div class="html-example">
     <br>
     Map:
     <br>
@@ -177,7 +177,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
           const location = '30.0558434,51.4082343';
           const staticMapURL = `https://api.tomtom.com/map/1/staticimage?center=${location}&zoom=15&width=640&height=480&layer=basic&style=main&format=png&view=Unified&key=${m4h.keys.tomtom}`;
           const mapEmbedElement = document.querySelector('#tomtom .static-embed');
-          const mapCodeElement = document.querySelectorAll('#tomtom .script-example code');
+          const mapCodeElement = document.querySelectorAll('#tomtom .html-example code');
           const staticMap = document.createElement('img');
           staticMap.src = staticMapURL;
           staticMap.alt = 'Pripyat Amusement Park';

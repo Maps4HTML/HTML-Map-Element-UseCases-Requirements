@@ -10,8 +10,7 @@ html {
   overflow-x: hidden;
 }
 
-html,
-.script-example::before {
+html {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -38,7 +37,8 @@ h1 a:link, h1 a:visited {
   margin-bottom: 1rem;
 }
 
-.script-example code,
+.html-example > code,
+.script-example > code,
 .script-example script {
   display: block;
   white-space: pre;
@@ -48,21 +48,33 @@ h1 a:link, h1 a:visited {
   overflow-x: auto;
 }
 
+.html-example,
 .script-example {
   border: 1px solid #ccc;
   border-radius: 2px;
   margin-top: 1rem;
 }
 
+.html-example::before,
 .script-example::before {
-  content: 'Script';
   background-color: #efefef;
   position: relative;
   top: -0.5rem;
   left: 1.5rem;
   border: 1px solid #ccc;
   z-index: 2;
+  padding: 0.5rem;
+}
+
+.html-example {
   padding: 0.1rem 0.5rem;
+}
+
+.html-example::before {
+  content: 'HTML';
+}
+.script-example::before {
+  content: 'Script';
 }
 
 .map-container {
@@ -217,7 +229,8 @@ a[data-type='point']::before {
     min-height: 2rem;
 }
 
-button {
+button,
+summary {
   cursor: pointer;
 }
 
@@ -261,6 +274,10 @@ iframe,
   .custom-control.lat-lng {
     max-width: 200px;
   }
+
+  .static-streetview {
+    width: 100px;
+  }
 }
 
 @media (min-width: 430px) {
@@ -274,21 +291,20 @@ iframe,
 
 .static-embed {
     position: relative;
-    width: 600px;
-    height: 480px;
 }
 
 .static-embed img {
-    position: absolute;
-    z-index: 0;
+    max-width: 100%;
+    height: auto;
 }
 
-.static-embed .static-streetview {
+.static-streetview {
     z-index: 1;
-    bottom: 24px;
+    bottom: 2rem;
     left: 8px;
     border: 4px solid #bbb;
     border-radius: 4px;
+    position: absolute;
 }
 
 .popup.openlayers {

@@ -354,3 +354,83 @@ iframe,
     fill: #f0be86;
     stroke: #2e2e2e;
 }
+
+.highway--cycleway,
+.highway--footway,
+.highway--path,
+.highway--pedestrian,
+.highway--primary,
+.highway--secondary,
+.highway--service,
+.highway--steps,
+.highway--track,
+.highway--unclassified,
+.highway--primary {
+    stroke: #858585;
+    fill-opacity: 0;
+}
+
+.natural--grassland,
+.natural--scrub,
+.natural--wood,
+.landuse--allotments,
+.landuse--grass,
+.landuse--meadow,
+.landuse--farmland,
+.landuse--forest,
+.leisure--pitch,
+.leisure--garden,
+.leisure--park {
+    fill: #beeebf
+}
+
+.leisure--sports_centre,
+.leisure--swimming_pool,
+.landuse--residential,
+.landuse--construction,
+.landuse--farmyard {
+    fill: #cccccc;
+    fill-opacity: 1;
+    stroke: #2e2e2e;
+}
+
+.amenity--bicycle_parking,
+.amenity--parking {
+    fill: #ccc;
+}
+
+.landuse--industrial {
+    fill: #e3e3e3;
+}
+
+.public_transport--platform {
+    fill: #cccacd;
+}
+
+.barrier--fence,
+.barrier--hedge,
+.barrier--wall {
+    fill-opacity: 0;
+    stroke: #333;
+}
+
+
+.building--yes {
+    fill: #ffe5cd;
+    fill-opacity: 1;
+    stroke: #684d32;
+}
+
+.boundary--administrative {
+    stroke-dasharray: 8px;
+    stroke-width: 2px;
+    stroke: #cc0000;
+    fill-opacity: 0;
+}
+
+.border_type--nation {
+    fill-opacity: 0;
+    stroke: #ff0000;
+    stroke-width: 4;
+    stroke-dasharray: 24px;
+}

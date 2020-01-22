@@ -326,11 +326,109 @@ Default marker icons are used where available.
 
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
+  <div id="d3-geo-map" class="d3-geo-map" style="width: 600px; height: 400px;"></div>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <div class="script-example">
+    <script>
+        {
+            const handleZoom = () => {
+                pathGroup.attr("transform", d3.event.transform);
+                pathGroup.selectAll('path').attr('stroke-width', STROKE_WIDTH * (1/d3.event.transform.k));
+            };
 
-  ***TODO<!--
-  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-  or <p>Not applicable</p>
-  -->***
+            const zoomButtonClickHandler = (amount) => {
+                return () => {
+                    svg.transition().call(zoom.scaleBy, amount);
+                };
+            };
+
+            const createButton = (text) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = text;
+                return () => { return button };
+            };
+
+            const d3MapContainer = d3.select('#d3-geo-map'),
+                // create zooming
+                MIN_ZOOM = 1,
+                MAX_ZOOM = 2^20,
+                STROKE_WIDTH = .5,
+                ZOOM_EXTENT = [MIN_ZOOM, MAX_ZOOM],
+                ZOOM_IN_FACTOR = 2,
+                ZOOM_OUT_FACTOR = 1/ZOOM_IN_FACTOR,
+                zoom = d3.zoom()
+                    .scaleExtent(ZOOM_EXTENT)
+                    .on('zoom', handleZoom),
+                zoomIn = d3MapContainer
+                    .append(createButton('+'))
+                    .on('click', zoomButtonClickHandler(ZOOM_IN_FACTOR)),
+                zoomOut = d3MapContainer
+                    .append(createButton('-'))
+                    .on('click', zoomButtonClickHandler(ZOOM_OUT_FACTOR)),
+                // create map and controls
+                mapElementBounds = d3MapContainer.node().getBoundingClientRect(),
+                width = mapElementBounds.width,
+                height = mapElementBounds.height,
+                svg = d3MapContainer
+                    .append('svg')
+                    .attr('transform', 'translate(0,0) scale(1)'),
+                background = svg.append('rect').attr('class', 'd3-background'),
+                pathGroup = svg.call(zoom).append('g'),
+                pathSelection = pathGroup.selectAll('path'),
+                projection = d3.geoEquirectangular(),
+                pathGenerator = d3.geoPath(projection);
+            const genericProperties = [
+                'landuse',
+                'waterway',
+                'highway',
+                'building',
+                'amenity',
+                'railway',
+                'leisure'
+            ]
+            // load data and attach to map
+            d3.json('data/geojson/cern-meyrin-filtered.geojson').then(world => {
+                projection.fitSize([width, height], world);
+                pathSelection
+                    .data(world.features)
+                    .enter()
+                    .append('path')
+                    .attr('stroke-width', STROKE_WIDTH)
+                    .attr('d', pathGenerator)
+                    .attr('class', feature => {
+                        let classValues = [];
+                        Object.keys(feature.properties).forEach(property => {
+                            if (genericProperties.includes(property)) {
+                                classValues.push(property);
+                            }
+                            if (feature.properties[property] !== null) {
+                                let value = `${property}--${feature.properties[property]}`;
+                                classValues.push(value);
+                            }
+                        });
+                        return classValues.join(' ');
+                    });
+                pathGroup.append('g').selectAll("circle")
+                    .data([
+                        [6.055737, 46.233226],
+                        [6.0510, 46.2278],
+                        [6.0471, 46.23336]
+                    ]).enter()
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        console.log(d);
+                        return projection(d)[0];
+                    })
+                    .attr("cy", function (d) { return projection(d)[1]; })
+                    // .attr("cx", function (d) { console.log(d); return d[0]; })
+                    // .attr("cy", function (d) { return d[1]; })
+                    .attr("r", "8px")
+                    .attr("class", "marker")
+            });
+        }
+    </script>
+  </div>
 </section>
 </body>
 </html>

@@ -355,6 +355,13 @@ iframe,
     stroke: #2e2e2e;
 }
 
+.amenity,
+.building {
+    fill: #ffe5cd;
+    fill-opacity: 1;
+    stroke: #684d32;
+}
+
 .highway,
 .highway--cycleway,
 .highway--footway,
@@ -376,6 +383,7 @@ iframe,
     fill-opacity: 0;
 }
 
+.waterway,
 .waterway--ditch,
 .waterway--river,
 .waterway--drain {
@@ -413,6 +421,7 @@ iframe,
     fill: #0074D9;
 }
 
+.leisure,
 .leisure--sports_centre,
 .leisure--swimming_pool,
 .landuse--residential,
@@ -442,12 +451,6 @@ iframe,
 .barrier--wall {
     fill-opacity: 0;
     stroke: #333;
-}
-
-.building {
-    fill: #ffe5cd;
-    fill-opacity: 1;
-    stroke: #684d32;
 }
 
 .boundary--administrative {

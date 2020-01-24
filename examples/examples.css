@@ -323,6 +323,20 @@ iframe,
     right: 8px;
 }
 
+.overlayMapTypeControl {
+    margin: 10px;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.overlayMapTypeControl ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .d3-geo-map {
     width: 100%;
     height: 100%;

@@ -4521,7 +4521,15 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-add-layer-map" data-ucr-role="capability">
 <h4>Add a layer to a map</h4>
 <p>
-Description to follow
+Adding a layer to a map viewer is a fundamental capability,
+as without it the base layer itself could not be added to the viewer.
+While map viewer implementations from a provider of mapping data can be expected to automatically add
+a base layer showing the data they provide, other implementations require a base layer to be explicitly
+created and added to the map as part of its initial configuration.
+</p>
+<p>
+Adding further map layers other than the base layer allows additional information to be presented to the user
+in  geographical context.
 </p>
 <p class="issue discussion" data-number="61">
 Discuss this section on GitHub.
@@ -4529,7 +4537,8 @@ Discuss this section on GitHub.
 
 <h5>Existing implementations</h5>
 <p>
-Existing implementation support:
+All of the reviewed APIs support the creation of alternative base layers for the map,
+and the addition of layers to the base map. Both raster and vector layers are supported.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -4538,28 +4547,31 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
-<dt>google-maps-api</dt>
 <dt>bing-maps-api</dt>
-<dd><a>supported, with limitations</a>:
-<!-- details about what is/isn't supported -->
-</dd><dt>apple-mapkit-js-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
-</dd><dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>google-maps-api</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
+<dt>mapbox-gl-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
 <dd><a>full support</a>:
 <!-- details about what is/isn't supported -->
+<p>
+The implementations from mapping data providers generally require additional configuration to be specified
+in the case where an alternative base layer that does not use their data is provided.
+</p>
 </dd>
 </dl>
-
 <h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+As a map viewer provides the ability to pan and zoom imagery covering a large extent, there are many alternative
+uses. Some examples include works of art that have been digitised at ultra high resolution,
+allowing anyone to examine them in fine detail, and ultra high resolution panoramic photographs.
 </p>
 
 <h5>Related web specifications</h5>
@@ -4575,13 +4587,19 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+Based on the fundamental nature of this capability, it is a <a data-ucr-role="conclusion">requirement</a> for web map APIs.
+In addition to providing basic and extended capabilites for the display of geographic data,
+it also allows the repurposing of such APIs for wider application.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="#author-extensibility"></a>
+This capability promotes extensibility by allowing authors to incorporate additional or alternative data into a map.
+</li>
+<li><a data-ucr-role="tag" href="#author-custom-design"></a>
+This capability allows for customization of both base maps and additional data presented on the map,
+thereby giving authors flexibility to customize the appearance of maps to suit the design of the site on which the map is displayed.
 </li>
 </ul>
 </section>

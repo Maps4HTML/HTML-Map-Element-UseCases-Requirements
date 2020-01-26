@@ -329,12 +329,21 @@ iframe,
     box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
     padding: 10px;
     background-color: #fff;
+    position: relative;
+    font-size: 0.8rem;
+    width: 200px;
 }
 
 .overlayMapTypeControl ol {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+#bing-maps-api-map .overlayMapTypeControl {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .d3-geo-map {

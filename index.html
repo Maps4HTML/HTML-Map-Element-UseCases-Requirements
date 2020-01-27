@@ -4688,15 +4688,21 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dt>google-maps-api</dt>
 <dt>bing-maps-api</dt>
 <dt>apple-mapkit-js-api</dt>
 <dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
+<dd><a>full support</a>:
+<p>
+All of the API-based map viewer implementations support the use of vector data defined in a number of standard formats,
+such as GeoJSON and KML.
+When topogeographical data is available that is not already in one of the widely-supported formats,
+application developers can readily convert that data into object structures that can be utilised by the existing APIs,
+such as the structure of a GeoJSON object.
+</p>
 </dd>
 </dl>
 
@@ -4721,13 +4727,30 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future.
+This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps,
+as there are numerous sources of such data.
+Furthermore, vector data allows a level of precision higher than that achievable with raster data,
+or that it may not be convenient or possible to present in the form of rasters.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="#author-simplicity"></a>:
+existing implementations mostly allow vector data to be incorporated into a map view with a single method call,
+making it easy for web authors to utilise such data.
+</li>
+<li><a data-ucr-role="tag" href="#author-custom-design"></a>:
+the styling of vector data is in the hands of authors,
+allowing them to easily match it to the design of the containing site.
+</li>
+<li><a data-ucr-role="tag" href="#author-extensibility"></a>:
+this capability allows authors to incorporate high precision data representations over a base map.
+
+</li>
+<li><a data-ucr-role="tag" href="#consistency-progressive"></a>:
+vector data can be incorporated into an HTML document as a list, table, microformat metadata, or similar structured content.
+The data can then be extracted by a script, formed into a suitable object structure (such as GeoJSON),
+and rendered on the map.
 </li>
 </ul>
 </section>

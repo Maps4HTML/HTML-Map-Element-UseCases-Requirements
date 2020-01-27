@@ -5341,7 +5341,10 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-subscribe-map-move-events" data-ucr-role="capability">
 <h4>Subscribe to map move events</h4>
 <p>
-Description to follow
+Author scripts may wish to be notified of map move events so they can update
+context-relevant information displayed outside the map itself.
+For example, a list of places of interest may be modified to highlight or only include those within the
+area currently displayed by the map.
 </p>
 <p class="issue discussion" data-number="69">Discuss this section on GitHub.</p>
 
@@ -5403,7 +5406,8 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-subscribe-map-zoom-events" data-ucr-role="capability">
 <h4>Subscribe to map zoom events</h4>
 <p>
-Description to follow
+Again, useful to update related information on the page, as with
+<a href="#capability-subscribe-map-move-events">move events</a>.
 </p>
 <p class="issue discussion" data-number="70">
 Discuss this section on GitHub.
@@ -5467,7 +5471,11 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-subscribe-marker-selection-events" data-ucr-role="capability">
 <h4>Subscribe to marker selection events</h4>
 <p>
-Description to follow
+As for
+<a href="#capability-subscribe-map-move-events">move events</a>
+and
+<a href="#capability-subscribe-map-zoom-events">zoom events</a>;
+e.g. show full details of a selected point of interest.
 </p>
 <p class="issue discussion" data-number="71">
 Discuss this section on GitHub.

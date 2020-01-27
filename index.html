@@ -5531,7 +5531,8 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-change-bearing-map" data-ucr-role="capability">
 <h4>Change the bearing of a map</h4>
 <p>
-Description to follow
+Although the default bearing of a map - that is, the direction of "up" - is usually north,
+it can be useful to change this.
 </p>
 <p class="issue discussion" data-number="72">
 Discuss this section on GitHub.
@@ -5548,15 +5549,19 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
+<dt>open-layers-api</dt>
 <dt>apple-mapkit-js-api</dt>
 <dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
+<dd><a>full support</a>:
+these implementations all permit the bearing of a map view to be changed.
+</dd>
+
+<dt>google-maps-api</dt>
+<dt>bing-maps-api</dt>
+<dt>leaflet-api</dt>
+<dd><a>no support</a>:
+these implemtations provide no support for changing the bearing of the map.
 </dd>
 </dl>
 
@@ -5565,7 +5570,7 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+This capability could be useful when a map viewer is used to display zoomable technical drawings.
 </p>
 
 <h5>Related web specifications</h5>
@@ -5581,8 +5586,7 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
+  This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future.</p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->

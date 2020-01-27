@@ -171,18 +171,199 @@ An example of the TileJSON representation of the map is:
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
+  <div id="google-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+      const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
+          scriptElement = document.createElement('script');
+      scriptElement.setAttribute('src', apiUrl);
+      document.body.appendChild(scriptElement);
+  </script>
 
-  ***TODO<!--
-  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-  -->***
+  <div class="script-example">
+    <script>
+        function initMap() {
+            // Create a new ImageMapType layer for each sheet.
+            const fiskLayers = m4h.fiskMaps.streamCourses.sheets.map(sheet => {
+                const TILE_URL = sheet.tileJSON.tiles[0].replace('{-y}', '{y}'),
+                    layerID = sheet.id;
+                return new google.maps.ImageMapType({
+                    name: layerID,
+                    getTileUrl: function (coord, zoom) {
+                        return TILE_URL
+                            .replace('{x}', coord.x)
+                            .replace('{y}', ((1 << zoom) - coord.y - 1)) // adjust y to account for TMS coordinates on the server
+                            .replace('{z}', zoom);
+                    },
+                    tileSize: new google.maps.Size(256, 256),
+                    minZoom: sheet.tileJSON.minzoom,
+                    maxZoom: sheet.tileJSON.maxzoom,
+                    alt: sheet.label
+                });
+            });
+
+            const mapEl = document.querySelector('#google-maps-api-map');
+            const map = new google.maps.Map(mapEl, {
+                center: new google.maps.LatLng(33.024, -90.664814552244105),
+                zoom: 6,
+                mapTypeControl: true
+            });
+            // add layers as overlay for base map
+            map.overlayMapTypes = new google.maps.MVCArray(fiskLayers);
+
+            function GoogleOverlayMapTypeControl(map, overlayMaps) {
+                this.map = map;
+                this.overlayMaps = overlayMaps;
+                const namedOverlayMaps = this.overlayMaps.reduce((namedOverlayMaps, overlayMap) => {
+                    namedOverlayMaps[overlayMap.name] = overlayMap;
+                    return namedOverlayMaps;
+                }, {});
+                this.element = document.createElement('div');
+                this.element.classList.add('overlayMapTypeControl');
+                const fieldset = this.element.appendChild(document.createElement('fieldset')),
+                    legend = fieldset.appendChild(document.createElement('legend')),
+                    ol = fieldset.appendChild(document.createElement('ol'));
+                legend.appendChild(document.createTextNode('Layers'));
+                this.overlayMaps.forEach((overlayMap, index) => {
+                   const li = document.createElement('li'),
+                       div = li.appendChild(document.createElement('div')),
+                       checkbox = div.appendChild(document.createElement('input')),
+                       label = div.appendChild(document.createElement('label'));
+                   checkbox.type = 'checkbox';
+                   checkbox.checked = true;
+                   checkbox.name = 'layer';
+                   checkbox.id = `checkbox_${overlayMap.name}`;
+                   checkbox.dataset.overlayMapName = overlayMap.name;
+                   checkbox.dataset.index = index;
+                   label.htmlFor = checkbox.id;
+                   label.appendChild(document.createTextNode(overlayMap.alt));
+                   ol.appendChild(li);
+                });
+                this.element.addEventListener('change', function(ev) {
+                    // debugger;
+                    const checkbox = ev.target,
+                        overlayMapName = checkbox.dataset.overlayMapName,
+                        mapType = namedOverlayMaps[overlayMapName],
+                        mapIndex = checkbox.dataset.index;
+                    if (checkbox.checked) {
+                        map.overlayMapTypes.setAt(mapIndex, mapType);
+                    } else {
+                        // set value at the relevant position to null
+                        // to stop the array shifting down and breaking our indices,
+                        // which it would if we used removeAt
+                        map.overlayMapTypes.setAt(mapIndex, null);
+                    }
+                });
+            }
+            const overlayMapTypeControl = new GoogleOverlayMapTypeControl(map, fiskLayers);
+            map.controls[google.maps.ControlPosition.LEFT_TOP].push(overlayMapTypeControl.element);
+        }
+    </script>
+  </div>
 </section>
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
+  <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <script>
+      const bingApiUrl = 'https://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
+          bingScriptElement = document.createElement('script');
+      bingScriptElement.setAttribute('src', bingApiUrl);
+      document.body.appendChild(bingScriptElement);
+  </script>
+  <div class="script-example">
+    <script>
+        function initBingMap() {
+            // Create a new TileLayer with a TileSource for each sheet.
+            const fiskLayers = m4h.fiskMaps.streamCourses.sheets.map(sheet => {
+                const TILE_URL = sheet.tileJSON.tiles[0].replace('{-y}', '{y}');
+                const tileSource = new Microsoft.Maps.TileSource({
+                    uriConstructor: function (coord, zoom) {
+                        return TILE_URL
+                            .replace('{x}', coord.x)
+                            .replace('{y}', ((1 << coord.zoom) - coord.y - 1)) // adjust y to account for TMS coordinates on the server
+                            .replace('{z}', coord.zoom);
+                    },
+                    // tileSize: new google.maps.Size(256, 256),
+                    minZoom: sheet.tileJSON.minzoom,
+                    maxZoom: sheet.tileJSON.maxzoom,
+                    bounds: Microsoft.Maps.LocationRect.fromEdges(
+                        sheet.tileJSON.bounds[3],
+                        sheet.tileJSON.bounds[0],
+                        sheet.tileJSON.bounds[1],
+                        sheet.tileJSON.bounds[2]
+                    )
+                });
+                const layer = new Microsoft.Maps.TileLayer({
+                    mercator: tileSource
+                });
+                layer.metadata = {
+                    'id': sheet.id,
+                    'label': sheet.label
+                };
+                return layer;
+            });
 
-  ***TODO<!--
-  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
-  -->***
+            const map = new Microsoft.Maps.Map(document.getElementById('bing-maps-api-map'), {
+                center: new Microsoft.Maps.Location(33.024, -90.664814552244105),
+                zoom: 6,
+                showMapTypeSelector: true,
+                showLocateMeButton: false
+            });
+            map.layers.insertAll(fiskLayers);
+
+            function BingOverlayMapLayerControl(map, overlayMaps) {
+                this.map = map;
+                this.overlayMaps = overlayMaps;
+                const mapTypesByName = this.overlayMaps.reduce((mapTypesByName, overlayMap) => {
+                    mapTypesByName[overlayMap.metadata.id] = overlayMap;
+                    return mapTypesByName;
+                }, {});
+                this.element = document.createElement('div');
+                this.element.classList.add('overlayMapTypeControl');
+                const fieldset = this.element.appendChild(document.createElement('fieldset')),
+                    legend = fieldset.appendChild(document.createElement('legend')),
+                    ol = fieldset.appendChild(document.createElement('ol'));
+                legend.appendChild(document.createTextNode('Layers'));
+                this.overlayMaps.forEach((overlayMap, index) => {
+                    const li = document.createElement('li'),
+                        div = li.appendChild(document.createElement('div')),
+                        checkbox = div.appendChild(document.createElement('input')),
+                        label = div.appendChild(document.createElement('label'));
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = true;
+                    checkbox.name = 'layer';
+                    checkbox.id = `checkbox_${overlayMap.metadata.id}`;
+                    checkbox.dataset.overlayMapName = overlayMap.metadata.id;
+                    checkbox.dataset.index = index;
+                    label.htmlFor = checkbox.id;
+                    label.appendChild(document.createTextNode(overlayMap.metadata.label));
+                    ol.appendChild(li);
+                });
+                this.element.addEventListener('change', function(ev) {
+                    // debugger;
+                    const checkbox = ev.target,
+                        overlayMapName = checkbox.dataset.overlayMapName,
+                        overlayMap = mapTypesByName[overlayMapName],
+                        mapIndex = checkbox.dataset.index;
+                    overlayMap.setVisible(checkbox.checked);
+                });
+            }
+            BingOverlayMapLayerControl.prototype = new Microsoft.Maps.CustomOverlay({
+                beneathLabels: false
+            });
+            BingOverlayMapLayerControl.prototype.onAdd = function() {
+                this.setHtmlElement(this.element);
+            };
+            BingOverlayMapLayerControl.prototype.onLoad = function() {
+            };
+            BingOverlayMapLayerControl.prototype.onRemove = function() {
+            };
+            const overlayMapTypeControl = new BingOverlayMapLayerControl(map, fiskLayers);
+            map.layers.insert(overlayMapTypeControl);
+
+        }
+    </script>
+  </div>
 </section>
 
 <section id="mapkit-js">

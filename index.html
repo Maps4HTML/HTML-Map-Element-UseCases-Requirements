@@ -1784,9 +1784,7 @@ Discuss this section on GitHub.
 <li>As a custom application feature:
   <ul>
     <li><a href="#capability-add-layer-map"></a></li>
-    <li><a href="#capability-remove-layer-map"></a></li>
-    <li><a href="#capability-display-layer-map"></a></li>
-    <li><a href="#capability-hide-layer-map"></a></li>
+    <li><a href="#capability-control-layers-map"></a></li>
   </ul>
 </li>
 </ul>
@@ -1996,9 +1994,7 @@ Discuss this section on GitHub.
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-get-bounds-map"></a></li>
-<li><a href="#capability-subscribe-map-move-events"></a></li>
-<li><a href="#capability-subscribe-map-zoom-events"></a></li>
-<li><a href="#capability-subscribe-marker-selection-events"></a></li>
+<li><a href="#capability-map-events"></a></li>
 </ul>
 </section>
 
@@ -2088,7 +2084,6 @@ Discuss this section on GitHub.
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-change-bearing-map"></a></li>
-<li><a href="#capability-reset-bearing-map"></a></li>
 </ul>
 </section>
 
@@ -2169,7 +2164,7 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-display-layer-map"></a></li>
+<li><a href="#capability-control-layers-map"></a></li>
 <li><a href="#capability-create-an-overlay-defined-by-heatmap-data"></a></li>
 </ul>
 </section>
@@ -4167,13 +4162,16 @@ Discuss this section on GitHub.
 
 <h5>Existing implementations</h5>
 <p>
-Implementations differ in how much is expected of the
-developer wishing simply to initialise and display a map.
-Those APIs that are tightly bound to a single source of
-mapping data tend to provide a single method call with
-options for configuration, whereas APIs that are data-
-provider-agnostic at least require initialisation of data
-sources in addition.
+Implementations differ in how much is expected of the developer wishing simply to initialise and display a map.
+Those APIs that are tightly bound to a single source of mapping data
+tend to provide a single method call with options for configuration,
+whereas APIs that are data-provider-agnostic at least require initialisation of data sources in addition.
+</p>
+<p>
+Implementations also differ in the sources and types of mapping data they support.
+Tiled raster map layers, with additional support for vector layers to provide supplementary content such as routes,
+are widely supported.
+Some implementations also support rendering maps using tiled vector map layers or untiled vector data.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -4189,17 +4187,27 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>tomtom</dt>
-<dt>d3-geographies-api</dt>
 <dd>
 <p><a>full support</a>:
-Google, Bing, MapKit and TomTom  allow straightforward creation of a map
-with configuration options.
+Google, Bing, MapKit and TomTom  allow straightforward creation of a map with configuration options.
 </p>
 <p>
 Leaflet, OpenLayers, and MapBox require explicit construction of objects defining the map layers
 and viewport, with sensible defaults for creation of, for example, a map showing OpenStreetMap tiles
 in a standard [[[WGS84]]] projection.
 This provides added flexibility, at the expense of increasing the complexity of code that uses these libraries.
+</p>
+</dd>
+<dt>d3-geographies-api</dt>
+<dd>
+<p><a>supported, with limitations</a>:
+The <var>d3-geo</var> module supports vector data in the form of either GeoJSON or TopoJSON.
+It renders this data to either an SVG or Canvas element.
+It requires the developer to implement support for interaction using other d3 modules, such as <var>d3-zoom</var>
+and <var>d3-transition</var>.
+</p>
+<p>
+By utilising the <var>d3-tile</var> module, tiled raster data can be combined with vector map data.
 </p>
 </dd>
 </dl>
@@ -4209,22 +4217,34 @@ This provides added flexibility, at the expense of increasing the complexity of 
 
 <h5>Uses beyond mapping</h5>
 <p>
-Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical imagery.
+Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical raster tiles.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
-<a data-cite="HTML" data-no-xref="">HTML</a> specifies a number of aspects of elements
+The <a data-cite="HTML" data-no-xref=""></a> specifies a number of aspects of elements
 that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
 </p>
 <p>
-The <a data-cite="DOM" data-no-xref="">DOM</a> provides interfaces for creating
+The <a data-cite="DOM" data-no-xref=""></a> provides interfaces for creating
 HTML elements, which are what these implementations are using under the hood.
+</p>
+<p>
+<a data-cite="SVG" data-no-xref=""></a> provides interfaces for creating vector graphics.
+These are used as one of the available primary methods of rendering map data by <var>d3-geo</var>,
+and for rendering supplementary content by other implementations.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
 </p>
 <p>
-[[[DOM]]] [[[HTML]]]
+<a data-cite="rfc7946" data-no-xref=""></a> defines a method for representing geographical data in JSON.
+This is one of the primary data formats supported by d3-geo and is also used by other implementations
+for representing additional content.
+<!-- Any existing/proposed specs that address similar needs or otherwise interact.
+Include links with proper ReSpec references. -->
+</p>
+<p>
+[[[DOM]]] [[[HTML]]] [[[SVG]]] [[[rfc7946]]]
 </p>
 
 <h5>Conclusion</h5>
@@ -4239,7 +4259,8 @@ Incorporating this functionality of existing map libraries in HTML would benefit
 by reducing download size and time to interactivity. Web developers would benefit from
 being able to program against a standard interface.
 </p>
-<p>However, it is to be expected that a native HTML web map element would be constructed
+<p>
+However, it is to be expected that a native HTML web map element would be constructed
 and initialised via existing DOM interfaces such as <var>document.createElement</var>
 and <var>DOMElement.insertAdjacentHTML</var>. Additional aspects of the map element's
 configuration might be achieved either through existing <var>DOMElement</var> interfaces
@@ -4258,7 +4279,10 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-add-marker-or-multiple-markers-map" data-ucr-role="capability">
 <h4>Add a marker or multiple markers to a map</h4>
 <p>
-Description to follow
+Markers are discussed in more detail at <a href="#capability-marker-points"></a>.
+The APIs provided for adding markers to a map generally allow a developer to use default icons
+or to specify their own, to specify a short label such as a letter or number to be displayed
+within a marker, and to attach annotations which are displayed when the marker is selected by the user.
 </p>
 <p class="issue discussion" data-number="56">Discuss this section on GitHub.</p>
 
@@ -4280,12 +4304,29 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>leaflet-api</dt>
 <dd><a>full support</a>:
 <!-- details about what is/isn't supported -->
+<p>
+These implementations all provide straightforward APIs for adding markers to locations using a default icon.
+</p>
 </dd><dt>open-layers-api</dt>
 <dd><a>supported, with limitations</a>:
 <!-- details about what is/isn't supported -->
+<p>
+Rather than providing a straightforward API, OpenLayers requires a number of steps to be followed:
+providing icon imagery (as there is no default imagery provided),
+creating icon features, creating a map layer to hold those features, and finally adding the layer to a map.
+This is noticeably more complex than the APIs provided by a number of other implementations.
+</p>
 </dd><dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
+<dd><a>partial support</a>:
 <!-- details about what is/isn't supported -->
+<p>
+By default, d3-geo will render point features as circles.
+These can be styled using whatever techniques are being used to style the map content,
+typically either using presentational SVG attributes, or CSS.
+In practice, adding markers in a manner similar to that offered by other mapping APIs might best be achieved
+by dynamically creating a GeoJSON feature containing the point features in a FeatureCollection
+and adding this as an additional layer on the map.
+</p>
 </dd>
 </dl>
 
@@ -4294,13 +4335,21 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+In cases where non-geographical data is being displayed,
+markers could indicate points of interest in the same way that they do on maps.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
+<a data-cite="rfc7946" data-no-xref=""></a> defines a method for representing geographical data in JSON.
+This is one of the primary data formats supported by d3-geo and is also used by other implementations
+for representing additional content.
+For adding markers to a map, a GeoJSON FeatureCollection containing one or more points can be used.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
+</p>
+<p>
+[[[rfc7946]]]
 </p>
 
 <h5>Conclusion</h5>
@@ -4314,13 +4363,6 @@ This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern
 Incorporating this functionality of existing map libraries in HTML would benefit users
 by reducing download size and time to interactivity. Web developers would benefit from
 being able to program against a standard interface.
-</p>
-<p>However, it is to be expected that a native HTML web map element would be constructed
-and initialised via existing DOM interfaces such as <code>document.createElement</code>
-and <code>DOMElement.insertAdjacentHTML</code>. Additional aspects of the map element's
-configuration might be achieved either through existing <var>DOMElement</var> interfaces
-such as <var>setAttribute</var>, or through element-specific attributes and methods;
-<i>cf.</i> the attributes and methods of the <var>HTMLMediaElement</var>.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
@@ -4578,7 +4620,15 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-add-layer-map" data-ucr-role="capability">
 <h4>Add a layer to a map</h4>
 <p>
-Description to follow
+Adding a layer to a map viewer is a fundamental capability,
+as without it the base layer itself could not be added to the viewer.
+While map viewer implementations from a provider of mapping data can be expected to automatically add
+a base layer showing the data they provide, other implementations require a base layer to be explicitly
+created and added to the map as part of its initial configuration.
+</p>
+<p>
+Adding further map layers other than the base layer allows additional information to be presented to the user
+in  geographical context.
 </p>
 <p class="issue discussion" data-number="61">
 Discuss this section on GitHub.
@@ -4586,7 +4636,8 @@ Discuss this section on GitHub.
 
 <h5>Existing implementations</h5>
 <p>
-Existing implementation support:
+All of the reviewed APIs support the creation of alternative base layers for the map,
+and the addition of layers to the base map. Both raster and vector layers are supported.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -4595,28 +4646,31 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
-<dt>google-maps-api</dt>
 <dt>bing-maps-api</dt>
-<dd><a>supported, with limitations</a>:
-<!-- details about what is/isn't supported -->
-</dd><dt>apple-mapkit-js-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
-</dd><dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>google-maps-api</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
+<dt>mapbox-gl-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
 <dd><a>full support</a>:
 <!-- details about what is/isn't supported -->
+<p>
+The implementations from mapping data providers generally require additional configuration to be specified
+in the case where an alternative base layer that does not use their data is provided.
+</p>
 </dd>
 </dl>
-
 <h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+As a map viewer provides the ability to pan and zoom imagery covering a large extent, there are many alternative
+uses. Some examples include works of art that have been digitised at ultra high resolution,
+allowing anyone to examine them in fine detail, and ultra high resolution panoramic photographs.
 </p>
 
 <h5>Related web specifications</h5>
@@ -4632,13 +4686,19 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+Based on the fundamental nature of this capability, it is a <a data-ucr-role="conclusion">requirement</a> for web map APIs.
+In addition to providing basic and extended capabilites for the display of geographic data,
+it also allows the repurposing of such APIs for wider application.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="#author-extensibility"></a>
+This capability promotes extensibility by allowing authors to incorporate additional or alternative data into a map.
+</li>
+<li><a data-ucr-role="tag" href="#author-custom-design"></a>
+This capability allows for customization of both base maps and additional data presented on the map,
+thereby giving authors flexibility to customize the appearance of maps to suit the design of the site on which the map is displayed.
 </li>
 </ul>
 </section>
@@ -4727,15 +4787,21 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dt>google-maps-api</dt>
 <dt>bing-maps-api</dt>
 <dt>apple-mapkit-js-api</dt>
 <dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
+<dd><a>full support</a>:
+<p>
+All of the API-based map viewer implementations support the use of vector data defined in a number of standard formats,
+such as GeoJSON and KML.
+When topogeographical data is available that is not already in one of the widely-supported formats,
+application developers can readily convert that data into object structures that can be utilised by the existing APIs,
+such as the structure of a GeoJSON object.
+</p>
 </dd>
 </dl>
 
@@ -4760,13 +4826,30 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future.
+This functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps,
+as there are numerous sources of such data.
+Furthermore, vector data allows a level of precision higher than that achievable with raster data,
+or that it may not be convenient or possible to present in the form of rasters.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="#author-simplicity"></a>:
+existing implementations mostly allow vector data to be incorporated into a map view with a single method call,
+making it easy for web authors to utilise such data.
+</li>
+<li><a data-ucr-role="tag" href="#author-custom-design"></a>:
+the styling of vector data is in the hands of authors,
+allowing them to easily match it to the design of the containing site.
+</li>
+<li><a data-ucr-role="tag" href="#author-extensibility"></a>:
+this capability allows authors to incorporate high precision data representations over a base map.
+
+</li>
+<li><a data-ucr-role="tag" href="#consistency-progressive"></a>:
+vector data can be incorporated into an HTML document as a list, table, microformat metadata, or similar structured content.
+The data can then be extracted by a script, formed into a suitable object structure (such as GeoJSON),
+and rendered on the map.
 </li>
 </ul>
 </section>
@@ -4835,74 +4918,8 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </ul>
 </section>
 
-<section id="capability-remove-layer-map" data-ucr-role="capability">
-<h4>Remove a layer from a map</h4>
-<p>
-Description to follow
-</p>
-<p class="issue discussion" data-number="62">
-Discuss this section on GitHub.
-</p>
-
-<h5>Existing implementations</h5>
-<p>
-Existing implementation support:
-</p>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-Give details about what is/isn't supported in the dd element,
-starting with a link to one of the implementation levels.
-List full implementations first.
-Group implementations (multiple dt for the same dd) when they have the same support.
--->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dd><a>supported, with limitations</a>:
-<!-- details about what is/isn't supported -->
-</dd><dt>apple-mapkit-js-api</dt>
-<dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-ToDo
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-Include links with proper ReSpec references. -->
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-See examples.
--->
-<p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
-</li>
-</ul>
-</section>
-
-<section id="capability-display-layer-map" data-ucr-role="capability">
-<h4>Display a layer on a map</h4>
+<section id="capability-control-layers-map" data-ucr-role="capability">
+<h4>Control which layers are included in a map</h4>
 <p>
 Description to follow
 </p>
@@ -4921,81 +4938,16 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
 <dt>google-maps-api</dt>
 <dt>bing-maps-api</dt>
 <dt>apple-mapkit-js-api</dt>
-<dd><a>supported, with limitations</a>:
-<!-- details about what is/isn't supported -->
-</dd><dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
+<dt>mapbox-gl-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
 <dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-ToDo
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-Include links with proper ReSpec references. -->
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-See examples.
--->
-<p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
-</li>
-</ul>
-</section>
-
-<section id="capability-hide-layer-map" data-ucr-role="capability">
-<h4>Hide a layer on a map</h4>
-<p>
-Description to follow
-</p>
-<p class="issue discussion" data-number="64">Discuss this section on GitHub.</p>
-
-<h5>Existing implementations</h5>
-<p>
-Existing implementation support:
-</p>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-Give details about what is/isn't supported in the dd element,
-starting with a link to one of the implementation levels.
-List full implementations first.
-Group implementations (multiple dt for the same dd) when they have the same support.
--->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
-<dd><a>supported, with limitations</a>:
-<!-- details about what is/isn't supported -->
-</dd><dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
+All of these implementations allow hiding and showing a layer on a map.
 </dd>
 </dl>
 
@@ -5355,140 +5307,12 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </ul>
 </section>
 
-<section id="capability-subscribe-map-move-events" data-ucr-role="capability">
+<section id="capability-map-events" data-ucr-role="capability">
 <h4>Subscribe to map move events</h4>
 <p>
-Description to follow
+Author scripts may wish to be notified of map events. TODO
 </p>
 <p class="issue discussion" data-number="69">Discuss this section on GitHub.</p>
-
-<h5>Existing implementations</h5>
-<p>
-Existing implementation support:
-</p>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-Give details about what is/isn't supported in the dd element,
-starting with a link to one of the implementation levels.
-List full implementations first.
-Group implementations (multiple dt for the same dd) when they have the same support.
--->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
-<dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-ToDo
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-Include links with proper ReSpec references. -->
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-See examples.
--->
-<p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
-</li>
-</ul>
-</section>
-
-<section id="capability-subscribe-map-zoom-events" data-ucr-role="capability">
-<h4>Subscribe to map zoom events</h4>
-<p>
-Description to follow
-</p>
-<p class="issue discussion" data-number="70">
-Discuss this section on GitHub.
-</p>
-
-<h5>Existing implementations</h5>
-<p>
-Existing implementation support:
-</p>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-Give details about what is/isn't supported in the dd element,
-starting with a link to one of the implementation levels.
-List full implementations first.
-Group implementations (multiple dt for the same dd) when they have the same support.
--->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
-<dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-ToDo
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-Include links with proper ReSpec references. -->
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-See examples.
--->
-<p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
-</li>
-</ul>
-</section>
-
-<section id="capability-subscribe-marker-selection-events" data-ucr-role="capability">
-<h4>Subscribe to marker selection events</h4>
-<p>
-Description to follow
-</p>
-<p class="issue discussion" data-number="71">
-Discuss this section on GitHub.
-</p>
 
 <h5>Existing implementations</h5>
 <p>
@@ -5548,7 +5372,8 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-change-bearing-map" data-ucr-role="capability">
 <h4>Change the bearing of a map</h4>
 <p>
-Description to follow
+Although the default bearing of a map - that is, the direction of "up" - is usually north,
+it can be useful to change this.
 </p>
 <p class="issue discussion" data-number="72">
 Discuss this section on GitHub.
@@ -5565,15 +5390,19 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
+<dt>open-layers-api</dt>
 <dt>apple-mapkit-js-api</dt>
 <dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
+<dd><a>full support</a>:
+these implementations all permit the bearing of a map view to be changed.
+</dd>
+
+<dt>google-maps-api</dt>
+<dt>bing-maps-api</dt>
+<dt>leaflet-api</dt>
+<dd><a>no support</a>:
+these implemtations provide no support for changing the bearing of the map.
 </dd>
 </dl>
 
@@ -5582,7 +5411,7 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+This capability could be useful when a map viewer is used to display zoomable technical drawings.
 </p>
 
 <h5>Related web specifications</h5>
@@ -5598,8 +5427,7 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
+  This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement">enhance</a> native web maps in the future.</p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
@@ -5609,69 +5437,6 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </ul>
 </section>
 
-<section id="capability-reset-bearing-map" data-ucr-role="capability">
-<h4>Reset the bearing of a map</h4>
-<p>
-Description to follow
-</p>
-<p class="issue discussion" data-number="73">
-Discuss this section on GitHub.
-</p>
-
-<h5>Existing implementations</h5>
-<p>
-Existing implementation support:
-</p>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-Give details about what is/isn't supported in the dd element,
-starting with a link to one of the implementation levels.
-List full implementations first.
-Group implementations (multiple dt for the same dd) when they have the same support.
--->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
-<dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-ToDo
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-Include links with proper ReSpec references. -->
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-See examples.
--->
-<p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
-</li>
-</ul>
-</section>
 
 <section id="capability-move-the-map-to-display-a-given-location" data-ucr-role="capability">
 <h4>Move the map to display a given location</h4>

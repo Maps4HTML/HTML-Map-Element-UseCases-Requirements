@@ -2932,8 +2932,19 @@ technical drawings and other similar media.
 
 <h5>Related web specifications</h5>
 <p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-      Include links with proper ReSpec references. -->
+<a data-cite="SVG2#">SVG</a> contains a number of elements that are positioned on a coordinate system.
+The coordinates and dimensions of the element are defined in markup,
+as attributes on the element.
+</p>
+<p>
+The <a data-cite="HTML#the-canvas-element">HTML Canvas2D API</a> also offers the ability to draw points on a coordinate system,
+but images are drawn by passing coordinates into a JavaScript method,
+instead of an element such as in SVG.
+This method of drawing features is more similar to existing mapping libraries,
+which are also reliant on JavaScript.
+However, the Canvas API offers a very low level of abstraction in comparison to mapping libraries.
+Depending on the complexity of the marker,
+the code to draw it may be very verbose.
 </p>
 
 <h5>Conclusion</h5>
@@ -3005,8 +3016,14 @@ files in the GeoJSON format. The embed tools lack support for this capability.
 
 <h5>Related web specifications</h5>
 <p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-     Include links with proper ReSpec references. -->
+<a data-cite="SVG2#">SVG</a> contains both a <code>polyline</code> and a <code>polygon</code> element.
+A comma separated list of coordinates is assigned to the <code>points</code> HTML attribute to generate the shape.
+</p>
+<p>
+The way that polylines and polygons are created in the <a data-cite="HTML#the-canvas-element">HTML Canvas2D API</a> is much more manual,
+requiring a sequence of calls to the <code>moveTo</code> and <code>lineTo</code> methods.
+Like other aspects of the Canvas API,
+this syntax can be quite verbose.
 </p>
 
 <h5>Conclusion</h5>
@@ -3071,13 +3088,26 @@ and it can produce markup that is not consistent with the functionality of the m
 
 <h5>Uses beyond mapping</h5>
 <p>
-<!-- What other web content could use this specific capability? Be brief but specific. -->
+This functionality can be used to provide hyperlink support for diagrams.
+Any case where an image map may have been appropriate can also benefit from this capability.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-      Include links with proper ReSpec references. -->
+<a data-cite="HTML#image-maps">HTML Image Maps</a> consist of a large graphic with various subregions,
+which serve as links.
+A subregion is defined by passing a shape, coordinates, a link target and alt text to an <code>area</code> element.
+A significant limitation of Image Maps is that they are not responsive by default,
+and this limits its usage in modern web development.
+</p>
+<p>
+The <a data-cite="SVG2/linking.html#Links">SVG2 specification</a> supports <code>href</code> attributes on <code>a</code> elements within SVGs,
+previously, the SVG 1.1 specification required <code>href</code> attributes to be specified within the XLink namespace.
+</p>
+<p>
+Though it is not visible,
+<a data-cite="HTML#the-canvas-element">Canvas elements</a> can include keyboard focusable links as a part of a navigable sub DOM.
+In order to make links within the canvas work on click, JavaScript is still neccessary.
 </p>
 
 <h5>Conclusion</h5>
@@ -3138,6 +3168,25 @@ these "attribution control" values can be set in configuration.
 <dd><a>supported, with limitations</a>: attribution is automatically generated,
 but it is not keyboard accessible.</dd>
 </dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+Website authors can use <a data-cite="Microdata">Microdata</a> and other related formats to provide attribution data in a standardized format.
+How and whether or not this content is displayed is up to the website author,
+but the goal is to provide a machine-readable format for important document content.
+</p>
+<p>
+The <a data-cite="HTML#the-cite-element">cite element</a> is for describing references to a cited creative work.
+As for other elements, the <code>blockquote</code> element has a cite attribute where you can pass a URL as the source of a quote,
+but browsers currently do not display this information to the end user.
+</p>
 </section>
 
 </section>
@@ -3190,11 +3239,6 @@ but the API provides the conversion function.
 
 <h5>Supported use cases</h5>
 <ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-…
-</p>
 
 <h5>Related web specifications</h5>
 <p>
@@ -3262,6 +3306,36 @@ support for different localizations than other alternatives.
 <dt>bing-maps-embed</dt>
 <dd><a>partial support</a>: does not support markers for a single location, but it is possible to display a map centered around a particular street address with no marker</dd>
 </dl>
+
+
+<h5>Uses beyond mapping</h5>
+<p>
+There are many cases where a website may expect an address from a user.
+An input type specifically for addresses has a wide variety applications other than displaying a map,
+such as reducing user error when facilitating e-commerce and delivery services.
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+See examples.
+-->
+<p>
+Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<li>
+<a data-ucr-role="tag" href="#i18n-difficult"></a>
+There are significant regional differences when it comes to how addresses are formatted.
+A good implementation of this would need to take these regional variations into account.
+</li>
+<li>
+<a data-ucr-role="tag" href="#privacy-personal-data"></a>
+It is unlikely that this capability could be supported in a fully client-side way,
+the inputted address may be revealed to the browser or website author.
+</li>
+</ul>
 </section>
 
 <section id="capability-tile-coordinate-systems" data-ucr-role="capability">

@@ -555,6 +555,7 @@ var[data-type]:hover::before {
   ],
   "wg": "Maps For HTML Community Group",
   "wgURI": "https://www.w3.org/community/maps4html/",
+  "xref": false,
   "localBiblio": {
     "MapML": {
       "title": "Map Markup Language",
@@ -579,6 +580,12 @@ var[data-type]:hover::before {
       "href": "http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf",
       "publisher": "US National Imagery and Mapping Agency",
       "id": "wgs84"
+    },
+    "FAST": {
+      "title": "Framework for Accessible Specification of Technologies",
+      "href": "https://w3c.github.io/apa/fast/",
+      "publisher": "W3C Accessible Platform Architectures Working Group (APA WG)",
+      "id": "fast"
     }
   },
   "otherLinks": [
@@ -613,15 +620,15 @@ var[data-type]:hover::before {
       ]
     }
   ],
-  "publishISODate": "2020-04-05T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 05 April 2020"
+  "publishISODate": "2020-04-07T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 07 April 2020"
 }</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/cg-draft"></head>
 <body class="h-entry informative"><div class="head">
       <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">Use Cases and Requirements for Standardizing Web Maps</h1>
       
       <h2>
         Draft Community Group Report
-        <time class="dt-published" datetime="2020-04-05">05 April 2020</time>
+        <time class="dt-published" datetime="2020-04-07">07 April 2020</time>
       </h2>
       <dl>
         
@@ -1393,7 +1400,7 @@ Further information:
 [<cite><a class="bibref" data-link-type="biblio" href="#bib-security-privacy-questionnaire" title="Self-Review Questionnaire: Security and Privacy">security-privacy-questionnaire</a></cite>]
 </li>
 <li>
-[<cite><a class="bibref" data-link-type="biblio" href="#bib-geolocation-privacy" title="Privacy of Geolocation Implementations">GEOLOCATION-PRIVACY</a></cite>] <cite><a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf">Privacy of Geolocation Implementations</a></cite>
+<cite><a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf">Privacy of Geolocation Implementations</a></cite> [<cite><a class="bibref" data-link-type="biblio" href="#bib-geolocation-privacy" title="Privacy of Geolocation Implementations">GEOLOCATION-PRIVACY</a></cite>]
 </li>
 </ul>
 </dd>
@@ -1430,6 +1437,12 @@ content author would always need to provide extra information
 <p>Further information:</p>
 <ul>
 <li>
+<cite><a href="https://w3c.github.io/apa/fast/">Framework for Accessible Specification of Technologies</a></cite>
+and its
+<a href="https://w3c.github.io/apa/fast/checklist.html">checklist</a>
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-fast" title="Framework for Accessible Specification of Technologies">FAST</a></cite>]
+</li>
+<li>
 <a href="https://www.w3.org/TR/WCAG/">Web Content Accessibility Guidelines</a>
 [<cite><a class="bibref" data-link-type="biblio" href="#bib-wcag21" title="Web Content Accessibility Guidelines (WCAG) 2.1">WCAG21</a></cite>]
 </li>
@@ -1440,6 +1453,20 @@ content author would always need to provide extra information
 <li>
 <a href="https://www.w3.org/WAI/standards-guidelines/uaag/">User Agent Accessibility Guidelines</a>
 [<cite><a class="bibref" data-link-type="biblio" href="#bib-uaag20" title="User Agent Accessibility Guidelines (UAAG) 2.0">UAAG20</a></cite>]
+</li>
+<li>
+<a href="https://www.w3.org/WAI/RD/wiki/Accessible_Maps">Accessible Maps</a>,
+a wiki page compiled by members of the Research and Development Working Group of the W3C Web Accessibility Initiative (WAI) focusing on non-visual map presentations
+</li>
+<li>
+<cite><a href="https://www.w3.org/TR/media-accessibility-reqs/">Media Accessibility User Requirements</a></cite>,
+particularly the system requirements about interactive controls and navigation
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-media-accessibility-reqs" title="Media Accessibility User Requirements">media-accessibility-reqs</a></cite>]
+</li>
+<li>
+<a href="https://www.w3.org/WAI/personalization/">WAI's personalization overview</a>,
+and in particular the <cite><a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/">Requirements for Personalization Semantics</a></cite>
+[<cite><a class="bibref" data-link-type="biblio" href="#bib-personalization-semantics-requirements-1.0" title="Requirements for Personalization Semantics">personalization-semantics-requirements-1.0</a></cite>]
 </li>
 </ul>
 </dd>
@@ -2288,7 +2315,7 @@ Discuss this section on GitHub.
 <h4 id="x3-2-10-view-a-map-in-fullscreen-mode"><bdi class="secno">3.2.10 </bdi>View a map in fullscreen mode<a class="self-link" aria-label="§" href="#use-case-fullscreen"></a></h4>
 <p>
 To get a better view of a map, and to ease navigation,
-a user may want to view the map in <cite><a data-no-xref="" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-1" href="https://fullscreen.spec.whatwg.org/">fullscreen</a></cite> mode.
+a user may want to view the map in <cite><a href="https://fullscreen.spec.whatwg.org/">fullscreen</a></cite> mode.
 </p>
 <div class="issue" id="issue-container-number-109"><div role="heading" class="issue-title marker" id="h-issue-21" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/109"><span class="issue-number">Issue 109</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: use case and status: editor's draft.">: Use case (end-user): View a map in fullscreen mode <a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+use+case%22" style="background-color: rgb(158, 247, 239); color: rgb(0, 0, 0);">discussion: use case</a><a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211); color: rgb(0, 0, 0);">status: editor's draft</a></span></div><p class="discussion">
 Discuss this section on GitHub.
@@ -2298,7 +2325,7 @@ Discuss this section on GitHub.
 <section id="use-case-picture-in-picture" data-ucr-role="use-case">
 <h4 id="x3-2-11-view-a-map-as-a-picture-in-picture-media-object"><bdi class="secno">3.2.11 </bdi>View a map as a Picture-In-Picture media object<a class="self-link" aria-label="§" href="#use-case-picture-in-picture"></a></h4>
 <p>
-Displaying a map viewer as a <cite><a data-no-xref="" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-2" href="https://www.w3.org/TR/picture-in-picture/">Picture-In-Picture</a></cite> (PIP)
+Displaying a map viewer as a <cite><a href="https://www.w3.org/TR/picture-in-picture/">Picture-In-Picture</a></cite> (PIP)
 media object allows for users to navigate to other applications,
 or a different tab in the browser from which the map viewer is embedded,
 while still being able to see and interact with the map viewer.
@@ -3143,7 +3170,7 @@ Discuss this section on GitHub.
 
 <h5 id="existing-implementations-2">Existing implementations<a class="self-link" aria-label="§" href="#capability-custom-map-tiles"></a></h5>
 <p>
-All API tools support some form of this feature, whether it be in the more popular OpenStreetMap standard (often called XYZ), or the TMS standard. For most services, tiles can be accessed through a URL with the X, Y and Z parameters defined, where X and Y represent the tile coordinates (not to be confused with latitude and longitude), and Z represents the zoom level. One thing to note is that while Google Maps and the OpenStreetMap standard both count tiles from the upper left corner of the map, the TMS standard has the Y axis inverted, counting tiles from the bottom left, and some transformation may be needed when using certain tools with certain tilesets.
+All API tools support some form of this feature, whether it be in the more popular OpenStreetMap standard (often called XYZ), or the <a href="#dfn-web-map-tile-service" class="internalDFN" data-link-type="dfn">WMTS</a> standard. For most services, tiles can be accessed through a URL with the X, Y and Z parameters defined, where X and Y represent the tile coordinates (not to be confused with latitude and longitude), and Z represents the zoom level. One thing to note is that while Google Maps and the OpenStreetMap standard both count tiles from the upper left corner of the map, the WMTS standard has the Y axis inverted, counting tiles from the bottom left, and some transformation may be needed when using certain tools with certain tilesets.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -3158,7 +3185,7 @@ All API tools support some form of this feature, whether it be in the more popul
 <dt>tomtom-sdk</dt>
 <dd>
   <a href="#dfn-no-support" class="internalDFN" data-link-type="dfn">no support</a>: Although TomTom supports <a href="#dfn-web-map-service" class="internalDFN" data-link-type="dfn">WMS</a> services (where the server can generate a single image file for custom map coordinates),
-      it does not support <a class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-0">TMS</a> or other custom tile sources
+      it does not support <a href="#dfn-web-map-tile-service" class="internalDFN" data-link-type="dfn">WMTS</a> or other custom tile sources
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -3613,8 +3640,8 @@ but the API provides the conversion function.
 
 <h5 id="related-web-specifications-7">Related web specifications<a class="self-link" aria-label="§" href="#capability-location-latlong"></a></h5>
 <p>
-The <cite><a data-no-xref="" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-3" href="https://www.w3.org/TR/geolocation-API/">Geolocation API</a></cite>
-and <cite><a data-no-xref="" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-4" href="https://www.w3.org/TR/geolocation-sensor/">Geolocation Sensor API</a></cite>
+The <cite><a href="https://www.w3.org/TR/geolocation-API/">Geolocation API</a></cite>
+and <cite><a href="https://www.w3.org/TR/geolocation-sensor/">Geolocation Sensor API</a></cite>
 expose the user's location using latitude and longitude data.
 It should be possible to set the view on a web map using data returned from these APIs.
 Both of these APIs use the <cite><a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf">World Geodetic System 1984</a></cite> as the technical definition
@@ -4591,21 +4618,21 @@ Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-
 
 <h5 id="related-web-specifications-15">Related web specifications<a class="self-link" aria-label="§" href="#capability-create-initialise-and-display-a-map"></a></h5>
 <p>
-The <cite><a data-no-xref="" href="https://html.spec.whatwg.org/multipage/">HTML Standard</a></cite> specifies a number of aspects of elements
+The <cite><a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a></cite> specifies a number of aspects of elements
 that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
 </p>
 <p>
-The <cite><a data-no-xref="" href="https://dom.spec.whatwg.org/">DOM Standard</a></cite> provides interfaces for creating
+The <cite><a href="https://dom.spec.whatwg.org/">DOM Standard</a></cite> provides interfaces for creating
 HTML elements, which are what these implementations are using under the hood.
 </p>
 <p>
-<cite><a data-no-xref="" href="https://www.w3.org/TR/SVG/">Scalable Vector Graphics (SVG) 1.0 Specification</a></cite> provides interfaces for creating vector graphics.
+<cite><a href="https://www.w3.org/TR/SVG/">Scalable Vector Graphics (SVG) 1.0 Specification</a></cite> provides interfaces for creating vector graphics.
 These are used as one of the available primary methods of rendering map data by <var>d3-geo</var>,
 and for rendering supplementary content by other implementations.
 
 </p>
 <p>
-<cite><a data-no-xref="" href="https://tools.ietf.org/html/rfc7946">The GeoJSON Format</a></cite> defines a method for representing geographical data in JSON.
+<cite><a href="https://tools.ietf.org/html/rfc7946">The GeoJSON Format</a></cite> defines a method for representing geographical data in JSON.
 This is one of the primary data formats supported by d3-geo and is also used by other implementations
 for representing additional content.
 
@@ -4698,7 +4725,7 @@ markers could indicate points of interest in the same way that they do on maps.
 
 <h5 id="related-web-specifications-16">Related web specifications<a class="self-link" aria-label="§" href="#capability-add-marker-or-multiple-markers-map"></a></h5>
 <p>
-<cite><a data-no-xref="" href="https://tools.ietf.org/html/rfc7946">The GeoJSON Format</a></cite> defines a method for representing geographical data in JSON.
+<cite><a href="https://tools.ietf.org/html/rfc7946">The GeoJSON Format</a></cite> defines a method for representing geographical data in JSON.
 This is one of the primary data formats supported by d3-geo and is also used by other implementations
 for representing additional content.
 For adding markers to a map, a GeoJSON FeatureCollection containing one or more points can be used.
@@ -4857,11 +4884,11 @@ Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-
 
 <h5 id="related-web-specifications-18">Related web specifications<a class="self-link" aria-label="§" href="#capability-add-control-map"></a></h5>
 <p>
-<cite><a data-no-xref="" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-5" href="https://html.spec.whatwg.org/multipage/">HTML</a></cite> specifies a number of aspects of elements
+<cite><a href="https://html.spec.whatwg.org/multipage/">HTML</a></cite> specifies a number of aspects of elements
 that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
 </p>
 <p>
-The <cite><a data-no-xref="" class="respec-offending-element" title="Linking error: not matching `<dfn>`" id="respec-offender-linking-error-not-matching-dfn-6" href="https://dom.spec.whatwg.org/">DOM</a></cite> provides interfaces for creating
+The <cite><a href="https://dom.spec.whatwg.org/">DOM</a></cite> provides interfaces for creating
 HTML elements, which are what these implementations are using under the hood.
 
 </p>
@@ -5959,5 +5986,5 @@ We are tracking issues on <a href="https://github.com/Maps4HTML/HTML-Map-Element
 <section id="references" class="appendix"><h2 id="c-references"><bdi class="secno">C. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2><section id="informative-references">
         <h3 id="c-1-informative-references"><bdi class="secno">C.1 </bdi>Informative references<a class="self-link" aria-label="§" href="#informative-references"></a></h3>
       <dl class="bibliography">
-        <dt id="bib-api-design-principles">[API-DESIGN-PRINCIPLES]</dt><dd><a href="https://w3ctag.github.io/design-principles/"><cite>API Design Principles</cite></a>. Domenic Denicola. 29 December 2015. URL: <a href="https://w3ctag.github.io/design-principles/">https://w3ctag.github.io/design-principles/</a></dd><dt id="bib-atag20">[ATAG20]</dt><dd><a href="https://www.w3.org/TR/ATAG20/"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite></a>. Jan Richards; Jeanne F Spellman; Jutta Treviranus.  W3C. 24 September 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ATAG20/">https://www.w3.org/TR/ATAG20/</a></dd><dt id="bib-css-transforms-1">[css-transforms-1]</dt><dd><a href="https://www.w3.org/TR/css-transforms-1/"><cite>CSS Transforms Module Level 1</cite></a>. Simon Fraser; Dean Jackson; Theresa O'Connor; Dirk Schulze.  W3C. 14 February 2019. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-transforms-1/">https://www.w3.org/TR/css-transforms-1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-extensible">[EXTENSIBLE]</dt><dd><a href="https://extensiblewebmanifesto.org/"><cite>The Extensible Web Manifesto</cite></a>. 10 June 2013. URL: <a href="https://extensiblewebmanifesto.org/">https://extensiblewebmanifesto.org/</a></dd><dt id="bib-fullscreen">[fullscreen]</dt><dd><a href="https://fullscreen.spec.whatwg.org/"><cite>Fullscreen API Standard</cite></a>. Philip Jägenstedt.  WHATWG. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a></dd><dt id="bib-geolocation-api">[geolocation-API]</dt><dd><a href="https://www.w3.org/TR/geolocation-API/"><cite>Geolocation API Specification 2nd Edition</cite></a>. Andrei Popescu.  W3C. 8 November 2016. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a></dd><dt id="bib-geolocation-privacy">[GEOLOCATION-PRIVACY]</dt><dd><a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf"><cite>Privacy of Geolocation Implementations</cite></a>. Marcos Cáceres. 12 July 2010. URL: <a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf">https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf</a></dd><dt id="bib-geolocation-sensor">[geolocation-sensor]</dt><dd><a href="https://www.w3.org/TR/geolocation-sensor/"><cite>Geolocation Sensor</cite></a>. Anssi Kostiainen; Thomas Steiner.  W3C. 19 December 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation-sensor/">https://www.w3.org/TR/geolocation-sensor/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-html-design-principles">[html-design-principles]</dt><dd><a href="https://www.w3.org/TR/html-design-principles/"><cite>HTML Design Principles</cite></a>. Anne van Kesteren; Maciej Stachowiak.  W3C. 26 November 2007. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-design-principles/">https://www.w3.org/TR/html-design-principles/</a></dd><dt id="bib-html-map-element">[HTML-map-element]</dt><dd><a href="https://maps4html.github.io/HTML-Map-Element/spec/"><cite>The HTML map Element proposal</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.github.io/HTML-Map-Element/spec/">https://maps4html.github.io/HTML-Map-Element/spec/</a></dd><dt id="bib-international-specs">[international-specs]</dt><dd><a href="https://www.w3.org/TR/international-specs/"><cite>Internationalization Best Practices for Spec Developers</cite></a>. Richard Ishida.  W3C. 7 October 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/international-specs/">https://www.w3.org/TR/international-specs/</a></dd><dt id="bib-mapml">[MapML]</dt><dd><a href="https://maps4html.github.io/MapML/spec/"><cite>Map Markup Language</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.github.io/MapML/spec/">https://maps4html.github.io/MapML/spec/</a></dd><dt id="bib-media-frags">[media-frags]</dt><dd><a href="https://www.w3.org/TR/media-frags/"><cite>Media Fragments URI 1.0 (basic)</cite></a>. Raphaël Troncy; Erik Mannens; Silvia Pfeiffer; Davy Van Deursen.  W3C. 25 September 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/media-frags/">https://www.w3.org/TR/media-frags/</a></dd><dt id="bib-picture-in-picture">[picture-in-picture]</dt><dd><a href="https://www.w3.org/TR/picture-in-picture/"><cite>Picture-in-Picture</cite></a>. Francois Beaufort; Mounir Lamouri.  W3C. 30 January 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/picture-in-picture/">https://www.w3.org/TR/picture-in-picture/</a></dd><dt id="bib-rfc7946">[rfc7946]</dt><dd><a href="https://tools.ietf.org/html/rfc7946"><cite>The GeoJSON Format</cite></a>. H. Butler; M. Daly; A. Doyle; S. Gillies; S. Hagen; T. Schaub.  IETF. August 2016. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a></dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt><dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Lukasz Olejnik; Jason Novak.  W3C. 10 September 2019. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd><dt id="bib-svg">[SVG]</dt><dd><a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a></dd><dt id="bib-svg2">[SVG2]</dt><dd><a href="https://www.w3.org/TR/SVG2/"><cite>Scalable Vector Graphics (SVG) 2</cite></a>. Amelia Bellamy-Royds; Bogdan Brinza; Chris Lilley; Dirk Schulze; David Storey; Eric Willigers.  W3C. 4 October 2018. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/SVG2/">https://www.w3.org/TR/SVG2/</a></dd><dt id="bib-uaag20">[UAAG20]</dt><dd><a href="https://www.w3.org/TR/UAAG20/"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd><dt id="bib-webcomponents-design-guidelines">[webcomponents-design-guidelines]</dt><dd><a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/"><cite>Guidelines for creating web platform compatible components</cite></a>.  W3C TAG. URL: <a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/">https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/</a></dd><dt id="bib-wgs84">[WGS84]</dt><dd><a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf"><cite>World Geodetic System 1984</cite></a>.  US National Imagery and Mapping Agency. URL: <a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf">http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf</a></dd>
+        <dt id="bib-api-design-principles">[API-DESIGN-PRINCIPLES]</dt><dd><a href="https://w3ctag.github.io/design-principles/"><cite>API Design Principles</cite></a>. Domenic Denicola. 29 December 2015. URL: <a href="https://w3ctag.github.io/design-principles/">https://w3ctag.github.io/design-principles/</a></dd><dt id="bib-atag20">[ATAG20]</dt><dd><a href="https://www.w3.org/TR/ATAG20/"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite></a>. Jan Richards; Jeanne F Spellman; Jutta Treviranus.  W3C. 24 September 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ATAG20/">https://www.w3.org/TR/ATAG20/</a></dd><dt id="bib-css-transforms-1">[css-transforms-1]</dt><dd><a href="https://www.w3.org/TR/css-transforms-1/"><cite>CSS Transforms Module Level 1</cite></a>. Simon Fraser; Dean Jackson; Theresa O'Connor; Dirk Schulze.  W3C. 14 February 2019. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-transforms-1/">https://www.w3.org/TR/css-transforms-1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-extensible">[EXTENSIBLE]</dt><dd><a href="https://extensiblewebmanifesto.org/"><cite>The Extensible Web Manifesto</cite></a>. 10 June 2013. URL: <a href="https://extensiblewebmanifesto.org/">https://extensiblewebmanifesto.org/</a></dd><dt id="bib-fast">[FAST]</dt><dd><a href="https://w3c.github.io/apa/fast/"><cite>Framework for Accessible Specification of Technologies</cite></a>.  W3C Accessible Platform Architectures Working Group (APA WG). URL: <a href="https://w3c.github.io/apa/fast/">https://w3c.github.io/apa/fast/</a></dd><dt id="bib-fullscreen">[fullscreen]</dt><dd><a href="https://fullscreen.spec.whatwg.org/"><cite>Fullscreen API Standard</cite></a>. Philip Jägenstedt.  WHATWG. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a></dd><dt id="bib-geolocation-api">[geolocation-API]</dt><dd><a href="https://www.w3.org/TR/geolocation-API/"><cite>Geolocation API Specification 2nd Edition</cite></a>. Andrei Popescu.  W3C. 8 November 2016. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a></dd><dt id="bib-geolocation-privacy">[GEOLOCATION-PRIVACY]</dt><dd><a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf"><cite>Privacy of Geolocation Implementations</cite></a>. Marcos Cáceres. 12 July 2010. URL: <a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf">https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf</a></dd><dt id="bib-geolocation-sensor">[geolocation-sensor]</dt><dd><a href="https://www.w3.org/TR/geolocation-sensor/"><cite>Geolocation Sensor</cite></a>. Anssi Kostiainen; Thomas Steiner.  W3C. 19 December 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation-sensor/">https://www.w3.org/TR/geolocation-sensor/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-html-design-principles">[html-design-principles]</dt><dd><a href="https://www.w3.org/TR/html-design-principles/"><cite>HTML Design Principles</cite></a>. Anne van Kesteren; Maciej Stachowiak.  W3C. 26 November 2007. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-design-principles/">https://www.w3.org/TR/html-design-principles/</a></dd><dt id="bib-html-map-element">[HTML-map-element]</dt><dd><a href="https://maps4html.github.io/HTML-Map-Element/spec/"><cite>The HTML map Element proposal</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.github.io/HTML-Map-Element/spec/">https://maps4html.github.io/HTML-Map-Element/spec/</a></dd><dt id="bib-international-specs">[international-specs]</dt><dd><a href="https://www.w3.org/TR/international-specs/"><cite>Internationalization Best Practices for Spec Developers</cite></a>. Richard Ishida.  W3C. 7 October 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/international-specs/">https://www.w3.org/TR/international-specs/</a></dd><dt id="bib-mapml">[MapML]</dt><dd><a href="https://maps4html.github.io/MapML/spec/"><cite>Map Markup Language</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.github.io/MapML/spec/">https://maps4html.github.io/MapML/spec/</a></dd><dt id="bib-media-accessibility-reqs">[media-accessibility-reqs]</dt><dd><a href="https://www.w3.org/TR/media-accessibility-reqs/"><cite>Media Accessibility User Requirements</cite></a>. Shane McCarron; Michael Cooper; Mark Sadecki.  W3C. 3 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/media-accessibility-reqs/">https://www.w3.org/TR/media-accessibility-reqs/</a></dd><dt id="bib-media-frags">[media-frags]</dt><dd><a href="https://www.w3.org/TR/media-frags/"><cite>Media Fragments URI 1.0 (basic)</cite></a>. Raphaël Troncy; Erik Mannens; Silvia Pfeiffer; Davy Van Deursen.  W3C. 25 September 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/media-frags/">https://www.w3.org/TR/media-frags/</a></dd><dt id="bib-personalization-semantics-requirements-1.0">[personalization-semantics-requirements-1.0]</dt><dd><a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/"><cite>Requirements for Personalization Semantics</cite></a>. Lisa Seeman-Kestenbaum; Charles LaPierre; Michael Cooper; Ruoxi Ran.  W3C. 30 January 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/">https://www.w3.org/TR/personalization-semantics-requirements-1.0/</a></dd><dt id="bib-picture-in-picture">[picture-in-picture]</dt><dd><a href="https://www.w3.org/TR/picture-in-picture/"><cite>Picture-in-Picture</cite></a>. Francois Beaufort; Mounir Lamouri.  W3C. 30 January 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/picture-in-picture/">https://www.w3.org/TR/picture-in-picture/</a></dd><dt id="bib-rfc7946">[rfc7946]</dt><dd><a href="https://tools.ietf.org/html/rfc7946"><cite>The GeoJSON Format</cite></a>. H. Butler; M. Daly; A. Doyle; S. Gillies; S. Hagen; T. Schaub.  IETF. August 2016. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a></dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt><dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Lukasz Olejnik; Jason Novak.  W3C. 10 September 2019. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd><dt id="bib-svg">[SVG]</dt><dd><a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a></dd><dt id="bib-svg2">[SVG2]</dt><dd><a href="https://www.w3.org/TR/SVG2/"><cite>Scalable Vector Graphics (SVG) 2</cite></a>. Amelia Bellamy-Royds; Bogdan Brinza; Chris Lilley; Dirk Schulze; David Storey; Eric Willigers.  W3C. 4 October 2018. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/SVG2/">https://www.w3.org/TR/SVG2/</a></dd><dt id="bib-uaag20">[UAAG20]</dt><dd><a href="https://www.w3.org/TR/UAAG20/"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd><dt id="bib-webcomponents-design-guidelines">[webcomponents-design-guidelines]</dt><dd><a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/"><cite>Guidelines for creating web platform compatible components</cite></a>.  W3C TAG. URL: <a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/">https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/</a></dd><dt id="bib-wgs84">[WGS84]</dt><dd><a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf"><cite>World Geodetic System 1984</cite></a>.  US National Imagery and Mapping Agency. URL: <a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf">http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf</a></dd>
       </dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

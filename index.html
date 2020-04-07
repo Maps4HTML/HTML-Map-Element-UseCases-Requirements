@@ -124,6 +124,7 @@ var respecConfig = {
   // name (without the @w3c.org) of the public mailing to which comments are due
   // wgPublicList: "public-maps4html", // don't use default comment request
 
+  xref: false,
   localBiblio: {
     "MapML" : {
       title: "Map Markup Language",
@@ -144,6 +145,11 @@ var respecConfig = {
       title: "World Geodetic System 1984",
       href: "http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf",
       publisher: "US National Imagery and Mapping Agency"
+    },
+    "FAST" : {
+      title: "Framework for Accessible Specification of Technologies",
+      href: "https://w3c.github.io/apa/fast/",
+      publisher: "W3C Accessible Platform Architectures Working Group (APA WG)"
     }
   }
 };
@@ -891,7 +897,7 @@ Further information:
 [[security-privacy-questionnaire]]
 </li>
 <li>
-[[GEOLOCATION-PRIVACY]] [[[GEOLOCATION-PRIVACY]]]
+[[[GEOLOCATION-PRIVACY]]] [[GEOLOCATION-PRIVACY]]
 </li>
 </ul>
 </dd>
@@ -934,6 +940,12 @@ content author would always need to provide extra information
 <p>Further information:</p>
 <ul>
 <li>
+[[[FAST]]]
+and its
+<a data-cite="FAST/checklist.html">checklist</a>
+[[FAST]]
+</li>
+<li>
 <a href="https://www.w3.org/TR/WCAG/">Web Content Accessibility Guidelines</a>
 [[WCAG21]]
 </li>
@@ -944,6 +956,20 @@ content author would always need to provide extra information
 <li>
 <a href="https://www.w3.org/WAI/standards-guidelines/uaag/">User Agent Accessibility Guidelines</a>
 [[UAAG20]]
+</li>
+<li>
+<a href="https://www.w3.org/WAI/RD/wiki/Accessible_Maps">Accessible Maps</a>,
+a wiki page compiled by members of the Research and Development Working Group of the W3C Web Accessibility Initiative (WAI) focusing on non-visual map presentations
+</li>
+<li>
+[[[media-accessibility-reqs]]],
+particularly the system requirements about interactive controls and navigation
+[[media-accessibility-reqs]]
+</li>
+<li>
+<a href="https://www.w3.org/WAI/personalization/">WAI's personalization overview</a>,
+and in particular the [[[personalization-semantics-requirements-1.0]]]
+[[personalization-semantics-requirements-1.0]]
 </li>
 </ul>
 </dd>
@@ -1834,7 +1860,7 @@ Discuss this section on GitHub.
 <h4>View a map in fullscreen mode</h4>
 <p>
 To get a better view of a map, and to ease navigation,
-a user may want to view the map in <a data-cite="fullscreen" data-no-xref="">fullscreen</a> mode.
+a user may want to view the map in <a data-cite="fullscreen">fullscreen</a> mode.
 </p>
 <p class="issue discussion" data-number="109">
 Discuss this section on GitHub.
@@ -1844,7 +1870,7 @@ Discuss this section on GitHub.
 <section id="use-case-picture-in-picture" data-ucr-role="use-case">
 <h4>View a map as a Picture-In-Picture media object</h4>
 <p>
-Displaying a map viewer as a <a data-cite="picture-in-picture" data-no-xref="">Picture-In-Picture</a> (PIP)
+Displaying a map viewer as a <a data-cite="picture-in-picture">Picture-In-Picture</a> (PIP)
 media object allows for users to navigate to other applications,
 or a different tab in the browser from which the map viewer is embedded,
 while still being able to see and interact with the map viewer.
@@ -2702,7 +2728,7 @@ Discuss this section on GitHub.
 
 <h5>Existing implementations</h5>
 <p>
-All API tools support some form of this feature, whether it be in the more popular OpenStreetMap standard (often called XYZ), or the TMS standard. For most services, tiles can be accessed through a URL with the X, Y and Z parameters defined, where X and Y represent the tile coordinates (not to be confused with latitude and longitude), and Z represents the zoom level. One thing to note is that while Google Maps and the OpenStreetMap standard both count tiles from the upper left corner of the map, the TMS standard has the Y axis inverted, counting tiles from the bottom left, and some transformation may be needed when using certain tools with certain tilesets.
+All API tools support some form of this feature, whether it be in the more popular OpenStreetMap standard (often called XYZ), or the <a>WMTS</a> standard. For most services, tiles can be accessed through a URL with the X, Y and Z parameters defined, where X and Y represent the tile coordinates (not to be confused with latitude and longitude), and Z represents the zoom level. One thing to note is that while Google Maps and the OpenStreetMap standard both count tiles from the upper left corner of the map, the WMTS standard has the Y axis inverted, counting tiles from the bottom left, and some transformation may be needed when using certain tools with certain tilesets.
 </p>
 <dl data-ucr-role="implementation-notes">
 <dt>google-maps-api</dt>
@@ -2717,7 +2743,7 @@ All API tools support some form of this feature, whether it be in the more popul
 <dt>tomtom-sdk</dt>
 <dd>
   <a>no support</a>: Although TomTom supports <a>WMS</a> services (where the server can generate a single image file for custom map coordinates),
-      it does not support <a>TMS</a> or other custom tile sources
+      it does not support <a>WMTS</a> or other custom tile sources
 </dd>
 <dt>google-maps-embed</dt>
 <dt>openstreetmap-embed</dt>
@@ -3198,8 +3224,8 @@ but the API provides the conversion function.
 
 <h5>Related web specifications</h5>
 <p>
-The <a data-cite="geolocation-API" data-no-xref="">Geolocation API</a>
-and <a data-cite="geolocation-sensor" data-no-xref="">Geolocation Sensor API</a>
+The <a data-cite="geolocation-API">Geolocation API</a>
+and <a data-cite="geolocation-sensor">Geolocation Sensor API</a>
 expose the user's location using latitude and longitude data.
 It should be possible to set the view on a web map using data returned from these APIs.
 Both of these APIs use the [[[WGS84]]] as the technical definition
@@ -4222,22 +4248,22 @@ Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-
 
 <h5>Related web specifications</h5>
 <p>
-The <a data-cite="HTML" data-no-xref=""></a> specifies a number of aspects of elements
+The <a data-cite="HTML"></a> specifies a number of aspects of elements
 that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
 </p>
 <p>
-The <a data-cite="DOM" data-no-xref=""></a> provides interfaces for creating
+The <a data-cite="DOM"></a> provides interfaces for creating
 HTML elements, which are what these implementations are using under the hood.
 </p>
 <p>
-<a data-cite="SVG" data-no-xref=""></a> provides interfaces for creating vector graphics.
+<a data-cite="SVG"></a> provides interfaces for creating vector graphics.
 These are used as one of the available primary methods of rendering map data by <var>d3-geo</var>,
 and for rendering supplementary content by other implementations.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
 </p>
 <p>
-<a data-cite="rfc7946" data-no-xref=""></a> defines a method for representing geographical data in JSON.
+<a data-cite="rfc7946"></a> defines a method for representing geographical data in JSON.
 This is one of the primary data formats supported by d3-geo and is also used by other implementations
 for representing additional content.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
@@ -4341,7 +4367,7 @@ markers could indicate points of interest in the same way that they do on maps.
 
 <h5>Related web specifications</h5>
 <p>
-<a data-cite="rfc7946" data-no-xref=""></a> defines a method for representing geographical data in JSON.
+<a data-cite="rfc7946"></a> defines a method for representing geographical data in JSON.
 This is one of the primary data formats supported by d3-geo and is also used by other implementations
 for representing additional content.
 For adding markers to a map, a GeoJSON FeatureCollection containing one or more points can be used.
@@ -4522,11 +4548,11 @@ Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-
 
 <h5>Related web specifications</h5>
 <p>
-<a data-cite="HTML" data-no-xref="">HTML</a> specifies a number of aspects of elements
+<a data-cite="HTML">HTML</a> specifies a number of aspects of elements
 that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
 </p>
 <p>
-The <a data-cite="DOM" data-no-xref="">DOM</a> provides interfaces for creating
+The <a data-cite="DOM">DOM</a> provides interfaces for creating
 HTML elements, which are what these implementations are using under the hood.
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->

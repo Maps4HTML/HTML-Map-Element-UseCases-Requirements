@@ -10,7 +10,9 @@ html {
   overflow-x: hidden;
 }
 
-html {
+html,
+html ::before,
+html ::after {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -33,48 +35,12 @@ h1 a:link, h1 a:visited {
   color: navy;
 }
 
+h1 {
+  line-height: 1.3;
+}
+
 .toc > li {
   margin-bottom: 1rem;
-}
-
-.html-example > code,
-.script-example > code,
-.script-example script {
-  display: block;
-  white-space: pre;
-  font-family: monospace;
-  padding: 0 2rem 1rem 0;
-  z-index: 2;
-  overflow-x: auto;
-}
-
-.html-example,
-.script-example {
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  margin-top: 1rem;
-}
-
-.html-example::before,
-.script-example::before {
-  background-color: #efefef;
-  position: relative;
-  top: -0.5rem;
-  left: 1.5rem;
-  border: 1px solid #ccc;
-  z-index: 2;
-  padding: 0.5rem;
-}
-
-.html-example {
-  padding: 0.1rem 0.5rem;
-}
-
-.html-example::before {
-  content: 'HTML';
-}
-.script-example::before {
-  content: 'Script';
 }
 
 .map-container {
@@ -294,6 +260,7 @@ iframe,
 
 .static-embed {
     position: relative;
+    margin-top: 1rem;
 }
 
 .static-embed img {
@@ -504,4 +471,44 @@ svg .overlay.parish {
     fill-opacity: 0.8;
     stroke: rgb(40,39,101);
 
+}
+
+/* Code examples */
+.html-example
+.script-example {
+  display: block;
+}
+
+.html-example,
+.script-example script {
+  background-color: #fcfcfc;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  display: block;
+  margin-top: 1rem;
+  overflow-x: auto;
+  padding: 3rem 1rem 1rem;
+  position: relative;
+  white-space: pre;
+}
+
+.html-example::before,
+.script-example script::before {
+  display: block;
+  font-size: 1rem;
+  margin-top: .75rem;
+  position: absolute;
+  top: 0;
+}
+
+.html-example::before {
+  content: "HTML";
+}
+
+.script-example script::before {
+  content: "Script";
+}
+
+pre {
+  overflow-x: auto;
 }

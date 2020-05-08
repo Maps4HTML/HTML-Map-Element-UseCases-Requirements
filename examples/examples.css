@@ -509,3 +509,7 @@ svg .overlay.parish {
 .script-example::before {
   content: "Script";
 }
+
+pre {
+  overflow-x: auto;
+}

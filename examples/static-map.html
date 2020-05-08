@@ -33,12 +33,13 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
 
 <section id="google-maps">
   <h2>Google Static Maps &amp; Static Street View images</h2>
-  <code class="html-example">
+<code class="html-example">
 &lt;!-- Map --&gt;
-<div></div>
+<span></span>
+
 &lt;!-- Street view --&gt;
-<div></div>
-  </code>
+<span></span>
+</code>
   <div class="static-embed with-streetview">
   </div>
   <script>
@@ -46,7 +47,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
           const location = '51.4082343,30.0558434';
           const staticMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${location}&zoom=16&size=640x480&markers=color:red|location:51.408365,30.055867&key=${m4h.keys.google}`;
           const mapEmbedElement = document.querySelector('#google-maps .static-embed');
-          const mapCodeElement = document.querySelectorAll('#google-maps code div');
+          const mapCodeElement = document.querySelectorAll('#google-maps code span');
           const staticMap = document.createElement('img');
           staticMap.src = staticMapURL;
           staticMap.alt = 'Pripyat Amusement Park';
@@ -67,8 +68,7 @@ Static map APIs allow a non-interactive map to be embedded in a webpage as an im
 
 <section id="bing-maps">
   <h2>Bing Static Map image</h2>
-  <code class="html-example">
-  </code>
+  <code class="html-example"></code>
   <div class="static-embed">
   </div>
   <script>

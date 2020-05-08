@@ -474,13 +474,9 @@ svg .overlay.parish {
 }
 
 /* Code examples */
-.html-example
+.html-example,
 .script-example {
   display: block;
-}
-
-.html-example,
-.script-example script {
   background-color: #fcfcfc;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -492,8 +488,13 @@ svg .overlay.parish {
   white-space: pre;
 }
 
+.script-example script {
+  display: block;
+  margin: -2rem 0 -2rem -1rem
+}
+
 .html-example::before,
-.script-example script::before {
+.script-example::before {
   display: block;
   font-size: 1rem;
   margin-top: .75rem;
@@ -505,10 +506,6 @@ svg .overlay.parish {
   content: "HTML";
 }
 
-.script-example script::before {
+.script-example::before {
   content: "Script";
-}
-
-pre {
-  overflow-x: auto;
 }

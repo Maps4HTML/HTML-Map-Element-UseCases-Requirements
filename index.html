@@ -3017,13 +3017,19 @@ files in the GeoJSON format. The embed tools lack support for this capability.
 <h5>Related web specifications</h5>
 <p>
 <a data-cite="SVG2#">SVG</a> contains both a <code>polyline</code> and a <code>polygon</code> element.
-A comma separated list of coordinates is assigned to the <code>points</code> HTML attribute to generate the shape.
+A comma separated list of coordinates is assigned to the <code>points</code> attribute to generate the shape.
 </p>
 <p>
 The way that polylines and polygons are created in the <a data-cite="HTML#the-canvas-element">HTML Canvas2D API</a> is much more manual,
 requiring a sequence of calls to the <code>moveTo</code> and <code>lineTo</code> methods.
 Like other aspects of the Canvas API,
 this syntax can be quite verbose.
+</p>
+<p>
+TODO: Mention HTML <code>area</code> and CSS  <code>polygon()</code> function.
+</p>
+<p>
+TODO: describe how polyline/polygon are represented in the important geospatial specs.
 </p>
 
 <h5>Conclusion</h5>
@@ -3097,7 +3103,9 @@ Any case where an image map may have been appropriate can also benefit from this
 <a data-cite="HTML#image-maps">HTML Image Maps</a> consist of a large graphic with various subregions,
 which serve as links.
 A subregion is defined by passing a shape, coordinates, a link target and alt text to an <code>area</code> element.
-A significant limitation of Image Maps is that they are not responsive by default,
+A significant limitation of image maps is that the coordinates of the area elements
+are always defined in pixels and do not automatically scale to match changes in scale of the image
+(see <a href="https://github.com/whatwg/html/issues/389">issue discussion on the HTML spec</a>),
 and this limits its usage in modern web development.
 </p>
 <p>
@@ -3184,7 +3192,8 @@ but the goal is to provide a machine-readable format for important document cont
 </p>
 <p>
 The <a data-cite="HTML#the-cite-element">cite element</a> is for describing references to a cited creative work.
-As for other elements, the <code>blockquote</code> element has a cite attribute where you can pass a URL as the source of a quote,
+The HTML <code>blockquote</code> and <code>q</code> elements have a <code>cite</code> attribute
+where you can pass a URL as the source of a quote,
 but browsers currently do not display this information to the end user.
 </p>
 </section>
@@ -3315,6 +3324,12 @@ An input type specifically for addresses has a wide variety applications other t
 such as reducing user error when facilitating e-commerce and delivery services.
 </p>
 
+<h5>Related web specifications</h5>
+<p>
+TODO: mention attempts to standardize what an “address” is,
+in HTML autocomplete attribute
+and Payment Request API.
+</p>
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
 Should include an `<a>` element with attribute `data-ucr-role="conclusion"`

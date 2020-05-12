@@ -483,14 +483,20 @@ svg .overlay.parish {
   display: block;
   margin-top: 1rem;
   overflow-x: auto;
-  padding: 3rem 1rem 1rem;
   position: relative;
   white-space: pre;
 }
 
 .script-example script {
   display: block;
-  margin: -2rem 0 -2rem -1rem
+}
+
+.html-example {
+  padding: 3rem 1rem 1rem;
+}
+
+.script-example {
+  padding: 1rem 1rem 0;
 }
 
 .html-example::before,

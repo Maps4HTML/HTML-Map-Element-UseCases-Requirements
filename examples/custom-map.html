@@ -32,7 +32,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
       "attribution": "Presidential Mississippi River Commission, 1944. Public Domain.",
       "scheme": "tms",
       "tiles": [
-        "https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{-y}.png"
+        "https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{-y}.png"
       ],
       "bounds": [-92.60431421311640, 28.79036396296392, -88.72531489137181, 31.04551669046586],
       "minzoom": 6,
@@ -96,7 +96,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
     <script>
       {
         const map = L.map('leaflet-js-map').setView([29.91794032671489, -90.664814552244105], 8);
-        L.tileLayer('https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png', {
+        L.tileLayer('https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png', {
           tms: true,
           minZoom: 6,
           maxZoom: 12,
@@ -162,7 +162,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
   <div class="script-example">
     <script>
       function initMap() {
-        const TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+        const TILE_URL = 'https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
         const layerID = 'fisk_map';
         // Create a new ImageMapType layer.
         const layer = new google.maps.ImageMapType({
@@ -204,7 +204,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
   <div class="script-example">
     <script>
       function initBingMap() {
-        const TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+        const TILE_URL = 'https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
         const layerID = 'fisk_map';
         // Create a new ImageMapType layer.
         const tileSource = new Microsoft.Maps.TileSource({
@@ -253,7 +253,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
   <div class="script-example">
     <script>
       {
-        const TILE_URL = 'https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
+        const TILE_URL = 'https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
         mapkit.addEventListener('error', function(err) {
           console.log(err);
         });
@@ -313,7 +313,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
               "raster-tiles": {
                 "type": "raster",
                 "scheme": m4h.fiskMapJSON.scheme,
-                "tiles": ['https://maps4html.github.io/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png'],
+                "tiles": ['https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png'],
                 "tileSize": 256,
                 "bounds": m4h.fiskMapJSON.bounds,
                 "attribution": m4h.fiskMapJSON.attribution

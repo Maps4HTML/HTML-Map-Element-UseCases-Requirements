@@ -480,7 +480,6 @@ svg .overlay.parish {
   background-color: #fcfcfc;
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  display: block;
   margin-top: 1rem;
   overflow-x: auto;
   position: relative;

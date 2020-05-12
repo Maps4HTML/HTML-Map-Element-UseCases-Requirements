@@ -24,7 +24,7 @@ The map used here is sheet 4 of plate 15 of the report.
 The TileJSON representation of the map, as a JavaScript object, is:
 </p>
 
-<div class="script-example">
+<code class="script-example">
   <script>
     m4h.fiskMapJSON = {
       "tilejson": "2.2.0",
@@ -39,7 +39,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
       "maxzoom": 12
     };
   </script>
-</div>
+</code>
 
 <details>
   <summary>Jump to section…</summary>
@@ -92,7 +92,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
           crossorigin=""></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       {
         const map = L.map('leaflet-js-map').setView([29.91794032671489, -90.664814552244105], 8);
@@ -104,7 +104,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
         }).addTo(map);
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="openlayers">
@@ -112,7 +112,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
   <div id="openlayers-map" style="width: 600px; height: 450px; background-color: #ccc;"></div>
   <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       {
         const map = (() => {
@@ -146,7 +146,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
         })();
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="google-maps-api">
@@ -159,7 +159,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
     document.body.appendChild(scriptElement);
   </script>
 
-  <div class="script-example">
+  <code class="script-example">
     <script>
       function initMap() {
         const TILE_URL = 'https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
@@ -189,7 +189,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
         map.setMapTypeId(layerID);
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="bing-maps-api">
@@ -201,7 +201,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
     bingScriptElement.setAttribute('src', bingApiUrl);
     document.body.appendChild(bingScriptElement);
   </script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       function initBingMap() {
         const TILE_URL = 'https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
@@ -239,7 +239,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
         map.layers.insert(layer);
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="mapkit-js">
@@ -250,7 +250,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
   </p>
   <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       {
         const TILE_URL = 'https://maps4html.org/FiskMississippiMapsStreamCourses/sheet04/{z}/{x}/{y}.png';
@@ -292,7 +292,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
         map.tileOverlays = [tileOverlay];
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="mapbox-api">
@@ -300,7 +300,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
   <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       {
         mapboxgl.accessToken = m4h.keys.mapboxGL;
@@ -333,7 +333,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
         map.addControl(new mapboxgl.NavigationControl());
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="tomtom">
@@ -345,7 +345,7 @@ The TileJSON representation of the map, as a JavaScript object, is:
   <h2>D3 Geographies APIs</h2>
 
   ***TODO<!--
-  Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+  Replace with code including link/external scripts. Custom script has <code class="script-example"> parent element.
   or <p>Not applicable</p>
   -->***
 </section>

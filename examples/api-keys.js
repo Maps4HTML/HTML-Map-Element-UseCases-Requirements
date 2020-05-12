@@ -1,6 +1,6 @@
 /* Tokens are configured to work from the following domains:
    http://localhost:8000/
-   https://maps4html.github.io/
+   https://maps4html.org/
 */
 var m4h = m4h || {};
 m4h.keys = {
@@ -21,7 +21,7 @@ m4h.keys = {
             signature: 'dIEhfVGXY4WHW2hq7FUWuqc41B0a0-zHJoom88pBZD_hfj3IohIHo06qv__qtxFOQjNbeeq0G_RZZgZ3yWQiQA'
         },
         maps4html: {
-            referer: 'https://maps4html.github.io/',
+            referer: 'https://maps4html.org/',
             teamId: '43B23N8Z63',
             keyId: 'R6BV5A9CGV',
             signature: 'c_o9L3nf8QZ-Iz1pNyCF-yn8CvJxuM4ElCoD2lUBMinm3YbIp44DRIAAe_SgHiUMYD4t_CVZ84bQd5CAnGO6Ig'

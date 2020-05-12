@@ -120,7 +120,7 @@ for how to add point markers with the other services (where possible).
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         {
             const map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
@@ -133,7 +133,7 @@ for how to add point markers with the other services (where possible).
             centerMarker.addTo(map);
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="openlayers">
@@ -141,7 +141,7 @@ for how to add point markers with the other services (where possible).
   <div id="openlayers-map" style="width: 600px; height: 450px;"></div>
   <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         {
             const vectorLayerFeatures = [];
@@ -180,7 +180,7 @@ for how to add point markers with the other services (where possible).
             vectorLayer.getSource().addFeature(centerMarker);
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="google-maps-api">
@@ -192,7 +192,7 @@ for how to add point markers with the other services (where possible).
       scriptElement.setAttribute('src', apiUrl);
       document.body.appendChild(scriptElement);
   </script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       function initMap() {
           // set up the map
@@ -211,7 +211,7 @@ for how to add point markers with the other services (where possible).
           });
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="bing-maps-api">
@@ -223,7 +223,7 @@ for how to add point markers with the other services (where possible).
       bingScriptElement.setAttribute('src', bingApiUrl);
       document.body.appendChild(bingScriptElement);
   </script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         function initBingMap() {
             // set up the map
@@ -237,14 +237,14 @@ for how to add point markers with the other services (where possible).
             map.entities.push(centerMarker);
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
   <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       {
         mapkit.addEventListener('error', function(err) {
@@ -275,7 +275,7 @@ for how to add point markers with the other services (where possible).
         map.addAnnotation(marker);
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="mapbox-api">
@@ -283,7 +283,7 @@ for how to add point markers with the other services (where possible).
   <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       { // block to restrict let and const scope to this example
           // set up map
@@ -301,7 +301,7 @@ for how to add point markers with the other services (where possible).
           centerMarker.addTo(map);
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="tomtom">
@@ -309,7 +309,7 @@ for how to add point markers with the other services (where possible).
   <div id="tomtom-single-location" style="width: 600px; height: 450px;"></div>
   <script src='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js'></script>
   <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
-  <div class="script-example">
+  <code class="script-example">
     <script>
       {
         tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
@@ -324,14 +324,14 @@ for how to add point markers with the other services (where possible).
         centerMarker.addTo(map);
       }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
   <div id="d3-geo-map" class="d3-geo-map" style="width: 600px; height: 450px;"></div>
   <script src="https://d3js.org/d3.v5.js"></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         {
             const handleZoom = () => {
@@ -403,7 +403,7 @@ for how to add point markers with the other services (where possible).
             });
         }
     </script>
-  </div>
+  </code>
 </section>
 </body>
 </html>

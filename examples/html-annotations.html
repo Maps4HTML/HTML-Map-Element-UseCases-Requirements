@@ -69,7 +69,7 @@
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
           integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
           crossorigin=""></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         {
             const map = L.map('leaflet-js-map').setView([46.233226, 6.055737], 15);
@@ -83,7 +83,7 @@
             centerMarker.bindPopup("<h3>CERN</h3><p>The World Wide Web was invented here by Sir Tim Berners-Lee between 1989 and 1991.</p>").openPopup();
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="openlayers">
@@ -91,7 +91,7 @@
   <div id="openlayers-map" style="width: 600px; height: 450px;"></div>
   <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
   <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         {
             const vectorLayerFeatures = [];
@@ -169,7 +169,7 @@
             popup.setPosition(view.getCenter());
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="google-maps-api">
@@ -181,7 +181,7 @@
       scriptElement.setAttribute('src', apiUrl);
       document.body.appendChild(scriptElement);
   </script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         function initMap() {
             // set up the map
@@ -207,7 +207,7 @@
             infoWindow.open(map, centerMarker);
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="bing-maps-api">
@@ -219,7 +219,7 @@
       bingScriptElement.setAttribute('src', bingApiUrl);
       document.body.appendChild(bingScriptElement);
   </script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         function initBingMap() {
             // set up the map
@@ -245,14 +245,14 @@
             })
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
   <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
   <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         {
             mapkit.addEventListener('error', function(err) {
@@ -287,7 +287,7 @@
             map.addAnnotation(marker);
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="mapbox-api">
@@ -295,7 +295,7 @@
   <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         { // block to restrict let and const scope to this example
             // set up map
@@ -324,7 +324,7 @@
             centerMarker.setPopup(popup);
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="tomtom">
@@ -334,7 +334,7 @@
   <!--<link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css'>-->
   <link rel='stylesheet' href='tomtom/maps-extract.css'>
   <link rel='stylesheet' href='https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css'>
-  <div class="script-example">
+  <code class="script-example">
     <script>
         {
             tomtom.setProductInfo('Maps4HTML Examples', '4.47.6');
@@ -350,14 +350,14 @@
             centerMarker.bindPopup("<h3>CERN</h3><p>The World Wide Web was invented here by Sir Tim Berners-Lee between 1989 and 1991.</p>").openPopup();
         }
     </script>
-  </div>
+  </code>
 </section>
 
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
 
 ***TODO<!--
-Replace with code including link/external scripts. Custom script has <div class="script-example"> parent element.
+Replace with code including link/external scripts. Custom script has <code class="script-example"> parent element.
 or <p>Not applicable</p>
 -->***
 </section>

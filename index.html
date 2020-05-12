@@ -1,124 +1,4 @@
-<!DOCTYPE html><html lang="en" class="processed"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 25.4.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- ISSUES/NOTES --- */
-.issue-label {
-    text-transform: initial;
-}
-
-.warning > p:first-child { margin-top: 0 }
-.warning {
-    padding: .5em;
-    border-left-width: .5em;
-    border-left-style: solid;
-}
-span.warning { padding: .1em .5em .15em; }
-
-.issue.closed span.issue-number {
-    text-decoration: line-through;
-}
-
-.warning {
-    border-color: #f11;
-    border-width: .2em;
-    border-style: solid;
-    background: #fbe9e9;
-}
-
-.warning-title:before{
-    content: "⚠"; /*U+26A0 WARNING SIGN*/
-    font-size: 1.3em;
-    float: left;
-    padding-right: .3em;
-    margin-top: -0.3em;
-}
-
-li.task-list-item {
-    list-style: none;
-}
-
-input.task-list-item-checkbox {
-    margin: 0 0.35em 0.25em -1.6em;
-    vertical-align: middle;
-}
-
-.issue a.respec-gh-label {
-  padding: 5px;
-  margin: 0 2px 0 2px;
-  font-size: 10px;
-  text-transform: none;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-  position: relative;
-  bottom: 2px;
-  border: none;
-  display: inline-block;
-}
-</style><style>/* dfn popup panel that list all local references to a dfn */
-dfn {
-  cursor: pointer;
-}
-
-.dfn-panel {
-  position: absolute;
-  left: var(--left); /* set via JS */
-  top: var(--top); /* set via JS */
-  z-index: 35;
-  height: auto;
-  width: max-content;
-  max-width: 300px;
-  max-height: 500px;
-  overflow: auto;
-  padding: 0.5em 0.75em;
-  font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-  background: #dddddd;
-  color: black;
-  border: outset 0.2em;
-}
-
-.dfn-panel * {
-  margin: 0;
-}
-
-.dfn-panel > b {
-  display: block;
-}
-
-.dfn-panel ul a[href] {
-  color: black;
-}
-
-.dfn-panel a:not(:hover) {
-  text-decoration: none !important;
-  border-bottom: none !important;
-}
-
-.dfn-panel a[href]:hover {
-  border-bottom-width: 1px;
-}
-
-.dfn-panel > b + b {
-  margin-top: 0.25em;
-}
-
-.dfn-panel ul {
-  padding: 0;
-}
-
-.dfn-panel li {
-  list-style: inside;
-}
-
-.dfn-panel.docked {
-  display: inline-block;
-  position: fixed;
-  left: 0.5em;
-  top: unset;
-  bottom: 2em;
-  margin: 0 auto;
-  /* 0.75em from padding (x2), 0.5em from left position, 0.2em border (x2) */
-  max-width: calc(100vw - 0.75em * 2 - 0.5em - 0.2em * 2);
-  max-height: 30vh;
-}
-</style>
+<!DOCTYPE html><html lang="en" class="processed"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 25.6.0"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>.issue-label{text-transform:initial}.warning>p:first-child{margin-top:0}.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}span.warning{padding:.1em .5em .15em}.issue.closed span.issue-number{text-decoration:line-through}.warning{border-color:#f11;border-width:.2em;border-style:solid;background:#fbe9e9}.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}li.task-list-item{list-style:none}input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}</style>
 
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -193,343 +73,12 @@ a[href]:hover .tag-span, a[href]:focus .tag-span {
 </style>
 
 
-<style id="respec-mainstyle">/*****************************************************************
- * ReSpec specific CSS
- *****************************************************************/
-@keyframes pop {
-  0% {
-    transform: scale(1, 1);
-  }
-  25% {
-    transform: scale(1.25, 1.25);
-    opacity: 0.75;
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
-/* Override code highlighter background */
-.hljs {
-  background: transparent !important;
-}
-
-/* --- INLINES --- */
-h1 abbr,
-h2 abbr,
-h3 abbr,
-h4 abbr,
-h5 abbr,
-h6 abbr,
-a abbr {
-  border: none;
-}
-
-dfn {
-  font-weight: bold;
-}
-
-a.internalDFN {
-  color: inherit;
-  border-bottom: 1px solid #99c;
-  text-decoration: none;
-}
-
-a.externalDFN {
-  color: inherit;
-  border-bottom: 1px dotted #ccc;
-  text-decoration: none;
-}
-
-a.bibref {
-  text-decoration: none;
-}
-
-.respec-offending-element:target {
-  animation: pop 0.25s ease-in-out 0s 1;
-}
-
-.respec-offending-element,
-a[href].respec-offending-element {
-  text-decoration: red wavy underline;
-}
-@supports not (text-decoration: red wavy underline) {
-  .respec-offending-element:not(pre) {
-    display: inline-block;
-  }
-  .respec-offending-element {
-    /* Red squiggly line */
-    background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=)
-      bottom repeat-x;
-  }
-}
-
-#references :target {
-  background: #eaf3ff;
-  animation: pop 0.4s ease-in-out 0s 1;
-}
-
-cite .bibref {
-  font-style: normal;
-}
-
-code {
-  color: #c63501;
-}
-
-th code {
-  color: inherit;
-}
-
-a[href].orcid {
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-a[href].orcid > svg {
-    margin-bottom: -2px;
-}
-
-/* --- TOC --- */
-
-.toc a,
-.tof a {
-  text-decoration: none;
-}
-
-a .secno,
-a .figno {
-  color: #000;
-}
-
-ul.tof,
-ol.tof {
-  list-style: none outside none;
-}
-
-.caption {
-  margin-top: 0.5em;
-  font-style: italic;
-}
-
-/* --- TABLE --- */
-
-table.simple {
-  border-spacing: 0;
-  border-collapse: collapse;
-  border-bottom: 3px solid #005a9c;
-}
-
-.simple th {
-  background: #005a9c;
-  color: #fff;
-  padding: 3px 5px;
-  text-align: left;
-}
-
-.simple th a {
-  color: #fff;
-  padding: 3px 5px;
-  text-align: left;
-}
-
-.simple th[scope="row"] {
-  background: inherit;
-  color: inherit;
-  border-top: 1px solid #ddd;
-}
-
-.simple td {
-  padding: 3px 10px;
-  border-top: 1px solid #ddd;
-}
-
-.simple tr:nth-child(even) {
-  background: #f0f6ff;
-}
-
-/* --- DL --- */
-
-.section dd > p:first-child {
-  margin-top: 0;
-}
-
-.section dd > p:last-child {
-  margin-bottom: 0;
-}
-
-.section dd {
-  margin-bottom: 1em;
-}
-
-.section dl.attrs dd,
-.section dl.eldef dd {
-  margin-bottom: 0;
-}
-
-#issue-summary > ul,
-.respec-dfn-list {
-  column-count: 2;
-}
-
-#issue-summary li,
-.respec-dfn-list li {
-  list-style: none;
-}
-
-details.respec-tests-details {
-  margin-left: 1em;
-  display: inline-block;
-  vertical-align: top;
-}
-
-details.respec-tests-details > * {
-  padding-right: 2em;
-}
-
-details.respec-tests-details[open] {
-  z-index: 999999;
-  position: absolute;
-  border: thin solid #cad3e2;
-  border-radius: 0.3em;
-  background-color: white;
-  padding-bottom: 0.5em;
-}
-
-details.respec-tests-details[open] > summary {
-  border-bottom: thin solid #cad3e2;
-  padding-left: 1em;
-  margin-bottom: 1em;
-  line-height: 2em;
-}
-
-details.respec-tests-details > ul {
-  width: 100%;
-  margin-top: -0.3em;
-}
-
-details.respec-tests-details > li {
-  padding-left: 1em;
-}
-
-a[href].self-link:hover {
-  opacity: 1;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  position: relative;
-}
-
-aside.example .marker > a.self-link {
-  color: inherit;
-}
-
-h2 > a.self-link,
-h3 > a.self-link,
-h4 > a.self-link,
-h5 > a.self-link,
-h6 > a.self-link {
-  border: none;
-  color: inherit;
-  font-size: 83%;
-  height: 2em;
-  left: -1.6em;
-  opacity: 0.5;
-  position: absolute;
-  text-align: center;
-  text-decoration: none;
-  top: 0;
-  transition: opacity 0.2s;
-  width: 2em;
-}
-
-h2 > a.self-link::before,
-h3 > a.self-link::before,
-h4 > a.self-link::before,
-h5 > a.self-link::before,
-h6 > a.self-link::before {
-  content: "§";
-  display: block;
-}
-
-@media (max-width: 767px) {
-  dd {
-    margin-left: 0;
-  }
-
-  /* Don't position self-link in headings off-screen */
-  h2 > a.self-link,
-  h3 > a.self-link,
-  h4 > a.self-link,
-  h5 > a.self-link,
-  h6 > a.self-link {
-    left: auto;
-    top: auto;
-  }
-}
-
-@media print {
-  .removeOnSave {
-    display: none;
-  }
-}
-</style><meta name="description" content="This report outlines the use cases and requirements
+<style id="respec-mainstyle">@keyframes pop{0%{transform:scale(1,1)}25%{transform:scale(1.25,1.25);opacity:.75}100%{transform:scale(1,1)}}.hljs{background:0 0!important}a abbr,h1 abbr,h2 abbr,h3 abbr,h4 abbr,h5 abbr,h6 abbr{border:none}dfn{font-weight:700}a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}a.bibref{text-decoration:none}.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}@supports not (text-decoration:red wavy underline){.respec-offending-element:not(pre){display:inline-block}.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}}#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}cite .bibref{font-style:normal}code{color:#c63501}th code{color:inherit}a[href].orcid{padding-left:4px;padding-right:4px}a[href].orcid>svg{margin-bottom:-2px}.toc a,.tof a{text-decoration:none}a .figno,a .secno{color:#000}ol.tof,ul.tof{list-style:none outside none}.caption{margin-top:.5em;font-style:italic}table.simple{border-spacing:0;border-collapse:collapse;border-bottom:3px solid #005a9c}.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}.simple th a{color:#fff;padding:3px 5px;text-align:left}.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}.simple td{padding:3px 10px;border-top:1px solid #ddd}.simple tr:nth-child(even){background:#f0f6ff}.section dd>p:first-child{margin-top:0}.section dd>p:last-child{margin-bottom:0}.section dd{margin-bottom:1em}.section dl.attrs dd,.section dl.eldef dd{margin-bottom:0}#issue-summary>ul,.respec-dfn-list{column-count:2}#issue-summary li,.respec-dfn-list li{list-style:none}details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}details.respec-tests-details>*{padding-right:2em}details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}details.respec-tests-details>ul{width:100%;margin-top:-.3em}details.respec-tests-details>li{padding-left:1em}a[href].self-link:hover{opacity:1;text-decoration:none;background-color:transparent}h2,h3,h4,h5,h6{position:relative}aside.example .marker>a.self-link{color:inherit}h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{border:none;color:inherit;font-size:83%;height:2em;left:-1.6em;opacity:.5;position:absolute;text-align:center;text-decoration:none;top:0;transition:opacity .2s;width:2em}h2>a.self-link::before,h3>a.self-link::before,h4>a.self-link::before,h5>a.self-link::before,h6>a.self-link::before{content:"§";display:block}@media (max-width:767px){dd{margin-left:0}h2>a.self-link,h3>a.self-link,h4>a.self-link,h5>a.self-link,h6>a.self-link{left:auto;top:auto}}@media print{.removeOnSave{display:none}}</style><meta name="description" content="This report outlines the use cases and requirements
 for standardizing modern Web maps,
 in a way that works
 for map content authors, webpage authors, and website users.
 The use cases and requirements were gathered in
-consultation with the Maps for HTML Community Group and others."><style>var {
-  position: relative;
-  cursor: pointer;
-}
-
-var[data-type]::before,
-var[data-type]::after {
-  position: absolute;
-  left: 50%;
-  top: -6px;
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-}
-
-/* the triangle or arrow or caret or whatever */
-var[data-type]::before {
-  content: "";
-  transform: translateX(-50%);
-  border-width: 4px 6px 0 6px;
-  border-style: solid;
-  border-color: transparent;
-  border-top-color: #000;
-}
-
-/* actual text */
-var[data-type]::after {
-  content: attr(data-type);
-  transform: translateX(-50%) translateY(-100%);
-  background: #000;
-  text-align: center;
-  /* additional styling */
-  font-family: "Dank Mono", "Fira Code", monospace;
-  font-style: normal;
-  padding: 6px;
-  border-radius: 3px;
-  color: #daca88;
-  text-indent: 0;
-  font-weight: normal;
-}
-
-var[data-type]:hover::after,
-var[data-type]:hover::before {
-  opacity: 1;
-}
-</style><script id="initialUserConfig" type="application/json">{
+consultation with the Maps for HTML Community Group and others."><style>var{position:relative;cursor:pointer}var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#000}var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#000;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}</style><script id="initialUserConfig" type="application/json">{
   "specStatus": "CG-DRAFT",
   "copyrightStart": "2019",
   "github": "https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements",
@@ -620,58 +169,58 @@ var[data-type]:hover::before {
       ]
     }
   ],
-  "publishISODate": "2020-04-07T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 07 April 2020"
+  "publishISODate": "2020-05-12T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 12 May 2020"
 }</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/cg-draft"></head>
 <body class="h-entry informative"><div class="head">
-      <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">Use Cases and Requirements for Standardizing Web Maps</h1>
+    <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">Use Cases and Requirements for Standardizing Web Maps</h1>
+    
+    <h2>
+      Draft Community Group Report
+      <time class="dt-published" datetime="2020-05-12">12 May 2020</time>
+    </h2>
+    <dl>
       
-      <h2>
-        Draft Community Group Report
-        <time class="dt-published" datetime="2020-04-07">07 April 2020</time>
-      </h2>
-      <dl>
-        
-        
-        <dt>Latest editor's draft:</dt><dd><a href="https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/">https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/</a></dd>
-        
-        
-        
-        
-        <dt>Editor:</dt>
-        <dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:amelia.bellamy.royds@gmail.com">Amelia Bellamy-Royds</a></dd>
-        
-        <dt>
-                Authors:
-              </dt><dd class="p-author h-card vcard"><span class="p-name fn">Amelia Bellamy-Royds</span></dd><dd class="p-author h-card vcard"><span class="p-name fn">Nic Chan</span></dd><dd class="p-author h-card vcard"><span class="p-name fn">Nick Fitzsimons</span></dd><dd class="p-author h-card vcard"><span class="p-name fn">Peter Rushforth</span></dd>
-        <dt>Participate:</dt><dd>
-      <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/">GitHub Maps4HTML/HTML-Map-Element-UseCases-Requirements</a>
-    </dd><dd>
-      <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/">File a bug</a>
-    </dd><dd>
-      <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/commits/gh-pages">Commit history</a>
-    </dd><dd>
-      <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/pulls/">Pull requests</a>
-    </dd><dt>Join the Community Group:</dt><dd>
-      <a href="https://www.w3.org/community/maps4html/">Maps For HTML Community Group</a>
-    </dd>
-      </dl>
       
-      <p class="copyright">
-              <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
-              ©
-              2019-2020
+      <dt>Latest editor's draft:</dt><dd><a href="https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/">https://maps4html.github.io/HTML-Map-Element-UseCases-Requirements/</a></dd>
+      
+      
+      
+      
+      <dt>Editor:</dt>
+      <dd class="p-author h-card vcard"><a class="ed_mailto u-email email p-name" href="mailto:amelia.bellamy.royds@gmail.com">Amelia Bellamy-Royds</a></dd>
+      
+      <dt>
+              Authors:
+            </dt><dd class="p-author h-card vcard"><span class="p-name fn">Amelia Bellamy-Royds</span></dd><dd class="p-author h-card vcard"><span class="p-name fn">Nic Chan</span></dd><dd class="p-author h-card vcard"><span class="p-name fn">Nick Fitzsimons</span></dd><dd class="p-author h-card vcard"><span class="p-name fn">Peter Rushforth</span></dd>
+      <dt>Participate:</dt><dd>
+    <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/">GitHub Maps4HTML/HTML-Map-Element-UseCases-Requirements</a>
+  </dd><dd>
+    <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/">File a bug</a>
+  </dd><dd>
+    <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/commits/gh-pages">Commit history</a>
+  </dd><dd>
+    <a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/pulls/">Pull requests</a>
+  </dd><dt>Join the Community Group:</dt><dd>
+    <a href="https://www.w3.org/community/maps4html/">Maps For HTML Community Group</a>
+  </dd>
+    </dl>
+    
+    <p class="copyright">
+          <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+          ©
+          2019-2020
+          
+          the Contributors to the Use Cases and Requirements for Standardizing Web Maps
+          Specification, published by the
+          <a href="https://www.w3.org/community/maps4html/">Maps For HTML Community Group</a> under the
+          <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable
+                <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a>
+                is available.
               
-              the Contributors to the Use Cases and Requirements for Standardizing Web Maps
-              Specification, published by the
-              <a href="https://www.w3.org/community/maps4html/">Maps For HTML Community Group</a> under the
-              <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable
-                    <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a>
-                    is available.
-                  
-            </p>
-      <hr title="Separator for header">
-    </div>
+        </p>
+    <hr title="Separator for header">
+  </div>
 <section id="abstract" class="introductory"><h2>Abstract</h2>
 <p>
 This report outlines the use cases and requirements
@@ -711,7 +260,9 @@ Comments, corrections, and suggested additions should be made as
 If that is not possible, send an email comment to
 <a href="mailto:public-maps4html@w3.org">public-maps4html@w3.org</a>.
 </p>
-</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#intro-web-maps"><bdi class="secno">1.1 </bdi>The current state of web maps</a></li><li class="tocline"><a class="tocxref" href="#intro-maps4html-cg"><bdi class="secno">1.2 </bdi>The Maps for HTML Community Group</a></li><li class="tocline"><a class="tocxref" href="#intro-report-structure"><bdi class="secno">1.3 </bdi>Structure of this report</a></li><li class="tocline"><a class="tocxref" href="#intro-glossary"><bdi class="secno">1.4 </bdi>Glossary of key terms</a></li></ol></li><li class="tocline"><a class="tocxref" href="#principles"><bdi class="secno">2. </bdi>Guiding Principles</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#extensible-web"><bdi class="secno">2.1 </bdi>The extensible web</a></li><li class="tocline"><a class="tocxref" href="#priorities"><bdi class="secno">2.2 </bdi>Priorities for web standards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#principles-users"><bdi class="secno">2.2.1 </bdi>Users</a></li><li class="tocline"><a class="tocxref" href="#principles-authors"><bdi class="secno">2.2.2 </bdi>Authors</a></li><li class="tocline"><a class="tocxref" href="#priciples-implementers"><bdi class="secno">2.2.3 </bdi>Implementers</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">3. </bdi>Use Cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#content-author-use-cases"><bdi class="secno">3.1 </bdi>Content author use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-create-map"><bdi class="secno">3.1.1 </bdi>Display an interactive map within a web page</a></li><li class="tocline"><a class="tocxref" href="#use-case-single-location"><bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li><li class="tocline"><a class="tocxref" href="#use-case-static-map"><bdi class="secno">3.1.3 </bdi>Display a region of map data as a static image</a></li><li class="tocline"><a class="tocxref" href="#use-case-multiple-location-markers"><bdi class="secno">3.1.4 </bdi>Display multiple point locations as map markers</a></li><li class="tocline"><a class="tocxref" href="#use-case-poly-features"><bdi class="secno">3.1.5 </bdi>Display routes/paths or regions</a></li><li class="tocline"><a class="tocxref" href="#use-case-html-annotations"><bdi class="secno">3.1.6 </bdi>Display custom web content describing map features</a></li><li class="tocline"><a class="tocxref" href="#use-case-custom-map"><bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer</a></li><li class="tocline"><a class="tocxref" href="#use-case-layers"><bdi class="secno">3.1.8 </bdi>Combine multiple layers of map tile data or features</a></li><li class="tocline"><a class="tocxref" href="#use-case-alternative-layers"><bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select</a></li><li class="tocline"><a class="tocxref" href="#use-case-technical-drawings"><bdi class="secno">3.1.10 </bdi>Display drawings or schematics without geographic coordinates</a></li><li class="tocline"><a class="tocxref" href="#use-case-animated-spatial-data-in-layers"><bdi class="secno">3.1.11 </bdi>Include animated spatial data in a layer</a></li><li class="tocline"><a class="tocxref" href="#use-case-require-interaction"><bdi class="secno">3.1.12 </bdi>Require interaction before allowing pan/zoom (or opt-out of such potentially default behavior)</a></li></ol></li><li class="tocline"><a class="tocxref" href="#visitor-use-cases"><bdi class="secno">3.2 </bdi>Website visitor use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-interactive"><bdi class="secno">3.2.1 </bdi>Reposition or scale a map to find more context for the displayed locations</a></li><li class="tocline"><a class="tocxref" href="#use-case-reset-map-view"><bdi class="secno">3.2.2 </bdi>Reset the map to the initial view</a></li><li class="tocline"><a class="tocxref" href="#use-case-rotate-map"><bdi class="secno">3.2.3 </bdi>Rotate a map, or reset the bearing</a></li><li class="tocline"><a class="tocxref" href="#use-case-identify"><bdi class="secno">3.2.4 </bdi>Access additional information about a point on the map</a></li><li class="tocline"><a class="tocxref" href="#use-case-hide-layers"><bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li><li class="tocline"><a class="tocxref" href="#use-case-bookmark"><bdi class="secno">3.2.6 </bdi>Bookmark a location</a></li><li class="tocline"><a class="tocxref" href="#use-case-search-features"><bdi class="secno">3.2.7 </bdi>Search or sort within a set of geographic features</a></li><li class="tocline"><a class="tocxref" href="#use-case-color-scheme"><bdi class="secno">3.2.8 </bdi>Customize the color scheme (light/dark or high contrast)</a></li><li class="tocline"><a class="tocxref" href="#use-case-view-location-securely"><bdi class="secno">3.2.9 </bdi>View the current location on a map, without disclosing to the website</a></li><li class="tocline"><a class="tocxref" href="#use-case-fullscreen"><bdi class="secno">3.2.10 </bdi>View a map in fullscreen mode</a></li><li class="tocline"><a class="tocxref" href="#use-case-picture-in-picture"><bdi class="secno">3.2.11 </bdi>View a map as a Picture-In-Picture media object</a></li><li class="tocline"><a class="tocxref" href="#use-case-augmented-reality"><bdi class="secno">3.2.12 </bdi>View a map in augmented reality</a></li><li class="tocline"><a class="tocxref" href="#use-case-offline-maps"><bdi class="secno">3.2.13 </bdi>Save map content for offline use</a></li></ol></li><li class="tocline"><a class="tocxref" href="#application-use-cases"><bdi class="secno">3.3 </bdi>Application developer use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-add-custom-control"><bdi class="secno">3.3.1 </bdi>Add a custom control to a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-view-change-events"><bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li><li class="tocline"><a class="tocxref" href="#use-case-set-view-zoom"><bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li><li class="tocline"><a class="tocxref" href="#use-case-animate-view-change"><bdi class="secno">3.3.4 </bdi>Animate a map through a sequence of points</a></li><li class="tocline"><a class="tocxref" href="#use-case-change-bearing-map"><bdi class="secno">3.3.5 </bdi>Change the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-set-layer-visibility"><bdi class="secno">3.3.6 </bdi>Control which layers are currently visible &amp; which can be hidden by the user</a></li><li class="tocline"><a class="tocxref" href="#use-case-generate-vector-features"><bdi class="secno">3.3.7 </bdi>Generate new vector features from data</a></li><li class="tocline"><a class="tocxref" href="#use-case-heatmap"><bdi class="secno">3.3.8 </bdi>Generate a heatmap overlay from point intensity data</a></li><li class="tocline"><a class="tocxref" href="#use-case-drag-and-drop"><bdi class="secno">3.3.9 </bdi>Enable drag &amp; drop for map layers</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#js-examples"><bdi class="secno">4. </bdi>Reviewed JavaScript Tools</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#google-maps"><bdi class="secno">4.1 </bdi>Google Maps embeds and Google Maps Platform API</a></li><li class="tocline"><a class="tocxref" href="#openstreetmap"><bdi class="secno">4.2 </bdi>OpenStreetMap embeds</a></li><li class="tocline"><a class="tocxref" href="#bing-maps"><bdi class="secno">4.3 </bdi>Bing Maps embeds and Bing Maps Control API</a></li><li class="tocline"><a class="tocxref" href="#mapkit-js"><bdi class="secno">4.4 </bdi>MapKit JS (Apple Maps) API</a></li><li class="tocline"><a class="tocxref" href="#mapbox"><bdi class="secno">4.5 </bdi>Mapbox GL JS API and Mapbox Studio embeds</a></li><li class="tocline"><a class="tocxref" href="#leaflet-js"><bdi class="secno">4.6 </bdi>Leaflet.js API</a></li><li class="tocline"><a class="tocxref" href="#openlayers"><bdi class="secno">4.7 </bdi>OpenLayers API</a></li><li class="tocline"><a class="tocxref" href="#tomtom"><bdi class="secno">4.8 </bdi>TomTom Maps SDK for Web</a></li><li class="tocline"><a class="tocxref" href="#d3-geo"><bdi class="secno">4.9 </bdi>D3 Geographies APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers"><bdi class="secno">5. </bdi>Map Viewer Widget Capabilities</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-rendering"><bdi class="secno">5.1 </bdi>Rendering base layers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-declarative-map"><bdi class="secno">5.1.1 </bdi>Embed an interactive map viewer, using HTML markup</a></li><li class="tocline"><a class="tocxref" href="#capability-default-map"><bdi class="secno">5.1.2 </bdi>Generate a default map for a given area</a></li><li class="tocline"><a class="tocxref" href="#capability-single-custom-image"><bdi class="secno">5.1.3 </bdi>Display an image file as a map layer</a></li><li class="tocline"><a class="tocxref" href="#capability-custom-map-tiles"><bdi class="secno">5.1.4 </bdi>Display a map using tile data from an author-specified web map service</a></li><li class="tocline"><a class="tocxref" href="#capability-no-js"><bdi class="secno">5.1.5 </bdi>Display a basic map without JavaScript</a></li><li class="tocline"><a class="tocxref" href="#use-case-preferred-language"><bdi class="secno">5.1.6 </bdi>Display map content in a users preferred language</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-vectors"><bdi class="secno">5.2 </bdi>Vector features and overlays</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-marker-points"><bdi class="secno">5.2.1 </bdi>Show pinpoint locations or custom markers on the map</a></li><li class="tocline"><a class="tocxref" href="#capability-vector-features"><bdi class="secno">5.2.2 </bdi>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</a></li><li class="tocline"><a class="tocxref" href="#capability-hyperlinks"><bdi class="secno">5.2.3 </bdi>Support hyperlinks from markers or vector features</a></li><li class="tocline"><a class="tocxref" href="#capability-attribution"><bdi class="secno">5.2.4 </bdi>Display map data attribution and links</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-locations"><bdi class="secno">5.3 </bdi>Interpreting locations &amp; map positions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-location-latlong"><bdi class="secno">5.3.1 </bdi>Select map view from latitude and longitude point</a></li><li class="tocline"><a class="tocxref" href="#capability-location-address"><bdi class="secno">5.3.2 </bdi>Select map view from street address or place name</a></li><li class="tocline"><a class="tocxref" href="#capability-tile-coordinate-systems"><bdi class="secno">5.3.3 </bdi>Display map tiles defined in various common coordinate systems</a></li><li class="tocline"><a class="tocxref" href="#capability-reproject-maps"><bdi class="secno">5.3.4 </bdi>Reproject map tile data into a new projection or globe view</a></li><li class="tocline"><a class="tocxref" href="#capability-export-location"><bdi class="secno">5.3.5 </bdi>Save the location or export to other application</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-user-navigation"><bdi class="secno">5.4 </bdi>User navigation (pan &amp; zoom)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-zoom"><bdi class="secno">5.4.1 </bdi>Zoom the map independently from the rest of the page</a></li><li class="tocline"><a class="tocxref" href="#capability-pan"><bdi class="secno">5.4.2 </bdi>Pan the map display</a></li><li class="tocline"><a class="tocxref" href="#capability-lazy-load"><bdi class="secno">5.4.3 </bdi>Load additional map tiles when they pan into view</a></li><li class="tocline"><a class="tocxref" href="#capability-wrap-pan"><bdi class="secno">5.4.4 </bdi>Wrap/duplicate data tiles when panning around the globe</a></li><li class="tocline"><a class="tocxref" href="#capability-scale-adjust"><bdi class="secno">5.4.5 </bdi>Maintain reasonable scale of labels and lines when zooming</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-swap"><bdi class="secno">5.4.6 </bdi>Dynamically load different resolution map tile on zoom</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-swap-vectors"><bdi class="secno">5.4.7 </bdi>Hide or show (and maybe dynamically load) vector features and labels on zoom</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-custom-styling"><bdi class="secno">5.5 </bdi>Custom styling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-styled-features"><bdi class="secno">5.5.1 </bdi>Apply custom styling to map markers and vector features</a></li><li class="tocline"><a class="tocxref" href="#capability-styled-controls"><bdi class="secno">5.5.2 </bdi>Apply custom styling to map controls</a></li><li class="tocline"><a class="tocxref" href="#capability-custom-controls"><bdi class="secno">5.5.3 </bdi>Toggle whether default controls are displayed</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#client-apis"><bdi class="secno">6. </bdi>Client-side Mapping API Capabilities</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#client-apis-creation"><bdi class="secno">6.1 </bdi>Creating maps and map components</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-create-initialise-and-display-a-map"><bdi class="secno">6.1.1 </bdi>Create, initialise, and display a map</a></li><li class="tocline"><a class="tocxref" href="#capability-add-marker-or-multiple-markers-map"><bdi class="secno">6.1.2 </bdi>Add a marker or multiple markers to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-implement-a-custom-control"><bdi class="secno">6.1.3 </bdi>Implement a custom control</a></li><li class="tocline"><a class="tocxref" href="#capability-add-control-map"><bdi class="secno">6.1.4 </bdi>Add a control to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-remove-control-map"><bdi class="secno">6.1.5 </bdi>Remove a control from a map</a></li><li class="tocline"><a class="tocxref" href="#capability-add-layer-map"><bdi class="secno">6.1.6 </bdi>Add a layer to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-define-data-source-tile-layer"><bdi class="secno">6.1.7 </bdi>Define a data source for a tile layer</a></li><li class="tocline"><a class="tocxref" href="#capability-create-an-overlay-defined-by-vector-data"><bdi class="secno">6.1.8 </bdi>Create an overlay defined by vector data</a></li><li class="tocline"><a class="tocxref" href="#capability-create-an-overlay-defined-by-heatmap-data"><bdi class="secno">6.1.9 </bdi>Create an overlay defined by heatmap data</a></li><li class="tocline"><a class="tocxref" href="#capability-control-layers-map"><bdi class="secno">6.1.10 </bdi>Control which layers are included in a map</a></li><li class="tocline"><a class="tocxref" href="#capability-specify-style-map"><bdi class="secno">6.1.11 </bdi>Specify the style of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-determine-current-style-map"><bdi class="secno">6.1.12 </bdi>Determine the current style of a map</a></li></ol></li><li class="tocline"><a class="tocxref" href="#client-apis-map-viewport"><bdi class="secno">6.2 </bdi>Controlling the displayed map view and responding to user actions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-get-bounds-map"><bdi class="secno">6.2.1 </bdi>Get the bounds of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-pan-map-or-re-centre-map"><bdi class="secno">6.2.2 </bdi>Pan a map or re-centre a map</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-map-in-or-out"><bdi class="secno">6.2.3 </bdi>Zoom a map in or out</a></li><li class="tocline"><a class="tocxref" href="#capability-map-events"><bdi class="secno">6.2.4 </bdi>Subscribe to map move events</a></li><li class="tocline"><a class="tocxref" href="#capability-change-bearing-map"><bdi class="secno">6.2.5 </bdi>Change the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-move-the-map-to-display-a-given-location"><bdi class="secno">6.2.6 </bdi>Move the map to display a given location</a></li><li class="tocline"><a class="tocxref" href="#capability-pan-and-zoom-to-bounding-box"><bdi class="secno">6.2.7 </bdi>Pan and zoom a map so as to completely show the area covered by a given bounding box</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-re-centering-of-the-map-view"><bdi class="secno">6.2.8 </bdi>Animate the re-centering of the map view</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-zooming-of-the-map"><bdi class="secno">6.2.9 </bdi>Animate the zooming of the map</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-re-centering-of-the-map"><bdi class="secno">6.2.10 </bdi>Animate the re-centering of the map</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#map-formats"><bdi class="secno">7. </bdi>Map Data Formats for Map Viewers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#map-formats-vector"><bdi class="secno">7.1 </bdi>Vector feature data formats</a></li><li class="tocline"><a class="tocxref" href="#map-formats-projections-crs"><bdi class="secno">7.2 </bdi>Map projections and coordinate reference systems</a></li><li class="tocline"><a class="tocxref" href="#map-formats-server-apis"><bdi class="secno">7.3 </bdi>Server APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#requirements"><bdi class="secno">8. </bdi>Summary of Requirements</a></li><li class="tocline"><a class="tocxref" href="#issue-summary"><bdi class="secno">A. </bdi>Open Issues</a></li><li class="tocline"><a class="tocxref" href="#acknowledgments"><bdi class="secno">B. </bdi>Acknowledgments</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">C. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.1 </bdi>Informative references</a></li></ol></li></ol></nav>
+</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#intro-web-maps"><bdi class="secno">1.1 </bdi>The current state of web maps</a></li><li class="tocline"><a class="tocxref" href="#intro-maps4html-cg"><bdi class="secno">1.2 </bdi>The Maps for HTML Community Group</a></li><li class="tocline"><a class="tocxref" href="#intro-report-structure"><bdi class="secno">1.3 </bdi>Structure of this report</a></li><li class="tocline"><a class="tocxref" href="#intro-glossary"><bdi class="secno">1.4 </bdi>Glossary of key terms</a></li></ol></li><li class="tocline"><a class="tocxref" href="#principles"><bdi class="secno">2. </bdi>Guiding Principles</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#extensible-web"><bdi class="secno">2.1 </bdi>The extensible web</a></li><li class="tocline"><a class="tocxref" href="#priorities"><bdi class="secno">2.2 </bdi>Priorities for web standards</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#principles-users"><bdi class="secno">2.2.1 </bdi>Users</a></li><li class="tocline"><a class="tocxref" href="#principles-authors"><bdi class="secno">2.2.2 </bdi>Authors</a></li><li class="tocline"><a class="tocxref" href="#priciples-implementers"><bdi class="secno">2.2.3 </bdi>Implementers</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#use-cases"><bdi class="secno">3. </bdi>Use Cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#content-author-use-cases"><bdi class="secno">3.1 </bdi>Content author use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-create-map"><bdi class="secno">3.1.1 </bdi>Display an interactive map within a web page</a></li><li class="tocline"><a class="tocxref" href="#use-case-single-location"><bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li><li class="tocline"><a class="tocxref" href="#use-case-static-map"><bdi class="secno">3.1.3 </bdi>Display a region of map data as a static image</a></li><li class="tocline"><a class="tocxref" href="#use-case-multiple-location-markers"><bdi class="secno">3.1.4 </bdi>Display multiple point locations as map markers</a></li><li class="tocline"><a class="tocxref" href="#use-case-poly-features"><bdi class="secno">3.1.5 </bdi>Display routes/paths or regions</a></li><li class="tocline"><a class="tocxref" href="#use-case-html-annotations"><bdi class="secno">3.1.6 </bdi>Display custom web content describing map features</a></li><li class="tocline"><a class="tocxref" href="#use-case-custom-map"><bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer</a></li><li class="tocline"><a class="tocxref" href="#use-case-layers"><bdi class="secno">3.1.8 </bdi>Combine multiple layers of map tile data or features</a></li><li class="tocline"><a class="tocxref" href="#use-case-alternative-layers"><bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select</a></li><li class="tocline"><a class="tocxref" href="#use-case-technical-drawings"><bdi class="secno">3.1.10 </bdi>Display drawings or schematics without geographic coordinates</a></li><li class="tocline"><a class="tocxref" href="#use-case-animated-spatial-data-in-layers"><bdi class="secno">3.1.11 </bdi>Include animated spatial data in a layer</a></li><li class="tocline"><a class="tocxref" href="#use-case-require-interaction"><bdi class="secno">3.1.12 </bdi>Require interaction before allowing pan/zoom (or opt-out of such potentially default behavior)</a></li></ol></li><li class="tocline"><a class="tocxref" href="#visitor-use-cases"><bdi class="secno">3.2 </bdi>Website visitor use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-interactive"><bdi class="secno">3.2.1 </bdi>Reposition or scale a map to find more context for the displayed locations</a></li><li class="tocline"><a class="tocxref" href="#use-case-reset-map-view"><bdi class="secno">3.2.2 </bdi>Reset the map to the initial view</a></li><li class="tocline"><a class="tocxref" href="#use-case-rotate-map"><bdi class="secno">3.2.3 </bdi>Rotate a map, or reset the bearing</a></li><li class="tocline"><a class="tocxref" href="#use-case-identify"><bdi class="secno">3.2.4 </bdi>Access additional information about a point on the map</a></li><li class="tocline"><a class="tocxref" href="#use-case-hide-layers"><bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li><li class="tocline"><a class="tocxref" href="#use-case-bookmark"><bdi class="secno">3.2.6 </bdi>Bookmark a location</a></li><li class="tocline"><a class="tocxref" href="#use-case-search-features"><bdi class="secno">3.2.7 </bdi>Search or sort within a set of geographic features</a></li><li class="tocline"><a class="tocxref" href="#use-case-color-scheme"><bdi class="secno">3.2.8 </bdi>Customize the color scheme (light/dark or high contrast)</a></li><li class="tocline"><a class="tocxref" href="#use-case-view-location-securely"><bdi class="secno">3.2.9 </bdi>View the current location on a map, without disclosing to the website</a></li><li class="tocline"><a class="tocxref" href="#use-case-fullscreen"><bdi class="secno">3.2.10 </bdi>View a map in fullscreen mode</a></li><li class="tocline"><a class="tocxref" href="#use-case-picture-in-picture"><bdi class="secno">3.2.11 </bdi>View a map as a Picture-In-Picture media object</a></li><li class="tocline"><a class="tocxref" href="#use-case-augmented-reality"><bdi class="secno">3.2.12 </bdi>View a map in augmented reality</a></li><li class="tocline"><a class="tocxref" href="#use-case-offline-maps"><bdi class="secno">3.2.13 </bdi>Save map content for offline use</a></li></ol></li><li class="tocline"><a class="tocxref" href="#application-use-cases"><bdi class="secno">3.3 </bdi>Application developer use cases</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#use-case-add-custom-control"><bdi class="secno">3.3.1 </bdi>Add a custom control to a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-view-change-events"><bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li><li class="tocline"><a class="tocxref" href="#use-case-set-view-zoom"><bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li><li class="tocline"><a class="tocxref" href="#use-case-animate-view-change"><bdi class="secno">3.3.4 </bdi>Animate a map through a sequence of points</a></li><li class="tocline"><a class="tocxref" href="#use-case-change-bearing-map"><bdi class="secno">3.3.5 </bdi>Change the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#use-case-set-layer-visibility"><bdi class="secno">3.3.6 </bdi>Control which layers are currently visible &amp; which can be hidden by the user</a></li><li class="tocline"><a class="tocxref" href="#use-case-generate-vector-features"><bdi class="secno">3.3.7 </bdi>Generate new vector features from data</a></li><li class="tocline"><a class="tocxref" href="#use-case-heatmap"><bdi class="secno">3.3.8 </bdi>Generate a heatmap overlay from point intensity data</a></li><li class="tocline"><a class="tocxref" href="#use-case-drag-and-drop"><bdi class="secno">3.3.9 </bdi>Enable drag &amp; drop for map layers</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#js-examples"><bdi class="secno">4. </bdi>Reviewed JavaScript Tools</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#google-maps"><bdi class="secno">4.1 </bdi>Google Maps embeds and Google Maps Platform API</a></li><li class="tocline"><a class="tocxref" href="#openstreetmap"><bdi class="secno">4.2 </bdi>OpenStreetMap embeds</a></li><li class="tocline"><a class="tocxref" href="#bing-maps"><bdi class="secno">4.3 </bdi>Bing Maps embeds and Bing Maps Control API</a></li><li class="tocline"><a class="tocxref" href="#mapkit-js"><bdi class="secno">4.4 </bdi>MapKit JS (Apple Maps) API</a></li><li class="tocline"><a class="tocxref" href="#mapbox"><bdi class="secno">4.5 </bdi>Mapbox GL JS API and Mapbox Studio embeds</a></li><li class="tocline"><a class="tocxref" href="#leaflet-js"><bdi class="secno">4.6 </bdi>Leaflet.js API</a></li><li class="tocline"><a class="tocxref" href="#openlayers"><bdi class="secno">4.7 </bdi>OpenLayers API</a></li><li class="tocline"><a class="tocxref" href="#tomtom"><bdi class="secno">4.8 </bdi>TomTom Maps SDK for Web</a></li><li class="tocline"><a class="tocxref" href="#d3-geo"><bdi class="secno">4.9 </bdi>D3 Geographies APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers"><bdi class="secno">5. </bdi>Map Viewer Widget Capabilities</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-rendering"><bdi class="secno">5.1 </bdi>Rendering base layers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-declarative-map"><bdi class="secno">5.1.1 </bdi>Embed an interactive map viewer, using HTML markup</a></li><li class="tocline"><a class="tocxref" href="#capability-default-map"><bdi class="secno">5.1.2 </bdi>Generate a default map for a given area</a></li><li class="tocline"><a class="tocxref" href="#capability-single-custom-image"><bdi class="secno">5.1.3 </bdi>Display an image file as a map layer</a></li><li class="tocline"><a class="tocxref" href="#capability-custom-map-tiles"><bdi class="secno">5.1.4 </bdi>Display a map using tile data from an author-specified web map service</a></li><li class="tocline"><a class="tocxref" href="#capability-no-js"><bdi class="secno">5.1.5 </bdi>Display a basic map without JavaScript</a></li><li class="tocline"><a class="tocxref" href="#use-case-preferred-language"><bdi class="secno">5.1.6 </bdi>Display map content in a users preferred language</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-vectors"><bdi class="secno">5.2 </bdi>Vector features and overlays</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-marker-points"><bdi class="secno">5.2.1 </bdi>Show pinpoint locations or custom markers on the map</a></li><li class="tocline"><a class="tocxref" href="#capability-vector-features"><bdi class="secno">5.2.2 </bdi>Draw polygons or polylines as stylable, interactive vector graphics (separate from the image tiles)</a></li><li class="tocline"><a class="tocxref" href="#capability-hyperlinks"><bdi class="secno">5.2.3 </bdi>Support hyperlinks from markers or vector features</a></li><li class="tocline"><a class="tocxref" href="#capability-attribution"><bdi class="secno">5.2.4 </bdi>Display map data attribution and links</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-locations"><bdi class="secno">5.3 </bdi>Interpreting locations &amp; map positions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-location-latlong"><bdi class="secno">5.3.1 </bdi>Select map view from latitude and longitude point</a></li><li class="tocline"><a class="tocxref" href="#capability-location-address"><bdi class="secno">5.3.2 </bdi>Select map view from street address or place name</a></li><li class="tocline"><a class="tocxref" href="#capability-tile-coordinate-systems"><bdi class="secno">5.3.3 </bdi>Display map tiles defined in various common coordinate systems</a></li><li class="tocline"><a class="tocxref" href="#capability-reproject-maps"><bdi class="secno">5.3.4 </bdi>Reproject map tile data into a new projection or globe view</a></li><li class="tocline"><a class="tocxref" href="#capability-export-location"><bdi class="secno">5.3.5 </bdi>Save the location or export to other application</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-user-navigation"><bdi class="secno">5.4 </bdi>User navigation (pan &amp; zoom)</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-zoom"><bdi class="secno">5.4.1 </bdi>Zoom the map independently from the rest of the page</a></li><li class="tocline"><a class="tocxref" href="#capability-pan"><bdi class="secno">5.4.2 </bdi>Pan the map display</a></li><li class="tocline"><a class="tocxref" href="#capability-lazy-load"><bdi class="secno">5.4.3 </bdi>Load additional map tiles when they pan into view</a></li><li class="tocline"><a class="tocxref" href="#capability-wrap-pan"><bdi class="secno">5.4.4 </bdi>Wrap/duplicate data tiles when panning around the globe</a></li><li class="tocline"><a class="tocxref" href="#capability-scale-adjust"><bdi class="secno">5.4.5 </bdi>Maintain reasonable scale of labels and lines when zooming</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-swap"><bdi class="secno">5.4.6 </bdi>Dynamically load different resolution map tile on zoom</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-swap-vectors"><bdi class="secno">5.4.7 </bdi>Hide or show (and maybe dynamically load) vector features and labels on zoom</a></li></ol></li><li class="tocline"><a class="tocxref" href="#map-viewers-capabilities-custom-styling"><bdi class="secno">5.5 </bdi>Custom styling</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-styled-features"><bdi class="secno">5.5.1 </bdi>Apply custom styling to map markers and vector features</a></li><li class="tocline"><a class="tocxref" href="#capability-styled-controls"><bdi class="secno">5.5.2 </bdi>Apply custom styling to map controls</a></li><li class="tocline"><a class="tocxref" href="#capability-custom-controls"><bdi class="secno">5.5.3 </bdi>Toggle whether default controls are displayed</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#client-apis"><bdi class="secno">6. </bdi>Client-side Mapping API Capabilities</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#client-apis-creation"><bdi class="secno">6.1 </bdi>Creating maps and map components</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-create-initialise-and-display-a-map"><bdi class="secno">6.1.1 </bdi>Create, initialise, and display a map</a></li><li class="tocline"><a class="tocxref" href="#capability-add-marker-or-multiple-markers-map"><bdi class="secno">6.1.2 </bdi>Add a marker or multiple markers to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-implement-a-custom-control"><bdi class="secno">6.1.3 </bdi>Implement a custom control</a></li><li class="tocline"><a class="tocxref" href="#capability-add-control-map"><bdi class="secno">6.1.4 </bdi>Add a control to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-remove-control-map"><bdi class="secno">6.1.5 </bdi>Remove a control from a map</a></li><li class="tocline"><a class="tocxref" href="#capability-add-layer-map"><bdi class="secno">6.1.6 </bdi>Add a layer to a map</a></li><li class="tocline"><a class="tocxref" href="#capability-define-data-source-tile-layer"><bdi class="secno">6.1.7 </bdi>Define a data source for a tile layer</a></li><li class="tocline"><a class="tocxref" href="#capability-create-an-overlay-defined-by-vector-data"><bdi class="secno">6.1.8 </bdi>Create an overlay defined by vector data</a></li><li class="tocline"><a class="tocxref" href="#capability-create-an-overlay-defined-by-heatmap-data"><bdi class="secno">6.1.9 </bdi>Create an overlay defined by heatmap data</a></li><li class="tocline"><a class="tocxref" href="#capability-control-layers-map"><bdi class="secno">6.1.10 </bdi>Control which layers are included in a map</a></li><li class="tocline"><a class="tocxref" href="#capability-specify-style-map"><bdi class="secno">6.1.11 </bdi>Specify the style of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-determine-current-style-map"><bdi class="secno">6.1.12 </bdi>Determine the current style of a map</a></li></ol></li><li class="tocline"><a class="tocxref" href="#client-apis-map-viewport"><bdi class="secno">6.2 </bdi>Controlling the displayed map view and responding to user actions</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#capability-get-bounds-map"><bdi class="secno">6.2.1 </bdi>Get the bounds of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-pan-map-or-re-centre-map"><bdi class="secno">6.2.2 </bdi>Pan a map or re-centre a map</a></li><li class="tocline"><a class="tocxref" href="#capability-zoom-map-in-or-out"><bdi class="secno">6.2.3 </bdi>Zoom a map in or out</a></li><li class="tocline"><a class="tocxref" href="#capability-map-events"><bdi class="secno">6.2.4 </bdi>Subscribe to map move events</a></li><li class="tocline"><a class="tocxref" href="#capability-change-bearing-map"><bdi class="secno">6.2.5 </bdi>Change the bearing of a map</a></li><li class="tocline"><a class="tocxref" href="#capability-move-the-map-to-display-a-given-location"><bdi class="secno">6.2.6 </bdi>Move the map to display a given location</a></li><li class="tocline"><a class="tocxref" href="#capability-pan-and-zoom-to-bounding-box"><bdi class="secno">6.2.7 </bdi>Pan and zoom a map so as to completely show the area covered by a given bounding box</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-re-centering-of-the-map-view"><bdi class="secno">6.2.8 </bdi>Animate the re-centering of the map view</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-zooming-of-the-map"><bdi class="secno">6.2.9 </bdi>Animate the zooming of the map</a></li><li class="tocline"><a class="tocxref" href="#capability-animate-the-re-centering-of-the-map"><bdi class="secno">6.2.10 </bdi>Animate the re-centering of the map</a></li></ol></li></ol></li><li class="tocline"><a class="tocxref" href="#map-formats"><bdi class="secno">7. </bdi>Map Data Formats for Map Viewers</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#map-formats-vector"><bdi class="secno">7.1 </bdi>Vector feature data formats</a></li><li class="tocline"><a class="tocxref" href="#map-formats-projections-crs"><bdi class="secno">7.2 </bdi>Map projections and coordinate reference systems</a></li><li class="tocline"><a class="tocxref" href="#map-formats-server-apis"><bdi class="secno">7.3 </bdi>Server APIs</a></li></ol></li><li class="tocline"><a class="tocxref" href="#requirements"><bdi class="secno">8. </bdi>Summary of Requirements</a></li><li class="tocline"><a class="tocxref" href="#issue-summary"><bdi class="secno">A. </bdi>Open Issues</a></li><li class="tocline"><a class="tocxref" href="#acknowledgments"><bdi class="secno">B. </bdi>Acknowledgments</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">C. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.1 </bdi>
+        Informative references
+      </a></li></ol></li></ol></nav>
 
 <section id="introduction">
 <h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction<a class="self-link" aria-label="§" href="#introduction"></a></h2>
@@ -5984,7 +5535,11 @@ We are tracking issues on <a href="https://github.com/Maps4HTML/HTML-Map-Element
 
 
 <section id="references" class="appendix"><h2 id="c-references"><bdi class="secno">C. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2><section id="informative-references">
-        <h3 id="c-1-informative-references"><bdi class="secno">C.1 </bdi>Informative references<a class="self-link" aria-label="§" href="#informative-references"></a></h3>
-      <dl class="bibliography">
-        <dt id="bib-api-design-principles">[API-DESIGN-PRINCIPLES]</dt><dd><a href="https://w3ctag.github.io/design-principles/"><cite>API Design Principles</cite></a>. Domenic Denicola. 29 December 2015. URL: <a href="https://w3ctag.github.io/design-principles/">https://w3ctag.github.io/design-principles/</a></dd><dt id="bib-atag20">[ATAG20]</dt><dd><a href="https://www.w3.org/TR/ATAG20/"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite></a>. Jan Richards; Jeanne F Spellman; Jutta Treviranus.  W3C. 24 September 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ATAG20/">https://www.w3.org/TR/ATAG20/</a></dd><dt id="bib-css-transforms-1">[css-transforms-1]</dt><dd><a href="https://www.w3.org/TR/css-transforms-1/"><cite>CSS Transforms Module Level 1</cite></a>. Simon Fraser; Dean Jackson; Theresa O'Connor; Dirk Schulze.  W3C. 14 February 2019. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-transforms-1/">https://www.w3.org/TR/css-transforms-1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-extensible">[EXTENSIBLE]</dt><dd><a href="https://extensiblewebmanifesto.org/"><cite>The Extensible Web Manifesto</cite></a>. 10 June 2013. URL: <a href="https://extensiblewebmanifesto.org/">https://extensiblewebmanifesto.org/</a></dd><dt id="bib-fast">[FAST]</dt><dd><a href="https://w3c.github.io/apa/fast/"><cite>Framework for Accessible Specification of Technologies</cite></a>.  W3C Accessible Platform Architectures Working Group (APA WG). URL: <a href="https://w3c.github.io/apa/fast/">https://w3c.github.io/apa/fast/</a></dd><dt id="bib-fullscreen">[fullscreen]</dt><dd><a href="https://fullscreen.spec.whatwg.org/"><cite>Fullscreen API Standard</cite></a>. Philip Jägenstedt.  WHATWG. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a></dd><dt id="bib-geolocation-api">[geolocation-API]</dt><dd><a href="https://www.w3.org/TR/geolocation-API/"><cite>Geolocation API Specification 2nd Edition</cite></a>. Andrei Popescu.  W3C. 8 November 2016. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a></dd><dt id="bib-geolocation-privacy">[GEOLOCATION-PRIVACY]</dt><dd><a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf"><cite>Privacy of Geolocation Implementations</cite></a>. Marcos Cáceres. 12 July 2010. URL: <a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf">https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf</a></dd><dt id="bib-geolocation-sensor">[geolocation-sensor]</dt><dd><a href="https://www.w3.org/TR/geolocation-sensor/"><cite>Geolocation Sensor</cite></a>. Anssi Kostiainen; Thomas Steiner.  W3C. 19 December 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation-sensor/">https://www.w3.org/TR/geolocation-sensor/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-html-design-principles">[html-design-principles]</dt><dd><a href="https://www.w3.org/TR/html-design-principles/"><cite>HTML Design Principles</cite></a>. Anne van Kesteren; Maciej Stachowiak.  W3C. 26 November 2007. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-design-principles/">https://www.w3.org/TR/html-design-principles/</a></dd><dt id="bib-html-map-element">[HTML-map-element]</dt><dd><a href="https://maps4html.github.io/HTML-Map-Element/spec/"><cite>The HTML map Element proposal</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.github.io/HTML-Map-Element/spec/">https://maps4html.github.io/HTML-Map-Element/spec/</a></dd><dt id="bib-international-specs">[international-specs]</dt><dd><a href="https://www.w3.org/TR/international-specs/"><cite>Internationalization Best Practices for Spec Developers</cite></a>. Richard Ishida.  W3C. 7 October 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/international-specs/">https://www.w3.org/TR/international-specs/</a></dd><dt id="bib-mapml">[MapML]</dt><dd><a href="https://maps4html.github.io/MapML/spec/"><cite>Map Markup Language</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.github.io/MapML/spec/">https://maps4html.github.io/MapML/spec/</a></dd><dt id="bib-media-accessibility-reqs">[media-accessibility-reqs]</dt><dd><a href="https://www.w3.org/TR/media-accessibility-reqs/"><cite>Media Accessibility User Requirements</cite></a>. Shane McCarron; Michael Cooper; Mark Sadecki.  W3C. 3 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/media-accessibility-reqs/">https://www.w3.org/TR/media-accessibility-reqs/</a></dd><dt id="bib-media-frags">[media-frags]</dt><dd><a href="https://www.w3.org/TR/media-frags/"><cite>Media Fragments URI 1.0 (basic)</cite></a>. Raphaël Troncy; Erik Mannens; Silvia Pfeiffer; Davy Van Deursen.  W3C. 25 September 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/media-frags/">https://www.w3.org/TR/media-frags/</a></dd><dt id="bib-personalization-semantics-requirements-1.0">[personalization-semantics-requirements-1.0]</dt><dd><a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/"><cite>Requirements for Personalization Semantics</cite></a>. Lisa Seeman-Kestenbaum; Charles LaPierre; Michael Cooper; Ruoxi Ran.  W3C. 30 January 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/">https://www.w3.org/TR/personalization-semantics-requirements-1.0/</a></dd><dt id="bib-picture-in-picture">[picture-in-picture]</dt><dd><a href="https://www.w3.org/TR/picture-in-picture/"><cite>Picture-in-Picture</cite></a>. Francois Beaufort; Mounir Lamouri.  W3C. 30 January 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/picture-in-picture/">https://www.w3.org/TR/picture-in-picture/</a></dd><dt id="bib-rfc7946">[rfc7946]</dt><dd><a href="https://tools.ietf.org/html/rfc7946"><cite>The GeoJSON Format</cite></a>. H. Butler; M. Daly; A. Doyle; S. Gillies; S. Hagen; T. Schaub.  IETF. August 2016. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a></dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt><dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Lukasz Olejnik; Jason Novak.  W3C. 10 September 2019. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd><dt id="bib-svg">[SVG]</dt><dd><a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a></dd><dt id="bib-svg2">[SVG2]</dt><dd><a href="https://www.w3.org/TR/SVG2/"><cite>Scalable Vector Graphics (SVG) 2</cite></a>. Amelia Bellamy-Royds; Bogdan Brinza; Chris Lilley; Dirk Schulze; David Storey; Eric Willigers.  W3C. 4 October 2018. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/SVG2/">https://www.w3.org/TR/SVG2/</a></dd><dt id="bib-uaag20">[UAAG20]</dt><dd><a href="https://www.w3.org/TR/UAAG20/"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd><dt id="bib-webcomponents-design-guidelines">[webcomponents-design-guidelines]</dt><dd><a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/"><cite>Guidelines for creating web platform compatible components</cite></a>.  W3C TAG. URL: <a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/">https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/</a></dd><dt id="bib-wgs84">[WGS84]</dt><dd><a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf"><cite>World Geodetic System 1984</cite></a>.  US National Imagery and Mapping Agency. URL: <a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf">http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf</a></dd>
-      </dl></section></section><p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
+      <h3 id="c-1-informative-references"><bdi class="secno">C.1 </bdi>
+        Informative references
+      <a class="self-link" aria-label="§" href="#informative-references"></a></h3>
+    <dl class="bibliography">
+      <dt id="bib-api-design-principles">[API-DESIGN-PRINCIPLES]</dt><dd><a href="https://w3ctag.github.io/design-principles/"><cite>API Design Principles</cite></a>. Domenic Denicola. 29 December 2015. URL: <a href="https://w3ctag.github.io/design-principles/">https://w3ctag.github.io/design-principles/</a></dd><dt id="bib-atag20">[ATAG20]</dt><dd><a href="https://www.w3.org/TR/ATAG20/"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite></a>. Jan Richards; Jeanne F Spellman; Jutta Treviranus.  W3C. 24 September 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ATAG20/">https://www.w3.org/TR/ATAG20/</a></dd><dt id="bib-css-transforms-1">[css-transforms-1]</dt><dd><a href="https://www.w3.org/TR/css-transforms-1/"><cite>CSS Transforms Module Level 1</cite></a>. Simon Fraser; Dean Jackson; Theresa O'Connor; Dirk Schulze.  W3C. 14 February 2019. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-transforms-1/">https://www.w3.org/TR/css-transforms-1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-extensible">[EXTENSIBLE]</dt><dd><a href="https://extensiblewebmanifesto.org/"><cite>The Extensible Web Manifesto</cite></a>. 10 June 2013. URL: <a href="https://extensiblewebmanifesto.org/">https://extensiblewebmanifesto.org/</a></dd><dt id="bib-fast">[FAST]</dt><dd><a href="https://w3c.github.io/apa/fast/"><cite>Framework for Accessible Specification of Technologies</cite></a>.  W3C Accessible Platform Architectures Working Group (APA WG). URL: <a href="https://w3c.github.io/apa/fast/">https://w3c.github.io/apa/fast/</a></dd><dt id="bib-fullscreen">[fullscreen]</dt><dd><a href="https://fullscreen.spec.whatwg.org/"><cite>Fullscreen API Standard</cite></a>. Philip Jägenstedt.  WHATWG. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a></dd><dt id="bib-geolocation-api">[geolocation-API]</dt><dd><a href="https://www.w3.org/TR/geolocation-API/"><cite>Geolocation API Specification 2nd Edition</cite></a>. Andrei Popescu.  W3C. 8 November 2016. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a></dd><dt id="bib-geolocation-privacy">[GEOLOCATION-PRIVACY]</dt><dd><a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf"><cite>Privacy of Geolocation Implementations</cite></a>. Marcos Cáceres. 12 July 2010. URL: <a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf">https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf</a></dd><dt id="bib-geolocation-sensor">[geolocation-sensor]</dt><dd><a href="https://www.w3.org/TR/geolocation-sensor/"><cite>Geolocation Sensor</cite></a>. Anssi Kostiainen; Thomas Steiner.  W3C. 19 December 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation-sensor/">https://www.w3.org/TR/geolocation-sensor/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-html-design-principles">[html-design-principles]</dt><dd><a href="https://www.w3.org/TR/html-design-principles/"><cite>HTML Design Principles</cite></a>. Anne van Kesteren; Maciej Stachowiak.  W3C. 26 November 2007. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-design-principles/">https://www.w3.org/TR/html-design-principles/</a></dd><dt id="bib-html-map-element">[HTML-map-element]</dt><dd><a href="https://maps4html.github.io/HTML-Map-Element/spec/"><cite>The HTML map Element proposal</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.github.io/HTML-Map-Element/spec/">https://maps4html.github.io/HTML-Map-Element/spec/</a></dd><dt id="bib-international-specs">[international-specs]</dt><dd><a href="https://www.w3.org/TR/international-specs/"><cite>Internationalization Best Practices for Spec Developers</cite></a>. Richard Ishida.  W3C. 7 October 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/international-specs/">https://www.w3.org/TR/international-specs/</a></dd><dt id="bib-mapml">[MapML]</dt><dd><a href="https://maps4html.github.io/MapML/spec/"><cite>Map Markup Language</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.github.io/MapML/spec/">https://maps4html.github.io/MapML/spec/</a></dd><dt id="bib-media-accessibility-reqs">[media-accessibility-reqs]</dt><dd><a href="https://www.w3.org/TR/media-accessibility-reqs/"><cite>Media Accessibility User Requirements</cite></a>. Shane McCarron; Michael Cooper; Mark Sadecki.  W3C. 3 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/media-accessibility-reqs/">https://www.w3.org/TR/media-accessibility-reqs/</a></dd><dt id="bib-media-frags">[media-frags]</dt><dd><a href="https://www.w3.org/TR/media-frags/"><cite>Media Fragments URI 1.0 (basic)</cite></a>. Raphaël Troncy; Erik Mannens; Silvia Pfeiffer; Davy Van Deursen.  W3C. 25 September 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/media-frags/">https://www.w3.org/TR/media-frags/</a></dd><dt id="bib-personalization-semantics-requirements-1.0">[personalization-semantics-requirements-1.0]</dt><dd><a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/"><cite>Requirements for Personalization Semantics</cite></a>. Lisa Seeman-Kestenbaum; Charles LaPierre; Michael Cooper; Ruoxi Ran.  W3C. 30 January 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/">https://www.w3.org/TR/personalization-semantics-requirements-1.0/</a></dd><dt id="bib-picture-in-picture">[picture-in-picture]</dt><dd><a href="https://www.w3.org/TR/picture-in-picture/"><cite>Picture-in-Picture</cite></a>. Francois Beaufort; Mounir Lamouri.  W3C. 30 January 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/picture-in-picture/">https://www.w3.org/TR/picture-in-picture/</a></dd><dt id="bib-rfc7946">[rfc7946]</dt><dd><a href="https://tools.ietf.org/html/rfc7946"><cite>The GeoJSON Format</cite></a>. H. Butler; M. Daly; A. Doyle; S. Gillies; S. Hagen; T. Schaub.  IETF. August 2016. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a></dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt><dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Theresa O'Connor; Peter Snyder.  W3C. 8 May 2020. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd><dt id="bib-svg">[SVG]</dt><dd><a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a></dd><dt id="bib-svg2">[SVG2]</dt><dd><a href="https://www.w3.org/TR/SVG2/"><cite>Scalable Vector Graphics (SVG) 2</cite></a>. Amelia Bellamy-Royds; Bogdan Brinza; Chris Lilley; Dirk Schulze; David Storey; Eric Willigers.  W3C. 4 October 2018. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/SVG2/">https://www.w3.org/TR/SVG2/</a></dd><dt id="bib-uaag20">[UAAG20]</dt><dd><a href="https://www.w3.org/TR/UAAG20/"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd><dt id="bib-webcomponents-design-guidelines">[webcomponents-design-guidelines]</dt><dd><a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/"><cite>Guidelines for creating web platform compatible components</cite></a>.  W3C TAG. URL: <a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/">https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/</a></dd><dt id="bib-wgs84">[WGS84]</dt><dd><a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf"><cite>World Geodetic System 1984</cite></a>.  US National Imagery and Mapping Agency. URL: <a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf">http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf</a></dd>
+    </dl></section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Change the Bearing of a Map</title>
   <link rel="stylesheet" href="examples.css">
+  <script src="style-scope.js"></script>
   <script src="api-keys.js"></script>
 </head>
 <body>
@@ -31,7 +32,7 @@ to demonstrate that the map view can be dynamically updated in this respect.
   <ul class="toc">
     <li>Iframe embeds: <ul>
       <li><a href="#google-maps-embed">Google Maps embed</a></li>
-      <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+      <li><a href="#openstreetmap-embed">OpenStreetMap embed</a></li>
       <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
       <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
     </ul></li>
@@ -53,7 +54,7 @@ to demonstrate that the map view can be dynamically updated in this respect.
   <p>Not applicable</p>
 </section>
 
-<section id="openstreetmap">
+<section id="openstreetmap-embed">
   <h2>OpenStreetMap embed</h2>
   <p>Not applicable</p>
 </section>
@@ -65,12 +66,10 @@ to demonstrate that the map view can be dynamically updated in this respect.
 
 <section id="mapbox-embed">
   <h2>MapBox Studio embed</h2>
-  <div>
-    <iframe width="600" height="450"
-      title="MapBox Studio"
-      src="https://api.mapbox.com/styles/v1/nchan0154/cjx9sxbqt08611cp94xvmkwu1.html?fresh=true&amp;access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#2/0/0/45">
-    </iframe>
-  </div>
+  <iframe width="600" height="450"
+    title="MapBox Studio"
+    src="https://api.mapbox.com/styles/v1/nchan0154/cjx9sxbqt08611cp94xvmkwu1.html?fresh=true&amp;access_token=pk.eyJ1IjoibmNoYW4wMTU0IiwiYSI6ImNqeDlzd3BrNjAxcjAzeXFuMjdodGowbnMifQ.wmDpzNGfADuQOSn1dABh7A#2/0/0/45">
+  </iframe>
 </section>
 
 <section id="leaflet-js">
@@ -80,9 +79,9 @@ to demonstrate that the map view can be dynamically updated in this respect.
 
 <section id="openlayers">
   <h2>OpenLayers with OpenStreetMap tiles</h2>
-  <div id="ol-osm-use-case-change-bearing-map" style="width: 600px; height: 450px;"></div>
-  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+  <div id="openlayers-map" class="m4h-map"></div>
+  <style scoped>@import url("https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css");</style>
+  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js" integrity="sha384-iQkGyyH4ioz3m+maM3s9MX1Oq67mACa4B9Z3ovUv3Sv37LJ96fx3WnZfLoiC3Wfl" crossorigin></script>
   <code class="script-example">
     <script>
       {
@@ -96,7 +95,7 @@ to demonstrate that the map view can be dynamically updated in this respect.
               source: new ol.source.OSM()
             })
           ],
-          target: 'ol-osm-use-case-change-bearing-map'
+          target: 'openlayers-map'
         });
         map.getView().setRotation(-45 * (Math.PI / 180));
       }
@@ -116,8 +115,8 @@ to demonstrate that the map view can be dynamically updated in this respect.
 
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
-  <div id="mapkit-js-map" style="width: 600px; height: 450px;"></div>
-  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+  <div id="mapkit-js-map" class="m4h-map"></div>
+  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js" integrity="sha384-UfrVTfKNtd8uvIHo0q+mnCLDG5W3m3vMfU4hTJC/jRPEI75M4tWTTC5ovVOuBzgx" crossorigin></script>
   <code class="script-example">
     <script>
       {
@@ -149,9 +148,9 @@ to demonstrate that the map view can be dynamically updated in this respect.
 
 <section id="mapbox-api">
   <h2>Mapbox GL JS API</h2>
-  <div id="mapbox-api-map" style="width: 600px; height: 450px;"></div>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <div id="mapbox-api-map" class="m4h-map"></div>
+  <style scoped>@import url("https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css");</style>
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js" integrity="sha384-6pYYEZJoyvvNivgqhokAakHXVbSsqzf9iFCOR2u5FnsEkJoLZEhQIfvMOm3KE1wn" crossorigin></script>
   <code class="script-example">
     <script>
       {

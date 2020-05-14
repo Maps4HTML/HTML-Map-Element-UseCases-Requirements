@@ -39,441 +39,12 @@ h1 {
   line-height: 1.3;
 }
 
-.toc > li {
-  margin-bottom: 1rem;
-}
-
-.map-container {
-    border: 1px solid #ccc;
-    border-radius: 2px;
-}
-
-.map-container > ol {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.map-container > ol > li {
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    flex-grow: 1;
-    flex-basis: 0;
-    padding: 0 .5rem;
-}
-
-.map-container > ol > li:last-of-type {
-    border-bottom-width: 0;
-}
-
-.map-container > ol > li > a {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    padding: 1rem .5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-a[data-type='bounds']::before {
-    content: 'Area: '
-}
-
-a[data-type='point']::before {
-    content: 'Place: '
-}
-
-.map-links {
-  text-align: center;
-  width: 100%;
-  padding: 6px 0;
-  max-width: 600px;
-}
-
-.custom-control {
-    border: 1px solid #000;
-    background-color: #fefefe;
-    color: #222;
-    font-size: small;
-    padding: 2px 4px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.65);
-}
-
-.custom-control span:last-of-type {
-  margin-right: .5rem;
-}
-
-.openlayers.custom-control {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-}
-
-.bing.custom-control {
-    position: absolute;
-    top: 1em;
-    left: 1em;
-}
-
-.mapboxgl.custom-control {
-    position: absolute;
-}
-
-.current-location {
-    background-color: rgba(122, 230, 149, 0.36);
-}
-
-.controls {
-    text-align: center;
-    padding: 0.5rem;
-}
-
-.controls.external {
-    border: 1px solid #ccc;
-    background-color: #eee;
-}
-
-.controls .primary {
-    font-weight: bold;
-}
-
-.bing.custom-control.lat-lng {
-  position: absolute;
-  top: auto;
-  bottom: 3rem;
-  left: 1rem;
-}
-
-.MicrosoftMap .ms-composite {
-  width: 100%;
-  height: 100%;
-}
-
-.MicrosoftMap .NavBar_MapTypeButtonDropDownIcon {
-  box-sizing: initial;
-}
-
-.MicrosoftMap .NavBar_MapTypeButtonIcon {
-  margin-left: 5px;
-}
-
-#openlayers-map {
-  background-color: #f6f6f6;
-}
-
-#openlayers .ol-zoomslider {
-  top: 1rem;
-  background-color: rgba(255,255,255,.8);
-  border: 1px solid rgba(0,60,136,.2);
-  height: 207px;
-}
-
-#labelCanvasId,
-[id*="Microsoft.Maps"] {
-  max-height: none;
-  max-width: none;
-}
-
-.buttons {
-    display: flex;
-}
-
-.buttons .go {
-    background-color: #88ffaa;
-    border: none;
-    border-radius: 2px;
-    box-shadow: 0px 0px 2px #808080;
-    color: inherit;
-    flex-grow: 1;
-    flex-basis: 1;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: .5rem;
-    min-height: 2rem;
-}
-
 button,
 summary {
   cursor: pointer;
 }
 
-iframe {
-  border: none !important;
-}
-
-canvas,
-iframe,
-#bing-maps-api-map,
-#google-maps-api-map,
-#leaflet-js-map,
-#mapkit-js-map,
-#openlayers-map,
-#openlayers > div:not(.script-example):not(.map-container),
-#tomtom-map,
-#d3-geo-map,
-#d3-geo-map svg,
-.leaflet-container,
-.leaflet-map-pane,
-.mapboxgl-map {
-  max-width: 100%;
-  border-radius: 2px;
-}
-
-@media (max-width: 429px) {
-  canvas,
-  iframe,
-  #bing-maps-api-map,
-  #google-maps-api-map,
-  #leaflet-js-map,
-  #mapkit-js-map,
-  #openlayers-map,
-  #openlayers > div:not(.script-example):not(.map-container),
-  #tomtom-map,
-  #d3-geo-map,
-  .leaflet-container,
-  .leaflet-map-pane,
-  .mapboxgl-map {
-    max-height: 275px;
-    height: 275px;
-  }
-
-  .custom-control.lat-lng {
-    max-width: 200px;
-  }
-
-  .static-streetview {
-    width: 100px;
-  }
-}
-
-@media (min-width: 430px) {
-  .map-container {
-    display: grid;
-    grid-template-columns: minmax(100px, 1fr) minmax(300px, 5fr);
-    min-width: 400px;
-    min-height: 400px;
-  }
-}
-
-.static-embed {
-    position: relative;
-    margin-top: 1rem;
-}
-
-.static-embed img {
-    max-width: 100%;
-    height: auto;
-}
-
-.static-streetview {
-    z-index: 1;
-    bottom: 2rem;
-    left: 8px;
-    border: 4px solid #bbb;
-    border-radius: 4px;
-    position: absolute;
-}
-
-.popup.openlayers {
-    background-color: #f6f6f6;
-    color: #060606;
-    border: 1px solid #060606;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    padding: 12px;
-    position: relative;
-}
-
-.popup.openlayers .close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-}
-
-.overlayMapTypeControl {
-    margin: 10px;
-    border-radius: 2px;
-    box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
-    padding: 10px;
-    background-color: #fff;
-    position: relative;
-    font-size: 0.8rem;
-    width: 200px;
-}
-
-.overlayMapTypeControl ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#bing-maps-api-map .overlayMapTypeControl {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-.d3-geo-map {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.d3-geo-map svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-.d3-geo-map button {
-    position: relative;
-    z-index: 1;
-}
-
-.d3-background {
-    width: 100%;
-    height: 100%;
-    stroke: #cccccc;
-    fill: #f2ffff;
-}
-
-.country {
-    fill: #f0be86;
-    stroke: #2e2e2e;
-}
-
-.amenity,
-.building {
-    fill: #ffe5cd;
-    fill-opacity: 1;
-    stroke: #684d32;
-}
-
-.highway,
-.highway--cycleway,
-.highway--footway,
-.highway--path,
-.highway--pedestrian,
-.highway--primary,
-.highway--secondary,
-.highway--service,
-.highway--steps,
-.highway--track,
-.highway--unclassified,
-.highway--primary {
-    stroke: #858585;
-    fill-opacity: 0;
-}
-
-.railway {
-    stroke: #858585;
-    fill-opacity: 0;
-}
-
-.waterway,
-.waterway--ditch,
-.waterway--river,
-.waterway--drain {
-    stroke: #10359c;
-    fill-opacity: 0;
-}
-
-.landuse {
-    fill: #cccccc;
-    fill-opacity: 1;
-    stroke: #2e2e2e;
-}
-
-.natural--grassland,
-.natural--scrub,
-.natural--wood,
-.natural--sand,
-.landuse--allotments,
-.landuse--grass,
-.landuse--meadow,
-.landuse--farmland,
-.landuse--forest,
-.landuse--vineyard,
-.landuse--plant_nursery,
-.leisure--pitch,
-.leisure--garden,
-.leisure--park,
-.leisure--stadium {
-    fill: #beeebf
-}
-
-
-.natural--water,
-.natural--wetland {
-    fill: #0074D9;
-}
-
-.leisure,
-.leisure--sports_centre,
-.leisure--swimming_pool,
-.landuse--residential,
-.landuse--construction,
-.landuse--farmyard,
-.amenity--hospital{
-    fill: #cccccc;
-    fill-opacity: 1;
-    stroke: #2e2e2e;
-}
-
-.amenity--bicycle_parking,
-.amenity--parking {
-    fill: #ccc;
-}
-
-.landuse--industrial {
-    fill: #e3e3e3;
-}
-
-.public_transport--platform {
-    fill: #cccacd;
-}
-
-.barrier--fence,
-.barrier--hedge,
-.barrier--wall {
-    fill-opacity: 0;
-    stroke: #333;
-}
-
-.boundary--administrative {
-    stroke-dasharray: 8px;
-    stroke-width: 2px;
-    stroke: #cc0000;
-    fill-opacity: 0;
-}
-
-.border_type--nation {
-    fill-opacity: 0;
-    stroke: #ff0000;
-    stroke-width: 4;
-    stroke-dasharray: 24px;
-}
-
-svg .marker {
-    fill: #ff00ff;
-    stroke: #000;
-    stroke-width: 2;
-}
-
-svg .overlay.parish {
-    fill: rgb(60,59,255);
-    fill-opacity: 0.8;
-    stroke: rgb(40,39,101);
-
-}
-
-/* Code examples */
+/* Code examples. */
 .html-example,
 .script-example {
   display: block;
@@ -517,4 +88,382 @@ svg .overlay.parish {
 
 pre {
   overflow-x: auto;
+}
+
+/* General map styles. */
+div.m4h-map {
+  position: relative !important;
+}
+
+iframe,
+div.m4h-map {
+  background-color: #f6f6f6;
+}
+
+div.m4h-map {
+  width: 600px;
+  height: 450px;
+}
+
+div.m4h-map:not(.static) {
+  contain: strict;
+}
+
+canvas,
+iframe,
+div.m4h-map {
+  max-width: 100%;
+  border: none;
+  border-radius: 2px;
+}
+
+.map-external-links {
+  text-align: center;
+  width: 100%;
+  padding: 6px 0;
+  max-width: 600px;
+}
+
+@media (max-width: 429px) {
+  canvas,
+  iframe,
+  div.m4h-map {
+    max-height: 275px;
+    height: 275px;
+  }
+}
+
+/* Static maps. */
+div.m4h-map.static {
+  height: auto;
+  max-height: unset;
+  margin-top: 1rem;
+  background-color: unset;
+}
+
+img.static-map {
+  width: 100%;
+  border-radius: 2px;
+}
+
+img.static-streetview {
+  position: absolute;
+  bottom: 7.5%;
+  left: 2.5%;
+  max-width: 30%;
+  border: 4px solid #bbb;
+  border-radius: 4px;
+}
+
+/* Bing Maps API. */
+#bing-maps-api #labelCanvasId,
+#bing-maps-api [id*="Microsoft.Maps"] {
+  max-height: none;
+  max-width: none;
+}
+
+.MicrosoftMap .ms-composite {
+  width: 100%;
+  height: 100%;
+}
+
+.MicrosoftMap .NavBar_MapTypeButtonDropDownIcon {
+  box-sizing: initial;
+}
+
+.MicrosoftMap .NavBar_MapTypeButtonIcon {
+  margin-left: 5px;
+}
+
+/* D3 Geographies APIs. */
+#d3-geo-map svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.d3-background {
+  width: 100%;
+  height: 100%;
+  stroke: #eaeaea;
+  fill: #f0f9f9;
+}
+
+#d3-geo-map button {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-left: .5rem;
+  font-size: 1.3rem;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+#d3-geo-map button:first-of-type {
+  margin-top: .5rem;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+}
+
+#d3-geo-map button:last-of-type {
+  border-top: 0px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  margin-top: 2px;
+}
+
+/* Styles specific to certain examples. */
+svg .country {
+  fill: #f0be86;
+  stroke: #2e2e2e;
+}
+
+.amenity,
+.building {
+  fill: #ffe5cd;
+  fill-opacity: 1;
+  stroke: #684d32;
+}
+
+.highway,
+.highway--cycleway,
+.highway--footway,
+.highway--path,
+.highway--pedestrian,
+.highway--primary,
+.highway--secondary,
+.highway--service,
+.highway--steps,
+.highway--track,
+.highway--unclassified,
+.highway--primary {
+  stroke: #858585;
+  fill-opacity: 0;
+}
+
+.railway {
+  stroke: #858585;
+  fill-opacity: 0;
+}
+
+.waterway,
+.waterway--ditch,
+.waterway--river,
+.waterway--drain {
+  stroke: #10359c;
+  fill-opacity: 0;
+}
+
+.landuse {
+  fill: #cccccc;
+  fill-opacity: 1;
+  stroke: #2e2e2e;
+}
+
+.natural--grassland,
+.natural--scrub,
+.natural--wood,
+.natural--sand,
+.landuse--allotments,
+.landuse--grass,
+.landuse--meadow,
+.landuse--farmland,
+.landuse--forest,
+.landuse--vineyard,
+.landuse--plant_nursery,
+.leisure--pitch,
+.leisure--garden,
+.leisure--park,
+.leisure--stadium {
+  fill: #beeebf;
+}
+
+.natural--water,
+.natural--wetland {
+  fill: #0074D9;
+}
+
+.leisure,
+.leisure--sports_centre,
+.leisure--swimming_pool,
+.landuse--residential,
+.landuse--construction,
+.landuse--farmyard,
+.amenity--hospital{
+  fill: #cccccc;
+  fill-opacity: 1;
+  stroke: #2e2e2e;
+}
+
+.amenity--bicycle_parking,
+.amenity--parking {
+  fill: #ccc;
+}
+
+.landuse--industrial {
+  fill: #e3e3e3;
+}
+
+.public_transport--platform {
+  fill: #cccacd;
+}
+
+.barrier--fence,
+.barrier--hedge,
+.barrier--wall {
+  fill-opacity: 0;
+  stroke: #333;
+}
+
+.boundary--administrative {
+  stroke-dasharray: 8px;
+  stroke-width: 2px;
+  stroke: #cc0000;
+  fill-opacity: 0;
+}
+
+.border_type--nation {
+  fill-opacity: 0;
+  stroke: #ff0000;
+  stroke-width: 4;
+  stroke-dasharray: 24px;
+}
+
+svg .marker {
+  fill: #ff00ff;
+  stroke: #000;
+  stroke-width: 2;
+}
+
+svg .overlay.parish {
+  fill: rgb(60,59,255);
+  fill-opacity: 0.8;
+  stroke: rgb(40,39,101);
+}
+
+.animate-view-change {
+  max-width: 600px;
+}
+
+.animate-view-change > details {
+  margin-bottom: 1rem;
+}
+
+.animate-view-change > details li {
+  padding: .2rem 0;
+}
+
+.animate-view-change .button-animate {
+  display: block;
+  width: 100%;
+  font: inherit;
+  margin-bottom: .5rem;
+}
+
+.animate-view-zoom > ul {
+  list-style: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  margin: 0;
+  padding: 0;
+  max-width: 600px;
+}
+
+.animate-view-zoom > ul a {
+  display: block;
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  border-right: 1px solid #eaeaea;
+}
+
+.animate-view-zoom [data-type="bounds"]::before {
+    content: "Area: ";
+}
+
+.animate-view-zoom [data-type="point"]::before {
+    content: "Place: ";
+}
+
+.custom-control {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  padding: .5rem .75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  background-color: #fefefe;
+  color: #222;
+  font-size: small;
+}
+
+.custom-control.mapboxgl-ctrl {
+  position: relative;
+}
+
+.custom-control span:last-of-type {
+  margin-right: .5rem;
+}
+
+@media (max-width: 429px) {
+  .custom-control.lat-lng {
+    max-width: 200px;
+  }
+}
+
+#openlayers .ol-zoomslider {
+  top: 1rem;
+  left: 1rem;
+  height: 250px;
+  background-color: rgba(255,255,255,.8);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+#openlayers .annotation {
+    background-color: #f6f6f6;
+    border: 1px solid #060606;
+    border-radius: 6px;
+    color: #060606;
+    font-size: 0.8rem;
+    padding: 12px;
+    position: relative;
+}
+
+#openlayers .close-annotation {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+}
+
+.overlayMapTypeControl {
+    margin: 10px;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    padding: .5rem;
+    background-color: #fff;
+    position: relative;
+    font-size: 0.8rem;
+    width: 200px;
+}
+
+.overlayMapTypeControl input,
+.overlayMapTypeControl label {
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.overlayMapTypeControl ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#bing-maps-api-map .overlayMapTypeControl {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }

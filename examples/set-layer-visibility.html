@@ -7,13 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Control which layers are currently visible & which can be hidden by the user</title>
   <link rel="stylesheet" href="examples.css">
+  <script src="style-scope.js"></script>
   <script src="api-keys.js"></script>
   <script src="data/fisk-maps.js"></script>
 </head>
 <body>
 <h1>Examples for
   <a href="../#use-case-set-layer-visibility">
-    Control which layers are currently visible & which can be hidden by the user
+    Use Case: Control which layers are currently visible & which can be hidden by the user
   </a>
 </h1>
 
@@ -47,7 +48,7 @@ An example of the TileJSON representation of the map is:
   <ul class="toc">
     <li>Iframe embeds: <ul>
       <li><a href="#google-maps-embed">Google Maps embed</a></li>
-      <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+      <li><a href="#openstreetmap-embed">OpenStreetMap embed</a></li>
       <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
       <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
     </ul></li>
@@ -72,7 +73,7 @@ An example of the TileJSON representation of the map is:
   -->***
 </section>
 
-<section id="openstreetmap">
+<section id="openstreetmap-embed">
   <h2>OpenStreetMap embed</h2>
 
   ***TODO<!--
@@ -98,13 +99,9 @@ An example of the TileJSON representation of the map is:
 
 <section id="leaflet-js">
   <h2>Leaflet.js with OpenStreetMap tiles</h2>
-  <div id="leaflet-js-map" style="width: 600px; height: 450px;"></div>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-          integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-          crossorigin=""></script>
+  <div id="leaflet-js-map" class="m4h-map"></div>
+  <style scoped>@import url("https://unpkg.com/leaflet@1.5.1/dist/leaflet.css");</style>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin></script>
   <code class="script-example">
     <script>
       {
@@ -145,9 +142,9 @@ An example of the TileJSON representation of the map is:
 
 <section id="openlayers">
   <h2>OpenLayers with OpenStreetMap tiles</h2>
-  <div id="ol-osm-alternative-layers" style="width: 600px; height: 450px;"></div>
-  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+  <div id="openlayers-map" class="m4h-map"></div>
+  <style scoped>@import url("https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css");</style>
+  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js" integrity="sha384-iQkGyyH4ioz3m+maM3s9MX1Oq67mACa4B9Z3ovUv3Sv37LJ96fx3WnZfLoiC3Wfl" crossorigin></script>
   <code class="script-example">
     <script>
       {
@@ -161,7 +158,7 @@ An example of the TileJSON representation of the map is:
               source: new ol.source.OSM()
             })
           ],
-          target: 'ol-osm-alternative-layers'
+          target: 'openlayers-map'
         });
         // TODO: finish this!
       }
@@ -171,7 +168,7 @@ An example of the TileJSON representation of the map is:
 
 <section id="google-maps-api">
   <h2>Google Maps API</h2>
-  <div id="google-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <div id="google-maps-api-map" class="m4h-map"></div>
   <script>
       const apiUrl = 'https://maps.googleapis.com/maps/api/js?key=' + m4h.keys.google + '&callback=initMap',
           scriptElement = document.createElement('script');
@@ -263,7 +260,7 @@ An example of the TileJSON representation of the map is:
 
 <section id="bing-maps-api">
   <h2>Bing Maps Control API</h2>
-  <div id="bing-maps-api-map" style="width: 600px; height: 450px;"></div>
+  <div id="bing-maps-api-map" class="m4h-map"></div>
   <script>
       const bingApiUrl = 'https://www.bing.com/api/maps/mapcontrol?key=' + m4h.keys.bing + '&callback=initBingMap',
           bingScriptElement = document.createElement('script');
@@ -376,14 +373,14 @@ An example of the TileJSON representation of the map is:
 
 <section id="mapbox-api">
   <h2>MapBox GL</h2>
-  <div id="mapboxgl-alternative-layers" style="width: 600px; height: 450px;"></div>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+  <div id="mapbox-api-map" class="m4h-map"></div>
+  <style scoped>@import url("https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css");</style>
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js" integrity="sha384-6pYYEZJoyvvNivgqhokAakHXVbSsqzf9iFCOR2u5FnsEkJoLZEhQIfvMOm3KE1wn" crossorigin></script>
   <code class="script-example">
     <script>
       mapboxgl.accessToken = m4h.keys.mapboxGL;
       let map = new mapboxgl.Map({
-          container: 'mapboxgl-alternative-layers',
+          container: 'mapbox-api-map',
           style: 'mapbox://styles/mapbox/streets-v9',
           center: [6.055737, 46.233226],
           zoom: 15

@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Animate a map through a sequence of points — Maps for HTML reference examples</title>
   <link rel="stylesheet" href="examples.css">
+  <script src="style-scope.js"></script>
   <script src="api-keys.js"></script>
 </head>
 <body>
@@ -24,7 +25,7 @@ Other libraries require the developer to implement the sequencing of animations 
   <ul class="toc">
     <li>Iframe embeds: <ul>
       <li><a href="#google-maps-embed">Google Maps embed</a></li>
-      <li><a href="#openstreetmap">OpenStreetMap embed</a></li>
+      <li><a href="#openstreetmap-embed">OpenStreetMap embed</a></li>
       <li><a href="#bing-maps-embed">Bing Maps embed</a></li>
       <li><a href="#mapbox-embed">Mapbox Studio embed</a></li>
     </ul></li>
@@ -46,7 +47,7 @@ Other libraries require the developer to implement the sequencing of animations 
   <p>Not applicable</p>
 </section>
 
-<section id="openstreetmap">
+<section id="openstreetmap-embed">
   <h2>OpenStreetMap embed</h2>
   <p>Not applicable</p>
 </section>
@@ -68,44 +69,44 @@ Other libraries require the developer to implement the sequencing of animations 
 
 <section id="openlayers">
   <h2>OpenLayers with OpenStreetMap tiles</h2>
-  <div class="map-container">
-    <ol>
-      <li>
-        <h3>Route from Holborn Tube Station to Conway Hall</h3>
-        <div class="buttons"><button type="button" class="go">Go</button></div>
-      </li>
-      <li>
-        <a href="?latlng=51.517462,-0.119877" data-lat="51.517462" data-lng="-0.119877" data-zoom="19">Leave Holborn Tube Station by the High Holborn exit</a>
-      </li>
-      <li>
-        <a href="?latlng=51.517627,-0.119951" data-lat="51.517627" data-lng="-0.119951" data-zoom="19">Turn right along High Holborn</a>
-      </li>
-      <li>
-        <a href="?latlng=51.517656,-0.118945" data-lat="51.517656" data-lng="-0.118945" data-zoom="19">Cross High Holborn at the junction with Drake Street</a>
-      </li>
-      <li>
-        <a href="?latlng=51.517862,-0.118911" data-lat="51.517862" data-lng="-0.118911" data-zoom="19">Continue up Drake Street</a>
-      </li>
-      <li>
-        <a href="?latlng=51.518772,-0.119374" data-lat="51.518772" data-lng="-0.119374" data-zoom="19">Turn right on to Red Lion Square</a>
-      </li>
-      <li>
-        <a href="?latlng=51.519225,-0.118039" data-lat="51.519225" data-lng="-0.118039" data-zoom="19">Turn left at the southeast corner of Red Lion Square</a>
-      </li>
-      <li>
-        <a href="?latlng=51.519691,-0.118249" data-lat="51.519691" data-lng="-0.118249" data-zoom="19">You have arrived at Conway Hall</a>
-      </li>
-    </ol>
-    <div class="map" id="openlayers-map">
+  <div class="animate-view-change">
+    <details open>
+      <summary>Route from Holborn Tube Station to Conway Hall</summary>
+      <ol>
+        <li>
+          <a href="?latlng=51.517462,-0.119877#openlayers" data-lat="51.517462" data-lng="-0.119877" data-zoom="19">Leave Holborn Tube Station by the High Holborn exit</a>
+        </li>
+        <li>
+          <a href="?latlng=51.517627,-0.119951#openlayers" data-lat="51.517627" data-lng="-0.119951" data-zoom="19">Turn right along High Holborn</a>
+        </li>
+        <li>
+          <a href="?latlng=51.517656,-0.118945#openlayers" data-lat="51.517656" data-lng="-0.118945" data-zoom="19">Cross High Holborn at the junction with Drake Street</a>
+        </li>
+        <li>
+          <a href="?latlng=51.517862,-0.118911#openlayers" data-lat="51.517862" data-lng="-0.118911" data-zoom="19">Continue up Drake Street</a>
+        </li>
+        <li>
+          <a href="?latlng=51.518772,-0.119374#openlayers" data-lat="51.518772" data-lng="-0.119374" data-zoom="19">Turn right on to Red Lion Square</a>
+        </li>
+        <li>
+          <a href="?latlng=51.519225,-0.118039#openlayers" data-lat="51.519225" data-lng="-0.118039" data-zoom="19">Turn left at the southeast corner of Red Lion Square</a>
+        </li>
+        <li>
+          <a href="?latlng=51.519691,-0.118249#openlayers" data-lat="51.519691" data-lng="-0.118249" data-zoom="19">You have arrived at Conway Hall</a>
+        </li>
+      </ol>
+    </details>
+    <button type="button" class="button-animate">Animate view change</button>
+    <div id="openlayers-map" class="m4h-map">
     </div>
   </div>
-  <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+  <style scoped>@import url("https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css");</style>
+  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js" integrity="sha384-iQkGyyH4ioz3m+maM3s9MX1Oq67mACa4B9Z3ovUv3Sv37LJ96fx3WnZfLoiC3Wfl" crossorigin></script>
   <code class="script-example">
     <script>
       {
         // convert values from DOM attributes to properties for animation
-        const locationLinks = [...document.querySelectorAll("#openlayers .map-container>ol>li>a")];
+        const locationLinks = [...document.querySelectorAll("#openlayers .animate-view-change details a")];
         const locations = locationLinks.map(locationLink => {
           return {
             center: ol.proj.fromLonLat([parseFloat(locationLink.dataset.lng), parseFloat(locationLink.dataset.lat)]),
@@ -144,7 +145,7 @@ Other libraries require the developer to implement the sequencing of animations 
           target: 'openlayers-map'
         });
 
-        const goButton = document.querySelector('#openlayers button.go');
+        const goButton = document.querySelector('#openlayers .button-animate');
         goButton.addEventListener('click', ev => {
           ev.preventDefault();
           const view = map.getView();

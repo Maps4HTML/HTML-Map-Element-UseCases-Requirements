@@ -6,9 +6,9 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Non-geographic content in map viewers — Maps for HTML reference examples</title>
-  <link rel="stylesheet" href="examples.css">
-  <script src="style-scope.js"></script>
-  <script src="api-keys.js"></script>
+  <link rel="stylesheet" href="css/examples.css">
+  <script src="js/style-scope.js"></script>
+  <script src="js/api-keys.js"></script>
 </head>
 <body>
 <h1>Examples for
@@ -76,8 +76,8 @@
 <section id="leaflet-js">
   <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
   <div id="leaflet-js-map" class="m4h-map"></div>
-  <style scoped>@import url("https://unpkg.com/leaflet@1.5.1/dist/leaflet.css");</style>
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin></script>
+  <style scoped>@import "css/leaflet.css";</style>
+  <script src="js/leaflet.js"></script>
   <code class="script-example">
     <script>
     {
@@ -95,8 +95,8 @@
 <section id="openlayers">
   <h2>OpenLayers with OpenStreetMap tiles</h2>
   <div id="openlayers-map" class="m4h-map"></div>
-  <style scoped>@import url("https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css");</style>
-  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js" integrity="sha384-iQkGyyH4ioz3m+maM3s9MX1Oq67mACa4B9Z3ovUv3Sv37LJ96fx3WnZfLoiC3Wfl" crossorigin></script>
+  <style scoped>@import "css/openlayers.css";</style>
+  <script src="js/openlayers.js"></script>
   <code class="script-example">
     <script>
     const map = (() => {
@@ -160,8 +160,8 @@
 <section id="mapbox-api">
   <h2>Mapbox GL JS API</h2>
   <div id="mapbox-api-map" class="m4h-map"></div>
-  <style scoped>@import url("https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css");</style>
-  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js" integrity="sha384-6pYYEZJoyvvNivgqhokAakHXVbSsqzf9iFCOR2u5FnsEkJoLZEhQIfvMOm3KE1wn" crossorigin></script>
+  <style scoped>@import "css/mapbox.css";</style>
+  <script src="js/mapbox.js"></script>
   <code class="script-example">
     <script>
       { // block to restrict let and const scope to this example

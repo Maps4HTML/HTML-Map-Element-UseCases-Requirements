@@ -6,9 +6,9 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Display an interactive map</title>
-  <link rel="stylesheet" href="examples.css">
-  <script src="style-scope.js"></script>
-  <script src="api-keys.js"></script>
+  <link rel="stylesheet" href="css/examples.css">
+  <script src="js/style-scope.js"></script>
+  <script src="js/api-keys.js"></script>
 </head>
 <body>
 <h1>Examples for
@@ -81,8 +81,8 @@ the examples in those cases use OpenStreetMap tiles.
     </iframe>
     <div class="map-external-links">
       <small>
-        <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
-        <a id="dirMapLink" target="_blank" href="https://www.bing.com/maps/directions?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;rtp=~pos.27.683528083787735_5.306411922086829____&amp;FORM=MBEDLD">Get Directions</a>
+        <a href="https://www.bing.com/maps?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;FORM=MBEDLD" target="_blank" rel="noopener">View Larger Map</a> &nbsp; | &nbsp;
+        <a href="https://www.bing.com/maps/directions?cp=27.683528083787735~5.306411922086829&amp;sty=r&amp;lvl=1&amp;rtp=~pos.27.683528083787735_5.306411922086829____&amp;FORM=MBEDLD" target="_blank" rel="noopener">Get Directions</a>
       </small>
     </div>
 </section>
@@ -98,8 +98,8 @@ the examples in those cases use OpenStreetMap tiles.
 <section id="leaflet-js">
   <h2>Leaflet.js (with OpenStreetMap tiles)</h2>
   <div id="leaflet-js-map" class="m4h-map"></div>
-  <style scoped>@import url("https://unpkg.com/leaflet@1.5.1/dist/leaflet.css");</style>
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin></script>
+  <style scoped>@import "css/leaflet.css";</style>
+  <script src="js/leaflet.js"></script>
   <code class="script-example">
     <script>
       {
@@ -117,8 +117,8 @@ the examples in those cases use OpenStreetMap tiles.
 <section id="openlayers">
   <h2>OpenLayers (with OpenStreetMap tiles)</h2>
   <div id="openlayers-map" class="m4h-map"></div>
-  <style scoped>@import url("https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css");</style>
-  <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js" integrity="sha384-iQkGyyH4ioz3m+maM3s9MX1Oq67mACa4B9Z3ovUv3Sv37LJ96fx3WnZfLoiC3Wfl" crossorigin></script>
+  <style scoped>@import "css/openlayers.css";</style>
+  <script src="js/openlayers.js"></script>
   <code class="script-example">
     <script>
       {
@@ -190,7 +190,7 @@ the examples in those cases use OpenStreetMap tiles.
 <section id="mapkit-js">
   <h2>MapKit JS (Apple Maps) API</h2>
   <div id="mapkit-js-map" class="m4h-map"></div>
-  <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js" integrity="sha384-UfrVTfKNtd8uvIHo0q+mnCLDG5W3m3vMfU4hTJC/jRPEI75M4tWTTC5ovVOuBzgx" crossorigin></script>
+  <script src="js/mapkit.js"></script>
   <code class="script-example">
     <script>
       {
@@ -225,8 +225,8 @@ the examples in those cases use OpenStreetMap tiles.
 <section id="mapbox-api">
   <h2>MapBox GL</h2>
   <div id="mapbox-api-map" class="m4h-map"></div>
-  <style scoped>@import url("https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css");</style>
-  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js" integrity="sha384-6pYYEZJoyvvNivgqhokAakHXVbSsqzf9iFCOR2u5FnsEkJoLZEhQIfvMOm3KE1wn" crossorigin></script>
+  <style scoped>@import "css/mapbox.css";</style>
+  <script src="js/mapbox.js"></script>
   <code class="script-example">
     <script>
       {
@@ -244,8 +244,8 @@ the examples in those cases use OpenStreetMap tiles.
 <section id="tomtom">
   <h2>TomTom Maps SDK for Web with vector maps</h2>
   <div id="tomtom-map" class="m4h-map"></div>
-  <style scoped>@import url("https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/map.css"); @import url("https://api.tomtom.com/maps-sdk-js/4.47.6/examples/elements.css");</style>
-  <script src="https://api.tomtom.com/maps-sdk-js/4.47.6/examples/sdk/tomtom.min.js" integrity="sha384-10mNbfSZvROwua/wDGv3B9FSLGejRzM7Iw4jcRPUozrhEbMzkepLICX6GjazuNqI" crossorigin></script>
+  <style scoped>@import "css/tomtom.css";</style>
+  <script src="js/tomtom.js"></script>
   <code class="script-example">
     <script>
       {
@@ -265,7 +265,7 @@ the examples in those cases use OpenStreetMap tiles.
 <section id="d3-geo">
   <h2>D3 Geographies APIs</h2>
   <div id="d3-geo-map" class="m4h-map"></div>
-  <script src="https://d3js.org/d3.v5.js" integrity="sha384-qbNa7U27VV0Cghe/43y8zEMkmA5M4VxV6MI0k0vdVJKTrBoT2SnBqwccpD0vX+Is" crossorigin></script>
+  <script src="js/d3-geographies.js"></script>
   <code class="script-example">
     <script>
         {

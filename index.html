@@ -5435,15 +5435,24 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </section>
 
 <section id="capability-map-events" data-ucr-role="capability">
-<h4>Subscribe to map move events</h4>
+<h4>Subscribe to notifications of map events</h4>
 <p>
-Author scripts may wish to be notified of map events. TODO
+A web application embedding a map will usually need to respond to changes in the state of the map as a result of
+user activity or from other causes,
+so that it can update its own internal state and user interface as necessary to remain consistent with the map view.
+At a minimum, any change of the area displayed by the map needs to be notified to the application.
+In practice, it is usually desirable for the causes of changes to be distinguishable from each other,
+and for other high-level events within the map view to be exposed.
+This allows an application fine-grained control of the level of detail of interactions it responds to,
+from a simple update when the map is moved or the zoom level is changed,
+to detailed feedback presented in its user interface during user interactions of longer duration
+such as continuous panning.
 </p>
 <p class="issue discussion" data-number="69">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
-Existing implementation support:
+
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.

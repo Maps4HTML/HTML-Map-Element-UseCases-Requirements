@@ -4503,9 +4503,22 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-implement-a-custom-control" data-ucr-role="capability">
 <h4>Implement a custom control</h4>
 <p>
-A custom control is a user interface element that is
-integrated closely with the map's own user interface, and is
-under the control of the map once it has ben added.
+Controls are user interface elements that enable interaction with the map.
+Map implementations typically provide a number of default controls supporting interactions such as zooming
+and switching layers.
+</p>
+<p>
+A map implementation will typically provide the developer with various options for configuring controls.
+This will include such capabilities as adding and removing controls, showing or hiding them,
+and being notified of changes in their state.
+It is also necessary to provide support for controlling the positioning of controls,
+to avoid the situation where two controls occupy the same position on the map's UI.
+</p>
+<p>
+Developers may wish to implement additional controls, either replacing the functionality of the map's default controls,
+or adding new functionality.
+Map implementations should provide APIs to support such custom controls,
+allowing them to integrate fully with the map at a level that is on a par with the map's own controls.
 </p>
 <p class="issue discussion" data-number="57">
 Discuss this section on GitHub.
@@ -4513,28 +4526,12 @@ Discuss this section on GitHub.
 
 <h5>Existing implementations</h5>
 <p>
-A custom control is a JavaScript object or a DOM element
-that satisfies the API's requirements for it to be
-integrated with the map.
-Those requirements vary across APIs.
-Generally, it is expected that a single DOM element
-containing whatever other elements constitute the control UI
-will be provided by the control.
-In some cases the DOM element is passed to the API directly;
-in others, a JavaScript object is passed to the API, which
-is required to implement a method that returns the control's
-containing DOM element.
-Styling of the elements within the control is the
-responsibility of the implementor.
-</p>
-<p>
-Assuming the API requirements are satisfied, the behaviour
-and rendering of the control are then the responsibility of
-the implementation.
-Typically, a custom control will listen to events from the
-DOM, or the map, or both.
-In response to those events, it will then update the state
-of the map, update its own representation, or both.
+Support for controls varies widely among existing map implementations.
+It is generally the developer's responsibility to create a suitable DOM construct,
+styled with CSS and augmented with JavaScript to provide behaviour, for use as a control.
+But though some implementations specify detailed APIs which controls should support
+in order to be properly integrated with the map, others provide minimal support and expect the
+developer to take full responsibility for responding to control lifecycle transitions.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -4543,24 +4540,57 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
-<dt>google-maps-api</dt>
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom</dt>
 <dd><a>full support</a>:
-These APIs all define requirements for a JavaScript object or DOM element
-to be able to be used as a custom control.
+<p>
+All of these implementations fully support the concept of controls,
+including support for control implementations to be notifed when they are added to or removed from the map,
+so they can update their own internal state acordingly.
+They also allow controls to request their desired positioning within the map's UI,
+and will position controls using sensible defaults if developers choose not to implement that capability.
+</p>
+<p>
+MapBoxGL specifies an interface to which controls are expected to conform.
+The map API provides methods for adding and removing controls to and from the map UI.
+</p>
+<p>
+Leaflet, TomTom (which uses Leaflet), and OpenLayers provide base classes which controls extend,
+along with map methods for adding and removing controls.
+OpenLayers also exposes its control collection directly.
+</p>
+</dd>
+<dt>google-maps-api</dt>
+<dd><a>supported, with limitations</a>:
+<p>
+While Google Maps supports the adding and removing of controls and the specifying of their placement
+within a number of predefined areas within the map's UI,
+there is no specific interface to which they are expected to conform.
+</p>
 </dd>
 <dt>bing-maps-api</dt>
+<dd><a>partial support</a>:
+<p>
+Bing Maps expects controls to be implemented as a type of overlay.
+It provides no particular support for controls beyond that, not even for positioning them within the map UI,
+which is left to the developer to achieve using CSS positioning.
+</p>
 <dt>apple-mapkit-js-api</dt>
-<dd><a>supported, with limitations</a>:
-Items having the form and behaviour of custom controls can
-be implemented in the form of overlays, but there is no facility for
-distinguishing such controls from other overlays.
+<dd><a>no support</a>a>:
+<p>
+Apple MapkitJS does not provide an interface that can be implemented to create a custom control,
+nor does it have any generic mechanism for adding and removing controls beyond those provided.
+</p>
 </dd>
 <dt>d3-geographies-api</dt>
 <dd><a>not applicable</a>:
 <!-- details about what is/isn't supported -->
+<p>
+Although d3 supports a variety of user interactions, the concept of a user interface presenting a collection
+of controls to the user is not part of the library.
+</p>
 </dd>
 </dl>
 
@@ -4569,7 +4599,9 @@ distinguishing such controls from other overlays.
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+As controls are explicitly intended as part of the map's user interface,
+further uses for the concept might be found in other cases
+where complex interactive content is presented by an element, such as adding controls to media containers.
 </p>
 
 <h5>Related web specifications</h5>
@@ -4585,7 +4617,10 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+It might seem that, as controls are implemented using existing interactive HTML elements,
+there is no pressing need for them to be supported by additional APIS.
+However, the need for them to be closely integrated with a map's own UI, state, and lifecycle
+suggests that this functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.

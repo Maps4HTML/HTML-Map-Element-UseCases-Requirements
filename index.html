@@ -5193,9 +5193,94 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-pan-zoom-or-re-centre-map" data-ucr-role="capability">
 <h4>Pan, zoom, or re-centre a map</h4>
 <p>
-Description to follow
+Developers expect to be able to control a map by changing its centre and/or zoom level,
+and may also wish to support the capability of resetting a map to its view as originally presented.
+If the map view cannot be dynamically modified by an application,
+as opposed to changes by direct user interaction with the map,
+then it offers fewer advantages over a static map view.
+</p>
+<p>
+It is usually also desirable that such changes can be accomplished in a manner that gives sufficient
+visual feedback to the user that a change is occurring,
+for example by animating the transition rather than simply redrawing the map with the new view,
+which may not be immediately noticeable to the user.
+</p>
+<p>
+Accessibility is an important consideration when the state of a map is altered dynamically.
+Thought should be given to how the change can be made known to assistive technologies so that the user
+is fully informed and thus cognisant of the current state of the map at all times.
 </p>
 <p class="issue discussion" data-number="67">
+Discuss this section on GitHub.
+</p>
+
+<h5>Existing implementations</h5>
+<p>
+All the reviewed JavaScript API implementations support changing the bounds, centre, and zoom level of a map,
+and allow such transitions to be animated.
+</p>
+<dl data-ucr-role="implementation-notes">
+<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
+Give details about what is/isn't supported in the dd element,
+starting with a link to one of the implementation levels.
+List full implementations first.
+Group implementations (multiple dt for the same dd) when they have the same support.
+-->
+<dt>google-maps-api</dt>
+<dt>bing-maps-api</dt>
+<dt>apple-mapkit-js-api</dt>
+<dt>mapbox-gl-api</dt>
+<dt>leaflet-api</dt>
+<dt>open-layers-api</dt>
+<dt>d3-geographies-api</dt>
+<dd><a>full support</a>:
+<!-- details about what is/isn't supported -->
+<p>
+Animated transitions are supported by calling specific methods with names such as <code>flyTo</code>
+or via a Boolean parameter to a more general method such as <code>setView</code>.
+</p>
+</dd>
+</dl>
+
+<h5>Supported use cases</h5>
+<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
+
+<h5>Uses beyond mapping</h5>
+<p>
+ToDo
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<!-- Any existing/proposed specs that address similar needs or otherwise interact.
+Include links with proper ReSpec references. -->
+</p>
+
+<h5>Conclusion</h5>
+<!-- Cost, benefits, and recommendation on whether this should be a requirement.
+Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
+whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
+See examples.
+-->
+<p>
+As this is capability is required for any dynamic update of a map view such as would be expected of a map-based application,
+it is a <a data-ucr-role="conclusion">requirement</a> for embedded web maps.
+</p>
+<ul data-ucr-role="conclusion-notes">
+<!-- bullet-point notes summarizing implementation details / blocking issues.
+Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
+<li><a data-ucr-role="tag" href=""></a>
+<!-- short summary of how the tag applies -->
+</li>
+</ul>
+</section>
+
+<section id="capability-zoom-map-in-or-out" data-ucr-role="capability">
+<h4>Zoom a map in or out</h4>
+<p>
+Description to follow
+</p>
+<p class="issue discussion" data-number="68">
 Discuss this section on GitHub.
 </p>
 

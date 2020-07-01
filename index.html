@@ -4503,9 +4503,22 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-implement-a-custom-control" data-ucr-role="capability">
 <h4>Implement a custom control</h4>
 <p>
-A custom control is a user interface element that is
-integrated closely with the map's own user interface, and is
-under the control of the map once it has ben added.
+Controls are user interface elements that enable interaction with the map.
+Map implementations typically provide a number of default controls supporting interactions such as zooming
+and switching layers.
+</p>
+<p>
+A map implementation will typically provide the developer with various options for configuring controls.
+This will include such capabilities as adding and removing controls, showing or hiding them,
+and being notified of changes in their state.
+It is also necessary to provide support for controlling the positioning of controls,
+to avoid the situation where two controls occupy the same position on the map's UI.
+</p>
+<p>
+Developers may wish to implement additional controls, either replacing the functionality of the map's default controls,
+or adding new functionality.
+Map implementations should provide APIs to support such custom controls,
+allowing them to integrate fully with the map at a level that is on a par with the map's own controls.
 </p>
 <p class="issue discussion" data-number="57">
 Discuss this section on GitHub.
@@ -4513,28 +4526,12 @@ Discuss this section on GitHub.
 
 <h5>Existing implementations</h5>
 <p>
-A custom control is a JavaScript object or a DOM element
-that satisfies the API's requirements for it to be
-integrated with the map.
-Those requirements vary across APIs.
-Generally, it is expected that a single DOM element
-containing whatever other elements constitute the control UI
-will be provided by the control.
-In some cases the DOM element is passed to the API directly;
-in others, a JavaScript object is passed to the API, which
-is required to implement a method that returns the control's
-containing DOM element.
-Styling of the elements within the control is the
-responsibility of the implementor.
-</p>
-<p>
-Assuming the API requirements are satisfied, the behaviour
-and rendering of the control are then the responsibility of
-the implementation.
-Typically, a custom control will listen to events from the
-DOM, or the map, or both.
-In response to those events, it will then update the state
-of the map, update its own representation, or both.
+Support for controls varies widely among existing map implementations.
+It is generally the developer's responsibility to create a suitable DOM construct,
+styled with CSS and augmented with JavaScript to provide behaviour, for use as a control.
+But though some implementations specify detailed APIs which controls should support
+in order to be properly integrated with the map, others provide minimal support and expect the
+developer to take full responsibility for responding to control lifecycle transitions.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -4543,24 +4540,57 @@ starting with a link to one of the implementation levels.
 List full implementations first.
 Group implementations (multiple dt for the same dd) when they have the same support.
 -->
-<dt>google-maps-api</dt>
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom</dt>
 <dd><a>full support</a>:
-These APIs all define requirements for a JavaScript object or DOM element
-to be able to be used as a custom control.
+<p>
+All of these implementations fully support the concept of controls,
+including support for control implementations to be notified when they are added to or removed from the map,
+so they can update their own internal state accordingly.
+They also allow controls to request their desired positioning within the map's UI,
+and will position controls using sensible defaults if developers choose not to implement that capability.
+</p>
+<p>
+MapBoxGL specifies an interface to which controls are expected to conform.
+The map API provides methods for adding and removing controls to and from the map UI.
+</p>
+<p>
+Leaflet, TomTom (which uses Leaflet), and OpenLayers provide base classes which controls extend,
+along with map methods for adding and removing controls.
+OpenLayers also exposes its control collection directly.
+</p>
+</dd>
+<dt>google-maps-api</dt>
+<dd><a>supported, with limitations</a>:
+<p>
+While Google Maps supports the adding and removing of controls and the specifying of their placement
+within a number of predefined areas within the map's UI,
+there is no specific interface to which they are expected to conform.
+</p>
 </dd>
 <dt>bing-maps-api</dt>
+<dd><a>partial support</a>:
+<p>
+Bing Maps expects controls to be implemented as a type of overlay.
+It provides no particular support for controls beyond that, not even for positioning them within the map UI,
+which is left to the developer to achieve using CSS positioning.
+</p>
 <dt>apple-mapkit-js-api</dt>
-<dd><a>supported, with limitations</a>:
-Items having the form and behaviour of custom controls can
-be implemented in the form of overlays, but there is no facility for
-distinguishing such controls from other overlays.
+<dd><a>no support</a>a>:
+<p>
+Apple MapkitJS does not provide an interface that can be implemented to create a custom control,
+nor does it have any generic mechanism for adding and removing controls beyond those provided.
+</p>
 </dd>
 <dt>d3-geographies-api</dt>
 <dd><a>not applicable</a>:
 <!-- details about what is/isn't supported -->
+<p>
+Although d3 supports a variety of user interactions, the concept of a user interface presenting a collection
+of controls to the user is not part of the library.
+</p>
 </dd>
 </dl>
 
@@ -4569,7 +4599,9 @@ distinguishing such controls from other overlays.
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+As controls are explicitly intended as part of the map's user interface,
+further uses for the concept might be found in other cases
+where complex interactive content is presented by an element, such as adding controls to media containers.
 </p>
 
 <h5>Related web specifications</h5>
@@ -4585,7 +4617,10 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+It might seem that, as controls are implemented using existing interactive HTML elements,
+there is no pressing need for them to be supported by additional APIs.
+However, the need for them to be closely integrated with a map's own UI, state, and lifecycle
+suggests that this functionality is a <a data-ucr-role="conclusion">requirement</a> for modern web maps.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
@@ -5435,15 +5470,44 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </section>
 
 <section id="capability-map-events" data-ucr-role="capability">
-<h4>Subscribe to map move events</h4>
+<h4>Subscribe to notifications of map events</h4>
 <p>
-Author scripts may wish to be notified of map events. TODO
+A web application embedding a map will commonly need to respond to changes in the state of the map,
+whether as a result of user activity or from other causes,
+so that it can update its own internal state and user interface as necessary to remain consistent with the map view.
+At a minimum, any change of the area displayed by the map needs to be notified to the application.
+In practice, it is usually desirable for other high-level events within the map view to be exposed as well.
+This allows an application fine-grained control of the level of detail of interactions it responds to,
+from simple updates when the map is moved or the zoom level is changed,
+to detailed feedback during user interactions of longer duration such as continuous panning.
+</p>
+<p>
+In addition to events relating to the state of the map view itself,
+developers will expect to be able to receive notifications of events triggered by other components within the map
+such as controls, markers, and layers.
+</p>
+<p>
+A native HTML map element would be expected to support the existing DOM event binding interface,
+using the standard <code>addEventListener()</code> method to bind listener functions to map events,
+and receiving an object derived from the standard <code>Event</code> interface
+as the argument to such functions.
 </p>
 <p class="issue discussion" data-number="69">Discuss this section on GitHub.</p>
 
 <h5>Existing implementations</h5>
 <p>
-Existing implementation support:
+Implementations of map events vary widely in both the terminology used and the semantic richness of the events available.
+For example, the Google Maps API provides events named <code>center_changed</code>
+and <code>zoom_changed</code>, allowing a developer to provide discrete event handlers for such changes.
+The Leaflet API supports similar events, but named <code>moveend</code> and <code>zoomend</code>.
+The Bing Maps API, on the other hand, provides a more general <code>viewchangeend</code> event,
+and the handler for this event must examine the state of the map to determine what has changed.
+</p>
+<p>
+APIs generally also provide lower level events directly correlating to user interactions,
+such as <code>click</code> and <code>mouseover</code> in the Google Maps API, though again terminology varies.
+The event objects passed to handlers of such events have additional properties compared to their equivalents
+in normal DOM event handling, such as a property giving the position of the event in terms of latitude and longitude.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -5458,9 +5522,16 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
+<dd><a>supported, with limitations</a>:
 <!-- details about what is/isn't supported -->
+<p>
+Although all existing implementations support an events system capable of meeting the needs of developers,
+inconsistencies in terminology, semantic richness, and the interfaces provided for adding and removing
+event listeners mean that it is unclear whether any one of the existing APIs would be a suitable model
+for the various capabilities available across the entire range of them.
+</p>
 </dd>
 </dl>
 
@@ -5469,13 +5540,24 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+As it is anticipated that standard DOM event interfaces would be the basis for an HTML map's event system,
+it is likely that further uses could arise for such capabilities.
+For example, an HTML text annotated with geographical microdata could allow DOM events arising from user interaction
+(such as clicking on the name of a city within the text) to be enhanced with the same kind of position property,
+specifying latitude and longitude, as would be present in an event object created by a similar interaction
+with a map element.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
+As outlined above, it is expected that events as defined in [[[DOM]]] would form the basis for a map element's
+event system.
+</p>
+<p>
+[[[HTML]]] media objects provide an existing example of extending the basic event system to support
+particular capabilities of embedded content.
 </p>
 
 <h5>Conclusion</h5>
@@ -5485,13 +5567,43 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+This capability is a <a data-ucr-role="conclusion">requirement</a> for the scripting API of a native HTML map element.
+Responding to changes in the state of a map, or user interactions with elements of the map such as markers,
+is necessary for a web application to usefully modify its own state so as to reflect the results of such interactions.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="">privacy-sensitive-data-revealed</a>
+Collating the positions on which a user centres the map could allow a script to infer an interest
+in a particular region and, for example, target advertising accordingly.
+</li>
+<li><a data-ucr-role="tag" href="">accessibility-potential</a>
+If events from maps and map interface elements are exposed to assistive technologies via the browser's
+existing accessibility mechanisms, it would be easier for those technologies to present them in a way
+consistent with other browser interactions.
+</li>
+<li><a data-ucr-role="tag" href="">performance-potential</a>
+Existing implementations must perform complex tasks such as transforming browser coordinates to map coordinates
+in order to provide such data in enhanced event objects.
+Native implementations could be expected to provide significantly better performance.
+</li>
+<li><a data-ucr-role="tag" href="">author-extensibility</a>
+The ability to respond to user interaction is crucial in building rich application interfaces that include embedded maps.
+</li>
+<li><a data-ucr-role="tag" href="">author-cost-cutting</a>
+A standardised interface against which to write event-driven mapping applications reduces the amount of time developers
+need to spend becoming competent and productive.
+</li>
+<li><a data-ucr-role="tag" href="">consistency-match</a>
+Current implementations already seek to either extend or mimic the existing event mechanism.
+</li>
+<li><a data-ucr-role="tag" href="">consistency-progressive</a>
+An application can determine which event-driven enhancements it is capable of supporting in a given environment.
+</li>
+<li><a data-ucr-role="tag" href="">consistency-fallbacks</a>
+An application can choose not to subscribe to a given event or events if it determines that it cannot usefully
+provide an enhancement in its current environment.
 </li>
 </ul>
 </section>

@@ -1704,8 +1704,7 @@ Discuss this section on GitHub.
 
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
-<li><a href="#capability-pan-map-or-re-centre-map"></a></li>
-<li><a href="#capability-zoom-map-in-or-out"></a></li>
+<li><a href="#capability-pan-zoom-or-re-centre-map"></a></li>
 </ul>
 </section>
 
@@ -1739,8 +1738,7 @@ Discuss this section on GitHub.
 <ul data-ucr-role="required-capabilities">
 <li>As a custom application feature:
   <ul>
-  <li><a href="#capability-pan-map-or-re-centre-map"></a></li>
-  <li><a href="#capability-zoom-map-in-or-out"></a></li>
+  <li><a href="#capability-pan-zoom-or-re-centre-map"></a></li>
   </ul>
 </li>
 </ul>
@@ -1993,8 +1991,6 @@ Discuss this section on GitHub.
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-implement-a-custom-control"></a></li>
-<li><a href="#capability-add-control-map"></a></li>
-<li><a href="#capability-remove-control-map"></a></li>
 </ul>
 </section>
 
@@ -4632,153 +4628,6 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </ul>
 </section>
 
-<section id="capability-add-control-map" data-ucr-role="capability">
-<h4>Add a control to a map</h4>
-<p>
-Description to follow
-</p>
-<p class="issue discussion" data-number="58">
-Discuss this section on GitHub.
-</p>
-
-<h5>Existing implementations</h5>
-<p>
-Existing implementation support:
-</p>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-Give details about what is/isn't supported in the dd element,
-starting with a link to one of the implementation levels.
-List full implementations first.
-Group implementations (multiple dt for the same dd) when they have the same support.
--->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
-<dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
-<dt>tomtom</dt>
-<dt>d3-geographies-api</dt>
-<dd>
-<p><a>full support</a>:
-Google, Bing, MapKit and TomTom  allow straightforward creation of a map
-with configuration options.
-</p>
-<p>
-Leaflet, OpenLayers, and MapBox require explicit construction of objects defining the map layers
-and viewport, with sensible defaults for creation of, for example, a map showing OpenStreetMap tiles
-in a standard [[[WGS84]]] projection.
-This provides added flexibility, at the expense of increasing the complexity of code that uses these libraries.
-</p>
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical imagery.
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<a data-cite="HTML">HTML</a> specifies a number of aspects of elements
-that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
-</p>
-<p>
-The <a data-cite="DOM">DOM</a> provides interfaces for creating
-HTML elements, which are what these implementations are using under the hood.
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-Include links with proper ReSpec references. -->
-</p>
-<p>
-[[[DOM]]] [[[HTML]]]
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-See examples.
--->
-<p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
-</li>
-</ul>
-</section>
-
-<section id="capability-remove-control-map" data-ucr-role="capability">
-<h4>Remove a control from a map</h4>
-<p>
-Description to follow
-</p>
-<p class="issue discussion" data-number="59">
-Discuss this section on GitHub.
-</p>
-
-<h5>Existing implementations</h5>
-<p>
-Existing implementation support:
-</p>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-Give details about what is/isn't supported in the dd element,
-starting with a link to one of the implementation levels.
-List full implementations first.
-Group implementations (multiple dt for the same dd) when they have the same support.
--->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
-<dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
-<dd><a>full support</a>:
-<!-- details about what is/isn't supported -->
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-ToDo
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-Include links with proper ReSpec references. -->
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-See examples.
--->
-<p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
-</li>
-</ul>
-</section>
-
 <section id="capability-add-layer-map" data-ucr-role="capability">
 <h4>Add a layer to a map</h4>
 <p>
@@ -5341,76 +5190,12 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 </ul>
 </section>
 
-<section id="capability-pan-map-or-re-centre-map" data-ucr-role="capability">
-<h4>Pan a map or re-centre a map</h4>
+<section id="capability-pan-zoom-or-re-centre-map" data-ucr-role="capability">
+<h4>Pan, zoom, or re-centre a map</h4>
 <p>
 Description to follow
 </p>
 <p class="issue discussion" data-number="67">
-Discuss this section on GitHub.
-</p>
-
-<h5>Existing implementations</h5>
-<p>
-Existing implementation support:
-</p>
-<dl data-ucr-role="implementation-notes">
-<!-- Use dt elements to name the implementation, using the id string to create an auto-link.
-Give details about what is/isn't supported in the dd element,
-starting with a link to one of the implementation levels.
-List full implementations first.
-Group implementations (multiple dt for the same dd) when they have the same support.
--->
-<dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
-<dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
-<dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
-<!-- details about what is/isn't supported -->
-</dd>
-</dl>
-
-<h5>Supported use cases</h5>
-<ul data-ucr-role="capability-uses"><!-- auto-generated from use case required capabilities --></ul>
-
-<h5>Uses beyond mapping</h5>
-<p>
-ToDo
-</p>
-
-<h5>Related web specifications</h5>
-<p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-Include links with proper ReSpec references. -->
-</p>
-
-<h5>Conclusion</h5>
-<!-- Cost, benefits, and recommendation on whether this should be a requirement.
-Should include an `<a>` element with attribute `data-ucr-role="conclusion"`
-whose text content or `data-lt` value matches one of the conclusions (requirement, enhancement, impractical, undecided).
-See examples.
--->
-<p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
-</p>
-<ul data-ucr-role="conclusion-notes">
-<!-- bullet-point notes summarizing implementation details / blocking issues.
-Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
-</li>
-</ul>
-</section>
-
-<section id="capability-zoom-map-in-or-out" data-ucr-role="capability">
-<h4>Zoom a map in or out</h4>
-<p>
-Description to follow
-</p>
-<p class="issue discussion" data-number="68">
 Discuss this section on GitHub.
 </p>
 

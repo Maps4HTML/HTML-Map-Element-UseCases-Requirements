@@ -5247,7 +5247,8 @@ or via a Boolean parameter to a more general method such as <code>setView</code>
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+This capability would be relevant to use of web map technology for the display of non-geographic imagery,
+such as navigating the view to relevant parts of a complex diagram as the user progresses through related content.
 </p>
 
 <h5>Related web specifications</h5>
@@ -5269,8 +5270,21 @@ it is a <a data-ucr-role="conclusion">requirement</a> for embedded web maps.
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="">privacy-potential</a>
+As there is the potential for third-party scripts to observe the panning and zooming of a map,
+there is a risk with current implementations of this feature exposing an individual's or corporation's
+interest in particular locations.
+This risk would be mitigated with appropriate browser-level security.
+</li>
+<li><a data-ucr-role="tag" href="">accessibility-potential</a>
+Current implementations can only represent changes in the map state in a semantically meaningful form
+to a limited degree via such mechanisms as [[[ARIA]]] live regions.
+A browser implementation would be better able to provide meaningful representations of such changes to assistive
+technologies.
+</li>
+<li><a data-ucr-role="tag" href="">performance-potential</a>
+As current implementations rely on extensive manipulation of DOM nodes to achieve these effects,
+it is probable that a native implementation would be much more efficient.
 </li>
 </ul>
 </section>

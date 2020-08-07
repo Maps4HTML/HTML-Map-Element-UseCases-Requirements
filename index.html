@@ -4490,8 +4490,30 @@ being able to program against a standard interface.
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="">accessibility-potential</a>
+Existing implementations vary widely in how they implement markers and annotations.
+This lack of consistency has the potential to lead to accessibility issues,
+as there may be no clear way for the information the marker is intended to denote to be accessed by assistive
+technologies.
+A native implementation could expose clearly-defined interfaces for accessing the meaning of the marker
+and the content of any related annotation.
+</li>
+<li><a data-ucr-role="tag" href="">accessibility-author-context</a>
+Although a native implementation could make it easier to expose related content in annotations,
+it would still be incumbent on authors to ensure that such content was presented in well-structured HTML
+for assistive technologies to be able to make best use of it.
+</li>
+<li><a data-ucr-role="tag" href="">i18n-potential-geo</a>
+Assuming the fundamental content of a marker is its location,
+a native implementation would be able to present that in a form appropriate for a user's locale.
+</li>
+<li><a data-ucr-role="tag" href="">author-simplicity</a>
+A consistent interface for creating and showing markers and annotations would be advantageous
+compared to the widely-varying approaches used by existing implementations.
+</li>
+<li><a data-ucr-role="tag" href="">author-custom-design</a>
+By providing suitable interfaces for specifying the appearance of markers and annotations,
+a native implementation could allow authors to ensure they were consistent with the overall design of their site.
 </li>
 </ul>
 </section>

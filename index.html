@@ -4664,7 +4664,13 @@ thereby giving authors flexibility to customize the appearance of maps to suit t
 <section id="capability-define-data-source-tile-layer" data-ucr-role="capability">
 <h4 id="x6-1-5-define-a-data-source-for-a-tile-layer"><bdi class="secno">6.1.5 </bdi>Define a data source for a tile layer<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h4>
 <p>
-Description to follow
+Existing commercial implementations will generally show map data from a preconfigured source,
+while open-source implementations will either provide or document an initial configuration using open map data.
+But many applications require the use of alternative sources of map data,
+and it is therefore necessary that a map implementation provide suitable APIs for the configuration of such sources.
+</p>
+<p>
+Configuring alternative data sources is also necessary to support the display of non-geographic tiled imagery.
 </p>
 <div class="issue" id="issue-container-number-74"><div role="heading" class="issue-title marker" id="h-issue-74" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/74"><span class="issue-number">Issue 74</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Define a data source for a tile layer <a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239); color: rgb(0, 0, 0);">discussion: capability</a><a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249); color: rgb(0, 0, 0);">section: client-side API</a><a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211); color: rgb(0, 0, 0);">status: placeholder</a></span></div><p class="discussion">
 Discuss this section on GitHub.
@@ -4682,9 +4688,16 @@ Existing implementation support:
 <dt>mapbox-gl-api</dt>
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
+<dt>tomtom</dt>
 <dt>d3-geographies-api</dt>
-<dd><a href="#dfn-not-applicable" class="internalDFN" data-link-type="dfn">not applicable</a>:
-
+<dd><a href="#dfn-full-support" class="internalDFN" data-link-type="dfn">full support</a>:
+<p>
+All implementations support the creation of a layer with a specified data source that conforms to an OWS standard.
+This requires specifying a way for the layer to access the data source,
+which is achieved by specifying which OWS protocol to use along with a URL template.
+Some implementations support the use of a URL template function to return the required tile URLs
+when invoked with arguments specifying the geographical position and extent the required tile should represent.
+</p>
 </dd>
 </dl>
 
@@ -4693,7 +4706,7 @@ Existing implementation support:
 
 <h5 id="uses-beyond-mapping-20">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
 <p>
-ToDo
+All uses of map implementations to display non-geographical imagery require this capability.
 </p>
 
 <h5 id="related-web-specifications-21">Related web specifications<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
@@ -4704,12 +4717,36 @@ ToDo
 <h5 id="conclusion-20">Conclusion<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
 
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided"><span class="tag-span tag-unknown">undecided</span></a> about whether this should be a requirement.
+Based on the fundamental nature of this capability, it is a <a data-ucr-role="conclusion" href="#requirement"><span class="tag-span tag-good">requirement</span></a> for web map APIs.
+In addition to allowing for the display of alternative geographic data,
+it also allows the repurposing of such APIs for wider application.
 </p>
 <ul data-ucr-role="conclusion-notes">
 
-<li><a data-ucr-role="tag" href=""></a>
-
+<li><a data-ucr-role="tag" href="#accessibility-potential"><span class="tag-span tag-good">Accessibility: potential improvement</span></a>
+Alternative visual representations such as high-contrast map data
+can improve accessibility of maps for those with certain visual impairments.
+</li>
+<li><a data-ucr-role="tag" href="#i18n-potential-text"><span class="tag-span tag-good">Internationalization: potential improvement (languages)</span></a>
+Alternative map imagery supporting different languages and/or alphabets than that assumed to be appropriate by the
+default map data source can be provided.
+</li>
+<li><a data-ucr-role="tag" href="#i18n-potential-geo"><span class="tag-span tag-good">Internationalization: potential improvement (spatial data)</span></a>
+Alternative data sources would allow for the use of map data that reflects regional variations
+in perceived relevance of mapped features,
+expected depictions of features,
+and political differences concerning the location of regional boundaries.
+</li>
+<li><a data-ucr-role="tag" href="#author-extensibility"><span class="tag-span tag-good">Author experience: extensible</span></a>
+A website wishing to display geographic data that is outside the remit of general-purpose mapping services
+requires such a capability.
+</li>
+<li><a data-ucr-role="tag" href="#author-custom-design"><span class="tag-span tag-good">Author experience: customizable design</span></a>
+Displaying custom tile data that reflects the aesthetics of a site requires such a capability.
+</li>
+<li><a data-ucr-role="tag" href="#author-independence"><span class="tag-span tag-good">Author maintainability: removes dependencies on third-party services</span></a>
+A website author can use this capability to provide their own map imagery
+independently of third-party map data providers.
 </li>
 </ul>
 </section>

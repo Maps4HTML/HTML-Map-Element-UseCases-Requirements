@@ -4396,8 +4396,34 @@ such as <var>setAttribute</var>, or through element-specific attributes and meth
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="">accessibility-potential</a>
+A native implementation would be better able to incorporate a semantically meaningful representation of a map
+into its accessibility tree than current implementations,
+which depend on the accessibility features of more general native elements in conjunction with [[ARIA]].
+</li>
+<li><a data-ucr-role="tag" href="">performance-potential</a>
+A native implementation would be more efficient in avoiding the need to download code,
+in code execution,
+and potentially in avoiding the necessity of creating complex DOM structures to build the map's representation.
+</li>
+<li><a data-ucr-role="tag" href="">author-simplicity</a>
+At present, authors need to decide on an implementation to use and to learn how to use it.
+They may then be unwilling to switch to an alternative implementation
+for applications in which it would be more suitable.
+Knowledge of and experience with a standardised native implementation would be more widely applicable.
+</li>
+<li><a data-ucr-role="tag" href="">author-cost-cutting</a>
+Although there are free implementations available,
+many authors make use of paid implementations whether through inertia or the desire for a paid support route.
+A native implementation would reduce the operating costs of paid map implementation providers,
+though they could continue to charge for other services such as tile servers and support,
+and those savings could (in an ideal world) be passed on to their customers.
+</li>
+<li><a data-ucr-role="tag" href="">consistency-fallbacks</a>
+Existing implementations fail if JavaScript is disabled in the user's browser,
+or if connectivity failure prevents the necessary scripts being downloaded.
+A native implementation would be able to at least display an initial view of a map under such conditions,
+even if further enhancements intended by the author failed to be applied.
 </li>
 </ul>
 </section>

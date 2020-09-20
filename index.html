@@ -5196,7 +5196,22 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <section id="capability-pan-zoom-or-re-centre-map" data-ucr-role="capability">
 <h4>Pan, zoom, or re-centre a map</h4>
 <p>
-Description to follow
+Developers expect to be able to control a map by changing its centre and/or zoom level,
+and may also wish to support the capability of resetting a map to its view as originally presented.
+If the map view cannot be dynamically modified by an application,
+as opposed to changes by direct user interaction with the map,
+then it offers fewer advantages over a static map view.
+</p>
+<p>
+It is usually also desirable that such changes can be accomplished in a manner that gives sufficient
+visual feedback to the user that a change is occurring,
+for example by animating the transition rather than simply redrawing the map with the new view,
+which may not be immediately noticeable to the user.
+</p>
+<p>
+Accessibility is an important consideration when the state of a map is altered dynamically.
+Thought should be given to how the change can be made known to assistive technologies so that the user
+is fully informed and thus cognisant of the current state of the map at all times.
 </p>
 <p class="issue discussion" data-number="67">
 Discuss this section on GitHub.
@@ -5204,7 +5219,8 @@ Discuss this section on GitHub.
 
 <h5>Existing implementations</h5>
 <p>
-Existing implementation support:
+All the reviewed JavaScript API implementations support changing the bounds, centre, and zoom level of a map,
+and allow such transitions to be animated.
 </p>
 <dl data-ucr-role="implementation-notes">
 <!-- Use dt elements to name the implementation, using the id string to create an auto-link.
@@ -5220,8 +5236,12 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 <dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
 <dt>d3-geographies-api</dt>
-<dd><a>not applicable</a>:
+<dd><a>full support</a>:
 <!-- details about what is/isn't supported -->
+<p>
+Animated transitions are supported by calling specific methods with names such as <code>flyTo</code>
+or via a Boolean parameter to a more general method such as <code>setView</code>.
+</p>
 </dd>
 </dl>
 
@@ -5230,13 +5250,17 @@ Group implementations (multiple dt for the same dd) when they have the same supp
 
 <h5>Uses beyond mapping</h5>
 <p>
-ToDo
+This capability would be relevant to use of web map technology for the display of non-geographic imagery,
+such as navigating the view to relevant parts of a complex diagram as the user progresses through related content.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
 <!-- Any existing/proposed specs that address similar needs or otherwise interact.
 Include links with proper ReSpec references. -->
+<a href="https://github.com/w3c/csswg-drafts/issues/5275">
+[css-overflow] Consider adding new CSS primitive for per-element panning and zooming (for web maps) #5275
+</a>
 </p>
 
 <h5>Conclusion</h5>
@@ -5246,13 +5270,27 @@ whose text content or `data-lt` value matches one of the conclusions (requiremen
 See examples.
 -->
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion">undecided</a> about whether this should be a requirement.
+As this is capability is required for any dynamic update of a map view such as would be expected of a map-based application,
+it is a <a data-ucr-role="conclusion">requirement</a> for embedded web maps.
 </p>
 <ul data-ucr-role="conclusion-notes">
 <!-- bullet-point notes summarizing implementation details / blocking issues.
 Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` where the text content or href matches a tag `id` value. -->
-<li><a data-ucr-role="tag" href=""></a>
-<!-- short summary of how the tag applies -->
+<li><a data-ucr-role="tag" href="">privacy-potential</a>
+As there is the potential for third-party scripts to observe the panning and zooming of a map,
+there is a risk with current implementations of this feature exposing an individual's or corporation's
+interest in particular locations.
+This risk would be mitigated with appropriate browser-level security.
+</li>
+<li><a data-ucr-role="tag" href="">accessibility-potential</a>
+Current implementations can only represent changes in the map state in a semantically meaningful form
+to a limited degree via such mechanisms as [[[ARIA]]] live regions.
+A browser implementation would be better able to provide meaningful representations of such changes to assistive
+technologies.
+</li>
+<li><a data-ucr-role="tag" href="">performance-potential</a>
+As current implementations rely on extensive manipulation of DOM nodes to achieve these effects,
+it is probable that a native implementation would be much more efficient.
 </li>
 </ul>
 </section>

@@ -4830,7 +4830,17 @@ and rendered on the map.
 <section id="capability-create-an-overlay-defined-by-heatmap-data" data-ucr-role="capability">
 <h4 id="x6-1-7-create-an-overlay-defined-by-heatmap-data"><bdi class="secno">6.1.7 </bdi>Create an overlay defined by heatmap data<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h4>
 <p>
-Description to follow
+Point intensity data is a useful way of representing the distribution of a phenomenon across geographical areas.
+Examples include frequency of earthquake occurrence in different regions,
+the distribution of types of vegetation found in an area,
+or the spread of a global pandemic at a particular point in time.
+</p>
+<p>
+It is possible to preprocess such data into a raster or vector format for display,
+but giving a map implementation the capability of rendering such data into an overlay directly
+averts such problems as maintaining consistency between multiple representations of the same data.
+Implementations will commonly accept point intensity data defined in a number of standard vector data formats,
+such as KML or GeoJSON.
 </p>
 <div class="issue" id="issue-container-number-156"><div role="heading" class="issue-title marker" id="h-issue-76" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/156"><span class="issue-number">Issue 156</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: client-side API, and status: placeholder.">: Capability: Create an overlay defined by heatmap data <a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239); color: rgb(0, 0, 0);">discussion: capability</a><a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+client-side+API%22" style="background-color: rgb(223, 194, 249); color: rgb(0, 0, 0);">section: client-side API</a><a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+placeholder%22" style="background-color: rgb(247, 148, 211); color: rgb(0, 0, 0);">status: placeholder</a></span></div><p class="discussion">
 Discuss this section on GitHub.
@@ -4843,15 +4853,34 @@ Existing implementation support:
 <dl data-ucr-role="implementation-notes">
 
 <dt>google-maps-api</dt>
-<dt>bing-maps-api</dt>
-<dt>apple-mapkit-js-api</dt>
 <dt>mapbox-gl-api</dt>
-<dt>leaflet-api</dt>
 <dt>open-layers-api</dt>
-<dt>d3-geographies-api</dt>
-<dd><a href="#dfn-not-applicable" class="internalDFN" data-link-type="dfn">not applicable</a>:
-
+<dd><a href="#dfn-full-support" class="internalDFN" data-link-type="dfn">full support</a>:
+<p>
+All of these implementations support the display of point intensity data as a heatmap.
+In the case of Google Maps, it is necessary to specify the inclusion of support declaratively when loading the
+script library.
+Typically, a vector data source object is defined in JavaScript either by specifying the URL of a resource
+or by specifying the data directly in code.
+</p>
 </dd>
+<dt>bing-maps-api</dt>
+<dt>leaflet-api</dt>
+<dt>tomtom</dt>
+<dt>d3-geographies-api</dt>
+<dd><a href="#dfn-partial-support" class="internalDFN" data-link-type="dfn">partial support</a>:
+<p>
+Bing Maps has native support for heatmaps via a separate module that must be explicitly loaded in JavaScript,
+rather than being specified declaratively in HTML.
+Leaflet (and by extension TomTom) and d3 have third-party plugins available which add support.
+</p>
+</dd>
+<dt>apple-mapkit-js-api</dt>
+<dd><a href="#dfn-not-applicable" class="internalDFN" data-link-type="dfn">not applicable</a>:
+<p>
+MapKit JS does not support a heatmap overlay at present,
+and no third-party plugins adding support are known of.
+</p></dd>
 </dl>
 
 <h5 id="supported-use-cases-22">Supported use cases<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
@@ -4859,7 +4888,10 @@ Existing implementation support:
 
 <h5 id="uses-beyond-mapping-22">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
 <p>
-ToDo
+Heatmaps have existing applications unrelated to geography in a number of fields.
+For example, they are used in molecular biology for such purposes as visualizing gene expression.
+An implementation capable of displaying non-geographic point intensity data would therefore
+have potential value in the display of such data on the web.
 </p>
 
 <h5 id="related-web-specifications-23">Related web specifications<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
@@ -4870,14 +4902,22 @@ ToDo
 <h5 id="conclusion-22">Conclusion<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
 
 <p>
-Based on the limited data, we are <a data-ucr-role="conclusion" href="#undecided"><span class="tag-span tag-unknown">undecided</span></a> about whether this should be a requirement.
+This functionality could be added to <a data-ucr-role="conclusion" data-lt="enhancement" href="#enhancement" class="internalDFN" data-link-type="dfn">enhance</a> native web maps in the future.
 </p>
 <ul data-ucr-role="conclusion-notes">
 
-<li><a data-ucr-role="tag" href=""></a>
-
-</li>
-</ul>
+<li><a data-ucr-role="tag" href="#accessibility-potential"><span class="tag-span tag-good">Accessibility: potential improvement</span></a>
+Existing implementations only allow access to the underlying data represented by a heatmap
+if the author explicitly provides it, for example by also including the source data in an HTML table.
+A native implementation has the potential to improve access to the data.
+Furthermore, the choice of colours used in the heatmap may present problems for users with
+visual impairments.
+A native implementation could expose controls to allow users to select an alternative palette,
+such as a  high-contrast version.
+</li><li><a data-ucr-role="tag" href="#performance-potential"><span class="tag-span tag-good">Performance: potential optimization</span></a>
+Rendering a heatmap from data can be computationally expensive,
+and it may be possible for a native implementation to achieve greater efficiency.
+</li></ul>
 </section>
 
 <section id="capability-control-layers-map" data-ucr-role="capability">

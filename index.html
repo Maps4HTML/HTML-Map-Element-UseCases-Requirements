@@ -4563,9 +4563,25 @@ suggests that this functionality is a <a data-ucr-role="conclusion" href="#requi
 </p>
 <ul data-ucr-role="conclusion-notes">
 
-
-<li><a data-ucr-role="tag" href=""></a>
-
+<li><a data-ucr-role="tag" href="#accessibility-potential"><span class="tag-span tag-good">Accessibility: potential improvement</span></a>
+Differences in implementation by existing libraries can lead to accessibility issues which would be averted
+by a native implementation that exposed controls in a way consistent with other user interface elements.
+</li>
+<li><a data-ucr-role="tag" href="#accessibility-info-needed"><span class="tag-span tag-caution">Accessibility: research needed</span></a>
+It is unclear how custom controls could be implemented in a manner which guarantees the accessibility benefits
+of native map controls.
+</li>
+<li><a data-ucr-role="tag" href="#accessibility-author-context"><span class="tag-span tag-caution">Accessibility: needs author-provided context</span></a>
+To implement accessible custom controls,
+authors would have to take into account the same considerations as apply to implementing interactive elements
+in other parts of the web platform.
+</li>
+<li><a data-ucr-role="tag" href="#i18n-potential-text"><span class="tag-span tag-good">Internationalization: potential improvement (languages)</span></a>, <a data-ucr-role="tag" href="#i18n-localized-UI"><span class="tag-span tag-caution">Internationalization: UI localization required</span></a>
+A native implementation would be able to label controls according to the user's configured locale.
+</li>
+<li><a data-ucr-role="tag" href="#author-extensibility"><span class="tag-span tag-good">Author experience: extensible</span></a>
+If a suitable interface were defined for authors to implement,
+it has the potential to simplify the creation of custom controls that require access to the map's state.
 </li>
 </ul>
 </section>

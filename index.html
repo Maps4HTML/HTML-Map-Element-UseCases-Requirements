@@ -306,7 +306,7 @@ as outlined in <a href="#principles">the guiding principles</a> for this report.
 The initial requirements sketched out at LGD2014
 were expanded into <a href="draft-2015.html">an initial use cases and requirements summary</a>.
 That work was the basis of the draft [[[MapML]]] specification
-and [[[HTML-map-element]]] proposal.
+and [[[HTML-map-element]]].
 Although MapML has had notable support and development efforts
 from within the geospatial community,
 as of early 2019 it has not received significant support
@@ -4399,7 +4399,7 @@ Add tags to the start of a point with an empty `<a data-ucr-role="tag"></a>` whe
 <li><a data-ucr-role="tag" href="">accessibility-potential</a>
 A native implementation would be better able to incorporate a semantically meaningful representation of a map
 into its accessibility tree than current implementations,
-which depend on the accessibility features of more general native elements in conjunction with [[ARIA]].
+which depend on the accessibility features of more general native elements in conjunction with [[WAI-ARIA]].
 </li>
 <li><a data-ucr-role="tag" href="">performance-potential</a>
 A native implementation would be more efficient in avoiding the need to download code,
@@ -5425,7 +5425,7 @@ This risk would be mitigated with appropriate browser-level security.
 </li>
 <li><a data-ucr-role="tag" href="">accessibility-potential</a>
 Current implementations can only represent changes in the map state in a semantically meaningful form
-to a limited degree via such mechanisms as [[[ARIA]]] live regions.
+to a limited degree via such mechanisms as [[WAI-ARIA]] <a href="https://www.w3.org/TR/wai-aria/#dfn-live-region">live regions</a>.
 A browser implementation would be better able to provide meaningful representations of such changes to assistive
 technologies.
 </li>

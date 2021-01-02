@@ -1643,6 +1643,7 @@ Discuss this section on GitHub.
 <h5>Required capabilities</h5>
 <ul data-ucr-role="required-capabilities">
 <li><a href="#capability-single-custom-image"></a></li>
+<li><a href="#capability-tile-coordinate-systems"></a></li>
 </ul>
 </section>
 
@@ -3262,7 +3263,6 @@ to display a specific location, defined by latitude and longitude,
 from a map tile set.
 </p>
 <dl data-ucr-role="implementation-notes">
-<dt>google-maps-embed</dt>
 <dt>google-maps-api</dt>
 <dt>openstreetmap-embed</dt>
 <dt>leaflet-api</dt>
@@ -3363,9 +3363,12 @@ such as reducing user error when facilitating e-commerce and delivery services.
 
 <h5>Related web specifications</h5>
 <p>
-TODO: mention attempts to standardize what an “address” is,
-in HTML autocomplete attribute
-and Payment Request API.
+Both the <a data-cite="HTML#attr-fe-autocomplete"><code>autocomplete</code></a> attribute on HTML form controls
+and the <a data-cite="payment-request#paymentaddress-interface">Payment Request Payment Address Interface</a>
+represent existing attempts to standardize what an address is.
+It is noteable that between these two implementations,
+there are differences in the way that various fields are named,
+and further research would be needed to determine the best path forward.
 </p>
 <h5>Conclusion</h5>
 <!-- Cost, benefits, and recommendation on whether this should be a requirement.
@@ -3459,13 +3462,20 @@ in order to support other projections.
 
 <h5>Uses beyond mapping</h5>
 <p>
-<!-- What other web content could use this specific capability? Be brief but specific. -->
+Support for this capability would allow for non-georeferenced maps to be displayed,
+such as maps of non-earth planets and fictional spaces.
+</p>
+<p>
+This capability would also provide support for the visualizing anything that exists in a Euclidean coordinate system,
+such as charts that follow a cartesian coordinate system or spherical coordinate systems,
+including diagrams for a variety of engineering, scientific and medical purposes.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-      Include links with proper ReSpec references. -->
+The <a data-cite="geolocation-API#coordinates_interface">Geolocation API</a> already provides a standard interface
+for latitude and longitude coordinates under the WGS94 system,
+but currently no other reference systems are supported.
 </p>
 
 <h5>Conclusion</h5>
@@ -3534,13 +3544,28 @@ in a different projection.
 
 <h5>Uses beyond mapping</h5>
 <p>
-<!-- What other web content could use this specific capability? Be brief but specific. -->
+The number of related specifications that deal with spatial transformation in some way
+suggest that there is a desire for the ability to utilize things like general mesh transformations.
+Adding support for reprojection in a map capacity
+may have the added benefit of providing a foundation for general graphical and text transformation.
 </p>
 
 <h5>Related web specifications</h5>
 <p>
-<!-- Any existing/proposed specs that address similar needs or otherwise interact.
-      Include links with proper ReSpec references. -->
+There are many existing web specifications which support the transformation of graphics to some extent.
+The best example is the <a data-cite="filter-effects#feDisplacementMapElement">feDisplacementMapElement</a> filter.
+Originally designed for SVG, it can be used to spatially displace an image on the fly.
+Also from SVG is the <a data-cite="SVG2/text.html#TextPathElement">TextPathElement</a>,
+where text can be rendered along an arbitrary, author-specified path.
+</p>
+<p>
+The <a data-cite="css-transforms-1">CSS transforms</a> specification offers a simple way to transform elements,
+ranging from simple 2D transforms such as 'skew' to composite transformations in a 3D space.
+</p>
+<p>
+In terms of 3D examples,
+<a data-cite="webGL">WebGL</a> is an example of a web specification where projecting a flat image or 3D texture onto a curved or spherical surface is possible.
+WebGL is already used in some cases for interactiv reprojection for non-map use cases.
 </p>
 
 <h5>Conclusion</h5>
@@ -3602,6 +3627,24 @@ only OpenStreetMap offers the option to export a map location in a standard form
 <dt>apple-mapkit-js-api</dt>
 <dd><a>no support</a>:</dd>
 </dl>
+
+<h5>Related web specifications</h5>
+<p>
+The <a data-cite="web-share">Web Share API</a> is a specification that is designed for sharing links and other content to a destination of the user's choice.
+The API was designed to be extended to allow for sharing new types of data
+via adding new members to the <code>ShareData</code> dictionary.
+</p>
+<p>
+Though not exclusively a web specification, the Geo URI scheme represents a standard way to represent locations within a given coordinate reference system.
+However, it is important to note that Geo URI is considered to be a location estimate, not an exact location.
+</p>
+<p>
+The <a href="https://wicg.github.io/scroll-to-text-fragment/">WICG Text Fragment specification</a> is an example that builds upon the existing use of URL fragments
+in order to allow direct linking to a specific portion of text within a page.
+In order to not conflict with the existing URL fragment,
+this specification introduces a fragment directive delimiter string (":~:")
+to indicate that the fragment is a text fragment.
+</p>
 </section>
 
 </section>
@@ -3872,6 +3915,23 @@ until new tiles are fetched.
 <dd><a>full support</a>:
 </dd>
 </dl>
+
+<h5>Uses beyond mapping</h5>
+<p>
+Dynamic loading of additional data is a common feature request for SVG charts and diagrams.
+Because the initial performance impact of loading and rendering large amounts of data can be quite significant,
+native web features that deal with the management of data
+have potentially wide-reaching performance benefits.
+</p>
+
+<h5>Related web specifications</h5>
+<p>
+<a data-cite="HTML/urls-and-fetching.html#lazy-loading-attribute">Image lazy loading</a> is an example of a feature in the native web platform
+that benefits performance.
+This attribute is extremely simple for developers to implement
+and offloads the complexity of deciding when to load the image
+onto the browser.
+</p>
 </section>
 
 <section id="capability-wrap-pan" data-ucr-role="capability">

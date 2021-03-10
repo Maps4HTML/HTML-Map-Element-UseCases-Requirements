@@ -4016,7 +4016,7 @@ and may not reflect the users text size preference.
 
 <h5>Related web specifications</h5>
 <p>
-The SVG <a href="https://dev.w3.org/SVG/modules/vectoreffects/master/SVGVectorEffects.html">Vector Effects specification</a>
+The SVG2 <a href="https://svgwg.org/svg2-draft/coords.html#VectorEffects"><code>vector-effects</code> property</a>
 contains a <code>non-scaling-stroke</code> property
 that allows for an object's stroke to be unaffected by transforms and zoom.
 This can be used for data visualization,
@@ -4072,10 +4072,15 @@ where showing different resolutions would be beneficial for performance.
 <h5>Related web specifications</h5>
 <p>
 The <a data-cite="HTML/embedded-content.html#element-attrdef-img-srcset">HTML Picture element</a>
-is an example of a native way for authors to specify different resolutions of the same image.
+is an example of a native way for authors to specify different versions of an image for display at different sizes.
 The author can pass as many <code>source</code> elements as needed as child elements of the <code>picture</code> element,
 and each source has a media attribute that accepts a media query for what environments the referenced file should be used in.
-While this syntax may be too verbose to apply to map tiles due to the need to support multiple zoom levels,
+For simpler cases (the same image rendered at different resolutions),
+the <code>srcset</code> and <code>sizes</code> attributes on an HTML <code>&lt;img&gt;</code> element
+can be used to similar effect.
+While either syntax may be too verbose for use with map tiles
+(they require full URLs for every image, at multiple zoom levels, to be specified in the code,
+and would require the same number of tiles regardless of zoom level)
 it does serve as an example of this functionality being provided in the HTML specification.
 </p>
 </section>
@@ -4117,7 +4122,9 @@ Chart and diagram authors may want to have control over the level of detail disp
 <p>
 In SVG, authors most frequently accomplish this by using <a data-cite="mediaqueries-4">Media Queries</a>
 to hide and show elements based on the window size,
-but <a data-cite="css-contain-1">CSS Containment</a> may potentially provide a more elegant solution
+but this approach is limited to cases where the graphic fills the full document window
+(or <code>&lt;iframe&gt;</code>).
+<a data-cite="css-contain-1">CSS Containment</a> may potentially provide a more elegant solution
 for allowing authors to manipulate features based on the size of the container
 rather than the size of the window.
 </p>
@@ -4187,14 +4194,15 @@ such as 'stroke width', 'fill', 'opacity'.
 <h5>Related web specifications</h5>
 <p>
 <a data-cite="SVG2">SVG elements</a> have many styling properties,
-some of which are element specific.
-These properties may fall under geometry properties,
-which may or may not be only defined within the markup,
-or CSS properties, which may be shared with CSS in general.
+describing the fill color or patterns as well as stroke (outline) color, size, and dashing patterns.
+These are specified using CSS methods (e.g., classes and other selectors)
+or directly as element attributes.
+In addition, SVG 2 allows some aspects of the vector shape's geometry to be specified in CSS.
 </p>
 <p>
 <a data-cite="HTML#custom-elements">Custom elements</a> are able to isolate styles via the Shadow DOM,
-which prevents styling entering or exiting the component.
+which prevents style selectors defined outside the component to match elements within it,
+or vice versa, while still allowing some style inheritance.
 A similar approach could be useful for scoping map specific styling to its containing element.
 </p>
 
@@ -4273,6 +4281,8 @@ and set the position of the controls.
 <p>
 <a data-cite="HTML#custom-elements">Custom elements</a> are encapsulated pieces of functionality
 that can inherit styling from the context that they are in.
+[[[css-shadow-parts-1]]] allows web component authors to expose named parts
+within their custom element's shadow DOM, for styling by the web page author.
 A custom element based approach would allow for map authors to style the map controls
 without requiring them to implement the logic behind them manually.
 </p>

@@ -173,15 +173,15 @@ consultation with the Maps for HTML Community Group and others."><style>var{posi
       ]
     }
   ],
-  "publishISODate": "2021-01-15T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 15 January 2021"
+  "publishISODate": "2021-03-15T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 15 March 2021"
 }</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/cg-draft"></head>
 <body class="h-entry informative"><div class="head">
     <a class="logo" href="https://www.w3.org/"><img alt="W3C" width="72" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"></a> <h1 id="title" class="title">Use Cases and Requirements for Standardizing Web Maps</h1>
     
     <h2>
       Draft Community Group Report
-      <time class="dt-published" datetime="2021-01-15">15 January 2021</time>
+      <time class="dt-published" datetime="2021-03-15">15 March 2021</time>
     </h2>
     <dl>
       
@@ -3913,6 +3913,16 @@ re-fetch the same tiles as the user pans across the map.
 <dd><a href="#dfn-full-support" class="internalDFN" data-link-type="dfn">full support</a>: (as describe above)
 </dd>
 </dl>
+
+<h5 id="uses-beyond-mapping-14">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-wrap-pan"></a></h5>
+<p>
+Some UI patterns commonly found on the web,
+such as carousels and marquees,
+utilize a similar kind of wrapping logic.
+Since the marquee element was declared obsolete,
+there is no way to incorporate wrapping/looping functionality natively,
+so incorporating this feature into web maps may have other potential benefits.
+</p>
 </section>
 
 <section id="capability-scale-adjust" data-ucr-role="capability">
@@ -3921,6 +3931,10 @@ re-fetch the same tiles as the user pans across the map.
 Zooming a map widget is different from
 magnifying a regular image, or adjusting the overall browser zoom level;
 the layout is magnified, but annotations such as text size and stroke width are not.
+</p>
+<p>
+It should be noted that the Web Content Accessibility Guidelines <a href="https://www.w3.org/WAI/WCAG21/Understanding/resize-text.html">Success Criterion 1.4.4</a>
+requires that all text be zoomable indepedent of the content by up to 200%.
 </p>
 <div class="issue" id="issue-container-number-151"><div role="heading" class="issue-title marker" id="h-issue-64" aria-level="5"><a href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/151"><span class="issue-number">Issue 151</span></a><span class="issue-label" aria-label="This issue is labelled as discussion: capability, section: map viewer, and status: editor's draft.">: Capability: Maintain reasonable scale of labels and lines when zooming <a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22discussion%3A+capability%22" style="background-color: rgb(158, 247, 239); color: rgb(0, 0, 0);">discussion: capability</a><a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22section%3A+map+viewer%22" style="background-color: rgb(223, 194, 249); color: rgb(0, 0, 0);">section: map viewer</a><a class="respec-gh-label" href="https://github.com/Maps4HTML/HTML-Map-Element-UseCases-Requirements/issues/?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+editor%27s+draft%22" style="background-color: rgb(247, 148, 211); color: rgb(0, 0, 0);">status: editor's draft</a></span></div><p class="discussion">
 Discuss this section on GitHub.
@@ -3945,6 +3959,19 @@ and may not reflect the users text size preference.
 <dd><a href="#dfn-full-support" class="internalDFN" data-link-type="dfn">full support</a>: (as described above)
 </dd>
 </dl>
+
+<h5 id="related-web-specifications-16">Related web specifications<a class="self-link" aria-label="§" href="#capability-scale-adjust"></a></h5>
+<p>
+The SVG2 <a href="https://svgwg.org/svg2-draft/coords.html#VectorEffects"><code>vector-effects</code> property</a>
+contains a <code>non-scaling-stroke</code> property
+that allows for an object's stroke to be unaffected by transforms and zoom.
+This can be used for data visualization,
+such as graphs or diagrams
+where an author may want to display a line with a consistent width across a responsive SVG
+that still respects the browser zoom level,
+which may otherwise appear too small on mobile screens
+and too big on larger screens.
+</p>
 </section>
 
 <section id="capability-zoom-swap" data-ucr-role="capability">
@@ -3981,6 +4008,27 @@ in order to provide an indication of the tile type before it has loaded.
 <dd><a href="#dfn-full-support" class="internalDFN" data-link-type="dfn">full support</a>: (as described above)
 </dd>
 </dl>
+
+<h5 id="uses-beyond-mapping-15">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-zoom-swap"></a></h5>
+<p>
+Diagram and chart authors on the web often find themselves in a situation
+where showing different resolutions would be beneficial for performance.
+</p>
+
+<h5 id="related-web-specifications-17">Related web specifications<a class="self-link" aria-label="§" href="#capability-zoom-swap"></a></h5>
+<p>
+The <a href="https://html.spec.whatwg.org/multipage/embedded-content.html#element-attrdef-img-srcset">HTML Picture element</a>
+is an example of a native way for authors to specify different versions of an image for display at different sizes.
+The author can pass as many <code>source</code> elements as needed as child elements of the <code>picture</code> element,
+and each source has a media attribute that accepts a media query for what environments the referenced file should be used in.
+For simpler cases (the same image rendered at different resolutions),
+the <code>srcset</code> and <code>sizes</code> attributes on an HTML <code>&lt;img&gt;</code> element
+can be used to similar effect.
+While either syntax may be too verbose for use with map tiles
+(they require full URLs for every image, at multiple zoom levels, to be specified in the code,
+and would require the same number of tiles regardless of zoom level)
+it does serve as an example of this functionality being provided in the HTML specification.
+</p>
 </section>
 
 <section id="capability-zoom-swap-vectors" data-ucr-role="capability">
@@ -4009,6 +4057,23 @@ with their default tilesets.</p>
 <dd><a href="#dfn-full-support" class="internalDFN" data-link-type="dfn">full support</a>: (as described above)
 </dd>
 </dl>
+
+<h5 id="uses-beyond-mapping-16">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-zoom-swap-vectors"></a></h5>
+<p>
+This is another capability that could have applications in SVG and other drawing-based web specifications.
+Chart and diagram authors may want to have control over the level of detail displayed at different zoom levels and canvas sizes.
+</p>
+
+<h5 id="related-web-specifications-18">Related web specifications<a class="self-link" aria-label="§" href="#capability-zoom-swap-vectors"></a></h5>
+<p>
+In SVG, authors most frequently accomplish this by using <cite><a href="https://www.w3.org/TR/mediaqueries-4/">Media Queries</a></cite>
+to hide and show elements based on the window size,
+but this approach is limited to cases where the graphic fills the full document window
+(or <code>&lt;iframe&gt;</code>).
+<cite><a href="https://www.w3.org/TR/css-contain-1/">CSS Containment</a></cite> may potentially provide a more elegant solution
+for allowing authors to manipulate features based on the size of the container
+rather than the size of the window.
+</p>
 </section>
 
 </section>
@@ -4072,14 +4137,19 @@ such as 'stroke width', 'fill', 'opacity'.
 <h5 id="supported-use-cases-13">Supported use cases<a class="self-link" aria-label="§" href="#capability-styled-features"></a></h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h5 id="uses-beyond-mapping-14">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-styled-features"></a></h5>
+<h5 id="related-web-specifications-19">Related web specifications<a class="self-link" aria-label="§" href="#capability-styled-features"></a></h5>
 <p>
-
+<cite><a href="https://www.w3.org/TR/SVG2/">SVG elements</a></cite> have many styling properties,
+describing the fill color or patterns as well as stroke (outline) color, size, and dashing patterns.
+These are specified using CSS methods (e.g., classes and other selectors)
+or directly as element attributes.
+In addition, SVG 2 allows some aspects of the vector shape's geometry to be specified in CSS.
 </p>
-
-<h5 id="related-web-specifications-16">Related web specifications<a class="self-link" aria-label="§" href="#capability-styled-features"></a></h5>
 <p>
-
+<a href="https://html.spec.whatwg.org/multipage/#custom-elements">Custom elements</a> are able to isolate styles via the Shadow DOM,
+which prevents style selectors defined outside the component to match elements within it,
+or vice versa, while still allowing some style inheritance.
+A similar approach could be useful for scoping map specific styling to its containing element.
 </p>
 
 <h5 id="conclusion-13">Conclusion<a class="self-link" aria-label="§" href="#capability-styled-features"></a></h5>
@@ -4137,7 +4207,7 @@ and set the position of the controls.
 <dt>openstreetmaps-embed</dt>
 <dt>bing-maps-embed</dt>
 <dt>mapbox-embed</dt>
-  <dt>bing-maps-api</dt>
+<dt>bing-maps-api</dt>
 <dt>apple-mapkit-js-api</dt>
 <dd>
   <a href="#dfn-no-support" class="internalDFN" data-link-type="dfn">no support</a>:
@@ -4148,14 +4218,19 @@ and set the position of the controls.
 <h5 id="supported-use-cases-14">Supported use cases<a class="self-link" aria-label="§" href="#capability-styled-controls"></a></h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h5 id="uses-beyond-mapping-15">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-styled-controls"></a></h5>
+<h5 id="related-web-specifications-20">Related web specifications<a class="self-link" aria-label="§" href="#capability-styled-controls"></a></h5>
 <p>
-
+<a href="https://html.spec.whatwg.org/multipage/#custom-elements">Custom elements</a> are encapsulated pieces of functionality
+that can inherit styling from the context that they are in.
+<cite><a href="https://www.w3.org/TR/css-shadow-parts-1/">CSS Shadow Parts</a></cite> allows web component authors to expose named parts
+within their custom element's shadow DOM, for styling by the web page author.
+A custom element based approach would allow for map authors to style the map controls
+without requiring them to implement the logic behind them manually.
 </p>
-
-<h5 id="related-web-specifications-17">Related web specifications<a class="self-link" aria-label="§" href="#capability-styled-controls"></a></h5>
 <p>
-
+<a href="https://html.spec.whatwg.org/multipage/#the-input-element">HTML form elements</a> have traditionally lacked ways for web developers to style them,
+which has led to developers implementing their own versions of form elements in order to apply their own styling,
+often to the detriment of semantics and accessibility.
 </p>
 
 <h5 id="conclusion-14">Conclusion<a class="self-link" aria-label="§" href="#capability-styled-controls"></a></h5>
@@ -4220,14 +4295,15 @@ setting a boolean in a configuration object.
 <h5 id="supported-use-cases-15">Supported use cases<a class="self-link" aria-label="§" href="#capability-custom-controls"></a></h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h5 id="uses-beyond-mapping-16">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-custom-controls"></a></h5>
+<h5 id="uses-beyond-mapping-17">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-custom-controls"></a></h5>
 <p>
 
 </p>
 
-<h5 id="related-web-specifications-18">Related web specifications<a class="self-link" aria-label="§" href="#capability-custom-controls"></a></h5>
+<h5 id="related-web-specifications-21">Related web specifications<a class="self-link" aria-label="§" href="#capability-custom-controls"></a></h5>
 <p>
-
+HTML Media Elements (which consists of the <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> element)
+include a <a href="https://html.spec.whatwg.org/multipage/#attr-media-controls">controls</a> attribute that indicate whether or not the author would like the user agent to display controls.
 </p>
 
 <h5 id="conclusion-15">Conclusion<a class="self-link" aria-label="§" href="#capability-custom-controls"></a></h5>
@@ -4324,12 +4400,12 @@ By utilising the <var>d3-tile</var> module, tiled raster data can be combined wi
 <h5 id="supported-use-cases-16">Supported use cases<a class="self-link" aria-label="§" href="#capability-create-initialise-and-display-a-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-create-map" class="sec-ref">§&nbsp;<bdi class="secno">3.1.1 </bdi>Display an interactive map within a web page</a></li></ul>
 
-<h5 id="uses-beyond-mapping-17">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-initialise-and-display-a-map"></a></h5>
+<h5 id="uses-beyond-mapping-18">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-initialise-and-display-a-map"></a></h5>
 <p>
 Leaflet, OpenLayers, and MapBox allow for the creation of layers displaying non-geographical raster tiles.
 </p>
 
-<h5 id="related-web-specifications-19">Related web specifications<a class="self-link" aria-label="§" href="#capability-create-initialise-and-display-a-map"></a></h5>
+<h5 id="related-web-specifications-22">Related web specifications<a class="self-link" aria-label="§" href="#capability-create-initialise-and-display-a-map"></a></h5>
 <p>
 The <cite><a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a></cite> specifies a number of aspects of elements
 that embed media in a web page and expose JavaScript APIs to enable interaction and dynamic configuration.
@@ -4456,13 +4532,13 @@ and adding this as an additional layer on the map.
 <h5 id="supported-use-cases-17">Supported use cases<a class="self-link" aria-label="§" href="#capability-add-marker-or-multiple-markers-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-single-location" class="sec-ref">§&nbsp;<bdi class="secno">3.1.2 </bdi>Display a map centered on a point location</a></li></ul>
 
-<h5 id="uses-beyond-mapping-18">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-add-marker-or-multiple-markers-map"></a></h5>
+<h5 id="uses-beyond-mapping-19">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-add-marker-or-multiple-markers-map"></a></h5>
 <p>
 In cases where non-geographical data is being displayed,
 markers could indicate points of interest in the same way that they do on maps.
 </p>
 
-<h5 id="related-web-specifications-20">Related web specifications<a class="self-link" aria-label="§" href="#capability-add-marker-or-multiple-markers-map"></a></h5>
+<h5 id="related-web-specifications-23">Related web specifications<a class="self-link" aria-label="§" href="#capability-add-marker-or-multiple-markers-map"></a></h5>
 <p>
 <cite><a href="https://tools.ietf.org/html/rfc7946">The GeoJSON Format</a></cite> defines a method for representing geographical data in JSON.
 This is one of the primary data formats supported by d3-geo and is also used by other implementations
@@ -4604,14 +4680,14 @@ of controls to the user is not part of the library.
 <h5 id="supported-use-cases-18">Supported use cases<a class="self-link" aria-label="§" href="#capability-implement-a-custom-control"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-add-custom-control" class="sec-ref">§&nbsp;<bdi class="secno">3.3.1 </bdi>Add a custom control to a map</a></li></ul>
 
-<h5 id="uses-beyond-mapping-19">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-implement-a-custom-control"></a></h5>
+<h5 id="uses-beyond-mapping-20">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-implement-a-custom-control"></a></h5>
 <p>
 As controls are explicitly intended as part of the map's user interface,
 further uses for the concept might be found in other cases
 where complex interactive content is presented by an element, such as adding controls to media containers.
 </p>
 
-<h5 id="related-web-specifications-21">Related web specifications<a class="self-link" aria-label="§" href="#capability-implement-a-custom-control"></a></h5>
+<h5 id="related-web-specifications-24">Related web specifications<a class="self-link" aria-label="§" href="#capability-implement-a-custom-control"></a></h5>
 <p>
 
 </p>
@@ -4693,14 +4769,14 @@ in the case where an alternative base layer that does not use their data is prov
 <h5 id="supported-use-cases-19">Supported use cases<a class="self-link" aria-label="§" href="#capability-add-layer-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-hide-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li><li><a href="#use-case-generate-vector-features" class="sec-ref">§&nbsp;<bdi class="secno">3.3.7 </bdi>Generate new vector features from data</a></li></ul>
 
-<h5 id="uses-beyond-mapping-20">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-add-layer-map"></a></h5>
+<h5 id="uses-beyond-mapping-21">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-add-layer-map"></a></h5>
 <p>
 As a map viewer provides the ability to pan and zoom imagery covering a large extent, there are many alternative
 uses. Some examples include works of art that have been digitised at ultra high resolution,
 allowing anyone to examine them in fine detail, and ultra high resolution panoramic photographs.
 </p>
 
-<h5 id="related-web-specifications-22">Related web specifications<a class="self-link" aria-label="§" href="#capability-add-layer-map"></a></h5>
+<h5 id="related-web-specifications-25">Related web specifications<a class="self-link" aria-label="§" href="#capability-add-layer-map"></a></h5>
 <p>
 
 </p>
@@ -4767,12 +4843,12 @@ when invoked with arguments specifying the geographical position and extent the 
 <h5 id="supported-use-cases-20">Supported use cases<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-custom-map" class="sec-ref">§&nbsp;<bdi class="secno">3.1.7 </bdi>Display custom imagery as a map layer</a></li><li><a href="#use-case-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.8 </bdi>Combine multiple layers of map tile data or features</a></li></ul>
 
-<h5 id="uses-beyond-mapping-21">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
+<h5 id="uses-beyond-mapping-22">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
 <p>
 All uses of map implementations to display non-geographical imagery require this capability.
 </p>
 
-<h5 id="related-web-specifications-23">Related web specifications<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
+<h5 id="related-web-specifications-26">Related web specifications<a class="self-link" aria-label="§" href="#capability-define-data-source-tile-layer"></a></h5>
 <p>
 
 </p>
@@ -4850,12 +4926,12 @@ such as the structure of a GeoJSON object.
 <h5 id="supported-use-cases-21">Supported use cases<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-vector-data"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-generate-vector-features" class="sec-ref">§&nbsp;<bdi class="secno">3.3.7 </bdi>Generate new vector features from data</a></li></ul>
 
-<h5 id="uses-beyond-mapping-22">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-vector-data"></a></h5>
+<h5 id="uses-beyond-mapping-23">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-vector-data"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-24">Related web specifications<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-vector-data"></a></h5>
+<h5 id="related-web-specifications-27">Related web specifications<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-vector-data"></a></h5>
 <p>
 
 </p>
@@ -4949,7 +5025,7 @@ and no third-party plugins adding support are known of.
 <h5 id="supported-use-cases-22">Supported use cases<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-heatmap" class="sec-ref">§&nbsp;<bdi class="secno">3.3.8 </bdi>Generate a heatmap overlay from point intensity data</a></li></ul>
 
-<h5 id="uses-beyond-mapping-23">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
+<h5 id="uses-beyond-mapping-24">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
 <p>
 Heatmaps have existing applications unrelated to geography in a number of fields.
 For example, they are used in molecular biology for such purposes as visualizing gene expression.
@@ -4957,7 +5033,7 @@ An implementation capable of displaying non-geographic point intensity data woul
 have potential value in the display of such data on the web.
 </p>
 
-<h5 id="related-web-specifications-25">Related web specifications<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
+<h5 id="related-web-specifications-28">Related web specifications<a class="self-link" aria-label="§" href="#capability-create-an-overlay-defined-by-heatmap-data"></a></h5>
 <p>
 
 </p>
@@ -5014,12 +5090,12 @@ All of these implementations allow hiding and showing a layer on a map.
 <h5 id="supported-use-cases-23">Supported use cases<a class="self-link" aria-label="§" href="#capability-control-layers-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-hide-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.2.5 </bdi>Show/hide map layers or feature sets</a></li><li><a href="#use-case-heatmap" class="sec-ref">§&nbsp;<bdi class="secno">3.3.8 </bdi>Generate a heatmap overlay from point intensity data</a></li></ul>
 
-<h5 id="uses-beyond-mapping-24">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-control-layers-map"></a></h5>
+<h5 id="uses-beyond-mapping-25">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-control-layers-map"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-26">Related web specifications<a class="self-link" aria-label="§" href="#capability-control-layers-map"></a></h5>
+<h5 id="related-web-specifications-29">Related web specifications<a class="self-link" aria-label="§" href="#capability-control-layers-map"></a></h5>
 <p>
 
 </p>
@@ -5067,12 +5143,12 @@ Existing implementation support:
 <h5 id="supported-use-cases-24">Supported use cases<a class="self-link" aria-label="§" href="#capability-specify-style-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-alternative-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select</a></li></ul>
 
-<h5 id="uses-beyond-mapping-25">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-specify-style-map"></a></h5>
+<h5 id="uses-beyond-mapping-26">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-specify-style-map"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-27">Related web specifications<a class="self-link" aria-label="§" href="#capability-specify-style-map"></a></h5>
+<h5 id="related-web-specifications-30">Related web specifications<a class="self-link" aria-label="§" href="#capability-specify-style-map"></a></h5>
 <p>
 
 </p>
@@ -5120,12 +5196,12 @@ Existing implementation support:
 <h5 id="supported-use-cases-25">Supported use cases<a class="self-link" aria-label="§" href="#capability-determine-current-style-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-alternative-layers" class="sec-ref">§&nbsp;<bdi class="secno">3.1.9 </bdi>Provide alternative map layers which the user can select</a></li></ul>
 
-<h5 id="uses-beyond-mapping-26">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-determine-current-style-map"></a></h5>
+<h5 id="uses-beyond-mapping-27">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-determine-current-style-map"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-28">Related web specifications<a class="self-link" aria-label="§" href="#capability-determine-current-style-map"></a></h5>
+<h5 id="related-web-specifications-31">Related web specifications<a class="self-link" aria-label="§" href="#capability-determine-current-style-map"></a></h5>
 <p>
 
 </p>
@@ -5177,12 +5253,12 @@ Existing implementation support:
 <h5 id="supported-use-cases-26">Supported use cases<a class="self-link" aria-label="§" href="#capability-get-bounds-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-view-change-events" class="sec-ref">§&nbsp;<bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li></ul>
 
-<h5 id="uses-beyond-mapping-27">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-get-bounds-map"></a></h5>
+<h5 id="uses-beyond-mapping-28">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-get-bounds-map"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-29">Related web specifications<a class="self-link" aria-label="§" href="#capability-get-bounds-map"></a></h5>
+<h5 id="related-web-specifications-32">Related web specifications<a class="self-link" aria-label="§" href="#capability-get-bounds-map"></a></h5>
 <p>
 
 </p>
@@ -5250,13 +5326,13 @@ or via a Boolean parameter to a more general method such as <code>setView</code>
 <h5 id="supported-use-cases-27">Supported use cases<a class="self-link" aria-label="§" href="#capability-pan-zoom-or-re-centre-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-interactive" class="sec-ref">§&nbsp;<bdi class="secno">3.2.1 </bdi>Reposition or scale a map to find more context for the displayed locations</a></li><li><a href="#use-case-reset-map-view" class="sec-ref">§&nbsp;<bdi class="secno">3.2.2 </bdi>Reset the map to the initial view</a></li><li><a href="#use-case-set-view-zoom" class="sec-ref">§&nbsp;<bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li></ul>
 
-<h5 id="uses-beyond-mapping-28">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-pan-zoom-or-re-centre-map"></a></h5>
+<h5 id="uses-beyond-mapping-29">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-pan-zoom-or-re-centre-map"></a></h5>
 <p>
 This capability would be relevant to use of web map technology for the display of non-geographic imagery,
 such as navigating the view to relevant parts of a complex diagram as the user progresses through related content.
 </p>
 
-<h5 id="related-web-specifications-30">Related web specifications<a class="self-link" aria-label="§" href="#capability-pan-zoom-or-re-centre-map"></a></h5>
+<h5 id="related-web-specifications-33">Related web specifications<a class="self-link" aria-label="§" href="#capability-pan-zoom-or-re-centre-map"></a></h5>
 <p>
 
 <a href="https://github.com/w3c/csswg-drafts/issues/5275">
@@ -5355,7 +5431,7 @@ for the various capabilities available across the entire range of them.
 <h5 id="supported-use-cases-28">Supported use cases<a class="self-link" aria-label="§" href="#capability-map-events"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-view-change-events" class="sec-ref">§&nbsp;<bdi class="secno">3.3.2 </bdi>Provide feedback to a user as they manipulate the map</a></li></ul>
 
-<h5 id="uses-beyond-mapping-29">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-map-events"></a></h5>
+<h5 id="uses-beyond-mapping-30">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-map-events"></a></h5>
 <p>
 As it is anticipated that standard DOM event interfaces would be the basis for an HTML map's event system,
 it is likely that further uses could arise for such capabilities.
@@ -5365,7 +5441,7 @@ specifying latitude and longitude, as would be present in an event object create
 with a map element.
 </p>
 
-<h5 id="related-web-specifications-31">Related web specifications<a class="self-link" aria-label="§" href="#capability-map-events"></a></h5>
+<h5 id="related-web-specifications-34">Related web specifications<a class="self-link" aria-label="§" href="#capability-map-events"></a></h5>
 <p>
 
 As outlined above, it is expected that events as defined in <cite><a href="https://dom.spec.whatwg.org/">DOM Standard</a></cite> would form the basis for a map element's
@@ -5454,12 +5530,12 @@ these implemtations provide no support for changing the bearing of the map.
 <h5 id="supported-use-cases-29">Supported use cases<a class="self-link" aria-label="§" href="#capability-change-bearing-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-rotate-map" class="sec-ref">§&nbsp;<bdi class="secno">3.2.3 </bdi>Rotate a map, or reset the bearing</a></li><li><a href="#use-case-change-bearing-map" class="sec-ref">§&nbsp;<bdi class="secno">3.3.5 </bdi>Change the bearing of a map</a></li></ul>
 
-<h5 id="uses-beyond-mapping-30">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-change-bearing-map"></a></h5>
+<h5 id="uses-beyond-mapping-31">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-change-bearing-map"></a></h5>
 <p>
 This capability could be useful when a map viewer is used to display zoomable technical drawings.
 </p>
 
-<h5 id="related-web-specifications-32">Related web specifications<a class="self-link" aria-label="§" href="#capability-change-bearing-map"></a></h5>
+<h5 id="related-web-specifications-35">Related web specifications<a class="self-link" aria-label="§" href="#capability-change-bearing-map"></a></h5>
 <p>
 
 </p>
@@ -5508,12 +5584,12 @@ Existing implementation support:
 <h5 id="supported-use-cases-30">Supported use cases<a class="self-link" aria-label="§" href="#capability-move-the-map-to-display-a-given-location"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-set-view-zoom" class="sec-ref">§&nbsp;<bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li></ul>
 
-<h5 id="uses-beyond-mapping-31">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-move-the-map-to-display-a-given-location"></a></h5>
+<h5 id="uses-beyond-mapping-32">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-move-the-map-to-display-a-given-location"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-33">Related web specifications<a class="self-link" aria-label="§" href="#capability-move-the-map-to-display-a-given-location"></a></h5>
+<h5 id="related-web-specifications-36">Related web specifications<a class="self-link" aria-label="§" href="#capability-move-the-map-to-display-a-given-location"></a></h5>
 <p>
 
 </p>
@@ -5561,12 +5637,12 @@ Existing implementation support:
 <h5 id="supported-use-cases-31">Supported use cases<a class="self-link" aria-label="§" href="#capability-pan-and-zoom-to-bounding-box"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-set-view-zoom" class="sec-ref">§&nbsp;<bdi class="secno">3.3.3 </bdi>Move a map to a new position and/or zoom level</a></li></ul>
 
-<h5 id="uses-beyond-mapping-32">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-pan-and-zoom-to-bounding-box"></a></h5>
+<h5 id="uses-beyond-mapping-33">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-pan-and-zoom-to-bounding-box"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-34">Related web specifications<a class="self-link" aria-label="§" href="#capability-pan-and-zoom-to-bounding-box"></a></h5>
+<h5 id="related-web-specifications-37">Related web specifications<a class="self-link" aria-label="§" href="#capability-pan-and-zoom-to-bounding-box"></a></h5>
 <p>
 
 </p>
@@ -5614,12 +5690,12 @@ Existing implementation support:
 <h5 id="supported-use-cases-32">Supported use cases<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map-view"></a></h5>
 <ul data-ucr-role="capability-uses"></ul>
 
-<h5 id="uses-beyond-mapping-33">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map-view"></a></h5>
+<h5 id="uses-beyond-mapping-34">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map-view"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-35">Related web specifications<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map-view"></a></h5>
+<h5 id="related-web-specifications-38">Related web specifications<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map-view"></a></h5>
 <p>
 
 </p>
@@ -5667,12 +5743,12 @@ Existing implementation support:
 <h5 id="supported-use-cases-33">Supported use cases<a class="self-link" aria-label="§" href="#capability-animate-the-zooming-of-the-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-animate-view-change" class="sec-ref">§&nbsp;<bdi class="secno">3.3.4 </bdi>Animate a map through a sequence of points</a></li></ul>
 
-<h5 id="uses-beyond-mapping-34">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-animate-the-zooming-of-the-map"></a></h5>
+<h5 id="uses-beyond-mapping-35">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-animate-the-zooming-of-the-map"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-36">Related web specifications<a class="self-link" aria-label="§" href="#capability-animate-the-zooming-of-the-map"></a></h5>
+<h5 id="related-web-specifications-39">Related web specifications<a class="self-link" aria-label="§" href="#capability-animate-the-zooming-of-the-map"></a></h5>
 <p>
 
 </p>
@@ -5720,12 +5796,12 @@ Existing implementation support:
 <h5 id="supported-use-cases-34">Supported use cases<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map"></a></h5>
 <ul data-ucr-role="capability-uses"><li><a href="#use-case-animate-view-change" class="sec-ref">§&nbsp;<bdi class="secno">3.3.4 </bdi>Animate a map through a sequence of points</a></li></ul>
 
-<h5 id="uses-beyond-mapping-35">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map"></a></h5>
+<h5 id="uses-beyond-mapping-36">Uses beyond mapping<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map"></a></h5>
 <p>
 ToDo
 </p>
 
-<h5 id="related-web-specifications-37">Related web specifications<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map"></a></h5>
+<h5 id="related-web-specifications-40">Related web specifications<a class="self-link" aria-label="§" href="#capability-animate-the-re-centering-of-the-map"></a></h5>
 <p>
 
 </p>
@@ -5814,7 +5890,7 @@ We are tracking issues on <a href="https://github.com/Maps4HTML/HTML-Map-Element
         Informative references
       <a class="self-link" aria-label="§" href="#informative-references"></a></h3>
     <dl class="bibliography">
-      <dt id="bib-api-design-principles">[API-DESIGN-PRINCIPLES]</dt><dd><a href="https://www.w3.org/TR/design-principles/"><cite>Web Platform Design Principles</cite></a>. Sangwhan Moon.  W3C. 10 November 2020. W3C Note. URL: <a href="https://www.w3.org/TR/design-principles/">https://www.w3.org/TR/design-principles/</a></dd><dt id="bib-atag20">[ATAG20]</dt><dd><a href="https://www.w3.org/TR/ATAG20/"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite></a>. Jan Richards; Jeanne F Spellman; Jutta Treviranus.  W3C. 24 September 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ATAG20/">https://www.w3.org/TR/ATAG20/</a></dd><dt id="bib-css-transforms-1">[css-transforms-1]</dt><dd><a href="https://www.w3.org/TR/css-transforms-1/"><cite>CSS Transforms Module Level 1</cite></a>. Simon Fraser; Dean Jackson; Theresa O'Connor; Dirk Schulze.  W3C. 14 February 2019. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-transforms-1/">https://www.w3.org/TR/css-transforms-1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-extensible">[EXTENSIBLE]</dt><dd><a href="https://extensiblewebmanifesto.org/"><cite>The Extensible Web Manifesto</cite></a>. 10 June 2013. URL: <a href="https://extensiblewebmanifesto.org/">https://extensiblewebmanifesto.org/</a></dd><dt id="bib-fast">[FAST]</dt><dd><a href="https://w3c.github.io/apa/fast/"><cite>Framework for Accessible Specification of Technologies</cite></a>.  W3C Accessible Platform Architectures Working Group (APA WG). URL: <a href="https://w3c.github.io/apa/fast/">https://w3c.github.io/apa/fast/</a></dd><dt id="bib-filter-effects">[filter-effects]</dt><dd><a href="https://www.w3.org/TR/filter-effects-1/"><cite>Filter Effects Module Level 1</cite></a>. Dirk Schulze; Dean Jackson.  W3C. 18 December 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/filter-effects-1/">https://www.w3.org/TR/filter-effects-1/</a></dd><dt id="bib-fullscreen">[fullscreen]</dt><dd><a href="https://fullscreen.spec.whatwg.org/"><cite>Fullscreen API Standard</cite></a>. Philip Jägenstedt.  WHATWG. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a></dd><dt id="bib-geolocation-api">[geolocation-API]</dt><dd><a href="https://www.w3.org/TR/geolocation-API/"><cite>Geolocation API Specification 2nd Edition</cite></a>. Andrei Popescu.  W3C. 8 November 2016. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a></dd><dt id="bib-geolocation-privacy">[GEOLOCATION-PRIVACY]</dt><dd><a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf"><cite>Privacy of Geolocation Implementations</cite></a>. Marcos Cáceres. 12 July 2010. URL: <a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf">https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf</a></dd><dt id="bib-geolocation-sensor">[geolocation-sensor]</dt><dd><a href="https://www.w3.org/TR/geolocation-sensor/"><cite>Geolocation Sensor</cite></a>. Anssi Kostiainen; Thomas Steiner.  W3C. 19 December 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation-sensor/">https://www.w3.org/TR/geolocation-sensor/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-html-design-principles">[html-design-principles]</dt><dd><a href="https://www.w3.org/TR/html-design-principles/"><cite>HTML Design Principles</cite></a>. Anne van Kesteren; Maciej Stachowiak.  W3C. 26 November 2007. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-design-principles/">https://www.w3.org/TR/html-design-principles/</a></dd><dt id="bib-html-map-element">[HTML-map-element]</dt><dd><a href="https://maps4html.org/HTML-Map-Element/spec/"><cite>The HTML map Element proposal</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.org/HTML-Map-Element/spec/">https://maps4html.org/HTML-Map-Element/spec/</a></dd><dt id="bib-international-specs">[international-specs]</dt><dd><a href="https://www.w3.org/TR/international-specs/"><cite>Internationalization Best Practices for Spec Developers</cite></a>. Marcos Caceres.  W3C. 29 May 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/international-specs/">https://www.w3.org/TR/international-specs/</a></dd><dt id="bib-mapml">[MapML]</dt><dd><a href="https://maps4html.org/MapML/spec/"><cite>Map Markup Language</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.org/MapML/spec/">https://maps4html.org/MapML/spec/</a></dd><dt id="bib-media-accessibility-reqs">[media-accessibility-reqs]</dt><dd><a href="https://www.w3.org/TR/media-accessibility-reqs/"><cite>Media Accessibility User Requirements</cite></a>. Shane McCarron; Michael Cooper; Mark Sadecki.  W3C. 3 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/media-accessibility-reqs/">https://www.w3.org/TR/media-accessibility-reqs/</a></dd><dt id="bib-media-frags">[media-frags]</dt><dd><a href="https://www.w3.org/TR/media-frags/"><cite>Media Fragments URI 1.0 (basic)</cite></a>. Raphaël Troncy; Erik Mannens; Silvia Pfeiffer; Davy Van Deursen.  W3C. 25 September 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/media-frags/">https://www.w3.org/TR/media-frags/</a></dd><dt id="bib-microdata">[Microdata]</dt><dd><a href="https://www.w3.org/TR/microdata/"><cite>HTML Microdata</cite></a>. Charles 'chaals' (McCathie) Nevile; Dan Brickley; Ian Hickson.  W3C. 26 April 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/microdata/">https://www.w3.org/TR/microdata/</a></dd><dt id="bib-payment-request">[payment-request]</dt><dd><a href="https://www.w3.org/TR/payment-request/"><cite>Payment Request API</cite></a>. Marcos Caceres; Danyao Wang; Rouslan Solomakhin; Ian Jacobs.  W3C. 3 December 2020. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/payment-request/">https://www.w3.org/TR/payment-request/</a></dd><dt id="bib-personalization-semantics-requirements-1.0">[personalization-semantics-requirements-1.0]</dt><dd><a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/"><cite>Requirements for Personalization Semantics</cite></a>. Lisa Seeman-Kestenbaum; Charles LaPierre; Michael Cooper; Ruoxi Ran.  W3C. 28 October 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/">https://www.w3.org/TR/personalization-semantics-requirements-1.0/</a></dd><dt id="bib-picture-in-picture">[picture-in-picture]</dt><dd><a href="https://www.w3.org/TR/picture-in-picture/"><cite>Picture-in-Picture</cite></a>. Francois Beaufort; Mounir Lamouri.  W3C. 30 January 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/picture-in-picture/">https://www.w3.org/TR/picture-in-picture/</a></dd><dt id="bib-rfc7946">[rfc7946]</dt><dd><a href="https://tools.ietf.org/html/rfc7946"><cite>The GeoJSON Format</cite></a>. H. Butler; M. Daly; A. Doyle; S. Gillies; S. Hagen; T. Schaub.  IETF. August 2016. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a></dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt><dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Theresa O'Connor; Peter Snyder.  W3C. 8 May 2020. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd><dt id="bib-svg">[SVG]</dt><dd><a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a></dd><dt id="bib-svg2">[SVG2]</dt><dd><a href="https://www.w3.org/TR/SVG2/"><cite>Scalable Vector Graphics (SVG) 2</cite></a>. Amelia Bellamy-Royds; Bogdan Brinza; Chris Lilley; Dirk Schulze; David Storey; Eric Willigers.  W3C. 4 October 2018. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/SVG2/">https://www.w3.org/TR/SVG2/</a></dd><dt id="bib-uaag20">[UAAG20]</dt><dd><a href="https://www.w3.org/TR/UAAG20/"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd><dt id="bib-wai-aria-1.1">[wai-aria-1.1]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd><dt id="bib-web-share">[web-share]</dt><dd><a href="https://www.w3.org/TR/web-share/"><cite>Web Share API</cite></a>. Matt Giuca; Eric Willigers.  W3C. 19 October 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/web-share/">https://www.w3.org/TR/web-share/</a></dd><dt id="bib-webcomponents-design-guidelines">[webcomponents-design-guidelines]</dt><dd><a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/"><cite>Guidelines for creating web platform compatible components</cite></a>.  W3C TAG. URL: <a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/">https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/</a></dd><dt id="bib-webgl">[webGL]</dt><dd><a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/"><cite>WebGL 2.0 Specification</cite></a>. Dean Jackson; Jeff Gilbert.  Khronos. 12 August 2017. URL: <a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/">https://www.khronos.org/registry/webgl/specs/latest/2.0/</a></dd><dt id="bib-wgs84">[WGS84]</dt><dd><a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf"><cite>World Geodetic System 1984</cite></a>.  US National Imagery and Mapping Agency. URL: <a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf">http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf</a></dd>
+      <dt id="bib-api-design-principles">[API-DESIGN-PRINCIPLES]</dt><dd><a href="https://www.w3.org/TR/design-principles/"><cite>Web Platform Design Principles</cite></a>. Sangwhan Moon.  W3C. 10 November 2020. W3C Note. URL: <a href="https://www.w3.org/TR/design-principles/">https://www.w3.org/TR/design-principles/</a></dd><dt id="bib-atag20">[ATAG20]</dt><dd><a href="https://www.w3.org/TR/ATAG20/"><cite>Authoring Tool Accessibility Guidelines (ATAG) 2.0</cite></a>. Jan Richards; Jeanne F Spellman; Jutta Treviranus.  W3C. 24 September 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ATAG20/">https://www.w3.org/TR/ATAG20/</a></dd><dt id="bib-css-contain-1">[css-contain-1]</dt><dd><a href="https://www.w3.org/TR/css-contain-1/"><cite>CSS Containment Module Level 1</cite></a>. Tab Atkins Jr.; Florian Rivoal.  W3C. 22 December 2020. W3C Recommendation. URL: <a href="https://www.w3.org/TR/css-contain-1/">https://www.w3.org/TR/css-contain-1/</a></dd><dt id="bib-css-shadow-parts-1">[css-shadow-parts-1]</dt><dd><a href="https://www.w3.org/TR/css-shadow-parts-1/"><cite>CSS Shadow Parts</cite></a>. Tab Atkins Jr.; Fergal Daly.  W3C. 15 November 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/css-shadow-parts-1/">https://www.w3.org/TR/css-shadow-parts-1/</a></dd><dt id="bib-css-transforms-1">[css-transforms-1]</dt><dd><a href="https://www.w3.org/TR/css-transforms-1/"><cite>CSS Transforms Module Level 1</cite></a>. Simon Fraser; Dean Jackson; Theresa O'Connor; Dirk Schulze.  W3C. 14 February 2019. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/css-transforms-1/">https://www.w3.org/TR/css-transforms-1/</a></dd><dt id="bib-dom">[DOM]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-extensible">[EXTENSIBLE]</dt><dd><a href="https://extensiblewebmanifesto.org/"><cite>The Extensible Web Manifesto</cite></a>. 10 June 2013. URL: <a href="https://extensiblewebmanifesto.org/">https://extensiblewebmanifesto.org/</a></dd><dt id="bib-fast">[FAST]</dt><dd><a href="https://w3c.github.io/apa/fast/"><cite>Framework for Accessible Specification of Technologies</cite></a>.  W3C Accessible Platform Architectures Working Group (APA WG). URL: <a href="https://w3c.github.io/apa/fast/">https://w3c.github.io/apa/fast/</a></dd><dt id="bib-filter-effects">[filter-effects]</dt><dd><a href="https://www.w3.org/TR/filter-effects-1/"><cite>Filter Effects Module Level 1</cite></a>. Dirk Schulze; Dean Jackson.  W3C. 18 December 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/filter-effects-1/">https://www.w3.org/TR/filter-effects-1/</a></dd><dt id="bib-fullscreen">[fullscreen]</dt><dd><a href="https://fullscreen.spec.whatwg.org/"><cite>Fullscreen API Standard</cite></a>. Philip Jägenstedt.  WHATWG. Living Standard. URL: <a href="https://fullscreen.spec.whatwg.org/">https://fullscreen.spec.whatwg.org/</a></dd><dt id="bib-geolocation-api">[geolocation-API]</dt><dd><a href="https://www.w3.org/TR/geolocation-API/"><cite>Geolocation API Specification 2nd Edition</cite></a>. Andrei Popescu.  W3C. 8 November 2016. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a></dd><dt id="bib-geolocation-privacy">[GEOLOCATION-PRIVACY]</dt><dd><a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf"><cite>Privacy of Geolocation Implementations</cite></a>. Marcos Cáceres. 12 July 2010. URL: <a href="https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf">https://www.w3.org/2010/api-privacy-ws/papers/privacy-ws-21.pdf</a></dd><dt id="bib-geolocation-sensor">[geolocation-sensor]</dt><dd><a href="https://www.w3.org/TR/geolocation-sensor/"><cite>Geolocation Sensor</cite></a>. Anssi Kostiainen; Thomas Steiner.  W3C. 19 December 2018. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation-sensor/">https://www.w3.org/TR/geolocation-sensor/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-html-design-principles">[html-design-principles]</dt><dd><a href="https://www.w3.org/TR/html-design-principles/"><cite>HTML Design Principles</cite></a>. Anne van Kesteren; Maciej Stachowiak.  W3C. 26 November 2007. W3C Working Draft. URL: <a href="https://www.w3.org/TR/html-design-principles/">https://www.w3.org/TR/html-design-principles/</a></dd><dt id="bib-html-map-element">[HTML-map-element]</dt><dd><a href="https://maps4html.org/HTML-Map-Element/spec/"><cite>The HTML map Element proposal</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.org/HTML-Map-Element/spec/">https://maps4html.org/HTML-Map-Element/spec/</a></dd><dt id="bib-international-specs">[international-specs]</dt><dd><a href="https://www.w3.org/TR/international-specs/"><cite>Internationalization Best Practices for Spec Developers</cite></a>. Marcos Caceres.  W3C. 29 May 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/international-specs/">https://www.w3.org/TR/international-specs/</a></dd><dt id="bib-mapml">[MapML]</dt><dd><a href="https://maps4html.org/MapML/spec/"><cite>Map Markup Language</cite></a>.  Maps for HTML Community Group. URL: <a href="https://maps4html.org/MapML/spec/">https://maps4html.org/MapML/spec/</a></dd><dt id="bib-media-accessibility-reqs">[media-accessibility-reqs]</dt><dd><a href="https://www.w3.org/TR/media-accessibility-reqs/"><cite>Media Accessibility User Requirements</cite></a>. Shane McCarron; Michael Cooper; Mark Sadecki.  W3C. 3 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/media-accessibility-reqs/">https://www.w3.org/TR/media-accessibility-reqs/</a></dd><dt id="bib-media-frags">[media-frags]</dt><dd><a href="https://www.w3.org/TR/media-frags/"><cite>Media Fragments URI 1.0 (basic)</cite></a>. Raphaël Troncy; Erik Mannens; Silvia Pfeiffer; Davy Van Deursen.  W3C. 25 September 2012. W3C Recommendation. URL: <a href="https://www.w3.org/TR/media-frags/">https://www.w3.org/TR/media-frags/</a></dd><dt id="bib-mediaqueries-4">[mediaqueries-4]</dt><dd><a href="https://www.w3.org/TR/mediaqueries-4/"><cite>Media Queries Level 4</cite></a>. Florian Rivoal; Tab Atkins Jr..  W3C. 21 July 2020. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediaqueries-4/">https://www.w3.org/TR/mediaqueries-4/</a></dd><dt id="bib-microdata">[Microdata]</dt><dd><a href="https://www.w3.org/TR/microdata/"><cite>HTML Microdata</cite></a>. Charles 'chaals' (McCathie) Nevile; Dan Brickley; Ian Hickson.  W3C. 28 January 2021. W3C Note. URL: <a href="https://www.w3.org/TR/microdata/">https://www.w3.org/TR/microdata/</a></dd><dt id="bib-payment-request">[payment-request]</dt><dd><a href="https://www.w3.org/TR/payment-request/"><cite>Payment Request API</cite></a>. Marcos Caceres; Danyao Wang; Rouslan Solomakhin; Ian Jacobs.  W3C. 3 December 2020. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/payment-request/">https://www.w3.org/TR/payment-request/</a></dd><dt id="bib-personalization-semantics-requirements-1.0">[personalization-semantics-requirements-1.0]</dt><dd><a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/"><cite>Requirements for Personalization Semantics</cite></a>. Lisa Seeman-Horwitz; Charles LaPierre; Michael Cooper; Ruoxi Ran.  W3C. 28 October 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/personalization-semantics-requirements-1.0/">https://www.w3.org/TR/personalization-semantics-requirements-1.0/</a></dd><dt id="bib-picture-in-picture">[picture-in-picture]</dt><dd><a href="https://www.w3.org/TR/picture-in-picture/"><cite>Picture-in-Picture</cite></a>. Francois Beaufort; Mounir Lamouri.  W3C. 15 March 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/picture-in-picture/">https://www.w3.org/TR/picture-in-picture/</a></dd><dt id="bib-rfc7946">[rfc7946]</dt><dd><a href="https://tools.ietf.org/html/rfc7946"><cite>The GeoJSON Format</cite></a>. H. Butler; M. Daly; A. Doyle; S. Gillies; S. Hagen; T. Schaub.  IETF. August 2016. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7946">https://tools.ietf.org/html/rfc7946</a></dd><dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire]</dt><dd><a href="https://www.w3.org/TR/security-privacy-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. Theresa O'Connor; Peter Snyder.  W3C. 8 May 2020. W3C Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd><dt id="bib-svg">[SVG]</dt><dd><a href="https://www.w3.org/TR/SVG/"><cite>Scalable Vector Graphics (SVG) 1.0 Specification</cite></a>. Jon Ferraiolo.  W3C. 4 September 2001. W3C Recommendation. URL: <a href="https://www.w3.org/TR/SVG/">https://www.w3.org/TR/SVG/</a></dd><dt id="bib-svg2">[SVG2]</dt><dd><a href="https://www.w3.org/TR/SVG2/"><cite>Scalable Vector Graphics (SVG) 2</cite></a>. Amelia Bellamy-Royds; Bogdan Brinza; Chris Lilley; Dirk Schulze; David Storey; Eric Willigers.  W3C. 4 October 2018. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/SVG2/">https://www.w3.org/TR/SVG2/</a></dd><dt id="bib-uaag20">[UAAG20]</dt><dd><a href="https://www.w3.org/TR/UAAG20/"><cite>User Agent Accessibility Guidelines (UAAG) 2.0</cite></a>. James Allan; Greg Lowney; Kimberly Patch; Jeanne F Spellman.  W3C. 15 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/UAAG20/">https://www.w3.org/TR/UAAG20/</a></dd><dt id="bib-wai-aria-1.1">[wai-aria-1.1]</dt><dd><a href="https://www.w3.org/TR/wai-aria-1.1/"><cite>Accessible Rich Internet Applications (WAI-ARIA) 1.1</cite></a>. Joanmarie Diggs; Shane McCarron; Michael Cooper; Richard Schwerdtfeger; James Craig.  W3C. 14 December 2017. W3C Recommendation. URL: <a href="https://www.w3.org/TR/wai-aria-1.1/">https://www.w3.org/TR/wai-aria-1.1/</a></dd><dt id="bib-wcag21">[WCAG21]</dt><dd><a href="https://www.w3.org/TR/WCAG21/"><cite>Web Content Accessibility Guidelines (WCAG) 2.1</cite></a>. Andrew Kirkpatrick; Joshue O Connor; Alastair Campbell; Michael Cooper.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/WCAG21/">https://www.w3.org/TR/WCAG21/</a></dd><dt id="bib-web-share">[web-share]</dt><dd><a href="https://www.w3.org/TR/web-share/"><cite>Web Share API</cite></a>. Matt Giuca; Eric Willigers.  W3C. 20 January 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/web-share/">https://www.w3.org/TR/web-share/</a></dd><dt id="bib-webcomponents-design-guidelines">[webcomponents-design-guidelines]</dt><dd><a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/"><cite>Guidelines for creating web platform compatible components</cite></a>.  W3C TAG. URL: <a href="https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/">https://www.w3.org/2001/tag/doc/webcomponents-design-guidelines/</a></dd><dt id="bib-webgl">[webGL]</dt><dd><a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/"><cite>WebGL 2.0 Specification</cite></a>. Dean Jackson; Jeff Gilbert.  Khronos. 12 August 2017. URL: <a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/">https://www.khronos.org/registry/webgl/specs/latest/2.0/</a></dd><dt id="bib-wgs84">[WGS84]</dt><dd><a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf"><cite>World Geodetic System 1984</cite></a>.  US National Imagery and Mapping Agency. URL: <a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf">http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf</a></dd>
     </dl></section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
   </p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

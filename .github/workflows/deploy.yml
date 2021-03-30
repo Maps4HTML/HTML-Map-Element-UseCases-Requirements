@@ -1,0 +1,24 @@
+name: Run Respec & Deploy to GH Pages
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Run Respec
+      run: | 
+        npx -p respec respec2html -s index.html?githubToken=${{ secrets.GITHUB_TOKEN }} -o build-index.html && rm index.html && mv build-index.html index.html
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .
+        commit_message: ${{ github.event.head_commit.message }}

@@ -77,6 +77,10 @@ a[href]:hover .tag-span, a[href]:focus .tag-span {
 var respecConfig = {
   // specification status (e.g. WD, LCWD, WG-NOTE, etc.). If in doubt use ED.
   specStatus:  "CG-DRAFT",
+  
+  // Temporarily prevent ReSpec from generating a "Latest published version" link
+  // which returns a 404 status code.
+  latestVersion: null,
 
   // if your specification has a subtitle that goes below the main
   // formal title, define it here
